@@ -1,8 +1,9 @@
+import { Button } from "./components/ui/button"
 
 const App = () => {
   return (
     <div>
-      <h1>HELLO WORLD!!</h1>
+      <Button>HELLO WORLD!</Button>
     </div>
   )
 }
