@@ -29,5 +29,5 @@ jobs:
         server: ${{ secrets.CPANEL_FTP_SERVER }}
         username: ${{ secrets.CPANEL_FTP_USERNAME }}
         password: ${{ secrets.CPANEL_FTP_PASSWORD }}
-        server-dir: home/ieeensus/react.ieeensusb.org
+        server-dir: ${{ secrets.SERVER_DIR }}
         local-dir: dist/
