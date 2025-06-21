@@ -2,8 +2,8 @@ import { Button } from "./components/ui/button"
 
 const App = () => {
   return (
-    <div>
-      <Button>HELLO WORLD!</Button>
+    <div className="h-screen flex justify-center items-center">
+      <Button className="w-40">HELLO WORLD!</Button>
     </div>
   )
 }
