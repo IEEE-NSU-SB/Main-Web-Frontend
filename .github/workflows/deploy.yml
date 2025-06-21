@@ -2,7 +2,7 @@ name: Deploy React via SSH
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   deploy:
