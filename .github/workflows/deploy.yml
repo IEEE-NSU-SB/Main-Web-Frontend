@@ -1,11 +1,11 @@
-name: Deploy React via SSH
+name: Deploy React to cPanel
 
 on:
   push:
     branches: [master]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,12 +23,11 @@ jobs:
     - name: Build React App
       run: npm run build
 
-    - name: Deploy build folder via rsync over SSH
-      uses: burnett01/rsync-deployments@7.0.2
+    - name: Upload build to cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        switches: -avz --delete
-        path: build/
-        remote_path: /home/ieensus/react.ieeensusb.org
-        remote_host: ${{ secrets.SSH_HOST }}
-        remote_user: ${{ secrets.SSH_USER }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        server: ${{ secrets.CPANEL_FTP_SERVER }}
+        username: ${{ secrets.CPANEL_FTP_USERNAME }}
+        password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+        server-dir: ${{ secrets.SERVER_DIR }}
+        local-dir: dist/
