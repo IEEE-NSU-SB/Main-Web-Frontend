@@ -24,11 +24,11 @@ jobs:
       run: npm run build
 
     - name: Deploy build folder via rsync over SSH
-      uses: burnett01/rsync-deployments@v2
+      uses: burnett01/rsync-deployments@7.0.2
       with:
         switches: -avz --delete
         path: build/
-        remote_path: /home/your_cpanel_user/public_html/portal
+        remote_path: /home/ieensus/react.ieeensusb.org
         remote_host: ${{ secrets.SSH_HOST }}
         remote_user: ${{ secrets.SSH_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
