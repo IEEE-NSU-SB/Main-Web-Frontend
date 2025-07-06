@@ -1,21 +1,12 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu"
+import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
 
 const Navbar = () => {
   return (
     <NavigationMenu>
         <NavigationMenuList>
             <NavigationMenuItem>
-            <NavigationMenuLink cl>Home</NavigationMenuLink>
-            <NavigationMenuContent>
-                <NavigationMenuLink>Link</NavigationMenuLink>
-            </NavigationMenuContent>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Home</NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
             <NavigationMenuTrigger>Activities</NavigationMenuTrigger>
