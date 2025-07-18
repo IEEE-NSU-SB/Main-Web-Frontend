@@ -1,6 +1,3 @@
-
-
-import "./../App.css";
 import iconService1 from "./../assets/icon-service-1.png";
 
 export default function LearningCardGrid() {

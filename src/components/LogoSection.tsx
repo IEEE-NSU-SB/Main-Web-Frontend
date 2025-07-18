@@ -7,28 +7,20 @@ import wie from "./../assets/wie.png";
 
 export default function LogoSection() {
     return (
-        <div className="py-12 px-6 flex flex-col items-center space-y-8">
+        <div className="py-12 flex flex-col items-center">
 
-            <img src={insb} alt="IEEE NSU Student Branch" className="w-72" />
+            <img src={insb} alt="IEEE NSU Student Branch" className="w-82" />
 
-
-            <div className="grid grid-cols-1 gap-8">
-
-
-
-
-                <div className="flex justify-center gap-12">
-                    <img src={pes} alt="Logo 2" className="h-40" />
-                    <img src={ias} alt="Logo 3" className="h-40" />
-                </div>
-
-
-                <div className="flex justify-center gap-12">
-                    <img src={ras} alt="Logo 4" className="h-40" />
-                    <img src={wie} alt="Logo 5" className="h-40" />
-                </div>
+            <div className="flex justify-center gap-100">
+                <img src={pes} alt="PES Logo" className="h-45" />
+                <img src={ias} alt="IAS Logo" className="h-50" />
             </div>
-        </div>
 
+            <div className="flex justify-center gap-42">
+                <img src={ras} alt="RAS Logo" className="h-40" />
+                <img src={wie} alt="WIE Logo" className="h-40" />
+            </div>
+
+        </div>
     );
 }
