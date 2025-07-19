@@ -112,7 +112,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-400 mt-8">
+        <div className="border-t border-gray-700 pt-6 font-bold text-center text-sm text-white mt-8">
           <p>
             © 2025 IEEE NSU SB – All rights reserved. Developed by{' '}
             <a href="#" className="text-amber-300 hover:text-blue-300 transition-colors">
