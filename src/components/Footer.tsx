@@ -1,6 +1,6 @@
 import { Facebook, Linkedin, Instagram, Twitter, Youtube } from 'lucide-react';
-import ieee from "./../assets/ieee.png";
-import insb from "./../assets/insb.png";
+import ieee from "./../assets/logo/ieee.png";
+import insb from "./../assets/logo/insb.png";
 import { ExternalLink } from 'lucide-react';
 
 const footerLinks = [
