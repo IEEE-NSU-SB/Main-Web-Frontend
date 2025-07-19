@@ -1,38 +1,61 @@
+import { Facebook, Linkedin, Instagram, Twitter, Youtube } from 'lucide-react';
 import ieee from "./../assets/ieee.png";
 import insb from "./../assets/insb.png";
+import { ExternalLink } from 'lucide-react';
 
 const footerLinks = [
   {
-    title: null,
     links: [
-      "Ieee.org", "IEEE Explore", "IEEE Standards", "IEEE Spectrum",
-      "IEEE Collabratec", "More Sites"
+      { text: "Ieee.org", href: "#" },
+      { text: "IEEE Explore", href: "#" },
+      { text: "IEEE Standards", href: "#" },
+      { text: "IEEE Spectrum", href: "#" },
+      { text: "IEEE Collabratec", href: "#" },
+      { text: "More Sites", href: "#" },
     ],
   },
   {
-    title: null,
     links: [
-      "Ask a Question", "About IEEE NSU SB", "About IEEE NSU SB IAS",
-      "About IEEE NSU SB PES", "About IEEE NSU SB RAS", "About IEEE NSU SB WIE"
+      { text: "Ask a Question", href: "#" },
+      { text: "IEEE NSU SB", href: "#" },
+      { text: "IEEE NSU SB IAS", href: "#" },
+      { text: "IEEE NSU SB PES", href: "#" },
+      { text: "IEEE NSU SB RAS", href: "#" },
+      { text: "IEEE NSU SB WIE", href: "#" },
     ],
   },
   {
-    title: null,
     links: [
-      "News", "Upcoming Events", "Toolkit", "Gallery",
-      "Magazines", "Research Papers"
+      { text: "News", href: "#" },
+      { text: "Upcoming Events", href: "#" },
+      { text: "Toolkit", href: "#" },
+      { text: "Gallery", href: "#" },
+      { text: "Magazines", href: "#" },
+      { text: "Research Papers", href: "#" },
     ],
   },
   {
-    title: null,
     links: [
-      "Join IEEE NSU SB", "Write a Blog", "Blogs", "Achievements",
-      "Current Executive Body", "Exemplary Members"
+      { text: "Join IEEE NSU SB", href: "#" },
+      { text: "Write a Blog", href: "#" },
+      { text: "Blogs", href: "#" },
+      { text: "Achievements", href: "#" },
+      { text: "Current Executive Body", href: "#" },
+      { text: "Exemplary Members", href: "#" },
     ],
   },
 ];
 
-const socialLinks = ["Facebook", "LinkedIn", "Instagram", "X", "YouTube"];
+
+const socialIcons = [
+  { icon: <Facebook />, link: "https://facebook.com" },
+  { icon: <Linkedin />, link: "https://linkedin.com" },
+  { icon: <Instagram />, link: "https://instagram.com" },
+  { icon: <Twitter />, link: "https://twitter.com" },
+  { icon: <Youtube />, link: "https://youtube.com" },
+];
+
+
 const contactInfo = [
   "info@ieeensusb.org",
   "contact@ieeensusb.org",
@@ -41,7 +64,7 @@ const contactInfo = [
 
 function Footer() {
   return (
-    <footer className="bg-[#232323] text-white py-8">
+    <footer className="bg-[#363636] text-white py-8">
       <div className="container mx-auto px-4">
         {/* Logos */}
         <div className="flex flex-col md:flex-row items-center justify-evenly mb-6">
@@ -50,26 +73,33 @@ function Footer() {
         </div>
 
         {/* Link Sections */}
-        <div className="text-[#dedede] grid grid-cols-5 gap-4 m-auto w-300">
+        <div className="text-[#dedede] grid grid-cols-5 gap-4 mt-8 mx-auto w-270">
           {footerLinks.map((section, index) => (
             <ul key={index}>
-              {section.links.map((text, idx) => (
+              {section.links.map((link, idx) => (
                 <li key={idx}>
-                  <a href="#" className="hover:underline">{text}</a>
+                  <a href={link.href} target="_blank" className="hover:underline inline-flex gap-1"><ExternalLink size={20}/> {link.text}</a>
                 </li>
               ))}
             </ul>
           ))}
 
-          {/* Follow Us + Contact Info */}
+          {/* Social + Contact */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us:</h3>
-            <ul className="flex flex-wrap gap-2 mb-4">
-              {socialLinks.map((platform, i) => (
+            <ul className="flex gap-4 text-2xl mb-4">
+            {socialIcons.map((item, i) => (
                 <li key={i}>
-                  <a href="#" className="hover:underline">{platform}</a>
+                <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-400 transition-colors"
+                >
+                    {item.icon}
+                </a>
                 </li>
-              ))}
+            ))}
             </ul>
             <ul>
               {contactInfo.map((info, i) => (
@@ -82,7 +112,7 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-900 pt-6 text-center text-sm text-gray-400 mt-8">
+        <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-400 mt-8">
           <p>
             © 2025 IEEE NSU SB – All rights reserved. Developed by{' '}
             <a href="#" className="text-amber-300 hover:text-blue-300 transition-colors">
