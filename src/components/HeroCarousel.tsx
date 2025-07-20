@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -29,9 +29,9 @@ const HeroCarousel = ({
     },
     {
       type: "video",
-      src: "https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-a-university-campus-4519-large.mp4",
+      src: "https://www.youtube.com/embed/ZnC5QGieFWk",
       title: "Campus Life at NSU",
-      description: "Join our vibrant community of innovators",
+      description: "With Junayed vai",
     },
     {
       type: "image",
@@ -49,6 +49,23 @@ const HeroCarousel = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const autoPlayTimerRef = useRef<number | null>(null);
+
+  // Helper function to convert YouTube URLs to embed format
+  const getYouTubeEmbedUrl = (url: string) => {
+    if (url.includes("youtube.com/embed/")) {
+      return url;
+    }
+    
+    let videoId = "";
+    if (url.includes("youtu.be/")) {
+      videoId = url.split("youtu.be/")[1].split("?")[0];
+    } else if (url.includes("youtube.com/watch")) {
+      const urlParams = new URLSearchParams(url.split("?")[1]);
+      videoId = urlParams.get("v") || "";
+    }
+    
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
@@ -129,7 +146,7 @@ const HeroCarousel = ({
             ) : item.src.includes("youtube.com") ||
               item.src.includes("youtu.be") ? (
               <iframe
-                src={item.src}
+                src={`${getYouTubeEmbedUrl(item.src)}?autoplay=1&mute=1`}
                 className="w-full h-full object-cover"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -144,6 +161,7 @@ const HeroCarousel = ({
                 muted
                 loop
                 playsInline
+                autoPlay
               />
             )}
 
