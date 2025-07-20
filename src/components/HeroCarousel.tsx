@@ -181,7 +181,7 @@ const HeroCarousel = ({
       {/* Navigation Controls */}
       {showControls && (
         <div className="absolute z-20 bottom-8 right-8 flex items-center gap-2">
-          <Button
+          {/* <Button
             variant="outline"
             size="icon"
             className="rounded-full bg-white/20 hover:bg-white/40 text-white"
@@ -189,7 +189,7 @@ const HeroCarousel = ({
           >
             <ChevronLeft className="h-5 w-5" />
             <span className="sr-only">Previous slide</span>
-          </Button>
+          </Button> */}
 
           <Button
             variant="outline"
@@ -205,7 +205,7 @@ const HeroCarousel = ({
             <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
           </Button>
 
-          <Button
+          {/* <Button
             variant="outline"
             size="icon"
             className="rounded-full bg-white/20 hover:bg-white/40 text-white"
@@ -213,7 +213,7 @@ const HeroCarousel = ({
           >
             <ChevronRight className="h-5 w-5" />
             <span className="sr-only">Next slide</span>
-          </Button>
+          </Button> */}
         </div>
       )}
 
