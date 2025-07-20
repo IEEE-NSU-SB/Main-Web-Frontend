@@ -1,5 +1,7 @@
 import LearningCardGrid from './components/LearningCardGrid'
 import Logo from './components/LogoSection'
+import VisionSection from './components/vision'
+import StatsSection from './components/stats'
 import Footer from './components/Footer'
 import Event from './components/FeaturedEventsCarousel'
 import Blog from './components/BlogCard'
@@ -14,10 +16,13 @@ const App = () => {
       <HeroCarousel/>
       <LearningCardGrid/>
       <Logo/>
+      <VisionSection/>
+      <StatsSection/>
       <Event/>
       <TopPerformers/>
       <Blog/>
       <Footer/>
+
     </>
   )
 }
