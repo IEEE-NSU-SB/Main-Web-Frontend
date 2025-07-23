@@ -8,6 +8,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-ieee-blue: #00629B;
+  --color-brand-blue: #1fb6ff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

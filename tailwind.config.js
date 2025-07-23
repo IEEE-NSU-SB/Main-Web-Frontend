@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         // Your custom colors
         brandBlue: "#1fb6ff",
+        "ieee-blue": "#00629B",
         softGray: {
           100: "#f5f5f5",
           200: "#e5e5e5",
