@@ -4,8 +4,8 @@ module.exports = {
     extend: {
       colors: {
         // Your custom colors
-        brandBlue: "#1fb6ff",
         "ieee-blue": "#00629B",
+        "ieee-dark-blue": "#002855",
         softGray: {
           100: "#f5f5f5",
           200: "#e5e5e5",

@@ -1,7 +1,7 @@
 
 const StatsSection = () => {
   return (
-    <section className="py-16 bg-white ">
+    <section className="max-w-[1078px] mx-auto py-16 bg-white ">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="border-4 border-dashed border-ieee-blue rounded-xl">

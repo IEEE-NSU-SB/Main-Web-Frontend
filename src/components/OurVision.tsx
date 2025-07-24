@@ -1,7 +1,7 @@
 
 const VisionSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="max-w-[1078px] mx-auto py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-d mx-auto ">
           <h2 className="text-3xl md:text-4xl font-bold text-ieee-blue ml-2 mb-6">
