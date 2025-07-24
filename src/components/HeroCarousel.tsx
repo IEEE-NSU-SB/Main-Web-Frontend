@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -69,12 +69,6 @@ const HeroCarousel = ({
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + media.length) % media.length,
-    );
   };
 
   const goToSlide = (index: number) => {
