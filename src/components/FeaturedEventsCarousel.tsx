@@ -4,6 +4,7 @@ import dummy2 from "./../assets/dummy/image2.png";
 import dummy3 from "./../assets/dummy/image3.png";
 import dummy4 from "./../assets/dummy/image4.png";
 import dummy5 from "./../assets/dummy/image5.png";
+import SectionHeading from "./ui/SectionHeading";
 
 interface EventImage {
   src: string;
@@ -127,15 +128,8 @@ const FeaturedEventsCarousel: React.FC = () => {
 
   return (
     <div className="w-full py-4">
-      <h2 className="max-w-[1078px] mx-auto text-[rgba(0,40,85,0.8)] text-3xl font-bold px-4 mt-10">
-        Featured Events
-      </h2>
 
-      <div className="flex gap-1 max-w-[1045px] mx-auto mt-2 mb-4">
-        <div className="h-1 w-62 bg-[rgba(0,40,85,0.8)] rounded-xs"></div>
-        <div className="h-1 w-2 bg-[rgba(0,40,85,0.8)] rounded-xs"></div>
-        <div className="h-1 w-2 bg-[rgba(0,40,85,0.8)] rounded-xs"></div>
-      </div>
+      <SectionHeading title="Featured Events" widthClass="w-62" />
 
       {/* Carousel */}
       <div
@@ -169,7 +163,7 @@ const FeaturedEventsCarousel: React.FC = () => {
             key={index}
             aria-label={`Go to slide ${index + 1}`}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-[rgba(0,40,85,0.7)] scale-110" : "bg-gray-400"
+              index === currentIndex ? "bg-ieee-darkblue-75 scale-110" : "bg-ieee-gray-25"
             }`}
             onClick={() => scrollToIndex(index)}
           />

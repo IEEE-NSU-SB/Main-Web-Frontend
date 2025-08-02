@@ -53,7 +53,7 @@ export default function LearningCardGrid() {
                     <img src={item.icon} alt={item.title} className="w-8 h-8 ml-2" />
                     <div className="text-left">
                         <h3 className="font-bold text-gray-800 mb-3">{item.title}</h3>
-                        <p className="text-[#909090] text-base/6 learning-card-grid.text">{item.description}</p>
+                        <p className="text-ieee-black-75 text-base/6 learning-card-grid.text">{item.description}</p>
                     </div>
                 </div>
             ))}

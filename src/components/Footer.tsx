@@ -64,8 +64,8 @@ const contactInfo = [
 
 function Footer() {
   return (
-    <footer className="bg-[#363636] text-white py-8">
-      <div className="container mx-auto px-4">
+    <footer className="bg-[#252525] py-8">
+      <div className="mx-auto px-8">
         {/* Logos */}
         <div className="flex flex-col md:flex-row items-center justify-evenly mb-6">
           <img src={ieee} alt="IEEE Logo" className="h-20" />
@@ -73,12 +73,12 @@ function Footer() {
         </div>
 
         {/* Link Sections */}
-        <div className="text-[#dedede] grid grid-cols-5 gap-4 mt-8 mx-auto w-270">
+        <div className="text-ieee-white-75 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-screen-xl px-22">
           {footerLinks.map((section, index) => (
             <ul key={index}>
               {section.links.map((link, idx) => (
                 <li key={idx}>
-                  <a href={link.href} target="_blank" className="hover:underline inline-flex gap-1"><ExternalLink size={20}/> {link.text}</a>
+                  <a href={link.href} target="_blank" className="hover:underline hover:text-ieee-yellow-75 transition-all inline-flex gap-1"><ExternalLink size={20}/> {link.text}</a>
                 </li>
               ))}
             </ul>
@@ -94,7 +94,7 @@ function Footer() {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-blue-400 transition-colors"
+                    className="hover:text-ieee-blue-75 transition-colors"
                 >
                     {item.icon}
                 </a>
@@ -104,7 +104,7 @@ function Footer() {
             <ul>
               {contactInfo.map((info, i) => (
                 <li key={i}>
-                  <a href="#" className="hover:underline">{info}</a>
+                  <a href="#" className="hover:underline hover:text-ieee-yellow-75 transition-all">{info}</a>
                 </li>
               ))}
             </ul>
@@ -112,10 +112,10 @@ function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 pt-6 font-bold text-center text-sm text-white mt-8">
+        <div className="border-t border-ieee-white-25 pt-6 font-bold text-center text-sm text-ieee-white-75 mt-8">
           <p>
             © 2025 IEEE NSU SB – All rights reserved. Developed by{' '}
-            <a href="#" className="text-amber-300 hover:text-blue-300 transition-colors">
+            <a href="#" className="text-ieee-yellow-75 hover:text-ieee-blue-75 transition-colors">
               IEEE NSU SB Web Development Team
             </a>
           </p>
