@@ -1,9 +1,9 @@
-import iconLearning from "../assets/icons-main-web/learning.png";
-import iconNetworking from "../assets/icons-main-web/networking.png";
-import iconCompetitions from "../assets/icons-main-web/competitions.png";
-import iconSkillBuilding from "../assets/icons-main-web/skills.png";
-import iconEvents from "../assets/icons-main-web/events.png";
-import iconAchievements from "../assets/icons-main-web/achievements.png";
+import iconLearning from "../../../assets/icons-main-web/learning.png";
+import iconNetworking from "../../../assets/icons-main-web/networking.png";
+import iconCompetitions from "../../../assets/icons-main-web/competitions.png";
+import iconSkillBuilding from "../../../assets/icons-main-web/skills.png";
+import iconEvents from "../../../assets/icons-main-web/events.png";
+import iconAchievements from "../../../assets/icons-main-web/achievements.png";
 
 export default function LearningCardGrid() {
     const learningData = [

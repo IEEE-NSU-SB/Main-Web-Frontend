@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import dummy1 from "./../assets/dummy/image1.png";
-import dummy2 from "./../assets/dummy/image2.png";
-import dummy3 from "./../assets/dummy/image3.png";
-import dummy4 from "./../assets/dummy/image4.png";
-import dummy5 from "./../assets/dummy/image5.png";
-import SectionHeading from "./ui/SectionHeading";
+import dummy1 from "../../../assets/dummy/image1.png";
+import dummy2 from "../../../assets/dummy/image2.png";
+import dummy3 from "../../../assets/dummy/image3.png";
+import dummy4 from "../../../assets/dummy/image4.png";
+import dummy5 from "../../../assets/dummy/image5.png";
+import SectionHeading from "../../ui/SectionHeading";
 
 interface EventImage {
   src: string;

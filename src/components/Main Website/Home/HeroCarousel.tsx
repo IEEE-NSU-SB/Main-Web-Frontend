@@ -120,7 +120,7 @@ const HeroCarousel = ({
   }, [currentIndex, isPlaying, media]);
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden bg-black">
+    <div className="relative w-full h-[600px] max-md:h-70 overflow-hidden bg-ieee-black mt-[-64px]">
       {/* Media Items */}
       <div className="absolute inset-0">
         {media.map((item, index) => (
@@ -160,11 +160,11 @@ const HeroCarousel = ({
             )}
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-8 md:px-16 lg:px-24">
-              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <div className="absolute inset-0 bg-ieee-black-50 flex flex-col justify-center px-8 md:px-16 lg:px-24">
+              <h2 className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {item.title}
               </h2>
-              <p className="text-white/90 text-lg md:text-xl max-w-2xl">
+              <p className="text-ieee-white-75 text-lg md:text-xl max-w-2xl">
                 {item.description}
               </p>
             </div>
@@ -188,7 +188,7 @@ const HeroCarousel = ({
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full bg-white/20 hover:bg-white/40 text-white"
+            className="rounded-full bg-ieee-white-25 hover:bg-ieee-white-50 text-ieee-white"
             onClick={togglePlayPause}
           >
             {isPlaying ? (
@@ -219,7 +219,7 @@ const HeroCarousel = ({
               key={index}
               className={cn(
                 "w-2 h-2 rounded-full transition-all",
-                currentIndex === index ? "bg-white w-6" : "bg-white/50",
+                currentIndex === index ? "bg-ieee-white w-6" : "bg-ieee-white-50",
               )}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}

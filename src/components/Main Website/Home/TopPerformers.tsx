@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MoreVertical } from "lucide-react";
-import dummy1 from "./../assets/dummy/luffy.jpeg";
-import SectionHeading from "./ui/SectionHeading";
+import dummy1 from "../../../assets/dummy/luffy.jpeg";
+import SectionHeading from "../../ui/SectionHeading";
 
 type Performer = {
   id: number;
@@ -60,7 +60,7 @@ const TopPerformers = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className="w-full flex flex-col items-center py-6">
+    <div className="w-full flex flex-col items-center max-md:block py-6">
 
       <SectionHeading title="Top 5 Performers" widthClass="w-62" />
       
@@ -89,7 +89,7 @@ const TopPerformers = () => {
             <div
               key={p.id}
               onClick={() => setActive(p.rank)}
-              className={`cursor-pointer transition-all duration-300 overflow-hidden relative h-140 ${
+              className={`cursor-pointer transition-all duration-300 overflow-hidden relative h-140 max-md:h-100 ${
                 isActive ? "w-92 rounded-[50px]" : "w-35 rounded-[80px]"
               }`}
               style={{
