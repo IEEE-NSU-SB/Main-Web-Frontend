@@ -67,13 +67,13 @@ function Footer() {
     <footer className="bg-[#252525] py-8">
       <div className="mx-auto px-8">
         {/* Logos */}
-        <div className="flex flex-col md:flex-row items-center justify-evenly mb-6">
-          <img src={ieee} alt="IEEE Logo" className="h-20" />
-          <img src={insb} alt="INSB Logo" className="h-28" />
+        <div className="flex flex-row items-center justify-evenly mb-6">
+          <img src={ieee} alt="IEEE Logo" className="h-20 max-sm:h-10" />
+          <img src={insb} alt="INSB Logo" className="h-28 max-sm:h-18" />
         </div>
 
         {/* Link Sections */}
-        <div className="text-ieee-white-75 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-screen-xl px-22">
+        <div className="text-ieee-white-75 grid grid-cols-1 max-sm:hidden md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-screen-xl px-22">
           {footerLinks.map((section, index) => (
             <ul key={index}>
               {section.links.map((link, idx) => (

@@ -148,110 +148,116 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-ieee-darkblue text-ieee-white px-4 pb-4 space-y-2">
-          <Link to="/" className="block py-2 border-b border-ieee-blue-75">Home</Link>
-
-          {/* Activities */}
-          <details>
-            <summary className="py-2 cursor-pointer">Activities</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Events", "News", "Achievements"].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase()}`} className="block">{item}</Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Societies & AG */}
-          <details>
-            <summary className="py-2 cursor-pointer">Societies & AG</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE NSU RAS SBC",
-                "IEEE NSU PES SBC",
-                "IEEE NSU IAS SBC",
-                "IEEE NSU WIE AG"
-              ].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block">{item}</Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Members */}
-          <details>
-            <summary className="py-2 cursor-pointer">Members</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Panels", "Officers", "Volunteers"].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase()}`} className="block">{item}</Link>
-              ))}
-
-              <details>
-                <summary className="cursor-pointer">Teams</summary>
-                <div className="ml-4 space-y-1">
-                  {[
-                    "Content Writing and Publications",
-                    "Website Development",
-                    "Media",
-                    "Events and Management",
-                    "Graphics",
-                    "Public Relation (PR)",
-                    "Promotions",
-                    "Finance and Corporate",
-                    "Logistics and Operations",
-                    "Membership Development",
-                  ].map((team) => (
-                    <Link key={team} to={`/${team.toLowerCase().replace(/ /g, "-")}`} className="block">{team}</Link>
-                  ))}
-                </div>
-              </details>
-
-              <Link to="/exemplary-members" className="block">Exemplary Members</Link>
-              <Link to="/members-statistics" className="block">All Members & Statistics</Link>
-            </div>
-          </details>
-
-          {/* About */}
-          <details>
-            <summary className="py-2 cursor-pointer">About</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE",
-                "IEEE Region 10",
-                "IEEE Bangladesh Section",
-                "IEEE NSU Student Branch",
-                "FAQ"
-              ].map((about) => (
-                <Link key={about} to={`/${about.toLowerCase().replace(/ /g, "-")}`} className="block">{about}</Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Publications */}
-          <details>
-            <summary className="py-2 cursor-pointer">Publications</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Blogs", "Research Paper", "Magazines", "Gallery", "Toolkit"].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block">{item}</Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Get Involved */}
-          <details>
-            <summary className="py-2 cursor-pointer">Get Involved</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map((item) => (
-                <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block">{item}</Link>
-              ))}
-            </div>
-          </details>
-
-          <Link to="/portal" className="block bg-ieee-blue hover:bg-ieee-blue-50 text-center py-2 rounded mt-2 text-sm">
-            IEEE NSU SB Portal
-          </Link>
+      <div className="fixed inset-0 z-40 bg-ieee-darkblue text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto">
+        {/* Close Button */}
+        <div className="flex justify-end mb-4">
+          <button onClick={toggleMobileMenu}>
+            <X size={28} />
+          </button>
         </div>
-      )}
+
+        <Link to="/" className="block py-2 border-b border-ieee-blue-75" onClick={toggleMobileMenu}>Home</Link>
+
+        {/* Activities */}
+        <details>
+          <summary className="py-2 cursor-pointer">Activities</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {["Events", "News", "Achievements"].map((item) => (
+              <Link key={item} to={`/${item.toLowerCase()}`} className="block" onClick={toggleMobileMenu}>{item}</Link>
+            ))}
+          </div>
+        </details>
+
+        {/* Societies & AG */}
+        <details>
+          <summary className="py-2 cursor-pointer">Societies & AG</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {[
+              "IEEE NSU RAS SBC",
+              "IEEE NSU PES SBC",
+              "IEEE NSU IAS SBC",
+              "IEEE NSU WIE AG"
+            ].map((item) => (
+              <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block" onClick={toggleMobileMenu}>{item}</Link>
+            ))}
+          </div>
+        </details>
+
+        {/* Members */}
+        <details>
+          <summary className="py-2 cursor-pointer">Members</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {["Panels", "Officers", "Volunteers"].map((item) => (
+              <Link key={item} to={`/${item.toLowerCase()}`} className="block" onClick={toggleMobileMenu}>{item}</Link>
+            ))}
+
+            <details>
+              <summary className="cursor-pointer">Teams</summary>
+              <div className="ml-4 space-y-1">
+                {[
+                  "Content Writing and Publications",
+                  "Website Development",
+                  "Media",
+                  "Events and Management",
+                  "Graphics",
+                  "Public Relation (PR)",
+                  "Promotions",
+                  "Finance and Corporate",
+                  "Logistics and Operations",
+                  "Membership Development",
+                ].map((team) => (
+                  <Link key={team} to={`/${team.toLowerCase().replace(/ /g, "-")}`} className="block" onClick={toggleMobileMenu}>{team}</Link>
+                ))}
+              </div>
+            </details>
+
+            <Link to="/exemplary-members" className="block" onClick={toggleMobileMenu}>Exemplary Members</Link>
+            <Link to="/members-statistics" className="block" onClick={toggleMobileMenu}>All Members & Statistics</Link>
+          </div>
+        </details>
+
+        {/* About */}
+        <details>
+          <summary className="py-2 cursor-pointer">About</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {[
+              "IEEE",
+              "IEEE Region 10",
+              "IEEE Bangladesh Section",
+              "IEEE NSU Student Branch",
+              "FAQ"
+            ].map((about) => (
+              <Link key={about} to={`/${about.toLowerCase().replace(/ /g, "-")}`} className="block" onClick={toggleMobileMenu}>{about}</Link>
+            ))}
+          </div>
+        </details>
+
+        {/* Publications */}
+        <details>
+          <summary className="py-2 cursor-pointer">Publications</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {["Blogs", "Research Paper", "Magazines", "Gallery", "Toolkit"].map((item) => (
+              <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block" onClick={toggleMobileMenu}>{item}</Link>
+            ))}
+          </div>
+        </details>
+
+        {/* Get Involved */}
+        <details>
+          <summary className="py-2 cursor-pointer">Get Involved</summary>
+          <div className="ml-4 space-y-1 text-sm">
+            {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map((item) => (
+              <Link key={item} to={`/${item.toLowerCase().replace(/ /g, "-")}`} className="block" onClick={toggleMobileMenu}>{item}</Link>
+            ))}
+          </div>
+        </details>
+
+        <Link to="/portal" className="block bg-ieee-blue hover:bg-ieee-blue-50 text-center py-2 rounded mt-4 text-sm" onClick={toggleMobileMenu}>
+          IEEE NSU SB Portal
+        </Link>
+      </div>
+    )}
     </nav>
   );
 };
