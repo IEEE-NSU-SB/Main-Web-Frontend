@@ -11,6 +11,7 @@ import TopPerformers from './components/Main Website/Home/TopPerformers'
 import Navbar from './components/Navbar'
 import HeroCarousel from './components/Main Website/Home/HeroCarousel'
 import AboutIEEE from './components/Main Website/IEEE/IEEE';
+import IEEENSUSBRAS from './components/Main Website/Societies & AG/IeeeNsuSbRas'
 
 const HomePage = () => (
   <>
@@ -31,7 +32,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about/IEEE" element={<AboutIEEE />} />
+        <Route path="/IEEE" element={<AboutIEEE />} />
+        <Route path="/ieee-nsu-ras-sbc" element={<IEEENSUSBRAS />} />
       </Routes>
       <Footer />
     </Router>
