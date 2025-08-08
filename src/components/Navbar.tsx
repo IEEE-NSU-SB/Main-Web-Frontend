@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
               </div>
 
               <Link to="/exemplary-members" className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">Exemplary Members</Link>
-              <Link to="/members-statistics" className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">All Members & Statistics</Link>
+              <Link to="/all-members" className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">All Members & Statistics</Link>
             </div>
           </div>
 
@@ -213,7 +213,7 @@ const Navbar: React.FC = () => {
             </details>
 
             <Link to="/exemplary-members" className="block" onClick={toggleMobileMenu}>Exemplary Members</Link>
-            <Link to="/members-statistics" className="block" onClick={toggleMobileMenu}>All Members & Statistics</Link>
+            <Link to="/all-members" className="block" onClick={toggleMobileMenu}>All Members & Statistics</Link>
           </div>
         </details>
 
