@@ -1,4 +1,4 @@
-import SectionHeading from "./ui/SectionHeading";
+import SectionHeading from "./ui/section-heading";
 
 const VisionSection = () => {
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Hourglass from '../../../assets/icons-main-web/hourglass.gif'
+import Hourglass from './assets/img/hourglass.gif';
 import { ExternalLink } from 'lucide-react';
 
 interface RecruitSession {
@@ -84,7 +84,7 @@ export default function RecruitmentPage({ recruitSession }: Props) {
                 {recruitSession.recruitment_event_link && (
                   <h4
                     className="flex items-center justify-center cursor-pointer transition-all duration-200 border-3 border-ieee-blue text-ieee-blue hover:text-ieee-yellow hover:border-ieee-yellow px-4 py-1 rounded-sm text-xl mt-4 max-md:w-80 font-semibold"
-                    onClick={() => window.location.href = recruitSession.recruitment_event_link}
+                    onClick={() => window.location.href = recruitSession.recruitment_event_link ?? '#'}
                   >
                     <ExternalLink size={16} className='mr-2'/>
                     Recruitment Event Link

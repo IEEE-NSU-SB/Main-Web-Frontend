@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { MoreVertical } from "lucide-react";
-import dummy1 from "../../../assets/dummy/luffy.jpeg";
-import SectionHeading from "../../ui/SectionHeading";
+import dummy1 from "@/assets/dummy/luffy.jpeg";
+import SectionHeading from "@/components/ui/section-heading";
+import topPerformersData from "./data/top-performers.json";
 
 type Performer = {
   id: number;
@@ -12,52 +13,15 @@ type Performer = {
   image: string;
 };
 
-const performers: Performer[] = [
-  {
-    id: 5,
-    name: "Performer 5",
-    role: "General Member",
-    team: "Website Development Team",
-    rank: 5,
-    image: dummy1,
-  },
-  {
-    id: 3,
-    name: "Performer 3",
-    role: "General Member",
-    team: "Website Development Team",
-    rank: 3,
-    image: dummy1,
-  },
-  {
-    id: 1,
-    name: "Md. Shakib Shahriar Junayed",
-    role: "General Member",
-    team: "Website Development Team",
-    rank: 1,
-    image: dummy1,
-  },
-  {
-    id: 2,
-    name: "Performer 2",
-    role: "General Member",
-    team: "Website Development Team",
-    rank: 2,
-    image: dummy1,
-  },
-  {
-    id: 4,
-    name: "Performer 4",
-    role: "General Member",
-    team: "Website Development Team",
-    rank: 4,
-    image: dummy1,
-  },
-];
-
 const TopPerformers = () => {
   const [active, setActive] = useState<number>(1); // Rank 1 is active by default
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Replace image path from JSON with imported image for now
+  const performers: Performer[] = topPerformersData.map((p) => ({
+    ...p,
+    image: dummy1,
+  }));
 
   return (
     <div className="w-full flex flex-col items-center max-md:block py-6">

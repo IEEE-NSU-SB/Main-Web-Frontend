@@ -1,35 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
-import dummy1 from "../../../assets/dummy/image1.png";
-import dummy2 from "../../../assets/dummy/image2.png";
-import dummy3 from "../../../assets/dummy/image3.png";
-import dummy4 from "../../../assets/dummy/image4.png";
-import dummy5 from "../../../assets/dummy/image5.png";
-import SectionHeading from "../../ui/SectionHeading";
+import dummy1 from "../../assets/dummy/image1.png";
+import dummy2 from "../../assets/dummy/image2.png";
+import dummy3 from "../../assets/dummy/image3.png";
+import dummy4 from "../../assets/dummy/image4.png";
+import dummy5 from "../../assets/dummy/image5.png";
+import SectionHeading from "@/components/ui/section-heading";
+import eventsData from "./data/featured-events.json";
 
 interface EventImage {
   src: string;
   alt: string;
 }
 
-const imageSources = [
-  { src: dummy1, alt: "Event 1" },
-  { src: dummy2, alt: "Event 2" },
-  { src: dummy3, alt: "Event 3" },
-  { src: dummy4, alt: "Event 4" },
-  { src: dummy5, alt: "Event 5" },
-  { src: dummy1, alt: "Event 1" },
-  { src: dummy2, alt: "Event 2" },
-  { src: dummy3, alt: "Event 3" },
-  { src: dummy4, alt: "Event 4" },
-  { src: dummy5, alt: "Event 5" },
-  { src: dummy1, alt: "Event 1" },
-  { src: dummy2, alt: "Event 2" },
-  { src: dummy3, alt: "Event 3" },
-  { src: dummy4, alt: "Event 4" },
-  { src: dummy5, alt: "Event 5" },
-];
+// Map image paths in JSON to actual imports
+const imageMap: Record<string, string> = {
+  "/assets/dummy/image1.png": dummy1,
+  "/assets/dummy/image2.png": dummy2,
+  "/assets/dummy/image3.png": dummy3,
+  "/assets/dummy/image4.png": dummy4,
+  "/assets/dummy/image5.png": dummy5,
+};
 
-const images: EventImage[] = imageSources.map(({ src, alt }) => ({ src, alt }));
+const images: EventImage[] = eventsData.map((event) => ({
+  src: imageMap[event.src] || event.src,
+  alt: event.alt,
+}));
 
 const FeaturedEventsCarousel: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);

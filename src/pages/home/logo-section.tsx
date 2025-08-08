@@ -1,8 +1,8 @@
-import ias from "../../../assets/logo/ias.png";
-import insb from "../../../assets/logo/insb.png";
-import pes from "../../../assets/logo/pes.png";
-import ras from "../../../assets/logo/ras.png";
-import wie from "../../../assets/logo/wie.png";
+import ias from "@/assets/logo/ias.png";
+import insb from "@/assets/logo/insb.png";
+import pes from "@/assets/logo/pes.png";
+import ras from "@/assets/logo/ras.png";
+import wie from "@/assets/logo/wie.png";
 
 
 export default function LogoSection() {

@@ -1,6 +1,6 @@
 import React from "react";
 import pac24Image from "../assets/dummy/image1.png"; // Use placeholder image path
-import SectionHeading from "./ui/SectionHeading";
+import SectionHeading from "./ui/section-heading";
 
 type EventData = {
   image: string;

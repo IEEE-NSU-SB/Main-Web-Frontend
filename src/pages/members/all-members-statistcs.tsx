@@ -1,4 +1,4 @@
-import IEEEDataTable from "@/components/IeeeDataTable"
+import IEEEDataTable from "@/components/ieee-data-table"
 
 const AllMembersStatistcs = () => {
   return (
