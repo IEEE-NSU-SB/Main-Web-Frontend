@@ -1,24 +1,58 @@
+import { useEffect, useState } from "react";
 import SectionHeading from "./ui/section-heading";
+import Skeleton from "@/components/skeleton";
+import visionData from "@/data/vision.json"; // Uncomment this while using local JSON
+import {useFetchDataAPI,useFetchDataJSON} from "@/hooks/fetchdata";
 
 const VisionSection = () => {
+  const [loading, setLoading] = useState(true);
+  const [vision, setVision] = useState(null);
+
+  useEffect(() => {
+    const fetchVision = async () => {
+      try {
+        setLoading(true);
+
+        // ✅ Local JSON for now
+        const data = visionData;
+
+        // ✅ Later: Fetch from API
+        // const res = await fetch("https://api.example.com/vision");
+        // if (!res.ok) throw new Error("Failed to fetch");
+        // const data = await res.json();
+
+        setVision(data);
+      } catch (err) {
+        console.error("Error fetching vision:", err);
+        setVision(null);
+      } finally {
+        setLoading(true);
+      }
+    };
+
+    fetchVision();
+  }, []);
+
   return (
     <section className="max-w-[1078px] mx-auto py-16">
-
       <SectionHeading title="Our Vision" widthClass="w-42" />
 
-      <p className="text-lg text-ieee-black-75 leading-relaxed text-justify px-4">
-        To be a leading Student Branch dedicated to the continual
-        advancement of engineering knowledge and skills among students. Our
-        goal is to create a dynamic environment where members can master
-        their technical skills, network, and advance their professional
-        careers. With an unwavering commitment to excellence, we strive to
-        shape the future of engineering for the betterment of humanity by
-        developing a culture of lifelong learning and empowering future
-        leaders. Through collaborative efforts and relentless dedication, we
-        aspire to be at the forefront of engineering education and practice,
-        leaving a lasting impact on society and inspiring future
-        generations.
-      </p>
+      {loading ? (
+        <div className="space-y-2 px-4">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-10 w-3" />
+          <Skeleton className="h-4 w-5" />
+          <Skeleton className="h-4 w-6/12" />
+        </div>
+      ) : vision ? (
+        <p className="text-lg text-ieee-black-75 leading-relaxed text-justify px-4">
+          {vision.text}
+        </p>
+      ) : (
+        <p className="text-red-500 px-4">Failed to load vision statement.</p>
+      )}
     </section>
   );
 };

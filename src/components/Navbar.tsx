@@ -45,23 +45,20 @@ const Navbar: React.FC = () => {
               Societies & AG
             </span>
             <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
-              {[
-                "IEEE NSU RAS SBC",
-                "IEEE NSU PES SBC",
-                "IEEE NSU IAS SBC",
-                "IEEE NSU WIE AG"
-              ].map((society) => {
-                const slug = society.toLowerCase().replace(/ /g, "-"); // make URL friendly
-                return (
-                  <Link
-                    key={slug}
-                    to={`/society-ag/${slug}`}
-                    className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                  >
-                    {society}
-                  </Link>
-                );
-              })}
+              {Object.entries({
+                "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
+                "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
+                "IEEE NSU IAS SBC": "ieee-nsu-ias-sbc",
+                "IEEE NSU WIE AG": "ieee-nsu-wie-ag"
+              }).map(([label, path]) => (
+                <Link
+                  key={path}
+                  to={`/society-ag/${path}`}
+                  className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -107,19 +104,19 @@ const Navbar: React.FC = () => {
               About
             </span>
             <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
-              {[
-                "IEEE",
-                "IEEE Region 10",
-                "IEEE Bangladesh Section",
-                "IEEE NSU Student Branch",
-                "FAQ",
-              ].map((about) => (
+              {Object.entries({
+                "IEEE": "ieee",
+                "IEEE Region 10": "ieee-region-10",
+                "IEEE Bangladesh Section": "ieee-bangladesh-section",
+                "IEEE NSU Student Branch": "ieee-nsu-student-branch",
+                "FAQ": "FAQ"
+              }).map(([label, path]) => (
                 <Link
-                  key={about}
-                  to={`/about/${about.toLowerCase().replace(/ /g, "-")}`}
+                  key={path}
+                  to={`/about/${path}`}
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
-                  {about}
+                  {label}
                 </Link>
               ))}
             </div>
