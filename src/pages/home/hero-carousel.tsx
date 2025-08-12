@@ -71,6 +71,7 @@ const HeroCarousel = ({
     setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
   };
 
+
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
