@@ -84,18 +84,13 @@ const StatsSection = () => {
     return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const boxClasses = "rounded text-[#00629B] bg-[#fff]/75 backdrop-blur-l relative z-10";
+  const boxClasses = "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
   const valueClasses = "text-5xl font-bold mb-2 m-8 odometer text-stroke";
   const labelClasses = "text-lg font-bold mb-8";
 
   return (
     <section
-      className="w-full py-20 relative bg-cover bg-center overflow-hidden max-md:px-5"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80')",
-          background:"#00629b",
-      }}
+      className="w-full py-20 relative bg-cover bg-center overflow-hidden max-md:px-5 bg-ieee-blue"
     >
       <div ref={backgroundRef} id="geometric-background" className="absolute inset-0 z-0"></div>
       <div className="absolute inset-0 bg-black/30 z-0"></div>
