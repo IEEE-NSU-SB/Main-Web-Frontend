@@ -272,3 +272,56 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;             /* Chrome, Safari, Opera */
 }
+/* Shapes */
+.shape {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.6;
+  animation-name: float-shape;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+}
+
+.shape.square { background: #002855; }
+.shape.circle { border-radius: 50%; background: #00B5E2; }
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid #009CA6;
+  background: none;
+}
+.shape.rectangle { width: 35px; height: 15px; background: #0c6aa1; }
+
+/* Shape animation */
+@keyframes float-shape {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+.text-stroke {
+  -webkit-text-stroke: 2px #00629b;
+  color: #00629bac;
+}
+/* Moving gradient animation */
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-gradient-animate {
+  background: linear-gradient(90deg, #00629b, #33a0cc, #00629b);
+  background-size: 200% 200%;
+  animation: gradient-move 3s linear infinite;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Glow on hover */
+.bg-gradient-animate:hover {
+  box-shadow: 0 0 20px rgba(0, 98, 155, 0.7), 0 0 40px rgba(51, 160, 204, 0.5);
+}
+
