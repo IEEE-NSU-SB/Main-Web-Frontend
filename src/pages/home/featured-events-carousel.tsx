@@ -12,6 +12,11 @@ interface EventImage {
   alt: string;
 }
 
+interface FeaturedEventsCarouselProps {
+  title?: string;
+  width?: string;
+}
+
 // Map image paths in JSON to actual imports
 const imageMap: Record<string, string> = {
   "/assets/dummy/image1.png": dummy1,
@@ -26,13 +31,12 @@ const images: EventImage[] = eventsData.map((event) => ({
   alt: event.alt,
 }));
 
-const FeaturedEventsCarousel: React.FC = () => {
+const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({ title = "Featured Events" , width = "36"}) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
 
-  // Measure card width on mount and resize
   useEffect(() => {
     const measureCardWidth = () => {
       if (!scrollRef.current) return;
@@ -41,40 +45,24 @@ const FeaturedEventsCarousel: React.FC = () => {
         setCardWidth((firstCard as HTMLElement).offsetWidth);
       }
     };
-
     measureCardWidth();
     window.addEventListener("resize", measureCardWidth);
-
-    return () => {
-      window.removeEventListener("resize", measureCardWidth);
-    };
+    return () => window.removeEventListener("resize", measureCardWidth);
   }, []);
 
-  // Manual smooth scroll animation helper
-  const animateScrollTo = (
-    element: HTMLElement,
-    target: number,
-    duration = 800
-  ) => {
+  const animateScrollTo = (element: HTMLElement, target: number, duration = 800) => {
     const start = element.scrollLeft;
     const change = target - start;
     const startTime = performance.now();
 
-    const easeInOutQuad = (t: number) =>
-      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    const easeInOutQuad = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeInOutQuad(progress);
-
-      element.scrollLeft = start + change * easedProgress;
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      element.scrollLeft = start + change * easeInOutQuad(progress);
+      if (progress < 1) requestAnimationFrame(animate);
     };
-
     requestAnimationFrame(animate);
   };
 
@@ -86,14 +74,12 @@ const FeaturedEventsCarousel: React.FC = () => {
       Math.max(index * cardWidth - container.clientWidth / 2 + cardWidth / 2, 0),
       maxOffset
     );
-
-    animateScrollTo(container, offset, 2000);
+    animateScrollTo(container, offset, 600);
     setCurrentIndex(index);
   };
 
-  // Auto scroll every 5 seconds
   useEffect(() => {
-    if (cardWidth === 0) return; // wait until cardWidth measured
+    if (cardWidth === 0) return;
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % images.length;
@@ -101,13 +87,9 @@ const FeaturedEventsCarousel: React.FC = () => {
         return nextIndex;
       });
     }, 5000);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    return () => intervalRef.current && clearInterval(intervalRef.current);
   }, [cardWidth]);
 
-  // Sync currentIndex when user scrolls manually
   const handleScroll = () => {
     if (!scrollRef.current || cardWidth === 0) return;
     const container = scrollRef.current;
@@ -115,28 +97,68 @@ const FeaturedEventsCarousel: React.FC = () => {
     const index = Math.round(
       (scrollLeft + container.clientWidth / 2 - cardWidth / 2) / cardWidth
     );
-
-    if (index !== currentIndex && index >= 0 && index < images.length) {
-      setCurrentIndex(index);
-    }
+    if (index !== currentIndex && index >= 0 && index < images.length) setCurrentIndex(index);
   };
 
-  return (
-    <div className="w-full py-4">
+  const prevSlide = () => scrollToIndex((currentIndex - 1 + images.length) % images.length);
+  const nextSlide = () => scrollToIndex((currentIndex + 1) % images.length);
 
-      <SectionHeading title="Featured Events" widthClass="w-62" />
+  return (
+    <div className="w-full py-4 relative">
+      <SectionHeading title={title} widthClass={`w-${width}`} />
+
+  {/* Left Arrow */}
+  <button
+    onClick={prevSlide}
+    className="
+      absolute left-4 md:left-10 top-[62%] transform -translate-y-1/2
+      bg-ieee-blue-50
+      text-ieee-white text-lg md:text-xl
+      rounded-full border p-3 md:px-5
+      shadow-lg hover:shadow-2xl
+      transition-all duration-300 ease-in-out
+      z-20
+      flex items-center justify-center
+      ring-1 ring-ieee-white-25 hover:ring-ieee-white-50
+      cursor-pointer
+    "
+    aria-label="Previous Slide"
+  >
+    &#10094;
+  </button>
+
+  {/* Right Arrow */}
+  <button
+    onClick={nextSlide}
+    className="
+      absolute right-4 md:right-10 top-[62%] transform -translate-y-1/2
+      bg-ieee-blue-50
+      text-ieee-white text-lg md:text-xl
+      rounded-full border p-3 md:px-5
+      shadow-lg hover:shadow-2xl
+      transition-all duration-300 ease-in-out
+      z-20
+      flex items-center justify-center
+      ring-1 ring-ieee-white-25 hover:ring-ieee-white-50
+      cursor-pointer
+    "
+    aria-label="Next Slide"
+  >
+    &#10095;
+  </button>
+
 
       {/* Carousel */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex overflow-x-auto scroll-smooth px-4 scrollbar-hide"
+        className="flex overflow-x-auto scroll-smooth py-6 scrollbar-hide"
       >
         {images.map((img, index) => (
           <div
             key={index}
             className="
-              snap-center flex-shrink-0 overflow-hidden shadow-md rounded-lg
+              snap-center flex-shrink-0 overflow-hidden rounded-lg
               max-w-[100%] md:max-w-[50%] lg:max-w-[33.3333%]
               px-2
             "
@@ -145,23 +167,9 @@ const FeaturedEventsCarousel: React.FC = () => {
               src={img.src}
               alt={img.alt}
               className="w-full h-auto object-cover rounded-lg cursor-pointer"
-              onClick={() => scrollToIndex(index)} // optional: click on image to scroll
+              onClick={() => scrollToIndex(index)}
             />
           </div>
-        ))}
-      </div>
-
-      {/* Dots */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            aria-label={`Go to slide ${index + 1}`}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "bg-ieee-darkblue-75 scale-110" : "bg-ieee-gray-25"
-            }`}
-            onClick={() => scrollToIndex(index)}
-          />
         ))}
       </div>
     </div>
