@@ -1,5 +1,5 @@
 import React from "react";
-import pac24Image from "../assets/dummy/image1.png"; // Use placeholder image path
+import spac24Image from "../assets/dummy/image1.png"; // Use placeholder image path
 import SectionHeading from "./ui/section-heading";
 
 type EventData = {
@@ -12,7 +12,7 @@ type EventData = {
 
 const events: EventData[] = [
   {
-    image: pac24Image,
+    image: spac24Image,
     date: "23rd December, 2025",
     author: "Azima Islam Ruba",
     title: "Human, In a battleground with Human-made Machines",
@@ -20,7 +20,7 @@ const events: EventData[] = [
       "Join us for an exclusive and inspiring session titled “Ivy League Insights: A Step-by-Step Guide for Aspiring Engineers by Dr Ramisa Fariha” brought to you by IEEE NSU Student...",
   },
   {
-    image: pac24Image,
+    image: spac24Image,
     date: "23rd December, 2025",
     author: "Azima Islam Ruba",
     title: "Human, In a battleground with Human-made Machines",
@@ -28,7 +28,7 @@ const events: EventData[] = [
       "Join us for an exclusive and inspiring session titled “Ivy League Insights: A Step-by-Step Guide for Aspiring Engineers by Dr Ramisa Fariha” brought to you by IEEE NSU Student...",
   },
   {
-    image: pac24Image,
+    image: spac24Image,
     date: "23rd December, 2025",
     author: "Azima Islam Ruba",
     title: "Human, In a battleground with Human-made Machines",
