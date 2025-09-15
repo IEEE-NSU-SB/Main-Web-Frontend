@@ -121,7 +121,7 @@ const HeroCarousel = ({
   }, [currentIndex, isPlaying, media]);
 
   return (
-    <div className="relative w-full h-[600px] max-md:h-70 overflow-hidden bg-ieee-black mt-[-64px]">
+    <div className="relative w-full h-[100vh] max-md:h-70 overflow-hidden bg-ieee-black mt-[-80px]">
       {/* Media Items */}
       <div className="absolute inset-0">
         {media.map((item, index) => (
@@ -186,7 +186,7 @@ const HeroCarousel = ({
             <span className="sr-only">Previous slide</span>
           </Button> */}
 
-          <Button
+          {/* <Button
             variant="outline"
             size="icon"
             className="rounded-full bg-ieee-white-25 hover:bg-ieee-white-50 text-ieee-white"
@@ -198,7 +198,7 @@ const HeroCarousel = ({
               <Play className="h-5 w-5" />
             )}
             <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
-          </Button>
+          </Button> */}
 
           {/* <Button
             variant="outline"
