@@ -29,7 +29,7 @@ const HeroCarousel = ({
     },
     {
       type: "video",
-      src: "https://www.youtube.com/embed/ZnC5QGieFWk",
+      src: "https://youtu.be/op0jinVueto?si=hgYi4Vpq-gyPPvEl",
       title: "Campus Life at NSU",
       description: "With Junayed vai",
     },
@@ -55,7 +55,7 @@ const HeroCarousel = ({
     if (url.includes("youtube.com/embed/")) {
       return url;
     }
-    
+
     let videoId = "";
     if (url.includes("youtu.be/")) {
       videoId = url.split("youtu.be/")[1].split("?")[0];
@@ -63,14 +63,13 @@ const HeroCarousel = ({
       const urlParams = new URLSearchParams(url.split("?")[1]);
       videoId = urlParams.get("v") || "";
     }
-    
+
     return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
   };
-
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -129,7 +128,7 @@ const HeroCarousel = ({
             key={index}
             className={cn(
               "absolute inset-0 w-full h-full transition-opacity duration-1000",
-              currentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0",
+              currentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
             )}
           >
             {item.type === "image" ? (
@@ -141,27 +140,36 @@ const HeroCarousel = ({
             ) : item.src.includes("youtube.com") ||
               item.src.includes("youtu.be") ? (
               <iframe
-                src={`${getYouTubeEmbedUrl(item.src)}?autoplay=1&mute=1`}
-                className="w-full h-full object-cover"
+                src={`${getYouTubeEmbedUrl(
+                  item.src
+                )}?autoplay=1&mute=1&loop=1&controls=0&playlist=${getYouTubeEmbedUrl(
+                  item.src
+                )
+                  .split("/")
+                  .pop()}`}
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "cover" }}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                allow="autoplay; fullscreen"
                 title={item.title || "Video"}
               />
             ) : (
               <video
-                ref={(el) => { videoRefs.current[index] = el; }}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
                 src={item.src}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
                 muted
                 loop
                 playsInline
                 autoPlay
+                controls={false} // hides video controls
               />
             )}
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 bg-ieee-black-50 flex flex-col justify-center px-8 md:px-16 lg:px-24">
+            <div className="absolute inset-0 bg-ieee-black-50 flex flex-col justify-center px-5 md:px-6 lg:px-65">
               <h2 className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {item.title}
               </h2>
@@ -220,7 +228,9 @@ const HeroCarousel = ({
               key={index}
               className={cn(
                 "w-2 h-2 rounded-full transition-all",
-                currentIndex === index ? "bg-ieee-white w-6" : "bg-ieee-white-50",
+                currentIndex === index
+                  ? "bg-ieee-white w-6"
+                  : "bg-ieee-white-50"
               )}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
