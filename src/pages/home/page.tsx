@@ -15,7 +15,8 @@ const HomePage = () => {
         <LogoSection/>
         <VisionSection/>
         <StatsSection/>
-        <EventCarousel/>
+        <EventCarousel title="Mega Events" width="45" />
+        <EventCarousel title="Featured Events" width="62"/>
         <TopPerformers/>
         <Blog/>
     </>
