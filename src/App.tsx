@@ -11,6 +11,8 @@ import About from '@/pages/about/pages[id]/pages';
 
 import JoinINSB from '@/pages/get-involved/join-insb'
 import AllMembers from '@/pages/members/all-members-statistcs'
+
+import "odometer/themes/odometer-theme-default.css";
 const App = () => {
   return (
     <Router>
