@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import insbLogo from "./../assets/logo/insb.gif";
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -15,9 +16,14 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollClass = isScrolled
-    ? "bg-ieee-darkblue shadow-md"
-    : "bg-transparent";
+  // Check if current page is Home
+  const isHome = location.pathname === "/";
+
+  const scrollClass = isHome
+    ? isScrolled
+      ? "bg-ieee-darkblue shadow-md" // home + scrolled
+      : "bg-transparent"             // home + top
+    : "bg-ieee-darkblue";  // every other page
 
   return (
     <nav
