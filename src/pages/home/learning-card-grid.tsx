@@ -10,7 +10,7 @@ export default function LearningCardGrid() {
         {
             title: "LEARNING",
             description:
-                "We immerse ourselves in learning about appearing technologies traversing diverse fields such as electronics, programming, robotics, and more. Concurrently, we confront various research endeavors to foster improvement and innovation.",
+                "We immerse ourselves in learning about appearing technologies traversing diverse fields such as electronics , programming , robotics and more. Concurrently, we confront various research endeavors to foster improvement and innovation.",
             icon: iconLearning,
         },
         {
@@ -34,26 +34,26 @@ export default function LearningCardGrid() {
         {
             title: "EVENTS",
             description:
-                "IEEE NSU SB organizes various workshops, industrial tours, seminars, and competitions, providing a prosperity of knowledge and practical experiences contributing to career development.",
+                "IEEE NSU SB organizes various workshops , industrial tours , seminars and competitions , providing a prosperity of knowledge and practical experiences contributing to career development.",
             icon: iconEvents,
         },
         {
             title: "ACHIEVEMENTS",
             description:
-                'From securing the "Best Exemplary Student Branch" award in Region 10 for two consecutive years to achieving first place in the IEEE R10 Web Contest, IEEE NSU SB has had numerous praiseworthy achievements, solidifying its position as one of the best IEEE student branches out there!',
+                'From securing the "Best Exemplary Student Branch" award in Region 10 for two consecutive years to achieving first place in the IEEE R10 Web Contest, IEEE NSU SB has had numerous praiseworthy achievements , solidifying its position as one of the best IEEE student branches out there!',
             icon: iconAchievements,
         },
     ];
 
 
     return (
-        <div className=" max-w-[1078px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-12">
+        <div className="max-w-[1064px] mx-auto my-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 max-sm:px-5">
             {learningData.map((item, index) => (
                 <div key={index} className="flex items-start space-x-4">
-                    <img src={item.icon} alt={item.title} className="w-8 h-8 ml-2" />
+                    <img src={item.icon} alt={item.title} className="w-8 h-8" />
                     <div className="text-left">
                         <h3 className="font-bold text-gray-800 mb-3">{item.title}</h3>
-                        <p className="text-ieee-black-75 text-base/6 learning-card-grid.text">{item.description}</p>
+                        <p className="text-ieee-black-75 text-base/6 learning-card-grid.text text-justify text-wrap">{item.description}</p>
                     </div>
                 </div>
             ))}
