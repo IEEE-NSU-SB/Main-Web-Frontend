@@ -37,7 +37,7 @@ const Table: React.FC<TableProps> = ({ title = "Member List", data }) => {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h2 className="text-center text-3xl font-bold mb-6 text-[#002855]">
+      <h2 className="text-center text-3xl font-bold mb-6 text-ieee-darkblue">
         {title}
       </h2>
 
@@ -51,15 +51,15 @@ const Table: React.FC<TableProps> = ({ title = "Member List", data }) => {
             setSearch(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full md:w-1/2 border border-gray-300 rounded-full px-4 py-2 focus:ring-2 focus:ring-[#00629B] focus:outline-none shadow-sm"
+          className="w-full md:w-1/2 border border-ieee-black-15 rounded-full px-4 py-2 focus:ring-2 focus:ring-ieee-blue focus:outline-none shadow-sm"
         />
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+      <div className="overflow-x-auto bg-ieee-white shadow-lg rounded-lg">
         <table className="w-full text-sm text-center">
           <thead>
-            <tr className="bg-gradient-to-r from-[#002855] to-[#00629B] text-white">
+            <tr className="bg-gradient-to-r from-ieee-darkblue to-ieee-blue text-ieee-white">
               <th className="px-4 py-3">SL No.</th>
               <th className="px-4 py-3">IEEE ID</th>
               <th className="px-4 py-3">NSU ID</th>
@@ -73,19 +73,19 @@ const Table: React.FC<TableProps> = ({ title = "Member List", data }) => {
             {currentRows.map((m, idx) => (
               <tr
                 key={m.sl}
-                className={`transition hover:bg-blue-50 ${
+                className={`transition hover:bg-ieee-gray-15 ${
                   idx % 2 === 0 ? "bg-gray-50" : "bg-white"
                 }`}
               >
                 <td className="px-4 py-3 text-center">{m.sl}</td>
-                <td className="px-4 py-3 text-[#00629B] font-medium underline cursor-pointer hover:text-[#004080] transition">
+                <td className="px-4 py-3 text-ieee-blue font-medium underline cursor-pointer hover:text-ieee-blue-75 transition">
                   {m.ieeeId}
                 </td>
                 <td className="px-4 py-3 text-center">{m.nsuId}</td>
                 <td className="px-4 py-3 font-semibold">{m.name}</td>
                 <td className="px-4 py-3">{m.ieeeEmail}</td>
                 <td className="px-4 py-3">{m.nsuEmail}</td>
-                <td className="px-4 py-3 text-center font-bold text-[#00629B]">
+                <td className="px-4 py-3 text-center font-bold text-ieee-blue">
                   {m.bloodGroup}
                 </td>
               </tr>
@@ -99,19 +99,19 @@ const Table: React.FC<TableProps> = ({ title = "Member List", data }) => {
         <button
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
-          className="cursor-pointer px-4 py-2 rounded-full border border-gray-300 bg-gray-100 hover:bg-gray-200 disabled:opacity-40 transition"
+          className="cursor-pointer px-4 py-2 rounded-full border border-ieee-black-15 bg-ieee-white hover:bg-ieee-gray-25 disabled:opacity-40 transition"
         >
           Prev
         </button>
 
-        <span className="px-4 py-2 text-gray-700 font-medium">
+        <span className="px-4 py-2 text-ieee-gray font-medium">
           Page {currentPage} of {totalPages}
         </span>
 
         <button
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className="cursor-pointer px-4 py-2 rounded-full border border-gray-300 bg-gray-100 hover:bg-gray-200 disabled:opacity-40 transition"
+          className="cursor-pointer px-4 py-2 rounded-full border border-ieee-black-15 bg-ieee-white hover:bg-ieee-gray-25 disabled:opacity-40 transition"
         >
           Next
         </button>
