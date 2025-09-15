@@ -41,7 +41,7 @@ const EventCardList: React.FC = () => {
   return (
     <div className="w-full py-4">
       <SectionHeading title="Blogs" widthClass="w-32" />
-      <div className="flex flex-wrap justify-center items-start gap-6 p-6">
+      <div className="flex flex-wrap justify-center items-start gap-2 p-6 max-sm:px-5">
         {events.map((event, index) => (
           <div
             key={index}
@@ -54,18 +54,18 @@ const EventCardList: React.FC = () => {
                 className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
               />
             </div>
-            <div className="p-3 rounded-sm">
+            <div className="p-4 rounded-sm">
               <p className="text-sm font-semibold text-ieee-gray mb-1">{event.date}</p>
               <p className="text-sm font-semibold text-ieee-gray truncate">
                 By {event.author}
               </p>
-              <h3 className="font-bold my-1 line-clamp-2 text-ieee-black-75">
+              <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75">
                 {event.title}
               </h3>
               <p className="text-ieee-black-75 mb-4 line-clamp-4">
                 {event.description}
               </p>
-              <button className=" bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border-1 border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+              <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border-1 border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
                 Read More
               </button>
             </div>
