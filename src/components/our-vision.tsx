@@ -27,7 +27,7 @@ const VisionSection = () => {
         console.error("Error fetching vision:", err);
         setVision(null);
       } finally {
-        setLoading(false);
+        setLoading(true);
       }
     };
 

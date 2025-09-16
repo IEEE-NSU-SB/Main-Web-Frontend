@@ -18,6 +18,7 @@ import "odometer/themes/odometer-theme-default.css";
 import ResearchPapers from './pages/publications/research Paper/page';
 import Blogs from './pages/publications/blogs/page';
 import Panel from './pages/members/panel/page';
+import WriteBlog from './pages/get-involved/write-a-blog/page';
 const App = () => {
   return (
     <Router>
@@ -39,9 +40,10 @@ const App = () => {
         <Route path="/blogs" element={<Blogs />} />
         {/* Get Involved  */}
         <Route path="/join-ieee-nsu-sb" element={<JoinINSB recruitSession={{
-    session_end_date_time: '2025-08-20T23:59:59Z',
-    recruitment_event_link: 'https://facebook.com/ieeensu/events/xyz',
-  }} />}/>      
+          session_end_date_time: '2025-08-20T23:59:59Z',
+          recruitment_event_link: 'https://facebook.com/ieeensu/events/xyz',
+        }} />}/>      
+        <Route path="/write-a-blog" element={<WriteBlog />} />
       </Routes>
       <ScrollToTopButton />
       <Footer />
