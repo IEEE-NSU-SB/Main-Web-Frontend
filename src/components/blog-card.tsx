@@ -62,7 +62,7 @@ const EventCardList: React.FC = () => {
               <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75">
                 {event.title}
               </h3>
-              <p className="text-ieee-black-75 mb-4 line-clamp-4">
+              <p className="text-ieee-black-75 mb-4 line-clamp-4 text-justify">
                 {event.description}
               </p>
               <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border-1 border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
