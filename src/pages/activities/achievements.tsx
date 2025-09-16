@@ -56,11 +56,11 @@ const Achievements = () => {
                 isExpanded ? "max-h-[1000px]" : "max-h-[440px]"
               }`}
             >
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-full h-76 object-cover"
+                  className="w-full h-76 object-cover hover:scale-105 transition-all ease-in-out 300ms"
                 />
                 <span className="absolute top-[-6px] bg-ieee-blue text-ieee-white text-md font-semibold px-3 py-1 rounded shadow-md">
                   {award.year}
@@ -77,7 +77,7 @@ const Achievements = () => {
                     isExpanded ? "max-h-[500px]" : "max-h-10"
                   }`}
                 >
-                  <p className="text-ieee-black-75 text-sm mb-3">
+                  <p className="text-ieee-black-75 text-sm mb-3 text-justify">
                     {award.description}
                   </p>
                 </div>
