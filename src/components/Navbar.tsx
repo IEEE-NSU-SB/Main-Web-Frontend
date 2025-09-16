@@ -181,7 +181,7 @@ const Navbar: React.FC = () => {
             <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
               {[
                 "Blogs",
-                "Research Paper",
+                "Research Papers",
                 "Magazines",
                 "Gallery",
                 "Toolkit",
@@ -400,7 +400,7 @@ const Navbar: React.FC = () => {
             <div className="ml-4 space-y-1 text-sm">
               {[
                 "Blogs",
-                "Research Paper",
+                "Research Papers",
                 "Magazines",
                 "Gallery",
                 "Toolkit",
