@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //Global Components
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import ScrollToTopButton from './components/ui/scroll-to-top';
 
 import HomePage from './pages/home/page'
 import SocietyOrAg from './pages/society-and-ag/pages[id]/pages'
@@ -40,6 +41,7 @@ const App = () => {
     recruitment_event_link: 'https://facebook.com/ieeensu/events/xyz',
   }} />}/>      
       </Routes>
+      <ScrollToTopButton />
       <Footer />
     </Router>
   );
