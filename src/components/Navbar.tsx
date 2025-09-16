@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import insbLogo from "./../assets/logo/insb.gif";
+import FadeIn from "./ui/fade-in";
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,189 +23,171 @@ const Navbar: React.FC = () => {
   const scrollClass = isHome
     ? isScrolled
       ? "bg-ieee-darkblue shadow-md" // home + scrolled
-      : "bg-transparent"             // home + top
-    : "bg-ieee-darkblue";  // every other page
+      : "bg-transparent" // home + top
+    : "bg-ieee-darkblue"; // every other page
 
   return (
     <nav
       className={`text-ieee-white text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
     >
-      <div className="max-w-[1038px] mx-auto py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/">
-          <img
-            src={insbLogo}
-            alt="IEEE NSU SB Logo"
-            className="h-12 mx-5 cursor-pointer"
-          />
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-4 items-center relative">
-          <Link
-            to="/"
-            className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase"
-          >
-            Home
+      <FadeIn>
+        <div className="max-w-[1038px] mx-auto py-4 flex justify-between items-center">
+          {/* Logo */}
+          <Link to="/">
+            <img
+              src={insbLogo}
+              alt="IEEE NSU SB Logo"
+              className="h-12 mx-5 cursor-pointer"
+            />
           </Link>
 
-          {/* Activities */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              Activities
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
-              {["Events", "News", "Achievements"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-4 items-center relative">
+            <Link
+              to="/"
+              className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase"
+            >
+              Home
+            </Link>
 
-          {/* Societies & AG */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              Societies & AG
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
-              {Object.entries({
-                "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
-                "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
-                "IEEE NSU IAS SBC": "ieee-nsu-ias-sbc",
-                "IEEE NSU WIE AG": "ieee-nsu-wie-ag",
-              }).map(([label, path]) => (
-                <Link
-                  key={path}
-                  to={`/society-ag/${path}`}
-                  className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Members */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              Members
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
-              {["Panels", "Officers", "Volunteers"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                >
-                  {item}
-                </Link>
-              ))}
-
-              {/* Teams submenu */}
-              <div className="relative group/team">
-                <span className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">
-                  Teams
-                </span>
-                <div className="absolute left-full top-0 hidden group-hover/team:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-55 z-50">
-                  {[
-                    "Content Writing and Publications",
-                    "Website Development",
-                    "Media",
-                    "Events and Management",
-                    "Graphics",
-                    "Public Relation (PR)",
-                    "Promotions",
-                    "Finance and Corporate",
-                    "Logistics and Operations",
-                    "Membership Development",
-                  ].map((team) => (
-                    <Link
-                      key={team}
-                      to={`/${team.toLowerCase().replace(/ /g, "-")}`}
-                      className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                    >
-                      {team}
-                    </Link>
-                  ))}
-                </div>
+            {/* Activities */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                Activities
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+                {["Events", "News", "Achievements"].map((item) => (
+                  <Link
+                    key={item}
+                    to={`/${item.toLowerCase()}`}
+                    className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                  >
+                    {item}
+                  </Link>
+                ))}
               </div>
-
-              <Link
-                to="/exemplary-members"
-                className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-              >
-                Exemplary Members
-              </Link>
-              <Link
-                to="/all-members"
-                className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-              >
-                All Members & Statistics
-              </Link>
             </div>
-          </div>
 
-          {/* About */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              About
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
-              {Object.entries({
-                IEEE: "ieee",
-                "IEEE Region 10": "ieee-region-10",
-                "IEEE Bangladesh Section": "ieee-bangladesh-section",
-                "IEEE NSU Student Branch": "ieee-nsu-student-branch",
-                FAQ: "FAQ",
-              }).map(([label, path]) => (
+            {/* Societies & AG */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                Societies & AG
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+                {Object.entries({
+                  "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
+                  "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
+                  "IEEE NSU IAS SBC": "ieee-nsu-ias-sbc",
+                  "IEEE NSU WIE AG": "ieee-nsu-wie-ag",
+                }).map(([label, path]) => (
+                  <Link
+                    key={path}
+                    to={`/society-ag/${path}`}
+                    className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Members */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                Members
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+                {["Panels", "Officers", "Volunteers"].map((item) => (
+                  <Link
+                    key={item}
+                    to={`/${item.toLowerCase()}`}
+                    className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                  >
+                    {item}
+                  </Link>
+                ))}
+
+                {/* Teams submenu */}
+                <div className="relative group/team">
+                  <span className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">
+                    Teams
+                  </span>
+                  <div className="absolute left-full top-0 hidden group-hover/team:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-55 z-50">
+                    {[
+                      "Content Writing and Publications",
+                      "Website Development",
+                      "Media",
+                      "Events and Management",
+                      "Graphics",
+                      "Public Relation (PR)",
+                      "Promotions",
+                      "Finance and Corporate",
+                      "Logistics and Operations",
+                      "Membership Development",
+                    ].map((team) => (
+                      <Link
+                        key={team}
+                        to={`/${team.toLowerCase().replace(/ /g, "-")}`}
+                        className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                      >
+                        {team}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
                 <Link
-                  key={path}
-                  to={`/about/${path}`}
+                  to="/exemplary-members"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
-                  {label}
+                  Exemplary Members
                 </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Publications */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              Publications
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
-              {[
-                "Blogs",
-                "Research Papers",
-                "Magazines",
-                "Gallery",
-                "Toolkit",
-              ].map((item) => (
                 <Link
-                  key={item}
-                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
+                  to="/all-members"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
-                  {item}
+                  All Members & Statistics
                 </Link>
-              ))}
+              </div>
             </div>
-          </div>
 
-          {/* Get Involved */}
-          <div className="group relative">
-            <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
-              Get Involved
-            </span>
-            <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
-              {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                (item) => (
+            {/* About */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                About
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+                {Object.entries({
+                  IEEE: "ieee",
+                  "IEEE Region 10": "ieee-region-10",
+                  "IEEE Bangladesh Section": "ieee-bangladesh-section",
+                  "IEEE NSU Student Branch": "ieee-nsu-student-branch",
+                  FAQ: "FAQ",
+                }).map(([label, path]) => (
+                  <Link
+                    key={path}
+                    to={`/about/${path}`}
+                    className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Publications */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                Publications
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+                {[
+                  "Blogs",
+                  "Research Papers",
+                  "Magazines",
+                  "Gallery",
+                  "Toolkit",
+                ].map((item) => (
                   <Link
                     key={item}
                     to={`/${item.toLowerCase().replace(/ /g, "-")}`}
@@ -212,17 +195,36 @@ const Navbar: React.FC = () => {
                   >
                     {item}
                   </Link>
-                )
-              )}
+                ))}
+              </div>
+            </div>
+
+            {/* Get Involved */}
+            <div className="group relative">
+              <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
+                Get Involved
+              </span>
+              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+                {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
+                  (item) => (
+                    <Link
+                      key={item}
+                      to={`/${item.toLowerCase().replace(/ /g, "-")}`}
+                      className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                    >
+                      {item}
+                    </Link>
+                  )
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Portal button */}
-        <div className="hidden md:inline-block mx-5">
-          <Link
-            to="/portal"
-            className="
+          {/* Portal button */}
+          <div className="hidden md:inline-block mx-5">
+            <Link
+              to="/portal"
+              className="
               relative
               inline-block
               px-4 py-2
@@ -242,19 +244,19 @@ const Navbar: React.FC = () => {
               hover:shadow-[0_0_20px_rgba(0,98,155,0.7)]
               bg-gradient-animate
             "
-          >
-            IEEE NSU SB Portal
-          </Link>
-        </div>
+            >
+              IEEE NSU SB Portal
+            </Link>
+          </div>
 
-
-        {/* Mobile Toggle */}
-        <div className="md:hidden mx-5 mt-1">
-          <button onClick={toggleMobileMenu}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Toggle */}
+          <div className="md:hidden mx-5 mt-1">
+            <button onClick={toggleMobileMenu}>
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-      </div>
+      </FadeIn>
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-ieee-darkblue text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto">
