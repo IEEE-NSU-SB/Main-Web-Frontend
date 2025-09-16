@@ -9,11 +9,13 @@ import SocietyOrAg from './pages/society-and-ag/pages[id]/pages'
 
 import About from '@/pages/about/pages[id]/pages';
 
-import JoinINSB from '@/pages/get-involved/join-insb'
-import AllMembers from '@/pages/members/all-members-statistcs'
-import Achievements from './pages/activities/achievements';
+import JoinINSB from '@/pages/get-involved/join-insb/page'
+import AllMembers from '@/pages/members/all-members-statistcs/page'
+import Achievements from './pages/activities/achievements/page';
 
 import "odometer/themes/odometer-theme-default.css";
+import ResearchPapers from './pages/publications/research Paper/page';
+import Blogs from './pages/publications/blogs/page';
 const App = () => {
   return (
     <Router>
@@ -30,6 +32,8 @@ const App = () => {
         {/* About  */}
         <Route path="/about/:id" element={<About />} />
         {/* Publications  */}
+        <Route path="/research-papers" element={<ResearchPapers />} />
+        <Route path="/blogs" element={<Blogs />} />
         {/* Get Involved  */}
         <Route path="/join-ieee-nsu-sb" element={<JoinINSB recruitSession={{
     session_end_date_time: '2025-08-20T23:59:59Z',
