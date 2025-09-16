@@ -25,8 +25,8 @@ const TopPerformers = () => {
 
   return (
     <FadeIn>
-      <div className="w-full flex flex-col items-center py-6">
-        <SectionHeading title="Top 5 Performers" widthClass="w-62" />
+      <div className="w-full flex flex-col items-center max-md:block py-6">
+        <SectionHeading title="Top 5 Performers" widthClass="w-62"/>
 
         {/* Dropdown */}
         <div className="flex justify-end items-center w-full max-w-5xl px-4">
