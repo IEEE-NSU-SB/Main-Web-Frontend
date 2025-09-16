@@ -3,7 +3,7 @@ import HeroCarousel from "./hero-carousel"
 import LearningCardGrid from "./learning-card-grid"
 import LogoSection from "./logo-section"
 import StatsSection from "./stats"
-import EventCarousel from "./featured-events-carousel"
+import EventCarousel from "./events-carousel"
 import TopPerformers from "./top-performers"
 import Blog from "@/components/blog-card"
 
@@ -15,7 +15,6 @@ const HomePage = () => {
         <LogoSection/>
         <VisionSection/>
         <StatsSection/>
-        <EventCarousel title="Mega Events" width="45" />
         <EventCarousel title="Featured Events" width="62"/>
         <TopPerformers/>
         <Blog/>
