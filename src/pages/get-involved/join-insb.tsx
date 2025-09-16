@@ -75,10 +75,10 @@ export default function RecruitmentPage({ recruitSession }: Props) {
               <div className="aspect-w-16 aspect-h-9 w-160 h-90 max-md:w-80 max-md:h-45">
                 <iframe
                   className="w-full h-full rounded-sm"
-                  src="https://www.youtube.com/embed/4qV8-J1gtXg?si=4N8nKSGUCEoMuCha"
+                  src="https://www.youtube.com/embed/At6Ft9h0jjU?si=rD9Ds2RHHI5Av3Bs"
                   title="IEEE NSU Recruitment Video"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="autoplay; fullscreen"
                   allowFullScreen
                 ></iframe>
               </div>
