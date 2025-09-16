@@ -36,7 +36,7 @@ const Table: React.FC<TableProps> = ({ title = "Member List", data }) => {
   const totalPages = Math.ceil(filteredData.length / rowsPerPage);
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="max-w-[1000px] mx-auto max-md:m-4 pb-6">
       <h2 className="text-center text-3xl font-bold mb-6 text-ieee-darkblue">
         {title}
       </h2>
