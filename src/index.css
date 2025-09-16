@@ -325,3 +325,15 @@
   box-shadow: 0 0 20px rgba(0, 98, 155, 0.7), 0 0 40px rgba(51, 160, 204, 0.5);
 }
 
+.bg-gradient-animate-card {
+  background: linear-gradient(140deg, #002855, #33a0cc, #002855);
+  background-size: 300% 200%;
+  animation: gradient-move 5s ease-in-out infinite;
+  /* transition: box-shadow 0.3s ease, transform 0.3s ease; */
+}
+
+/* Glow on hover */
+.bg-gradient-animate-card:hover {
+  box-shadow: 0 0 20px rgba(151, 151, 151, 0.7);
+}
+
