@@ -53,18 +53,18 @@ const Achievements = () => {
           return (
             <div
               key={idx}
-              ref={(el) => (cardRefs.current[idx] = el)}
+              ref={(el) => {cardRefs.current[idx] = el}}
               className={`bg-ieee-white shadow-lg hover:shadow-xl transition-all duration-500 ease-in-out rounded max-w-[317px]  ${
                 isExpanded ? "max-h-[1000px]" : "max-h-[440px]"
               }`}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden rounded">
                 <img
                   src={award.image}
                   alt={award.title}
                   className="w-full h-76 object-cover hover:scale-105 transition-all ease-in-out 300ms"
                 />
-                <span className="absolute top-[-6px] bg-ieee-blue text-ieee-white text-md font-semibold px-3 py-1 rounded shadow-md">
+                <span className="absolute top-[-2px] bg-ieee-blue text-ieee-white text-md font-semibold px-3 py-1 rounded shadow-md">
                   {award.year}
                 </span>
               </div>
