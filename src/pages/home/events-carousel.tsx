@@ -92,6 +92,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
 
   useEffect(() => {
     if (cardWidth === 0) return;
+
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % images.length;
@@ -99,7 +100,12 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
         return nextIndex;
       });
     }, 5000);
-    return () => intervalRef.current && clearInterval(intervalRef.current);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [cardWidth]);
 
   const handleScroll = () => {

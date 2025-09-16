@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 interface MediaItem {
   type: "image" | "video";
@@ -46,7 +44,7 @@ const HeroCarousel = ({
   showIndicators = true,
 }: HeroCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const autoPlayTimerRef = useRef<number | null>(null);
 
@@ -73,10 +71,6 @@ const HeroCarousel = ({
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-  };
-
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
   };
 
   // Handle autoplay

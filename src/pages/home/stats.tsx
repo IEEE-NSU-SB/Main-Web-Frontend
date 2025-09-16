@@ -101,7 +101,7 @@ const StatsSection = () => {
             <div key={index} className={boxClasses}>
               <p
                 className={valueClasses}
-                ref={(el) => (refs.current[index] = el)}
+                ref={(el) => {refs.current[index] = el}}
               >
                 0
               </p>

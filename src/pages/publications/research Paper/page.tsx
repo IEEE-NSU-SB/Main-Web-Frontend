@@ -58,7 +58,7 @@ const ResearchPapers = () => {
             return (
               <div
                 key={idx}
-                ref={(el) => (cardRefs.current[idx] = el)}
+                ref={(el) => {cardRefs.current[idx] = el}}
                 className={`bg-ieee-white shadow-lg hover:shadow-xl overflow-hidden transition-all duration-500 ease-in-out rounded max-w-[317px] ${
                   isExpanded ? "max-h-[1000px]" : "max-h-[530px]"
                 }`}

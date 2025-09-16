@@ -1,6 +1,5 @@
 import PanelCard from "@/components/ui/panel-card";
 import Wave from "@/components/wave";
-import React from "react";
 
 // dummyCounselors.ts
 export const counselorsData = [
