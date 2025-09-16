@@ -29,9 +29,9 @@ const HeroCarousel = ({
     },
     {
       type: "video",
-      src: "https://youtu.be/op0jinVueto?si=hgYi4Vpq-gyPPvEl",
-      title: "Campus Life at NSU",
-      description: "With Junayed vai",
+      src: "https://youtu.be/At6Ft9h0jjU?si=2S39GsmDQBXszDtd",
+      title: "Industrial Tour 6.0",
+      description: "PES",
     },
     {
       type: "image",
