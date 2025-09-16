@@ -17,6 +17,7 @@ import Achievements from './pages/activities/achievements/page';
 import "odometer/themes/odometer-theme-default.css";
 import ResearchPapers from './pages/publications/research Paper/page';
 import Blogs from './pages/publications/blogs/page';
+import Panel from './pages/members/panel/page';
 const App = () => {
   return (
     <Router>
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/society-ag/:id" element={<SocietyOrAg />} />
         {/* Members  */}
         <Route path="/all-members" element={<AllMembers/>} />
+        <Route path="/panels" element={<Panel/>} />
         {/* About  */}
         <Route path="/about/:id" element={<About />} />
         {/* Publications  */}
