@@ -6,7 +6,7 @@ import Footer from '@/components/footer'
 import ScrollToTopButton from './components/ui/scroll-to-top';
 
 import HomePage from './pages/home/page'
-import SocietyOrAg from './pages/society-and-ag/pages[id]/pages'
+import SocietyOrAg from './pages/society-and-ag/pages[id]/AgPages'
 
 import About from '@/pages/about/pages[id]/pages';
 

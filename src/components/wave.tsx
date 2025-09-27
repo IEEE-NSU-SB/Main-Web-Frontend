@@ -8,31 +8,31 @@ interface WaveProps {
 
 const Wave: React.FC<WaveProps> = ({ title, subtitle }) => {
   // dynamic font size adjustments
-  const getTitleClass = () => {
-    if (title.length > 80) return "text-[23px]";
-    if (title.length > 55) return "text-[25px]";
-    return "text-[35px]";
-  };
+  // con() => {
+  //   if (title.length > 80) return "text-[23px]";
+  //   if (title.length > 55) return "text-[25px]";
+  //   return "text-[35px]";
+  // };
 
-  const getSubtitleClass = () => {
-    if (!subtitle) return "";
-    if (subtitle.length > 80) return "text-[17px]";
-    if (subtitle.length > 55) return "text-[18px]";
-    return "text-[20px]";
-  };
+  // const getSubtitleClass = () => {
+  //   if (!subtitle) return "";
+  //   if (subtitle.length > 80) return "text-[17px]";
+  //   if (subtitle.length > 55) return "text-[18px]";
+  //   return "text-[20px]";
+  // };
 
   return (
     <section className="relative w-full h-90 overflow-hidden bg-gradient-to-b from-ieee-darkblue to-[#519fff] mt-[-3px]">
       {/* Title */}
       <div className="flex flex-col text-center py-16 md:py-28 relative z-10">
         <h2
-          className={`font-poppins text-ieee-white font-semibold uppercase leading-tight ${getTitleClass()}`}
+          className={`font-poppins text-ieee-white font-semibold uppercase leading-tight`}
         >
           {title}
         </h2>
         {subtitle && (
           <h2
-            className={`font-poppins text-ieee-white font-light mx-5 leading-snug ${getSubtitleClass()}`}
+            className={`font-poppins text-ieee-white font-light mx-5 leading-snug `}
           >
             {subtitle}
           </h2>
