@@ -75,7 +75,7 @@ const BlogCard: React.FC = () => {
   return (
     <FadeIn>
       <div className="w-full py-4">
-        {/* Show heading only on home page */}
+        {/* Show heading only on home page */} 
         {location.pathname === "/" && <SectionHeading title="Blogs" widthClass="w-32" />}
 
         {/* Show search + filters outside home */}
