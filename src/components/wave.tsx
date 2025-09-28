@@ -26,13 +26,13 @@ const Wave: React.FC<WaveProps> = ({ title, subtitle }) => {
       {/* Title */}
       <div className="flex flex-col text-center py-16 md:py-28 relative z-10">
         <h2
-          className={`font-poppins text-ieee-white font-semibold uppercase leading-tight`}
+          className={`font-poppins text-ieee-white font-semibold text-[25px] uppercase leading-tight`}
         >
           {title}
         </h2>
         {subtitle && (
           <h2
-            className={`font-poppins text-ieee-white font-light mx-5 leading-snug `}
+            className={`font-poppins text-ieee-white font-light text-[20px] mx-5 leading-snug `}
           >
             {subtitle}
           </h2>
