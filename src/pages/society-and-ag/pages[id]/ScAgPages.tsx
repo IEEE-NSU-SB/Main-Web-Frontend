@@ -1,7 +1,7 @@
 import AgWave from './ScAgWave';
 import AgBanner from './ScAgBanner';
 import AgParallax from './ScAgParallax';
-import MegaEvents from '@/components/CommonCard/MegaEvents';
+import MegaEvents from '@/components/common_card/mega-event-card';
 
 const parallaxImgData = async () => {
   const fetchData = await fetch("/ScAgParallax.json")

@@ -1,6 +1,7 @@
 
 import { use, type FC } from "react";
 import { useParams } from "react-router-dom";
+import SectionHeading from "../ui/section-heading";
 
 interface MegaEvent {
     id: number;
@@ -53,11 +54,7 @@ const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
         <>
             <div className="max-w-[1100px] w-full mx-auto my-10 px-4">
                 {eventsToShow.length > 0 && (
-                    <>
-                        <h2 className="font-bold text-3xl md:text-4xl">
-                            MEGA EVENTS
-                        </h2>
-                    </>
+                    <SectionHeading title="Mega Events" widthClass="w-55"></SectionHeading>
                 )}
 
                 <div className="flex flex-wrap justify-center gap-4 mt-6">
