@@ -1,21 +1,28 @@
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
 import ScaleUp from "@/components/ui/scale-up";
+import Skeleton from "@/components/skeleton";
 
-const stats = [
-  { value: 4, label: "CHAPTER & AG" },
-  { value: 636, label: "MEMBERS" },
-  { value: 264, label: "EVENTS" },
-  { value: 57, label: "ACHIEVEMENTS" },
-];
+interface Stat {
+  label: string;
+  value: number;
+}
 
-const StatsSection = () => {
+interface StatsSectionProps {
+  data: { stats: Stat[] } | null;
+  loading: boolean;
+}
+
+const StatsSection = ({ data,loading }: StatsSectionProps) => {
+  const stats = data?.stats ?? [];
   const refs = useRef<(HTMLParagraphElement | null)[]>([]);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
 
   // Odometer animation
   useEffect(() => {
+    if (!stats.length) return;
+
     refs.current.forEach((el, index) => {
       if (!el) return;
 
@@ -36,9 +43,9 @@ const StatsSection = () => {
 
       observer.observe(el);
     });
-  }, []);
+  }, [stats]);
 
-  // Shapes move with mouse
+  // Shapes move with mouse (same as before)
   useEffect(() => {
     const createShapes = () => {
       if (!backgroundRef.current) return;
@@ -72,7 +79,7 @@ const StatsSection = () => {
         const initialX = parseFloat(shape.dataset.initialX || "0");
         const initialY = parseFloat(shape.dataset.initialY || "0");
 
-        const moveX = initialX + x * 5; // adjust 5 for intensity
+        const moveX = initialX + x * 5;
         const moveY = initialY + y * 5;
 
         shape.style.left = `${moveX}%`;
@@ -90,28 +97,35 @@ const StatsSection = () => {
   const labelClasses = "text-sm md:text-lg font-bold mb-8";
 
   return (
-    <section
-    className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue"
-    >
+    <section className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue">
       <div ref={backgroundRef} id="geometric-background" className="absolute inset-0 z-0"></div>
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
       <div className="relative max-w-[1040px] mx-auto z-10">
-      <ScaleUp>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat, index) => (
-            <div key={index} className={boxClasses}>
-              <p
-                className={valueClasses}
-                ref={(el) => {refs.current[index] = el}}
-              >
-                0
-              </p>
-              <p className={labelClasses}>{stat.label}</p>
+        <ScaleUp>
+          {loading ? (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                  <Skeleton width="h-35 w-full"></Skeleton>
+                  <Skeleton width="h-35 w-full"></Skeleton>
+                  <Skeleton width="h-35 w-full"></Skeleton>
+                  <Skeleton width="h-35 w-full"></Skeleton>
             </div>
-          ))}
-        </div>
-      </ScaleUp>
+            ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((stat, index) => (
+                <div key={index} className={boxClasses}>
+                  <p
+                    className={valueClasses}
+                    ref={(el) => { refs.current[index] = el; }}
+                  >
+                    0
+                  </p>
+                  <p className={labelClasses}>{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </ScaleUp>
       </div>
     </section>
   );
