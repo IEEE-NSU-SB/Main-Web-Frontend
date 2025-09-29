@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
+import ScaleUp from "@/components/ui/scale-up";
 
 const stats = [
   { value: 4, label: "CHAPTER & AG" },
@@ -85,17 +86,18 @@ const StatsSection = () => {
   }, []);
 
   const boxClasses = "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
-  const valueClasses = "text-5xl font-bold mb-2 m-8 odometer text-stroke";
-  const labelClasses = "text-lg font-bold mb-8";
+  const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer text-stroke";
+  const labelClasses = "text-sm md:text-lg font-bold mb-8";
 
   return (
     <section
-      className="w-full py-20 relative bg-cover bg-center overflow-hidden max-md:px-5 bg-ieee-blue"
+    className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue"
     >
       <div ref={backgroundRef} id="geometric-background" className="absolute inset-0 z-0"></div>
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
-      <div className="relative max-w-[1000px] mx-auto z-10">
+      <div className="relative max-w-[1040px] mx-auto z-10">
+      <ScaleUp>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className={boxClasses}>
@@ -109,6 +111,7 @@ const StatsSection = () => {
             </div>
           ))}
         </div>
+      </ScaleUp>
       </div>
     </section>
   );

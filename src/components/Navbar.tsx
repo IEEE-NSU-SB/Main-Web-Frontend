@@ -28,16 +28,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`text-ieee-white text-xs max-lg:text-[10px] sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
+      className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
     >
       <FadeIn>
-        <div className="max-w-[1080px] mx-auto py-4  flex justify-between max-lg:justify-center max-md:justify-between items-center">
+        <div className="max-w-[1080px] mx-auto py-4  flex justify-between lg:justify-between md:justify-center items-center">
           {/* Logo */}
           <Link to="/">
             <img
               src={insbLogo}
               alt="IEEE NSU SB Logo"
-              className="h-12 mx-5 cursor-pointer max-lg:h-10"
+              className="h-10 mx-5 cursor-pointer lg:h-12"
             />
           </Link>
 

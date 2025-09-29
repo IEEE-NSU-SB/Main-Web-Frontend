@@ -48,7 +48,7 @@ export default function LearningCardGrid() {
 
   return (
     <FadeIn>
-      <div className="max-w-[1064px] mx-auto my-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 max-sm:px-5">
+      <div className="max-w-[1080px] mx-auto my-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-5 max-sm:px-5 max-lg:px-11">
         {learningData.map((item, index) => (
           <div key={index} className="flex items-start space-x-4">
             <img src={item.icon} alt={item.title} className="w-8 h-8" />

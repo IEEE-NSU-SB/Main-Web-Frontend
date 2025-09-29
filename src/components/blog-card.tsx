@@ -80,7 +80,7 @@ const BlogCard: React.FC = () => {
 
         {/* Show search + filters outside home */}
         {location.pathname !== "/" && (
-          <div className="flex flex-col md:flex-row justify-between gap-4 mb-6 px-6 m-auto max-w-[1045px]">
+          <div className="flex flex-col md:flex-row justify-between gap-4 mb-6 px-6 m-auto max-w-[1090px]">
             {/* Search */}
             <div className="relative w-full max-w-md">
               <Search className="absolute left-3 top-2.5 text-ieee-gray w-5 h-5" />
@@ -118,12 +118,12 @@ const BlogCard: React.FC = () => {
         )}
 
         {/* Blog cards */}
-        <div className="flex flex-wrap justify-center items-start gap-2 p-6 max-sm:px-5">
+        <div className="flex flex-wrap justify-center items-start gap-7 p-6 max-sm:px-5">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, index) => (
               <div
                 key={index}
-                className="max-w-[328px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+                className="max-w-[328px] lg:max-w-[305px] xl:max-w-[328px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <div className="overflow-hidden h-48 w-full">
                   <img

@@ -11,10 +11,10 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <>
-      <h2 className="max-w-[1000px] mx-auto text-ieee-darkblue-75 text-3xl font-bold mt-10 max-lg:px-5">
+      <h2 className="max-w-[1080px] mx-auto text-ieee-darkblue-75 text-3xl font-bold mt-10 px-5 max-sm:px-5 max-lg:px-12">
         {title}
       </h2>
-      <div className="flex gap-1 max-w-[1000px] mx-auto mt-2 mb-4 max-md:ml-4 max-sm:px-1">
+      <div className="flex gap-1 max-w-[1080px] mx-auto mt-2 mb-4 max-md:ml-4 px-5 max-sm:px-2 max-lg:px-12">
         <div
           className={`h-1 ${widthClass} ${underlineColor} rounded-xs`}
         ></div>

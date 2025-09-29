@@ -38,7 +38,7 @@ const VisionSection = () => {
     <>
       <FadeIn>
         <SectionHeading title="Our Vision" widthClass="w-42" />
-        <section className="max-w-[1000px] mx-auto py-2 pb-16 max-lg:px-5">
+        <section className="max-w-[1080px] mx-auto py-2 pb-16 px-5 sm:px-12 lg:px-5">
           {loading ? (
             <div className="space-y-2">
               <Skeleton className="h-4 w-full" />
