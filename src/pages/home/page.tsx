@@ -5,7 +5,7 @@ import LogoSection from "./logo-section"
 import StatsSection from "./stats"
 import EventCarousel from "./events-carousel"
 import TopPerformers from "./top-performers"
-import Blog from "@/components/blog-card"
+import Blog from "@/components/common_card/blog-card"
 
 const HomePage = () => {
   return (
