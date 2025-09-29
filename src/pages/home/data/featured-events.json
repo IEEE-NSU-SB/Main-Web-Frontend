@@ -1,0 +1,17 @@
+[
+  { "src": "/assets/dummy/image1.png", "alt": "Event 1" },
+  { "src": "/assets/dummy/image2.png", "alt": "Event 2" },
+  { "src": "/assets/dummy/image3.png", "alt": "Event 3" },
+  { "src": "/assets/dummy/image4.png", "alt": "Event 4" },
+  { "src": "/assets/dummy/image5.png", "alt": "Event 5" },
+  { "src": "/assets/dummy/image1.png", "alt": "Event 1" },
+  { "src": "/assets/dummy/image2.png", "alt": "Event 2" },
+  { "src": "/assets/dummy/image3.png", "alt": "Event 3" },
+  { "src": "/assets/dummy/image4.png", "alt": "Event 4" },
+  { "src": "/assets/dummy/image5.png", "alt": "Event 5" },
+  { "src": "/assets/dummy/image1.png", "alt": "Event 1" },
+  { "src": "/assets/dummy/image2.png", "alt": "Event 2" },
+  { "src": "/assets/dummy/image3.png", "alt": "Event 3" },
+  { "src": "/assets/dummy/image4.png", "alt": "Event 4" },
+  { "src": "/assets/dummy/image5.png", "alt": "Event 5" }
+]

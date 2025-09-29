@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 interface MediaItem {
   type: "image" | "video";
@@ -29,9 +27,9 @@ const HeroCarousel = ({
     },
     {
       type: "video",
-      src: "https://www.youtube.com/embed/ZnC5QGieFWk",
-      title: "Campus Life at NSU",
-      description: "With Junayed vai",
+      src: "https://youtu.be/At6Ft9h0jjU?si=2S39GsmDQBXszDtd",
+      title: "Industrial Tour 6.0",
+      description: "PES",
     },
     {
       type: "image",
@@ -46,7 +44,7 @@ const HeroCarousel = ({
   showIndicators = true,
 }: HeroCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const autoPlayTimerRef = useRef<number | null>(null);
 
@@ -55,7 +53,7 @@ const HeroCarousel = ({
     if (url.includes("youtube.com/embed/")) {
       return url;
     }
-    
+
     let videoId = "";
     if (url.includes("youtu.be/")) {
       videoId = url.split("youtu.be/")[1].split("?")[0];
@@ -63,7 +61,7 @@ const HeroCarousel = ({
       const urlParams = new URLSearchParams(url.split("?")[1]);
       videoId = urlParams.get("v") || "";
     }
-    
+
     return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
 
@@ -71,13 +69,8 @@ const HeroCarousel = ({
     setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
   };
 
-
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-  };
-
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
   };
 
   // Handle autoplay
@@ -121,7 +114,7 @@ const HeroCarousel = ({
   }, [currentIndex, isPlaying, media]);
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden bg-black">
+    <div className="relative w-full h-[100vh] max-md:h-70 overflow-hidden bg-ieee-black mt-[-80px]">
       {/* Media Items */}
       <div className="absolute inset-0">
         {media.map((item, index) => (
@@ -129,7 +122,7 @@ const HeroCarousel = ({
             key={index}
             className={cn(
               "absolute inset-0 w-full h-full transition-opacity duration-1000",
-              currentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0",
+              currentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
             )}
           >
             {item.type === "image" ? (
@@ -141,31 +134,40 @@ const HeroCarousel = ({
             ) : item.src.includes("youtube.com") ||
               item.src.includes("youtu.be") ? (
               <iframe
-                src={`${getYouTubeEmbedUrl(item.src)}?autoplay=1&mute=1`}
-                className="w-full h-full object-cover"
+                src={`${getYouTubeEmbedUrl(
+                  item.src
+                )}?autoplay=1&mute=1&loop=1&controls=0&playlist=${getYouTubeEmbedUrl(
+                  item.src
+                )
+                  .split("/")
+                  .pop()}`}
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "cover" }}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                allow="autoplay; fullscreen"
                 title={item.title || "Video"}
               />
             ) : (
               <video
-                ref={(el) => { videoRefs.current[index] = el; }}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
                 src={item.src}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
                 muted
                 loop
                 playsInline
                 autoPlay
+                controls={false} // hides video controls
               />
             )}
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-8 md:px-16 lg:px-24">
-              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <div className="absolute inset-0 flex flex-col justify-center m-auto max-w-[1080px] px-4 max-lg:px-11 max-md:px-5">
+              <h2 className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {item.title}
               </h2>
-              <p className="text-white/90 text-lg md:text-xl max-w-2xl">
+              <p className="text-ieee-white-75 text-lg md:text-xl max-w-2xl">
                 {item.description}
               </p>
             </div>
@@ -186,10 +188,10 @@ const HeroCarousel = ({
             <span className="sr-only">Previous slide</span>
           </Button> */}
 
-          <Button
+          {/* <Button
             variant="outline"
             size="icon"
-            className="rounded-full bg-white/20 hover:bg-white/40 text-white"
+            className="rounded-full bg-ieee-white-25 hover:bg-ieee-white-50 text-ieee-white"
             onClick={togglePlayPause}
           >
             {isPlaying ? (
@@ -198,7 +200,7 @@ const HeroCarousel = ({
               <Play className="h-5 w-5" />
             )}
             <span className="sr-only">{isPlaying ? "Pause" : "Play"}</span>
-          </Button>
+          </Button> */}
 
           {/* <Button
             variant="outline"
@@ -220,7 +222,9 @@ const HeroCarousel = ({
               key={index}
               className={cn(
                 "w-2 h-2 rounded-full transition-all",
-                currentIndex === index ? "bg-white w-6" : "bg-white/50",
+                currentIndex === index
+                  ? "bg-ieee-white w-6"
+                  : "bg-ieee-white-50"
               )}
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
