@@ -48,10 +48,10 @@ const BlogCard: React.FC = () => {
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [dateOrder, setDateOrder] = useState<"latest" | "oldest">("latest");
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All categories");
 
   // Get unique categories
-  const categories = ["All", ...Array.from(new Set(events.map(e => e.category)))];
+  const categories = ["All categories", ...Array.from(new Set(events.map(e => e.category)))];
 
   // Filter & search
   let filteredEvents = events.filter(event =>
@@ -61,7 +61,7 @@ const BlogCard: React.FC = () => {
   );
 
   // Filter by category
-  if (selectedCategory !== "All") {
+  if (selectedCategory !== "All categories") {
     filteredEvents = filteredEvents.filter(e => e.category === selectedCategory);
   }
 
@@ -73,11 +73,9 @@ const BlogCard: React.FC = () => {
   });
 
   return (
-    <FadeIn>
-      <div className="w-full py-4">
+    <div className="w-full py-4">
         {/* Show heading only on home page */} 
         {location.pathname === "/" && <SectionHeading title="Blogs" widthClass="w-32" />}
-
         {/* Show search + filters outside home */}
         {location.pathname !== "/" && (
           <div className="flex flex-col md:flex-row justify-between gap-4 mb-6 px-6 m-auto max-w-[1090px]">
@@ -90,7 +88,7 @@ const BlogCard: React.FC = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90 text-sm"
-              />
+                />
             </div>
             <div className="flex gap-4 flex-col md:flex-row">
             {/* Date filter */}
@@ -98,7 +96,7 @@ const BlogCard: React.FC = () => {
               value={dateOrder}
               onChange={(e) => setDateOrder(e.target.value as "latest" | "oldest")}
               className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90"
-            >
+              >
               <option value="latest">Date: Latest</option>
               <option value="oldest">Date: Oldest</option>
             </select>
@@ -108,7 +106,7 @@ const BlogCard: React.FC = () => {
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90"
-            >
+              >
               {categories.map((cat, idx) => (
                 <option key={idx} value={cat}>{cat}</option>
               ))}
@@ -121,16 +119,17 @@ const BlogCard: React.FC = () => {
         <div className="flex flex-wrap justify-center items-start gap-7 p-6 max-sm:px-5">
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, index) => (
+              <FadeIn>
               <div
                 key={index}
                 className="max-w-[328px] lg:max-w-[305px] xl:max-w-[328px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-              >
+                >
                 <div className="overflow-hidden h-48 w-full">
                   <img
                     src={event.image}
                     alt={`Event ${index}`}
                     className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
-                  />
+                    />
                 </div>
                 <div className="p-4 rounded-sm">
                   <div className="flex items-center gap-2 text-sm font-semibold text-ieee-gray mb-1">
@@ -157,14 +156,14 @@ const BlogCard: React.FC = () => {
                   </button>
                 </div>
               </div>
+          </FadeIn>
             ))
           ) : (
             <p className="text-gray-500">No blogs found.</p>
           )}
         </div>
       </div>
-    </FadeIn>
-  );
+    );
 };
 
 export default BlogCard;
