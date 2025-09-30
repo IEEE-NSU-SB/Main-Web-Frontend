@@ -28,16 +28,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`text-ieee-white text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
+      className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
     >
       <FadeIn>
-        <div className="max-w-[1038px] mx-auto py-4 flex justify-between items-center">
+        <div className="max-w-[1080px] mx-auto py-4  flex justify-between lg:justify-between md:justify-center items-center">
           {/* Logo */}
           <Link to="/">
             <img
               src={insbLogo}
               alt="IEEE NSU SB Logo"
-              className="h-12 mx-5 cursor-pointer"
+              className="h-10 mx-5 cursor-pointer lg:h-12"
             />
           </Link>
 
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Activities
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {["Events", "News", "Achievements"].map((item) => (
                   <Link
                     key={item}
@@ -73,7 +73,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Societies & AG
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {Object.entries({
                   "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
                   "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Members
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+              <div className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
                 {["Panels", "Officers", "Volunteers"].map((item) => (
                   <Link
                     key={item}
@@ -156,7 +156,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 About
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+              <div className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
                 {Object.entries({
                   IEEE: "ieee",
                   "IEEE Region 10": "ieee-region-10",
@@ -180,7 +180,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Publications
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {[
                   "Blogs",
                   "Research Papers",
@@ -199,12 +199,20 @@ const Navbar: React.FC = () => {
               </div>
             </div>
 
+            {/* Contact */}
+            <Link
+              to="/contact"
+              className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase"
+            >
+              Contact
+            </Link>
+
             {/* Get Involved */}
             <div className="group relative">
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Get Involved
               </span>
-              <div className="absolute left-2 top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
                   (item) => (
                     <Link

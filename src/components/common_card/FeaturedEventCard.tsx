@@ -1,60 +1,57 @@
-
 import { use, type FC } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import SectionHeading from "../ui/section-heading";
-import FadeIn from "../ui/fade-in";
 
-interface MegaEvent {
+interface FeaturedEvent {
     id: number;
     key: string;
     super_event_name: string;
     super_event_description: string;
     banner_image: string;
     group_name: string;
+    date: string;
 }
 
-interface MegaEventsData {
-    all_mega_events: MegaEvent[];
+interface FeaturedEventsData {
+    all_featured_events: FeaturedEvent[];
 }
 
-interface MegaEventsProps {
-    megaEventsPromise: Promise<MegaEventsData>;
+interface FeaturedEventsProps {
+    featuredEventsPromise: Promise<FeaturedEventsData>;
 }
 
-const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
+const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) => {
     const { id } = useParams();
-    const megaEventsData: MegaEventsData = use(megaEventsPromise);
+    const featuredEventsData: FeaturedEventsData = use(featuredEventsPromise);
 
-    // key diye filter kora hoyeche 
+    // console.log(featuredEventsData);
 
-    const eventMapping: Record<string, MegaEvent[]> = {
-        "ieee-nsu-ras-sbc": megaEventsData.all_mega_events.filter(event =>
-            event.key.toLowerCase().includes("ras") 
+    const eventMapping: Record<string, FeaturedEvent[]> = {
+        "ieee-nsu-ras-sbc": featuredEventsData.all_featured_events.filter(event =>
+            event.key?.toLowerCase().includes("ras")
         ),
-        "ieee-nsu-pes-sbc": megaEventsData.all_mega_events.filter(event =>
-            event.key.toLowerCase().includes("pes") 
+        "ieee-nsu-pes-sbc": featuredEventsData.all_featured_events.filter(event =>
+            event.key?.toLowerCase().includes("pes")
         ),
-        "ieee-nsu-ias-sbc": megaEventsData.all_mega_events.filter(event =>
-            event.key.toLowerCase().includes("ias") 
+        "ieee-nsu-ias-sbc": featuredEventsData.all_featured_events.filter(event =>
+            event.key?.toLowerCase().includes("ias")
         ),
-        "ieee-nsu-wie-ag": megaEventsData.all_mega_events.filter(event =>
-            event.key.toLowerCase().includes("wie") 
+        "ieee-nsu-wie-ag": featuredEventsData.all_featured_events.filter(event =>
+            event.key?.toLowerCase().includes("wie")
         ),
     };
-
-    //  console.log(eventMapping)
-
-    const eventsToShow = id && eventMapping[id] ? eventMapping[id] : megaEventsData.all_mega_events;
-//    console.log(eventsToShow);
-
+    //    console.log(eventMapping) 
+    const eventsToShow = id && eventMapping[id] ? eventMapping[id] : featuredEventsData.all_featured_events;
+    console.log(eventsToShow);
 
     return (
         <>
-        
-                <div className="max-w-[1100px] w-full mx-auto my-10 px-4">
+            <div className="max-w-[1100px] w-full mx-auto my-10 px-4">
                 {eventsToShow.length > 0 && (
-                    <SectionHeading title="Mega Events" widthClass="w-45"></SectionHeading>
+                    <SectionHeading title="FEATURED EVENTS" widthClass="w-65"></SectionHeading>
                 )}
+
+
 
                 <div className="flex flex-wrap justify-center gap-4 mt-6">
                     {eventsToShow.map((event) => (
@@ -76,7 +73,8 @@ const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
                                 <div className="p-4">
                                     <header className="mb-4">
                                         <div className="text-sm text-[#A8A8A8] font-semibold">
-                                            By {event.group_name}
+                                            {event.date} {""}
+                                            /By {event.group_name}
                                         </div>
                                         <h3 className="text-lg font-semibold mb-2 overflow-hidden line-clamp-2">
                                             <a
@@ -103,11 +101,13 @@ const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
                         </div>
                     ))}
                 </div>
-            </div>
-            
 
+
+
+
+            </div>
         </>
     );
 };
 
-export default MegaEvents;
+export default FeaturedEventCard;

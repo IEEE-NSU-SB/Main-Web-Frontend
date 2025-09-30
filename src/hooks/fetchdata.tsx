@@ -29,31 +29,30 @@ export function useFetchDataAPI({apiUrl}) {
   return { loading, data };
 }
 
-export function useFetchDataJSON({apiUrl}) {
+
+export function useFetchDataJSON({ path }: { path: string }) {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadData = async () => {
       try {
         setLoading(true);
 
-        // ✅ Fetch from API in production
-        const res = await fetch(apiUrl);
-        if (!res.ok) throw new Error("Failed to fetch");
-        const json = await res.json();
-        setData(json);
-
+        // Dynamically import JSON file
+        const module = await import(`../${path}`);
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        setData(module.default);
       } catch (err) {
-        console.error("Error fetching data:", err);
+        console.error(`Error loading local JSON file: ${path}`, err);
         setData(null);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
-  }, [localData, apiUrl]);
+    loadData();
+  }, [path]);
 
   return { loading, data };
 }

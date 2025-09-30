@@ -1,8 +1,9 @@
 import AgWave from './ScAgWave';
 import AgBanner from './ScAgBanner';
 import AgParallax from './ScAgParallax';
-import MegaEvents from '@/components/common_card/mega-event-card';
+import Mega_and_Featured from './Mega_and_Featured';
 
+// parallax fetch 
 const parallaxImgData = async () => {
   const fetchData = await fetch("/ScAgParallax.json")
   return fetchData.json();
@@ -10,11 +11,6 @@ const parallaxImgData = async () => {
 const parallaxImagePromise = parallaxImgData();
 
 
-const megaEvents = async () => {
-  const fetchData = await fetch("/ScAgMegaEvents.json")
-  return fetchData.json()
-}
-const megaEventsPromise = megaEvents();
 
 const SocietyOrAg = () => {
 
@@ -25,7 +21,8 @@ const SocietyOrAg = () => {
       <AgWave></AgWave>
       <AgBanner></AgBanner>
       <AgParallax parallaxImagePromise={parallaxImagePromise}></AgParallax>
-      <MegaEvents megaEventsPromise={megaEventsPromise}></MegaEvents>
+     <Mega_and_Featured></Mega_and_Featured>
+      
     </div>
   );
 };

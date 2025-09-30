@@ -17,6 +17,7 @@ import Achievements from './pages/activities/achievements/page';
 import "odometer/themes/odometer-theme-default.css";
 import ResearchPapers from './pages/publications/research Paper/page';
 import Blogs from './pages/publications/blogs/page';
+import Toolkit from './pages/publications/toolkit/pages';
 import Panel from './pages/members/panel/page';
 import WriteBlog from './pages/get-involved/write-a-blog/page';
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
         {/* Publications  */}
         <Route path="/research-papers" element={<ResearchPapers />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/toolkit" element={<Toolkit />} />
         {/* Get Involved  */}
         <Route path="/join-ieee-nsu-sb" element={<JoinINSB recruitSession={{
           session_end_date_time: '2025-08-20T23:59:59Z',

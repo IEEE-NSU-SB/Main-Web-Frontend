@@ -1,4 +1,4 @@
-import PanelCard from "@/components/ui/panel-card";
+import PanelCard from "@/pages/members/panel-card";
 import Wave from "@/components/wave";
 
 // dummyCounselors.ts
@@ -71,7 +71,8 @@ const Panel = () => {
       <Wave title="Current Panel of IEEE NSU SB"></Wave>
       <PanelCard sectionTitle="Branch Counselor" counselors={counselorsData} />
       <PanelCard sectionTitle="Chapter and Affinity Group Faculty Advisors" counselors={SCAGData} />
-      <PanelCard sectionTitle="Executive Board" counselors={ExcomData} />
+      <PanelCard sectionTitle="IEEE NSU Student Branch Executive Body" counselors={ExcomData} />
+      <PanelCard sectionTitle="Chapter and Affinity Group Chairs" counselors={ExcomData} />
     </>
   );
 };

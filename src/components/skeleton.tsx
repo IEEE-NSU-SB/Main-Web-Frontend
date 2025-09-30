@@ -2,11 +2,11 @@
 import React from "react";
 
 interface SkeletonProps {
-  className?: string;
+  width?: string;
 }
 
-const Skeleton: React.FC<SkeletonProps> = ({ className }) => {
-  return <div className={`animate-pulse bg-gray-300 rounded ${className}`} />;
+const Skeleton: React.FC<SkeletonProps> = ({ width }) => {
+  return <div className={`animate-pulse bg-gray-300 rounded ${width}`} />;
 };
 
 export default Skeleton;

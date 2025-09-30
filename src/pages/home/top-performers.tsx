@@ -34,23 +34,22 @@ const tabs = [
   {
     id: 4,
     label: "Best Volunteer",
-    people: [{ id: 1, name: "Jack White", team: "Team Omega", rank: 1, img: dummy }],
+    people: [
+      { id: 1, name: "Jack White", team: "Team Omega", rank: 1, img: dummy },
+    ],
   },
   {
     id: 5,
     label: "Best >",
-    people: [{ id: 1, name: "Kara Blue", team: "Team Gamma", rank: 1, img: dummy }],
+    people: [
+      { id: 1, name: "Kara Blue", team: "Team Gamma", rank: 1, img: dummy },
+    ],
   },
 ];
 
 export default function TopPerformers() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [personIndex, setPersonIndex] = useState(0);
-
-  const handleNextTab = () => {
-    setActiveIndex((prev) => (prev + 1) % tabs.length);
-    setPersonIndex(0);
-  };
 
   const handleSelectTab = (index: number) => {
     setActiveIndex(index);
@@ -72,10 +71,10 @@ export default function TopPerformers() {
   const visibleCount = 4;
 
   return (
-    <div className="w-[1028px] mx-auto p-5">
+    <div className="max-w-[1080px] mx-auto p-5">
       {/* Tabs */}
-      <div className="relative flex items-center">
-        <div className="relative flex-1 h-14">
+      <div className="relative flex items-center justify-center overflow-hidden h-14">
+        <div className="relative flex-1">
           {tabs.map((tab, index) => {
             const isActive = index === activeIndex;
             const order = (index - activeIndex + tabs.length) % tabs.length;
@@ -91,15 +90,21 @@ export default function TopPerformers() {
                   opacity: order < visibleCount ? 1 : 0,
                 }}
                 transition={{ type: "spring", stiffness: 80, damping: 18 }}
-                className={`absolute h-12 flex items-center justify-center border-ieee-blue
-                  ${isActive ? "border-b-2 border-ieee-blue-75 text-ieee-blue" : "bg-ieee-white-15 text-ieee-blue"}`}
+                className={`absolute bottom-[-25px] h-6 flex items-center justify-center px-3 sm:px-4 py-5
+            ${
+              isActive
+                ? "border-b-3 border-ieee-blue-75 text-ieee-blue"
+                : "bg-ieee-white-15 text-ieee-blue"
+            }`}
                 style={{
                   width: tabWidth,
                   zIndex: visibleCount - order,
                   left: 0,
                 }}
               >
-                <span className="truncate">{tab.label}</span>
+                <span className="truncate text-sm sm:text-base">
+                  {tab.label}
+                </span>
               </motion.button>
             );
           })}
@@ -107,7 +112,7 @@ export default function TopPerformers() {
       </div>
 
       {/* Content / Carousel with Animated Background */}
-      <div className="relative mt-2 rounded overflow-hidden h-88 flex items-center">
+      <div className="relative mt-4 rounded overflow-hidden flex items-center justify-center min-h-[22rem] sm:min-h-[20rem] bg-black/40">
         {/* Animated Background Layers */}
         <div className="bg"></div>
         <div className="bg bg2"></div>
@@ -117,9 +122,9 @@ export default function TopPerformers() {
         {people.length > 1 && (
           <button
             onClick={handlePrevPerson}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 cursor-pointer"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} className="sm:size-14 text-ieee-white-50" />
           </button>
         )}
 
@@ -130,24 +135,28 @@ export default function TopPerformers() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4 }}
-            className="flex w-full relative z-10"
+            className="flex flex-col sm:flex-row w-full relative z-10 items-center text-center sm:text-left"
           >
-            {/* Picture (Left Side) */}
-            <div className="w-1/2 flex justify-center items-center">
+            {/* Picture */}
+            <div className="w-full sm:w-1/2 flex justify-center items-center p-4">
               <img
                 src={people[personIndex].img}
                 alt={people[personIndex].name}
-                className="w-70 h-70 rounded-full object-cover shadow-md bg-gradient-animate"
+                className="w-44 h-44 sm:w-60 sm:h-60 rounded-full object-cover shadow-md bg-gradient-animate"
               />
             </div>
 
-            {/* Details (Right Side) */}
-            <div className="w-1/2 flex flex-col justify-center px-8 text-white">
-              <span className="mt-4 text-xl font-semibold text-ieee-yellow">
+            {/* Details */}
+            <div className="w-full sm:w-1/2 flex flex-col justify-center px-4 sm:px-8 text-white">
+              <span className="mt-2 sm:mt-4 text-lg sm:text-xl font-semibold text-ieee-yellow">
                 Rank #{people[personIndex].rank}
               </span>
-              <h3 className="text-2xl font-bold">{people[personIndex].name}</h3>
-              <p className="text-lg mt-2">{people[personIndex].team}</p>
+              <h3 className="text-xl sm:text-2xl font-bold">
+                {people[personIndex].name}
+              </h3>
+              <p className="text-base sm:text-lg mt-1 sm:mt-2">
+                {people[personIndex].team}
+              </p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -156,9 +165,9 @@ export default function TopPerformers() {
         {people.length > 1 && (
           <button
             onClick={handleNextPerson}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 rounded-full p-2 cursor-pointer"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 cursor-pointer"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} className="sm:size-14 text-ieee-white-50" />
           </button>
         )}
       </div>

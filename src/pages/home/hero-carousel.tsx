@@ -163,7 +163,7 @@ const HeroCarousel = ({
             )}
 
             {/* Content Overlay */}
-            <div className="absolute inset-0 bg-ieee-black-50 flex flex-col justify-center px-5 md:px-6 lg:px-65">
+            <div className="absolute inset-0 flex flex-col justify-center m-auto max-w-[1080px] px-4 max-lg:px-11 max-md:px-5">
               <h2 className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {item.title}
               </h2>
