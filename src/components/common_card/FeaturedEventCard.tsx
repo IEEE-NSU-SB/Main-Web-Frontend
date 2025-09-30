@@ -54,9 +54,9 @@ const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) =
 
 
                 <div className="flex flex-wrap justify-center gap-4 mt-6">
-                    {eventsToShow.map((event) => (
+                    {eventsToShow.map((event, index) => (
                         <div
-                            key={event.id}
+                            key={index}
                             className="w-full md:w-[calc(33.333%-1rem)]"
                         >
                             <article className="bg-white h-[400px] border border-black rounded-md overflow-hidden transition-shadow hover:shadow-lg">

@@ -50,18 +50,19 @@ const ScAgMissionVision: FC<MissionVisionProps> = ({ missionVisionPromise }) => 
     const missionVisionShow = id && elementMapping[id] ? elementMapping[id] : missionVisionData.missionVision;
 
 
-    console.log(missionVisionShow)
+    // console.log(missionVisionShow)
 
 
 
     return (
         <>
             <FadeIn>
-                <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3">
+                <div className="md:max-w-[1065px] w-full mx-auto my-10 px-3">
                     {
-                        missionVisionShow.map((element) => (
-                            <>
-                                {/* mission  */}
+                        missionVisionShow.map((element, index) => (
+                            
+                              <div key={index}>
+                                  {/* mission  */}
                                 <div className='flex my-3 bg-[#006CA5]  md:flex-row flex-col rounded-md border'>
                                     <div className="text-part w-full md:w-1/2 p-7  text-white text-justify">
                                         <h1 className='text-5xl font-bold mb-7'>Mission</h1>
@@ -81,9 +82,10 @@ const ScAgMissionVision: FC<MissionVisionProps> = ({ missionVisionPromise }) => 
                                         <img src={element.vision_image} className='rounded-l-md w-full h-full object-cover' alt="" />
                                     </div>
                                 </div>
+                              </div>
 
 
-                            </>
+                            
                         ))
                     }
                 </div>

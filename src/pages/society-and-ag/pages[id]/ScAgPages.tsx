@@ -3,7 +3,8 @@ import AgBanner from './ScAgBanner';
 import AgParallax from './ScAgParallax';
 import Mega_and_Featured from './Mega_and_Featured';
 import ScAgMissionVision from './ScAgMissionVision';
-import ScAgContact from '../ScAgContact';
+import ScAgContact from './ScAgContact';
+import ScAgAbout from './ScAgAbout';
 
 // parallax fetch 
 const parallaxImgData = async () => {
@@ -18,6 +19,12 @@ const missionVisionData = async () => {
   return fetchData.json();
 }
 const missionVisionPromise = missionVisionData();
+// about fetch 
+const aboutData = async () => {
+  const fetchData = await fetch("/ScAgAbout.json")
+  return fetchData.json();
+}
+const aboutPromise = aboutData();
 
 
 const SocietyOrAg = () => {
@@ -28,6 +35,7 @@ const SocietyOrAg = () => {
       <AgParallax parallaxImagePromise={parallaxImagePromise}></AgParallax>
       <Mega_and_Featured></Mega_and_Featured>
       <ScAgMissionVision missionVisionPromise={missionVisionPromise}></ScAgMissionVision>
+      <ScAgAbout aboutPromise={aboutPromise}></ScAgAbout>
       <ScAgContact></ScAgContact>
     </div>
   );
