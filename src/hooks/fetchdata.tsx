@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const api_domain = import.meta.env.VITE_API_URL
+
 export function useFetchDataAPI({apiUrl}: { apiUrl: string }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
@@ -10,7 +12,7 @@ export function useFetchDataAPI({apiUrl}: { apiUrl: string }) {
         setLoading(true);
 
         // ✅ Fetch from API in production
-        const res = await fetch(apiUrl);
+        const res = await fetch(`${api_domain}/${apiUrl}`);
         if (!res.ok) throw new Error("Failed to fetch");
         const json = await res.json();
         setData(json);
@@ -40,7 +42,8 @@ export function useFetchDataJSON({ path }: { path: string }) {
         setLoading(true);
 
         // Dynamically import JSON file
-        const module = await import(`../${path}`);
+        /* @vite-ignore */
+        const module = await import(/* @vite-ignore */ `../${path}`);
         await new Promise((resolve) => setTimeout(resolve, 300));
         setData(module.default);
       } catch (err) {

@@ -3,7 +3,7 @@ import Wave from "@/components/wave";
 import FadeIn from "@/components/ui/fade-in";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI, useFetchDataJSON } from "@/hooks/fetchdata";
 import Skeleton from "@/components/skeleton";
 
 interface Award {
@@ -15,8 +15,8 @@ interface Award {
 
 const Achievements = () => {
   // ✅ Fetch awards from JSON
-  const { loading, data } = useFetchDataJSON({
-    path: "pages/activities/achievements/data/achievements.json",
+  const { loading, data } = useFetchDataAPI({
+    apiUrl: "main_website/achievements/",
   });
 
   // ✅ Local state for modal
@@ -135,9 +135,7 @@ const Achievements = () => {
                     Year - {selectedAward.year}
                   </p>
                   <div className="w-auto h-0.25 bg-ieee-black-50 mb-5"></div>
-                  <p className="text-gray-700 text-sm text-justify leading-relaxed">
-                    {selectedAward.description}
-                  </p>
+                  <p className="text-gray-700 text-sm text-justify leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedAward.description }}/>
                 </div>
               </div>
             </motion.div>
