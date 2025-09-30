@@ -42,7 +42,7 @@ const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) =
     };
     //    console.log(eventMapping) 
     const eventsToShow = id && eventMapping[id] ? eventMapping[id] : featuredEventsData.all_featured_events;
-    console.log(eventsToShow);
+    // console.log(eventsToShow);
 
     return (
         <>
@@ -56,7 +56,7 @@ const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) =
                 <div className="flex flex-wrap justify-center gap-4 mt-6">
                     {eventsToShow.map((event) => (
                         <div
-                            key={event.id}    
+                            key={event.id}
                             className="w-full md:w-[calc(33.333%-1rem)]"
                         >
                             <article className="bg-white h-[400px] border border-black rounded-md overflow-hidden transition-shadow hover:shadow-lg">
