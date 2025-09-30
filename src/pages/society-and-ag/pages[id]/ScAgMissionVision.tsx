@@ -69,7 +69,7 @@ const ScAgMissionVision: FC<MissionVisionProps> = ({ missionVisionPromise }) => 
                                     <img src={element.mission_image} className='rounded-r-md w-full h-full object-cover' alt="" />
                                 </div>
                             </div>
-                            {/* vision  */}
+                  {/* vision  */}
                             <div className='flex my-6 bg-[#006CA5]  md:flex-row-reverse flex-col rounded-md border'>
                                 <div className="text-part w-full md:w-1/2 p-7  text-white text-justify">
                                     <h1 className='text-5xl font-bold mb-7'>Vision</h1>
