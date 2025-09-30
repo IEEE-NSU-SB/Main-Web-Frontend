@@ -1,104 +1,82 @@
 import { useEffect, useState } from "react";
 import Wave from "@/components/wave";
-import spac24Image from "../../../assets/dummy/image1.png";
 import FadeIn from "@/components/ui/fade-in";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+import Skeleton from "@/components/skeleton";
 
-const awards = [
-  {
-    year: "2025",
-    image: spac24Image,
-    title: "IEEE IAS CMD Chapter Award 2025 - IEEE NSU Industry",
-    description:
-      "We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications. We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications.",
-  },
-  {
-    year: "2024",
-    image: spac24Image,
-    title: "WIE Outstanding SB AG Award - IEEE NSU Student",
-    description:
-      "We are thrilled to announce that IEEE NSU Student Branch, WIE Affinity Group has been honored with the prestigious WIE Outstanding Student Branch Affinity Group Award in the IEEE Bangladesh Section for 2024! This marks the second consecutive year that IEEE NSU SB WIE AG has achieved such recognition.",
-  },
-  {
-    year: "2024",
-    image: spac24Image,
-    title: "Outstanding Student Volunteer Award - IEEE NSU",
-    description:
-      "Huge Congratulations to Our Chair! We are thrilled to announce that Mohammad Iftekhar Bin Ashraf, Chair of IEEE NSU Student Branch, has received the Outstanding Student Volunteer Award 2024 from IEEE Bangladesh Section! This well-deserved award recognizes his amazing work over the past 1.5 years as a chair. During this time, he has tirelessly led this student branch and organized a diverse range of events, including technical, non-technical, professional, humanitarian, and administrative activities.",
-  },
-  {
-    year: "2025",
-    image: spac24Image,
-    title: "IEEE IAS CMD Chapter Award 2025 - IEEE NSU Industry",
-    description:
-      "We are proud to announce that IEEE North South University Industry Applications Society Student Branch Chapter has been awarded the prestigious IEEE IAS CMD Chapter Award 2025 for Outstanding Chapter Performance. What makes this achievement even more special is that we are the only chapter from Bangladesh to have received this honor twice, and we were the first chapter from Bangladesh to win it as well — both under the Small Chapter category! This award reflects our continued commitment to excellence, innovation, and impactful contributions in industrial applications.",
-  },
-  {
-    year: "2024",
-    image: spac24Image,
-    title: "WIE Outstanding SB AG Award - IEEE NSU Student",
-    description:
-      "We are thrilled to announce that IEEE NSU Student Branch, WIE Affinity Group has been honored with the prestigious WIE Outstanding Student Branch Affinity Group Award in the IEEE Bangladesh Section for 2024! This marks the second consecutive year that IEEE NSU SB WIE AG has achieved such recognition.",
-  },
-  {
-    year: "2024",
-    image: spac24Image,
-    title: "Outstanding Student Volunteer Award - IEEE NSU",
-    description:
-      "Huge Congratulations to Our Chair! We are thrilled to announce that Mohammad Iftekhar Bin Ashraf, Chair of IEEE NSU Student Branch, has received the Outstanding Student Volunteer Award 2024 from IEEE Bangladesh Section! This well-deserved award recognizes his amazing work over the past 1.5 years as a chair. During this time, he has tirelessly led this student branch and organized a diverse range of events, including technical, non-technical, professional, humanitarian, and administrative activities.",
-  },
-];
+interface Award {
+  year: string;
+  image: string;
+  title: string;
+  description: string;
+}
 
 const Achievements = () => {
-  const [selectedAward, setSelectedAward] = useState<null | (typeof awards)[0]>(
-    null
-  );
+  // ✅ Fetch awards from JSON
+  const { loading, data } = useFetchDataJSON({
+    path: "pages/activities/achievements/data/achievements.json",
+  });
+
+  // ✅ Local state for modal
+  const [selectedAward, setSelectedAward] = useState<Award | null>(null);
 
   // 🚫 Disable background scroll when modal is open
   useEffect(() => {
-    if (selectedAward) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = selectedAward ? "hidden" : "auto";
   }, [selectedAward]);
+
+  const awards: Award[] = data;
 
   return (
     <>
       <Wave title="Achievements" />
-      <FadeIn>
+      {loading ? (
+        <FadeIn>
+          <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
+            <Skeleton className="h-83 w-83" />
+            <Skeleton className="h-83 w-83" />
+            <Skeleton className="h-83 w-83" />
+            <Skeleton className="h-83 w-83" />
+            <Skeleton className="h-83 w-83" />
+            <Skeleton className="h-83 w-83" />
+          </div>
+        </FadeIn>
+      ) : (
         <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
           {awards.map((award, idx) => (
-            <div
-              key={idx}
-              onClick={() => setSelectedAward(award)}
-              className="relative group cursor-pointer bg-white rounded-md overflow-hidden shadow-[4px_4px_8px_theme('colors.ieee-black.50')] border border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[8px_8px_8px_theme('colors.ieee-black.50')]"
-            >
-              {/* Image */}
-              <img
-                src={award.image}
-                alt={award.title}
-                className="w-82 h-82 object-cover"
-              />
-
-              {/* Year tag */}
-              <span className="absolute top-0 left-0 bg-ieee-blue text-white text-sm font-semibold px-3 py-1 rounded">
-                {award.year}
-              </span>
-
-              {/* Overlay with title (on hover) */}
+            <FadeIn>
               <div
-                className="absolute bottom-0 left-0 w-full bg-ieee-blue bg-opacity-90 text-white text-center 
+                key={idx}
+                onClick={() => setSelectedAward(award)}
+                className="relative group cursor-pointer bg-white rounded-sm overflow-hidden shadow-[4px_4px_10px_theme('colors.ieee-black.25')] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_theme('colors.ieee-black.25')]"
+              >
+                {/* Image */}
+                <img
+                  src={award.image}
+                  alt={award.title}
+                  className="w-83 h-83 object-cover"
+                />
+
+                {/* Year tag */}
+                <span className="absolute top-0 left-0 bg-ieee-blue text-white text-sm font-semibold px-3 py-1 rounded">
+                  {award.year}
+                </span>
+
+                {/* Overlay with title (on hover) */}
+                <div
+                  className="absolute bottom-0 left-0 w-full bg-ieee-blue bg-opacity-90 text-white text-center 
                               text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
                               transition-all duration-500"
-              >
-                {award.title}
+                >
+                  {award.title}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
-      </FadeIn>
+      )}
 
       {/* Modal */}
       <AnimatePresence>
@@ -122,13 +100,13 @@ const Achievements = () => {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedAward(null)}
-                className="absolute top-3 right-5 max-sm:top-1 max-sm:right-3 text-gray-700 hover:text-gray-900 cursor-pointer z-10"
+                className="flex justify-end text-gray-700 hover:text-gray-900 cursor-pointer bg-ieee-white px-8 pt-4"
               >
                 <X size={22} />
               </button>
 
               {/* Scrollable Content */}
-              <div className="relative flex flex-col p-6 px-1 sm:p-6 space-y-4 overflow-y-auto">
+              <div className="relative flex flex-col p-6 px-1 sm:p-6 space-y-4 overflow-y-auto ieee-scrollbar">
                 {/* Image at top (square) */}
                 <div className="w-full flex justify-center">
                   <div className="relative w-64 h-64">
