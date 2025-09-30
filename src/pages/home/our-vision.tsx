@@ -15,12 +15,12 @@ const VisionSection = ({ data,loading }: VisionSectionProps) => {
       <section className="max-w-[1080px] mx-auto py-2 pb-16 px-5 sm:px-12 lg:px-5">
         {loading ? (
           <div className="space-y-2">
-            <Skeleton width="h-4 w-full" />
-            <Skeleton width="h-4 w-full" />
-            <Skeleton width="h-4 w-full" />
-            <Skeleton width="h-4 w-full" />
-            <Skeleton width="h-4 w-full" />
-            <Skeleton width="h-4 w-6/12" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-6/12" />
           </div>
         ) : data ? (
           <p className="text-lg text-ieee-black-75 leading-relaxed text-justify">

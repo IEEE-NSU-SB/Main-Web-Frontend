@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetchDataAPI({apiUrl}) {
+export function useFetchDataAPI({apiUrl}: { apiUrl: string }) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 

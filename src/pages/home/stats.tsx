@@ -105,10 +105,10 @@ const StatsSection = ({ data,loading }: StatsSectionProps) => {
         <ScaleUp>
           {loading ? (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                  <Skeleton width="h-35 w-full"></Skeleton>
-                  <Skeleton width="h-35 w-full"></Skeleton>
-                  <Skeleton width="h-35 w-full"></Skeleton>
-                  <Skeleton width="h-35 w-full"></Skeleton>
+                  <Skeleton className="h-35 w-full"></Skeleton>
+                  <Skeleton className="h-35 w-full"></Skeleton>
+                  <Skeleton className="h-35 w-full"></Skeleton>
+                  <Skeleton className="h-35 w-full"></Skeleton>
             </div>
             ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
