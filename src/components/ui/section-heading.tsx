@@ -1,3 +1,5 @@
+import FadeIn from "./fade-in";
+
 interface SectionHeadingProps {
   title: string;
   widthClass: string; // e.g., 'w-62'
@@ -11,6 +13,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <>
+    <FadeIn>
       <h2 className="max-w-[1080px] mx-auto text-ieee-darkblue-75 text-3xl font-bold mt-10 px-5 max-sm:px-5 max-lg:px-12">
         {title}
       </h2>
@@ -21,6 +24,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         <div className={`h-1 w-2 ${underlineColor} rounded-xs`}></div>
         <div className={`h-1 w-2 ${underlineColor} rounded-xs`}></div>
       </div>
+      </FadeIn>
     </>
   );
 };
