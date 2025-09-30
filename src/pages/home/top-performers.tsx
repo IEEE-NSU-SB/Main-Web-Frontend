@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import dummy from "../../assets/dummy/luffy.jpeg";
+import FadeIn from "@/components/ui/fade-in";
 
 const tabs = [
   {
@@ -73,6 +74,7 @@ export default function TopPerformers() {
   return (
     <div className="max-w-[1080px] mx-auto p-5">
       {/* Tabs */}
+      <FadeIn>
       <div className="relative flex items-center justify-center overflow-hidden h-14">
         <div className="relative flex-1">
           {tabs.map((tab, index) => {
@@ -90,7 +92,7 @@ export default function TopPerformers() {
                   opacity: order < visibleCount ? 1 : 0,
                 }}
                 transition={{ type: "spring", stiffness: 80, damping: 18 }}
-                className={`absolute bottom-[-25px] h-6 flex items-center justify-center px-3 sm:px-4 py-5
+                className={`absolute bottom-[-25px] h-6 flex items-center justify-center px-3 sm:px-4 py-5 cursor-pointer
             ${
               isActive
                 ? "border-b-3 border-ieee-blue-75 text-ieee-blue"
@@ -110,6 +112,7 @@ export default function TopPerformers() {
           })}
         </div>
       </div>
+      </FadeIn>
 
       {/* Content / Carousel with Animated Background */}
       <div className="relative mt-4 rounded overflow-hidden flex items-center justify-center min-h-[22rem] sm:min-h-[20rem] bg-black/40">

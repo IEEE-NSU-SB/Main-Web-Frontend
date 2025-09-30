@@ -124,9 +124,9 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
   const nextSlide = () => scrollToIndex((currentIndex + 1) % images.length);
 
   return (
-    <FadeIn>
-      <div className="w-full py-4 relative">
+    <div className="w-full py-4 relative">
         <SectionHeading title={title} widthClass={`w-${width}`} />
+        <FadeIn>
 
         {/* Left Arrow */}
         <button
@@ -192,8 +192,8 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
             </div>
           ))}
         </div>
-      </div>
     </FadeIn>
+      </div>
   );
 };
 
