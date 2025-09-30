@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Activities
               </span>
-              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {["Events", "News", "Achievements"].map((item) => (
                   <Link
                     key={item}
