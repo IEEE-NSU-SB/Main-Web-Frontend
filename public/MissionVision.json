@@ -1,0 +1,36 @@
+{
+  "missionVision": [
+    {
+      "id": 1,
+      "filteredKey": "ras",
+      "mission_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "mission_description": "Our mission is to create an inclusive environment where learners from every background gain access to structured knowledge, real-world projects, and practical skills. By providing mentorship, guided practice, and strong foundational training, we ensure that students build confidence, remain curious, and develop resilience. Through this approach, we foster a sustainable journey toward lifelong learning and career success.",
+      "vision_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "vision_description": "We envision a future where education empowers individuals to overcome barriers, embrace innovation, and confidently pursue their aspirations. By nurturing creativity, fostering collaboration, and ensuring inclusivity, we build a culture that celebrates diversity and knowledge sharing. This vision encourages people to thrive in a dynamic, ever-changing world, transforming challenges into opportunities while shaping impactful contributions to society through growth, innovation, and shared values."
+    },
+    {
+      "id": 2,
+      "filteredKey": "pes",
+      "mission_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "mission_description": "Our mission is to expand access to quality education through innovative teaching methods and modern technologies. We aim to bridge the gap between traditional learning and practical application by offering interactive programs, digital tools, and project-based opportunities. By supporting students with mentorship, career guidance, and industry exposure, we empower them to build a strong future filled with creativity, adaptability, and professional achievement.",
+       "vision_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "vision_description": "We envision a learning ecosystem where technology and human potential merge to create limitless opportunities. By inspiring students to innovate, collaborate, and share knowledge, we cultivate a generation ready to lead with confidence. This vision encourages inclusivity, resilience, and purpose, ensuring every individual can thrive in a fast-changing world while shaping meaningful solutions that contribute to global progress, sustainability, and a brighter tomorrow."
+    },
+    {
+      "id": 3,
+      "filteredKey": "ias",
+      "mission_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "mission_description": "Our mission is to inspire innovation by equipping learners with the technical expertise and critical thinking skills necessary to excel in modern industries. Through practical projects, hands-on workshops, and problem-solving exercises, we encourage curiosity and creativity. We also provide mentorship and career preparation resources, ensuring that students gain not only theoretical knowledge but also the practical ability to navigate complex challenges confidently and successfully.",
+       "vision_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "vision_description": "We envision a global community where technology bridges cultures, connects people, and transforms societies for the better. Our vision emphasizes inclusivity, innovation, and collaboration across diverse fields, encouraging individuals to solve challenges collectively. By fostering resilience, adaptability, and purpose, we strive to create future leaders who shape impactful solutions. This future embraces growth, shared responsibility, and meaningful contributions that empower societies to achieve sustainable progress worldwide."
+    },
+    {
+      "id": 4,
+      "filteredKey": "wie",
+      "mission_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "mission_description": "Our mission is to promote personal and professional growth by providing accessible opportunities for skill development. We focus on practical training, hands-on experiences, and mentorship programs that prepare learners to meet industry demands. By encouraging creativity, adaptability, and resilience, we nurture individuals who are ready to innovate, solve problems, and succeed. This mission builds a strong foundation for lifelong achievement and meaningful career progression.",
+      "vision_image": "https://i.ibb.co.com/bMCgjVTr/image.png",
+      "vision_description": "We envision a future where growth is not limited by background, geography, or opportunity. By fostering an environment of inclusivity, innovation, and collaboration, we help learners maximize potential. Our vision inspires individuals to embrace challenges, transform industries, and create sustainable progress. This community-driven future encourages learning without barriers, shaping leaders who contribute to society with creativity, responsibility, and purpose, ensuring shared prosperity and global impact."
+    }
+  ]
+}
