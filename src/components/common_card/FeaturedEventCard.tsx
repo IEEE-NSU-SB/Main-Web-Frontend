@@ -46,7 +46,7 @@ const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) =
 
     return (
         <>
-            <div className="max-w-[1100px] w-full mx-auto my-10 px-4">
+            <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3">
                 {eventsToShow.length > 0 && (
                     <SectionHeading title="FEATURED EVENTS" widthClass="w-65"></SectionHeading>
                 )}
@@ -59,7 +59,7 @@ const FeaturedEventCard: FC<FeaturedEventsProps> = ({ featuredEventsPromise }) =
                             key={event.id}    
                             className="w-full md:w-[calc(33.333%-1rem)]"
                         >
-                            <article className="bg-white border border-black rounded-md overflow-hidden transition-shadow hover:shadow-lg">
+                            <article className="bg-white h-[400px] border border-black rounded-md overflow-hidden transition-shadow hover:shadow-lg">
                                 <div className="relative h-[200px]">
                                     <a href="#">
                                         <img
