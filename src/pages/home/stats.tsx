@@ -1,21 +1,23 @@
 import { useRef, useEffect } from "react";
 import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
+
 import ScaleUp from "@/components/ui/scale-up";
 import Skeleton from "@/components/skeleton";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+import ErrorMessage from "../../components/ui/error-msg";
 
-interface Stat {
+type Stat = {
   label: string;
   value: number;
-}
+};
 
-interface StatsSectionProps {
-  data: { stats: Stat[] } | null;
-  loading: boolean;
-}
+const StatsSection = () => {
+  const { loading, data, error, refetch } = useFetchDataJSON({
+    path: "pages/home/data/stats.json",
+  });
 
-const StatsSection = ({ data,loading }: StatsSectionProps) => {
-  const stats = data?.stats ?? [];
+  const stats: Stat[] = data?.stats ?? [];
   const refs = useRef<(HTMLParagraphElement | null)[]>([]);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
 
@@ -26,7 +28,7 @@ const StatsSection = ({ data,loading }: StatsSectionProps) => {
     refs.current.forEach((el, index) => {
       if (!el) return;
 
-      const odometer = new Odometer({ el: el, value: 0 });
+      const odometer = new Odometer({ el, value: 0 });
       let hasRun = false;
 
       const observer = new IntersectionObserver(
@@ -45,14 +47,16 @@ const StatsSection = ({ data,loading }: StatsSectionProps) => {
     });
   }, [stats]);
 
-  // Shapes move with mouse (same as before)
+  // Shapes move with mouse
   useEffect(() => {
     const createShapes = () => {
       if (!backgroundRef.current) return;
       const shapeTypes = ["square", "circle", "triangle", "rectangle"];
       for (let i = 0; i < 40; i++) {
         const shape = document.createElement("div");
-        shape.className = `shape ${shapeTypes[Math.floor(Math.random() * shapeTypes.length)]}`;
+        shape.className = `shape ${
+          shapeTypes[Math.floor(Math.random() * shapeTypes.length)]
+        }`;
 
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
@@ -74,7 +78,8 @@ const StatsSection = ({ data,loading }: StatsSectionProps) => {
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
 
-      const shapes = backgroundRef.current?.querySelectorAll<HTMLDivElement>(".shape");
+      const shapes =
+        backgroundRef.current?.querySelectorAll<HTMLDivElement>(".shape");
       shapes?.forEach((shape) => {
         const initialX = parseFloat(shape.dataset.initialX || "0");
         const initialY = parseFloat(shape.dataset.initialY || "0");
@@ -92,31 +97,41 @@ const StatsSection = ({ data,loading }: StatsSectionProps) => {
     return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const boxClasses = "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
-  const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer text-stroke";
+  const boxClasses =
+    "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
+  const valueClasses =
+    "text-3xl md:text-5xl font-bold mb-2 m-8 odometer text-stroke";
   const labelClasses = "text-sm md:text-lg font-bold mb-8";
 
   return (
     <section className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue">
-      <div ref={backgroundRef} id="geometric-background" className="absolute inset-0 z-0"></div>
+      <div
+        ref={backgroundRef}
+        id="geometric-background"
+        className="absolute inset-0 z-0"
+      ></div>
       <div className="absolute inset-0 bg-black/30 z-0"></div>
 
       <div className="relative max-w-[1040px] mx-auto z-10">
         <ScaleUp>
           {loading ? (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                  <Skeleton className="h-35 w-full"></Skeleton>
-                  <Skeleton className="h-35 w-full"></Skeleton>
-                  <Skeleton className="h-35 w-full"></Skeleton>
-                  <Skeleton className="h-35 w-full"></Skeleton>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
             </div>
-            ) : (
+          ) : error ? (
+            <ErrorMessage message={"Failed to load stats"} onRetry={refetch} />
+          ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {stats.map((stat, index) => (
                 <div key={index} className={boxClasses}>
                   <p
                     className={valueClasses}
-                    ref={(el) => { refs.current[index] = el; }}
+                    ref={(el) => {
+                      refs.current[index] = el;
+                    }}
                   >
                     0
                   </p>

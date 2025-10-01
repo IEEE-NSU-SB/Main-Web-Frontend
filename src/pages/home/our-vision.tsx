@@ -1,13 +1,13 @@
 import FadeIn from "@/components/ui/fade-in";
 import Skeleton from "@/components/skeleton";
 import SectionHeading from "@/components/ui/section-heading";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+import ErrorMessage from "../../components/ui/error-msg";
 
-interface VisionSectionProps {
-  data: { text: string } | null;
-  loading: boolean;
-}
-
-const VisionSection = ({ data,loading }: VisionSectionProps) => {
+const VisionSection = () => {
+  const { loading, data, error, refetch } = useFetchDataJSON({
+    path: "pages/home/data/our-vision.json",
+  });
 
   return (
     <FadeIn>
@@ -22,12 +22,12 @@ const VisionSection = ({ data,loading }: VisionSectionProps) => {
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-6/12" />
           </div>
-        ) : data ? (
+        ) : error ? (
+          <ErrorMessage message={"Failed to load stats"} onRetry={refetch} />
+        ) : (
           <p className="text-lg text-ieee-black-75 leading-relaxed text-justify">
             {data.text}
           </p>
-        ) : (
-          <p className="text-red-500 px-4">Failed to load vision statement.</p>
         )}
       </section>
     </FadeIn>
