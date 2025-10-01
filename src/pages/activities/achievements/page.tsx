@@ -3,7 +3,7 @@ import Wave from "@/components/wave";
 import FadeIn from "@/components/ui/fade-in";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useFetchDataAPI, useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/skeleton";
 
 interface Award {
@@ -14,8 +14,8 @@ interface Award {
 }
 
 const Achievements = () => {
-  // ✅ Fetch awards from JSON
-  const { loading, data } = useFetchDataAPI({
+  // ✅ Fetch awards from API (ensure your hook exposes error + refetch)
+  const { loading, data, error, refetch } = useFetchDataAPI({
     apiUrl: "main_website/achievements/",
   });
 
@@ -27,28 +27,46 @@ const Achievements = () => {
     document.body.style.overflow = selectedAward ? "hidden" : "auto";
   }, [selectedAward]);
 
-  const awards: Award[] = data;
+  const awards: Award[] = data || [];
 
   return (
     <>
       <Wave title="Achievements" />
-      {loading ? (
+
+      {/* ❌ Error State */}
+      {error && (
         <FadeIn>
-          <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
-            <Skeleton className="h-83 w-83" />
-            <Skeleton className="h-83 w-83" />
-            <Skeleton className="h-83 w-83" />
-            <Skeleton className="h-83 w-83" />
-            <Skeleton className="h-83 w-83" />
-            <Skeleton className="h-83 w-83" />
+          <div className="flex flex-col items-center justify-center text-center my-10 space-y-4">
+            <p className="text-red-600 font-medium">
+              Failed to load achievements. Please try again.
+            </p>
+            <button
+              onClick={() => (refetch ? refetch() : window.location.reload())}
+              className="bg-ieee-blue text-white px-4 py-2 rounded-md shadow hover:bg-ieee-blue/90 transition"
+            >
+              Retry
+            </button>
           </div>
         </FadeIn>
-      ) : (
+      )}
+
+      {/* ⏳ Loading Skeleton */}
+      {loading && !error && (
+        <FadeIn>
+          <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-83 w-83" />
+            ))}
+          </div>
+        </FadeIn>
+      )}
+
+      {/* ✅ Data Display */}
+      {!loading && !error && (
         <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
           {awards.map((award, idx) => (
-            <FadeIn>
+            <FadeIn key={idx}>
               <div
-                key={idx}
                 onClick={() => setSelectedAward(award)}
                 className="relative group cursor-pointer bg-white rounded-sm overflow-hidden shadow-[4px_4px_10px_theme('colors.ieee-black.25')] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_theme('colors.ieee-black.25')]"
               >
@@ -64,7 +82,7 @@ const Achievements = () => {
                   {award.year}
                 </span>
 
-                {/* Overlay with title (on hover) */}
+                {/* Overlay with title */}
                 <div
                   className="absolute bottom-0 left-0 w-full bg-ieee-blue bg-opacity-90 text-white text-center 
                               text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
@@ -107,7 +125,7 @@ const Achievements = () => {
 
               {/* Scrollable Content */}
               <div className="relative flex flex-col p-6 px-1 sm:p-6 space-y-4 overflow-y-auto ieee-scrollbar">
-                {/* Image at top (square) */}
+                {/* Image at top */}
                 <div className="w-full flex justify-center">
                   <div className="relative w-64 h-64">
                     <img
@@ -115,12 +133,11 @@ const Achievements = () => {
                       alt={selectedAward.title}
                       className="w-full h-full object-cover rounded shadow-md z-2 relative"
                     />
-                    {/* Blurred background for image */}
+                    {/* Blurred background */}
                     <div
                       className="absolute left-[-200px] inset-0 bg-cover bg-center blur-sm opacity-90 rounded-md w-160 max-sm:w-0"
                       style={{ backgroundImage: `url(${selectedAward.image})` }}
                     >
-                      {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
                     </div>
                   </div>
@@ -135,7 +152,12 @@ const Achievements = () => {
                     Year - {selectedAward.year}
                   </p>
                   <div className="w-auto h-0.25 bg-ieee-black-50 mb-5"></div>
-                  <p className="text-gray-700 text-sm text-justify leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedAward.description }}/>
+                  <p
+                    className="text-gray-700 text-sm text-justify leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: selectedAward.description,
+                    }}
+                  />
                 </div>
               </div>
             </motion.div>
