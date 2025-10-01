@@ -62,13 +62,13 @@ const ScAgAbout: FC<AGAboutProps> = ({ aboutPromise }) => {
                                     <p>{element.question_2}</p>
                                 </div>
                             </div>
-                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-r md:border-t mb-5'>
+                            <div className='flex flex-col text-justify md:p-8 p-3  md:border-t mb-5'>
                                 <div className='md:max-w-[420px] md:mx-auto'>
                                     <h1 className="text-3xl mb-6">What activities do we usually do?</h1>
                                     <p>{element.question_3}</p>
                                 </div>
                             </div>
-                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-l md:border-t mb-5'>
+                            <div className='flex flex-col text-justify md:p-8 p-3  md:border-l-1 md:border-t'>
                                 <div className='md:max-w-[420px] md:mx-auto'>
                                     <h1 className="text-3xl mb-6">How to join IEEE NSU {element.ag_group_name} SBC?</h1>
                                     <p>{element.question_4}</p>
