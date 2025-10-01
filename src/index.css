@@ -313,6 +313,12 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Glow on hover */
+.bg-glow:hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 98, 155, 0.7), 0 0 40px rgba(51, 160, 204, 0.5);
+}
+
 .bg-gradient-animate {
   background: linear-gradient(90deg, #00629b, #33a0cc, #00629b);
   background-size: 200% 200%;
