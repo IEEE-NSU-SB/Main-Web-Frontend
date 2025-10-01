@@ -16,7 +16,7 @@ interface Award {
 const Achievements = () => {
   // ✅ Fetch awards from API (ensure your hook exposes error + refetch)
   const { loading, data, error, refetch } = useFetchDataAPI({
-    apiUrl: "main_website/achievements/",
+    apiUrl: "main_website/get_achievements/",
   });
 
   // ✅ Local state for modal
