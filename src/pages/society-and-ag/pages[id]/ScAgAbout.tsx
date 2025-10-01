@@ -40,47 +40,46 @@ const ScAgAbout: FC<AGAboutProps> = ({ aboutPromise }) => {
         ),
     }
 
-    // Get the filtered data based on the id
+    // Get the filtered data based on the id  
     const agAboutShow = id && elementMapping[id] ? elementMapping[id] : agAboutData.agAbout;
     console.log(agAboutShow)
 
     return (
-        <div className="w-full bg-black text-white mx-auto my-10 px-3">
+        <div className="w-full bg-black text-white mx-auto my-10 md:px-0 px-3">
             {agAboutShow.map(element => {
                 return (
-                    <div key={element.id} className='md:max-w-[1040px] mx-auto'>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 '>
-                            <div className='flex flex-col'>
-                                <h1>What is {element.ag_group_name}?</h1>
-                                <p>{element.question_1}</p>
+                    <div key={element.id}>
+                        <div className='grid grid-cols-1 md:grid-cols-2'>
+                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-r md:border-b md:mb-0 mb-5'>
+                                <div className='md:max-w-[420px] md:mx-auto'>
+                                    <h1 className="text-3xl mb-6">What is {element.ag_group_name}?</h1>
+                                    <p>{element.question_1}</p>
+                                </div>
                             </div>
-                            <div className='flex flex-col'>
-                                <h1>Why join {element.ag_group_name}?</h1>
-                                <p>{element.question_2}</p>
+                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-l md:border-b md:mb-0 mb-5'>
+                                <div className='md:max-w-[420px] md:mx-auto'>
+                                    <h1 className="text-3xl mb-6">Why join {element.ag_group_name}?</h1>
+                                    <p>{element.question_2}</p>
+                                </div>
                             </div>
-                            <div className='flex flex-col'>
-                                <h1>What activities do we usually do?</h1>
-                                <p>{element.question_3}</p>
+                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-r md:border-t mb-5'>
+                                <div className='md:max-w-[420px] md:mx-auto'>
+                                    <h1 className="text-3xl mb-6">What activities do we usually do?</h1>
+                                    <p>{element.question_3}</p>
+                                </div>
                             </div>
-                            <div className='flex flex-col'>
-                                <h1>How to join IEEE NSU {element.ag_group_name} SBC?</h1>
-                                <p>{element.question_4}</p>
+                            <div className='flex flex-col text-justify md:p-8 p-3 md:border-l md:border-t mb-5'>
+                                <div className='md:max-w-[420px] md:mx-auto'>
+                                    <h1 className="text-3xl mb-6">How to join IEEE NSU {element.ag_group_name} SBC?</h1>
+                                    <p>{element.question_4}</p>
+                                </div>
                             </div>
-
-
-
-
                         </div>
-                        {/* <div></div>
-                        <div></div>
-                        <div></div> */}
-
                     </div>
                 );
             })}
         </div>
     )
-
 }
 
 export default ScAgAbout;
