@@ -1,4 +1,5 @@
 
+import FadeIn from '@/components/ui/fade-in';
 import { use, type FC } from 'react';
 import { useParams } from 'react-router';
 
@@ -45,7 +46,8 @@ const ScAgAbout: FC<AGAboutProps> = ({ aboutPromise }) => {
     console.log(agAboutShow)
 
     return (
-        <div className="w-full bg-black text-white mx-auto my-10 md:px-0 px-3">
+        <FadeIn>
+                <div className="w-full bg-black text-white mx-auto my-10 md:px-0 px-3">
             {agAboutShow.map(element => {
                 return (
                     <div key={element.id}>
@@ -79,6 +81,8 @@ const ScAgAbout: FC<AGAboutProps> = ({ aboutPromise }) => {
                 );
             })}
         </div>
+        </FadeIn>
+        
     )
 }
 
