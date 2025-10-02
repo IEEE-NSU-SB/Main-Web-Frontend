@@ -372,6 +372,14 @@
     transform: translateX(25%);
   }
 }
+@keyframes bgScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
 
 /* Custom Scrollbar */
 .ieee-scrollbar::-webkit-scrollbar {
