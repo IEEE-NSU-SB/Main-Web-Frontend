@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import spac24Image from "../../assets/dummy/image1.png"; // placeholder image
 import SectionHeading from "../ui/section-heading";
 import FadeIn from "../ui/fade-in";
 import { Calendar, FolderClosed, NotebookPen, Search } from "lucide-react";
