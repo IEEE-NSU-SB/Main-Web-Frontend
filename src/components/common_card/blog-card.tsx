@@ -9,6 +9,7 @@ import ErrorMessage from "../ui/error-msg";
 import { Link } from "react-router-dom";
 
 export interface EventData {
+  id: number;
   image: string;
   date: string;
   author: string;
@@ -24,6 +25,8 @@ const BlogCard: React.FC = () => {
   const [dateOrder, setDateOrder] = useState<"latest" | "oldest">("latest");
   const [selectedCategory, setSelectedCategory] =
     useState<string>("All categories");
+
+  const isLandingPage = location.pathname === "/";
 
   // Fetch JSON
   const {
@@ -130,8 +133,8 @@ const BlogCard: React.FC = () => {
       {!loading && !error && (
         <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-5 px-5 max-sm:px-5">
           {filteredEvents.length > 0 ? (
-            filteredEvents.map((event, index) => (
-              <FadeIn key={index}>
+            filteredEvents.map((event) => (
+              <FadeIn key={event.id}>
                 <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
                     <Link to={event.link}>
@@ -175,6 +178,17 @@ const BlogCard: React.FC = () => {
           ) : (
             <p className="text-ieee-gray-15">No blogs found.</p>
           )}
+        </div>
+      )}
+
+      {/* "See All Blogs" button only on landing page */}
+      {isLandingPage && (
+        <div className="flex justify-center mt-8">
+          <Link to="/blogs">
+            <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+              See All Blogs
+            </button>
+          </Link>
         </div>
       )}
     </div>
