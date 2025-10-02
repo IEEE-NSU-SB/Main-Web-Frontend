@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "../skeleton";
 import ErrorMessage from "../ui/error-msg";
+import { Link } from "react-router-dom";
 
 export interface EventData {
   image: string;
@@ -14,6 +15,7 @@ export interface EventData {
   category: string;
   title: string;
   description: string;
+  link: string;
 }
 
 const BlogCard: React.FC = () => {
@@ -23,7 +25,7 @@ const BlogCard: React.FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<string>("All categories");
 
-  // 🔹 Fetch JSON
+  // Fetch JSON
   const {
     loading,
     data: events,
@@ -33,13 +35,13 @@ const BlogCard: React.FC = () => {
     apiUrl: "main_website/get_blogs/",
   });
 
-  // 🔹 Unique categories
+  // Unique categories
   const categories = [
     "All categories",
     ...Array.from(new Set(events?.map((e) => e.category))),
   ];
 
-  // 🔹 Filter & search
+  // Filter & search
   let filteredEvents =
     events?.filter((event) =>
       (event.title + event.author + event.category + event.description)
@@ -75,7 +77,7 @@ const BlogCard: React.FC = () => {
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90 text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-ieee-gray-15 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75 text-sm"
             />
           </div>
 
@@ -86,7 +88,7 @@ const BlogCard: React.FC = () => {
               onChange={(e) =>
                 setDateOrder(e.target.value as "latest" | "oldest")
               }
-              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90"
+              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
             >
               <option value="latest">Date: Latest</option>
               <option value="oldest">Date: Oldest</option>
@@ -96,7 +98,7 @@ const BlogCard: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-ieee-darkblue-90 focus:border-ieee-darkblue-90"
+              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
             >
               {categories.map((cat, idx) => (
                 <option key={idx} value={cat}>
@@ -132,11 +134,13 @@ const BlogCard: React.FC = () => {
               <FadeIn key={index}>
                 <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
-                    />
+                    <Link to={event.link}>
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
+                      />
+                    </Link>
                   </div>
                   <div className="p-4 rounded-sm">
                     <div className="flex items-center gap-2 text-sm font-semibold text-ieee-gray mb-1">
@@ -155,16 +159,21 @@ const BlogCard: React.FC = () => {
                     <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75 h-12">
                       {event.title}
                     </h3>
-                    <p className="text-ieee-black-75 mb-4 line-clamp-3 text-justify" dangerouslySetInnerHTML={{__html: event.description}}/>
-                    <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border-1 border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
-                      Read More
-                    </button>
+                    <p
+                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify"
+                      dangerouslySetInnerHTML={{ __html: event.description }}
+                    />
+                    <Link to={event.link}>
+                      <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+                        Read More
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </FadeIn>
             ))
           ) : (
-            <p className="text-gray-500">No blogs found.</p>
+            <p className="text-ieee-gray-15">No blogs found.</p>
           )}
         </div>
       )}
