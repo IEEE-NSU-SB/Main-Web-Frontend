@@ -4,7 +4,7 @@ const api_domain = import.meta.env.VITE_API_URL;
 
 export function useFetchDataAPI<T = any>({ apiUrl }: { apiUrl: string }) {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<T[] | null>(null);
+  const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {

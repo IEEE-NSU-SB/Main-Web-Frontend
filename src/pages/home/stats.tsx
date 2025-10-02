@@ -4,7 +4,7 @@ import "odometer/themes/odometer-theme-default.css";
 
 import ScaleUp from "@/components/ui/scale-up";
 import Skeleton from "@/components/skeleton";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "../../components/ui/error-msg";
 
 type Stat = {
@@ -12,9 +12,13 @@ type Stat = {
   value: number;
 };
 
+type StatsResponse = {
+  stats: Stat[];
+};
+
 const StatsSection = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "pages/home/data/stats.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<StatsResponse>({
+    apiUrl: "main_website/get_sc_ag_stats/",
   });
 
   const stats: Stat[] = data?.stats ?? [];

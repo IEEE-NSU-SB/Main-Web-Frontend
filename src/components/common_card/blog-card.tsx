@@ -3,7 +3,7 @@ import SectionHeading from "../ui/section-heading";
 import FadeIn from "../ui/fade-in";
 import { Calendar, FolderClosed, NotebookPen, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "../skeleton";
 import ErrorMessage from "../ui/error-msg";
 
@@ -29,8 +29,8 @@ const BlogCard: React.FC = () => {
     data: events,
     error,
     refetch,
-  } = useFetchDataJSON<EventData[]>({
-    path: "data/blog-card.json",
+  } = useFetchDataAPI<EventData[]>({
+    apiUrl: "main_website/get_blogs/",
   });
 
   // 🔹 Unique categories
@@ -134,7 +134,7 @@ const BlogCard: React.FC = () => {
                   <div className="overflow-hidden h-48 w-full">
                     <img
                       src={event.image}
-                      alt={`Event ${index}`}
+                      alt={event.title}
                       className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -155,9 +155,7 @@ const BlogCard: React.FC = () => {
                     <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75 h-12">
                       {event.title}
                     </h3>
-                    <p className="text-ieee-black-75 mb-4 line-clamp-3 text-justify">
-                      {event.description}
-                    </p>
+                    <p className="text-ieee-black-75 mb-4 line-clamp-3 text-justify" dangerouslySetInnerHTML={{__html: event.description}}/>
                     <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border-1 border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
                       Read More
                     </button>
