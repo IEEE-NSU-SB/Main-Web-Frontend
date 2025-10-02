@@ -31,11 +31,7 @@ const Wave: React.FC<WaveProps> = ({ title, subtitle }) => {
           {title}
         </h2>
         {subtitle && (
-          <h2
-            className={`text-ieee-white text-[20px] mx-5 `}
-          >
-            {subtitle}
-          </h2>
+          <h2 className={`text-ieee-white text-[20px] mx-5 `}>{subtitle}</h2>
         )}
       </div>
 

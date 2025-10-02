@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import Wave from "@/components/wave";
-import spac24Image from "../../../assets/dummy/image1.png"; // placeholder image
+import spac24Image from "../../../assets/dummy/image1.png";
 import FadeIn from "@/components/ui/fade-in";
 
 const papers = [
