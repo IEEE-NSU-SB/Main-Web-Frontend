@@ -35,7 +35,9 @@ const BlogCard: React.FC = () => {
     error,
     refetch,
   } = useFetchDataAPI<EventData[]>({
-    apiUrl: "main_website/get_blogs/",
+    apiUrl: isLandingPage 
+    ? "main_website/get_blogs/landing/"
+    : "main_website/get_blogs/"
   });
 
   // Unique categories
