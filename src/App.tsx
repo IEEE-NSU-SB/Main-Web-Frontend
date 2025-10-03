@@ -8,7 +8,7 @@ import {
 // Global Components
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import ScrollToTopButton from "./components/ui/scroll-to-top";
+import ScrollToTopButton from "./components/ui/scroll-to-top-btn";
 
 import HomePage from "./pages/home/page";
 import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
@@ -25,6 +25,7 @@ import Toolkit from "./pages/publications/toolkit/pages";
 import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
+import ScrollToTop from "./components/ui/scroll-to-top";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
@@ -41,6 +42,7 @@ const MainLayout = () => {
 const App = () => {
   return (
     <Router>
+      <ScrollToTop/>
       <Routes>
         {/* Welcome Page without Navbar/Footer */}
         <Route path="/welcome-page" element={<WelcomePage />} />
