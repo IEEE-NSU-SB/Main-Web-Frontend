@@ -33,29 +33,31 @@ const welcomePage = () => {
         <div className="flex flex-col md:flex-row items-center gap-2 sm:gap-3 text-white text-xl sm:text-2xl md:text-2xl cursor-pointer">
           <img className="w-8 h-8 sm:w-10 sm:h-10 " src={INSB} alt="" />
           <a href="https://ieeensusb.org/" className="flex gap-1">
-            <span className="text-yellow-400">IEEE</span>
+            <span style={{color:"var(--color-ieee-darkyellow)"}} >IEEE</span>
             <span> NSU SB</span>
           </a>
         </div>
         
 
         <ul className="flex flex-row gap-4 text-white">
-          <li><a className="text-xl hover:text-yellow-400" href="">Developed By</a></li>
-          <li><a className="text-xl hover:text-yellow-400" href="https://ieeensusb.org/">Central Website</a></li>
+          <li><a className="text-xl hover:text-[var(--color-ieee-darkyellow)]" href="">Developed By</a></li>
+          <li><a className="text-xl hover:text-[var(--color-ieee-darkyellow)]" href="https://ieeensusb.org/">Central Website</a></li>
         </ul>
 
       </div>
       {/* Buttons and middle text */}
       <div className="flex flex-col gap-2 py-60 md:px-50 px-16 items-start justify-start sm:justify-center min-h-screen text-center"> 
       
-        <h1  className="text-yellow-400 text-2xl md:text-6xl font-bold text-center tracking-tight leading-tight">IEEE NSU STUDENT BRANCH</h1>
+        <h1 style={{color:"var(--color-ieee-darkyellow)"}} className=" text-2xl md:text-6xl font-bold text-center tracking-tight leading-tight">IEEE NSU STUDENT BRANCH</h1>
 
         <TextType 
-            className="text-2xl font-normal text-yellow-400 leading-relaxed"
+            style={{color:"var(--color-ieee-darkyellow)"}}
+            className="text-2xl font-normal leading-relaxed"
             text={["Make IEEE NSU SB an Exemplary Student Branch Again", "Advancing Technology for Humanity !"]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
+          
             cursorCharacter="|"
         />
         {/* " items-center md:flex-row md:justify-end gap-3 md:gap-5" */}
@@ -64,13 +66,8 @@ const welcomePage = () => {
           <Button>Signup </Button>
             
         </div>
-
-        
       </div>
     </div>
-
-    
-    
   )
 }
 
