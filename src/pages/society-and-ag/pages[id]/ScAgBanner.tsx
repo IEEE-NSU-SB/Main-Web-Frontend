@@ -13,7 +13,7 @@ const AgBanner = () => {
     const pageContent: Record<string, JSX.Element> = {
         "ieee-nsu-ras-sbc": (
             <>
-                <div className='flex md:w-[1100px]  mx-auto flex-col-reverse md:flex-row p-4 items-center gap-5 mb-5'>
+                <div className='flex md:max-w-[1065px]  mx-auto flex-col-reverse md:flex-row px-3 py-4 items-center gap-5 mb-5'>
                     <div className='flex-1'>
                         <h2 className="font-bold text-4xl">ABOUT RAS</h2>
                         <div className="flex gap-1 max-w-[1000px]  mt-2 mb-4  max-sm:px"><div className="h-1 w-42 bg-[#602569] rounded-xs"></div><div className="h-1 w-2 bg-[#602569] rounded-xs"></div><div className="h-1 w-2 bg-[#602569] rounded-xs"></div></div>
@@ -28,7 +28,7 @@ const AgBanner = () => {
         ),
         "ieee-nsu-pes-sbc": (
             <>
-                <div className='flex md:w-[1100px]  mx-auto flex-col-reverse md:flex-row p-4 items-center gap-5 mb-5'>
+                <div className='flex md:max-w-[1065px]  mx-auto flex-col-reverse md:flex-row px-3 py-4 items-center gap-5 mb-5'>
                     <div className='flex-1'>
                         <h2 className="font-bold text-4xl">ABOUT PES</h2>
                         <div className="flex gap-1 max-w-[1100px]  mt-2 mb-4  max-sm:px"><div className="h-1 w-42 bg-[#679B41] rounded-xs"></div><div className="h-1 w-2 bg-[#679B41] rounded-xs"></div><div className="h-1 w-2 bg-[#679B41] rounded-xs"></div></div>
@@ -44,7 +44,7 @@ const AgBanner = () => {
         ),
         "ieee-nsu-ias-sbc": (
             <>
-                <div className='flex md:w-[1100px]  mx-auto flex-col-reverse md:flex-row p-4 items-center gap-5 mb-5'>
+                <div className='flex md:max-w-[1065px]  mx-auto flex-col-reverse md:flex-row px-3 py-4 items-center gap-5 mb-5'>
                     <div className='flex-1'>
                         <h2 className="font-bold text-4xl">ABOUT IAS</h2>
                         <div className="flex gap-1 max-w-[1000px]  mt-2 mb-4  max-sm:px"><div className="h-1 w-42 bg-[#0F8E4B] rounded-xs"></div><div className="h-1 w-2 bg-[#0F8E4B] rounded-xs"></div><div className="h-1 w-2 bg-[#0F8E4B] rounded-xs"></div></div>
@@ -65,7 +65,7 @@ const AgBanner = () => {
         ),
         "ieee-nsu-wie-ag": (
             <>
-                <div className='flex md:w-[1100px]  mx-auto flex-col-reverse md:flex-row p-4 items-center gap-5 mb-5'>
+                <div className='flex md:max-w-[1065px]  mx-auto flex-col-reverse md:flex-row px-3 py-4 items-center gap-5 mb-5'>
                     <div className='flex-1'>
                         <h2 className="font-bold text-4xl">ABOUT WIE</h2>
                         <div className="flex gap-1 max-w-[1000px]  mt-2 mb-4  max-sm:px"><div className="h-1 w-42 bg-[#066697] rounded-xs"></div><div className="h-1 w-2 bg-[#066697] rounded-xs"></div><div className="h-1 w-2 bg-[#066697] rounded-xs"></div></div>

@@ -71,7 +71,7 @@ const contactInfo = [
 function Footer() {
   return (
     <footer className="bg-[#252525] py-8">
-        <FadeIn>
+      <FadeIn>
         <div className="mx-auto px-8">
           {/* Logos */}
           <div className="flex flex-row items-center justify-evenly mb-6">
@@ -142,8 +142,8 @@ function Footer() {
             </p>
           </div>
         </div>
-    </FadeIn>
-      </footer>
+      </FadeIn>
+    </footer>
   );
 }
 

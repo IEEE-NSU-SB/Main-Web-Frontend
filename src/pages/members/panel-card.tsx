@@ -11,12 +11,12 @@ interface Counselor {
   linkedin?: string;
   facebook?: string;
   email?: string;
-  profileLink?: string; // if member profile exists
+  profileLink?: string;
 }
 
 interface PanelCardProps {
   counselors: Counselor[];
-  sectionTitle: string; // new prop
+  sectionTitle: string;
 }
 
 const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
@@ -39,12 +39,12 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
               className="relative w-[230px] max-md:w-[250px] bg-gradient-to-t from-ieee-darkblue via-ieee-blue to-[#00B5E2] 
              rounded-[10px_69px_10px_10px] shadow-lg border border-ieee-darkblue 
              transition-all duration-500 hover:rounded-lg overflow-hidden
-             group bg-gradient-animate-card" // add group
+             group bg-gradient-animate-card"
             >
               {/* Image */}
               <div
                 className="w-[250px] h-[250px] bg-ieee-white rounded-[10px_69px_10px_69px] overflow-hidden 
-               transition-all duration-500 group-hover:rounded-none" // apply on group hover
+               transition-all duration-500 group-hover:rounded-none"
               >
                 <a
                   href={counselor.profileLink || "#"}
@@ -56,7 +56,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       counselor.picture || "/images/default_profile_picture.png"
                     }
                     alt={counselor.name}
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" // group hover scale
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
                 </a>
               </div>

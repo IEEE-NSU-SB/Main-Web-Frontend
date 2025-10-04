@@ -313,6 +313,12 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Glow on hover */
+.bg-glow:hover {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 98, 155, 0.7), 0 0 40px rgba(51, 160, 204, 0.5);
+}
+
 .bg-gradient-animate {
   background: linear-gradient(90deg, #00629b, #33a0cc, #00629b);
   background-size: 200% 200%;
@@ -365,4 +371,23 @@
   100% {
     transform: translateX(25%);
   }
+}
+
+/* Custom Scrollbar */
+.ieee-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ieee-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ieee-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00629B, #0096D6); /* ieee-blue gradient */
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.ieee-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #00629B;
 }
