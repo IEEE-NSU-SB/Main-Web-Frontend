@@ -1,18 +1,20 @@
 import Wave from "@/components/wave"
 
-import insb from "@/assets/logo/insb.gif"
 import insbPng from "@/assets/logo/insb.png"
 import ras from "@/assets/logo/ras.png"
 import pes from "@/assets/logo/pes.png"
 import ias from "@/assets/logo/ias.png"
 import wie from "@/assets/logo/wie.png"
+import insbMain from "@/assets/logo/insbMain.png"
+import FadeIn from "@/components/ui/fade-in";
+
 
 const logos = [
   {
     title: "IEEE NSU SB Logo",
-    img: insb,
+    img: insbMain,
     colors: ["Blue: #137AAC", "Yellow: #FEC937", "White: #F7FAFC"],
-    file: insb
+    file: insbMain
   },
   {
     title: "IEEE NSU SB Logo (Rectangular)",
@@ -46,50 +48,54 @@ const logos = [
   },
 ]
 
-const pages = () => {
+const Pages = () => {
   return (
     <>
       <Wave title="Toolkit" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 pb-20">
-        {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="w-75 bg-white rounded-3xl shadow-lg p-6 flex flex-col items-center text-center border hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full"
-          >
-            <img src={logo.img} alt={logo.title} className="h-20 mb-4 object-contain" />
-            <h4 className="text-lg font-bold mb-2">{logo.title}</h4>
-
-            <p className="font-semibold mb-2">Color codes</p>
-            <ul className="flex flex-wrap justify-center gap-4 mb-4">
-              {logo.colors.map((color, i) => {
-                const [name, hex] = color.split(":")
-                return (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <span
-                      className="w-4 h-4 rounded-full border shadow-sm"
-                      style={{ backgroundColor: hex.trim() }}
-                    ></span>
-                    <span className="whitespace-nowrap">{name}: {hex}</span>
-                  </li>
-                )
-              })}
-            </ul>
-
-            <div className="flex-grow" />
-
-            <a
-              href={logo.file}
-              download
-              className="px-6 py-2 bg-blue-900 text-white border border-blue-900 rounded-none hover:bg-transparent hover:text-blue-900 transition-colors"
+      <section className="max-w-[1080px] mx-auto px-0 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+          {logos.map((logo, index) => (
+            <FadeIn key={index}>
+            <div
+              key={index}
+              className="w-[295px] bg-white rounded-2xl shadow-lg p-6 flex flex-col text-center border hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full"
             >
-              Download PNG
-            </a>
-          </div>
-        ))}
-      </div>
+              <img src={logo.img} alt={logo.title} className="h-20 mx-auto mb-4 object-contain" />
+              <h4 className="text-lg font-bold">{logo.title}</h4>
+
+              <div className={`${logo.title === "IEEE NSU SB Logo (Rectangular)" ? "mt-4" : "mt-10"}`}>
+                <p className="font-semibold mb-2">Color codes</p>
+                <ul className="flex flex-wrap justify-center gap-4 mb-6">
+                  {logo.colors.map((color, i) => {
+                    const [name, hex] = color.split(":")
+                    return (
+                      <li key={i} className="flex items-center gap-2 text-sm">
+                        <span
+                          className="w-4 h-4 rounded-full border shadow-sm"
+                          style={{ backgroundColor: hex.trim() }}
+                        ></span>
+                        <span>{name}: {hex}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+
+              <a
+                href={logo.file}
+                download
+                className="mt-auto px-6 py-2 bg-blue-900 text-white border border-blue-900 rounded-md hover:bg-transparent hover:text-blue-900 transition-colors"
+              >
+                Download PNG
+              </a>
+            </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
     </>
   )
 }
 
-export default pages
+export default Pages
