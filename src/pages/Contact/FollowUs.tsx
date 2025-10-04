@@ -1,3 +1,4 @@
+import FadeIn from "@/components/ui/fade-in";
 import React, { useEffect, useState } from "react";
 
 const FollowUs: React.FC = () => {
@@ -51,16 +52,19 @@ const FollowUs: React.FC = () => {
           animation: blink 1s infinite;
         }
       `}</style>
-      <div className="min-h-[150px] h-auto bg-[linear-gradient(60deg,#00B5E2_0%,#00629B_70%)] text-center flex justify-center items-center flex-col w-full my-10">
-        <h2 className="text-white text-[40px] font-bold">Follow Us Now!</h2>
-        <p className="text-white text-[20px]">
-          our activities on{" "}
-          <span className="text-yellow-400">{text}</span>
-          <span className={`inline-block ml-0.5 w-0.5 h-6 align-middle cursor-blink ${isTyping && charIndex === words[wordIndex].length ? 'bg-black' : 'bg-gray-600'}`}>
-            &nbsp;
-          </span>
-        </p>
-      </div>
+      <FadeIn>
+        <div className="min-h-[150px] h-auto bg-[linear-gradient(60deg,#00B5E2_0%,#00629B_70%)] text-center flex justify-center items-center flex-col w-full my-10">
+          <h2 className="text-white text-[40px] font-bold">Follow Us Now!</h2>
+          <p className="text-white text-[20px]">
+            our activities on{" "}
+            <span className="text-yellow-400">{text}</span>
+            <span className={`inline-block ml-0.5 w-0.5 h-6 align-middle cursor-blink ${isTyping && charIndex === words[wordIndex].length ? 'bg-black' : 'bg-gray-600'}`}>
+              &nbsp;
+            </span>
+          </p>
+        </div>
+      </FadeIn>
+
     </>
   );
 };
