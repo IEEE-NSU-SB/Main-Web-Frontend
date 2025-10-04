@@ -26,6 +26,7 @@ import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
 import ScrollToTop from "./components/ui/scroll-to-top";
+import Contact from "./pages/Contact/page";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
@@ -55,6 +56,8 @@ const App = () => {
           <Route path="/achievements" element={<Achievements />} />
           {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
+          {/* contact  */}
+          <Route path="/contact" element={<Contact></Contact>} />
           {/* Members */}
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />

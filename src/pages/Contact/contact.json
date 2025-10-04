@@ -1,0 +1,12 @@
+{
+  "address": "Dhaka, Bangladesh",
+  "email_address": ["example1@gmail.com", "example2@yahoo.com"],
+  "mobile_number": ["+8801712345678", "+8801812345678"],
+  "social_media_link": [
+    "https://facebook.com/yourprofile",
+    "https://twitter.com/yourprofile",
+    "https://linkedin.com/in/yourprofile",
+    "https://instagram.com/yourprofile",
+    "https://github.com/yourprofile"
+  ]
+}
