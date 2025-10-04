@@ -8,7 +8,7 @@ import Skeleton from "../skeleton";
 import ErrorMessage from "../ui/error-msg";
 import { Link } from "react-router-dom";
 
-export interface EventData {
+export interface BlogData {
   id: number;
   image: string;
   date: string;
@@ -34,7 +34,7 @@ const BlogCard: React.FC = () => {
     data: events,
     error,
     refetch,
-  } = useFetchDataAPI<EventData[]>({
+  } = useFetchDataAPI<BlogData[]>({
     apiUrl: isLandingPage 
     ? "main_website/get_blogs/landing/"
     : "main_website/get_blogs/"
