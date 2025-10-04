@@ -7,6 +7,7 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "../skeleton";
 import ErrorMessage from "../ui/error-msg";
 import { Link } from "react-router-dom";
+import Tag from "@/pages/publications/blogs/tag";
 
 export interface BlogData {
   id: number;
@@ -35,9 +36,9 @@ const BlogCard: React.FC = () => {
     error,
     refetch,
   } = useFetchDataAPI<BlogData[]>({
-    apiUrl: isLandingPage 
-    ? "main_website/get_blogs/landing/"
-    : "main_website/get_blogs/"
+    apiUrl: isLandingPage
+      ? "main_website/get_blogs/landing/"
+      : "main_website/get_blogs/",
   });
 
   // Unique categories
@@ -146,6 +147,10 @@ const BlogCard: React.FC = () => {
                         className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
                       />
                     </Link>
+                    {/* Publisher */}
+                    {/* <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
+                      Branch
+                    </span> */}
                   </div>
                   <div className="p-4 rounded-sm">
                     <div className="flex items-center gap-2 text-sm font-semibold text-ieee-gray mb-1">
