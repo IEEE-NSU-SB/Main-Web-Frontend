@@ -152,20 +152,19 @@ const BlogCard: React.FC = () => {
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(event.date).toLocaleDateString()}</span>
                     </div>
-
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray truncate">
-                      <NotebookPen className="w-4 h-4" />
-                      By {event.author}
-                    </p>
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray truncate">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray">
                       <FolderClosed className="w-4 h-4" />
                       {event.category}
+                    </p>
+                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray overflow-hidden text-ellipsis whitespace-nowrap">
+                      {/* <NotebookPen className="w-4 h-4" /> */}
+                      By {event.author}
                     </p>
                     <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75 h-12">
                       {event.title}
                     </h3>
                     <p
-                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify"
+                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify h-18"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
                     <Link to={event.link}>
