@@ -10,6 +10,8 @@ interface Award {
   year: string;
   image: string;
   title: string;
+  winner: string;
+  primaryColor: string;
   description: string;
 }
 
@@ -86,7 +88,7 @@ const Achievements = () => {
                               text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
                               transition-all duration-500"
                 >
-                  {award.title}
+                  {award.title} - <span style={{ color: `${award.primaryColor}` }}>{award.winner}</span>
                 </div>
               </div>
             </FadeIn>
