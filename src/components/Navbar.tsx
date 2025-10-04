@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
       className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
     >
       <FadeIn>
-        <div className="max-w-[1080px] mx-auto py-4  flex justify-between lg:justify-between md:justify-center items-center">
+        <div className="max-w-[1080px] mx-auto py-3  flex justify-between lg:justify-between md:justify-center items-center">
           {/* Logo */}
           <Link to="/">
             <img
