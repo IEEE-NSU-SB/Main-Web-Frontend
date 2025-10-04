@@ -114,7 +114,7 @@ const HeroCarousel = ({
   }, [currentIndex, isPlaying, media]);
 
   return (
-    <div className="relative w-full h-[100vh] max-md:h-70 overflow-hidden bg-ieee-black mt-[-80px]">
+    <div className="relative w-full h-[100vh] max-md:h-70 overflow-hidden bg-ieee-black mt-[-72px]">
       {/* Media Items */}
       <div className="absolute inset-0">
         {media.map((item, index) => (
