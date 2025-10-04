@@ -1,7 +1,7 @@
+import FadeIn from "@/components/ui/fade-in";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import './contact.json';
+import { MapPin, Mail, Phone, Share2, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 
-// Define the type based on your JSON structure
 type ContactResponse = {
     address: string;
     email_address: string[];
@@ -9,94 +9,108 @@ type ContactResponse = {
     social_media_link: string[];
 };
 
+const All_links = () => {
+    const { data } = useFetchDataJSON<ContactResponse>({
+        path: "pages/Contact/contact.json",
+    });
 
-
-
-    const All_links = () => {
-        const { loading, data, error, refetch } = useFetchDataJSON<ContactResponse>({
-            path:"./contact.json",
-        });
-
-    // if (loading) {
-    //     return (
-    //         <div className="max-w-[1080px] mx-auto py-3">
-    //             <p>Loading...</p>
-    //         </div>
-    //     );
-    // }
-
-    // if (error) {
-    //     return (
-    //         <div className="max-w-[1080px] mx-auto py-3">
-    //             <p className="text-red-500">Error: {error}</p>
-    //             <button onClick={refetch} className="mt-2 px-4 py-2 bg-blue-500 text-white rounded">
-    //                 Retry
-    //             </button>
-    //         </div>
-    //     );
-    // }
+    if (!data) return null;
 
     return (
-        <div className="max-w-[1080px] mx-auto py-3">
-            <h3 className="text-2xl font-bold mb-4">All Links</h3>
-            
-            {data && (
-                <div className="space-y-6">
+        <FadeIn>
+            <div className="max-w-[1080px] mx-auto px-4 py-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* Address */}
-                    <div>
-                        <h4 className="font-semibold text-lg mb-2">Address</h4>
-                        <p>{data.address}</p>
+                    <div className="flex flex-col items-center text-center">
+                        <div className="w-28 h-28 rounded-full bg-gray-600  hover:bg-black transition-all duration-300 ease-in-out  flex items-center justify-center mb-4">
+                            <MapPin className="w-12 h-12 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">Address</h3>
+                        <p className="text-gray-700 text-sm leading-relaxed">
+                            {data.address}
+                        </p>
                     </div>
 
-                    {/* Email Addresses */}
-                    <div>
-                        <h4 className="font-semibold text-lg mb-2">Email Addresses</h4>
-                        <ul className="space-y-1">
+                    {/* Email Address */}
+                    <div className="flex flex-col items-center text-center">
+                        <div className="w-28 h-28 rounded-full bg-gray-600  hover:bg-black transition-all duration-300 ease-in-out  flex items-center justify-center mb-4">
+                            <Mail className="w-12 h-12 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">Email Address</h3>
+                        <div className="space-y-2">
                             {data.email_address.map((email, index) => (
-                                <li key={index}>
-                                    <a href={`mailto:${email}`} className="text-blue-600 hover:underline">
+                                <div key={index}>
+                                    <a
+                                        href={`mailto:${email}`}
+                                        className="text-gray-700 hover:text-blue-600 text-sm block"
+                                    >
                                         {email}
                                     </a>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
 
-                    {/* Mobile Numbers */}
-                    <div>
-                        <h4 className="font-semibold text-lg mb-2">Mobile Numbers</h4>
-                        <ul className="space-y-1">
+                    {/* Mobile Number */}
+                    <div className="flex flex-col items-center text-center">
+                        <div className="w-28 h-28 rounded-full bg-gray-600  hover:bg-black transition-all duration-300 ease-in-out  flex items-center justify-center mb-4">
+                            <Phone className="w-12 h-12 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">Mobile Number</h3>
+                        <div className="space-y-2">
                             {data.mobile_number.map((number, index) => (
-                                <li key={index}>
-                                    <a href={`tel:${number}`} className="text-blue-600 hover:underline">
+                                <div key={index}>
+                                    <a
+                                        href={`tel:${number}`}
+                                        className="text-gray-700 hover:text-blue-600 text-sm block"
+                                    >
                                         {number}
                                     </a>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
 
-                    {/* Social Media Links */}
-                    <div>
-                        <h4 className="font-semibold text-lg mb-2">Social Media</h4>
-                        <ul className="space-y-1">
-                            {data.social_media_link.map((link, index) => (
-                                <li key={index}>
-                                    <a 
-                                        href={link} 
-                                        target="_blank" 
+                    {/* Social Media */}
+                    <div className="flex flex-col items-center text-center">
+                        <div className="w-28 h-28 rounded-full bg-gray-600 hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
+                            <Share2 className="w-12 h-12 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">Social Media</h3>
+                        <div className="flex gap-2 justify-center flex-wrap">
+                            {data.social_media_link.map((link, index) => {
+                                const getSocialIcon = (url: string) => {
+                                    const lowerUrl = url.toLowerCase();
+                                    if (lowerUrl.includes('facebook')) return <Facebook className="w-5 h-5 text-white" />;
+                                    if (lowerUrl.includes('linkedin')) return <Linkedin className="w-5 h-5 text-white" />;
+                                    if (lowerUrl.includes('instagram')) return <Instagram className="w-5 h-5 text-white" />;
+                                    if (lowerUrl.includes('youtube')) return <Youtube className="w-5 h-5 text-white" />;
+                                    if (lowerUrl.includes('twitter') || lowerUrl.includes('x.com')) return (
+                                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                    );
+                                    return <Share2 className="w-5 h-5 text-white" />;
+                                };
+
+                                return (
+                                    <a
+                                        key={index}
+                                        href={link}
+                                        target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-blue-600 hover:underline"
+                                        className="w-10 h-10 transition-all duration-300 ease-in-out
+                                             bg-[#002855] rounded flex items-center justify-center hover:bg-[#ffd100]"
                                     >
-                                        {link}
+                                        {getSocialIcon(link)}
                                     </a>
-                                </li>
-                            ))}
-                        </ul>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
-            )}
-        </div>
+            </div>
+        </FadeIn>
     );
 };
 

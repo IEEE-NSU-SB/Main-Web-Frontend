@@ -1,12 +1,12 @@
 {
-  "address": "Dhaka, Bangladesh",
-  "email_address": ["example1@gmail.com", "example2@yahoo.com"],
-  "mobile_number": ["+8801712345678", "+8801812345678"],
+  "address": "Plot-15, Block-B, Bashundhara, Dhaka – 1229, Bangladesh",
+  "email_address": ["sb-nsu@ieee.org", "mdnafiur.rahman19@ieee.org"],
+  "mobile_number": ["For Membership Queries : 01771-669649 | 01789-846367", "For Corporate Engagement : 01630-941492 | 01609-179026"],
   "social_media_link": [
-    "https://facebook.com/yourprofile",
-    "https://twitter.com/yourprofile",
-    "https://linkedin.com/in/yourprofile",
-    "https://instagram.com/yourprofile",
-    "https://github.com/yourprofile"
+    "https://www.facebook.com/ieeensusb/",
+    "https://twitter.com/ieeensusb/",
+    "https://www.linkedin.com/company/ieeensusb/",
+    "https://www.instagram.com/ieeensusb/",
+    "https://www.youtube.com/@IEEENSUStudentBranch"
   ]
 }
