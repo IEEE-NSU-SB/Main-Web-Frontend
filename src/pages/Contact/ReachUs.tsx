@@ -4,10 +4,6 @@ import SectionHeading from '@/components/ui/section-heading';
 const ReachUs = () => {
     return (
         <div className='max-w-[1080px] mx-auto p-3 md:p-5'>
-
-
-
-
             <div className="main_div flex md:flex-row flex-col gap-5">
                 <div className="location_div w-full md:w-1/2">
                     <SectionHeading title='Location' widthClass='w-30'></SectionHeading>
@@ -33,11 +29,6 @@ const ReachUs = () => {
 
                 </div>
             </div >
-
-
-
-
-
         </div >
     );
 };

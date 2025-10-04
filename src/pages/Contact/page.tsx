@@ -3,6 +3,7 @@ import Wave from '@/components/wave';
 // import All_links from './All_links';
 import ReachUs from './ReachUs';
 import FollowUs from './FollowUs';
+import YtSection from './YtSection';
 
 
 const Contact = () => {
@@ -23,6 +24,7 @@ const Contact = () => {
                 {/* <All_links></All_links> */}
                 <ReachUs></ReachUs>
                 <FollowUs></FollowUs>
+                <YtSection></YtSection>
 
             </FadeIn>
 

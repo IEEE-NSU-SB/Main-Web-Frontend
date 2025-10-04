@@ -51,7 +51,7 @@ const FollowUs: React.FC = () => {
           animation: blink 1s infinite;
         }
       `}</style>
-      <div className="min-h-[150px] h-auto bg-[linear-gradient(60deg,#00B5E2_0%,#00629B_70%)] text-center flex justify-center items-center flex-col w-full">
+      <div className="min-h-[150px] h-auto bg-[linear-gradient(60deg,#00B5E2_0%,#00629B_70%)] text-center flex justify-center items-center flex-col w-full my-10">
         <h2 className="text-white text-[40px] font-bold">Follow Us Now!</h2>
         <p className="text-white text-[20px]">
           our activities on{" "}
