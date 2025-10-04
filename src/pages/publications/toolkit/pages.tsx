@@ -53,7 +53,6 @@ const Pages = () => {
     <>
       <Wave title="Toolkit" />
 
-      {/* 🔹 MATCHES NAVBAR WIDTH AND ALIGNMENT */}
       <section className="max-w-[1080px] mx-auto px-0 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
           {logos.map((logo, index) => (
@@ -62,11 +61,9 @@ const Pages = () => {
               key={index}
               className="w-[295px] bg-white rounded-2xl shadow-lg p-6 flex flex-col text-center border hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full"
             >
-              {/* Logo and title */}
               <img src={logo.img} alt={logo.title} className="h-20 mx-auto mb-4 object-contain" />
               <h4 className="text-lg font-bold">{logo.title}</h4>
 
-              {/* Color codes (slightly adjusted margin for Rectangular version) */}
               <div className={`${logo.title === "IEEE NSU SB Logo (Rectangular)" ? "mt-4" : "mt-10"}`}>
                 <p className="font-semibold mb-2">Color codes</p>
                 <ul className="flex flex-wrap justify-center gap-4 mb-6">
@@ -85,7 +82,6 @@ const Pages = () => {
                 </ul>
               </div>
 
-              {/* Download Button */}
               <a
                 href={logo.file}
                 download
