@@ -12,7 +12,7 @@ import ScrollToTopButton from "./components/ui/scroll-to-top-btn";
 
 import HomePage from "./pages/home/page";
 import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
-import About from "@/pages/about/pages[id]/pages";
+// import About from "@/pages/about/pages[id]/pages";
 
 import JoinINSB from "@/pages/get-involved/join-insb/page";
 import AllMembers from "@/pages/members/all-members-statistcs/page";
@@ -27,6 +27,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
 import ScrollToTop from "./components/ui/scroll-to-top";
 import Contact from "./pages/Contact/page";
+import IEEER10 from "./pages/about/IEEE Region 10/page";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
@@ -62,7 +63,8 @@ const App = () => {
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
           {/* About */}
-          <Route path="/about/:id" element={<About />} />
+          {/* <Route path="/about/:id" element={<About />} /> */}
+          <Route path="/about/ieee-region-10" element={< IEEER10/>} />
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
