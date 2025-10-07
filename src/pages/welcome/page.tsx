@@ -51,10 +51,7 @@ const welcomePage = () => {
       </div>
       {/* Buttons and middle text */}
       <div className="flex flex-col gap-2 py-60 md:px-50 px-16 items-start justify-start sm:justify-center min-h-screen text-center"> 
-      
-        <h1 ></h1>
         
-  
         <SplitText
         text="IEEE NSU STUDENT BRANCH!"
       
