@@ -39,13 +39,13 @@ const Pages = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
             {toolkit.map((toolkit, index) => (
               <FadeIn key={index}>
-                <div className="w-[295px] bg-white rounded-2xl shadow-lg p-6 flex flex-col text-center border hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full">
+                <div className="w-[295px] bg-ieee-white rounded-lg shadow-lg p-6 flex flex-col text-center border hover:shadow-xl transition-all duration-300 h-full">
                   <img
                     src={toolkit.img}
                     alt={toolkit.title}
                     className="h-20 mx-auto mb-4 object-contain"
                   />
-                  <h4 className="text-lg font-bold">{toolkit.title}</h4>
+                  <h4 className="text-lg font-semibold">{toolkit.title}</h4>
 
                   <div
                     className={`${
@@ -55,7 +55,7 @@ const Pages = () => {
                     }`}
                   >
                     <p className="font-semibold mb-2">Color codes</p>
-                    <ul className="flex flex-wrap justify-center gap-4 mb-6">
+                    <ul className="flex flex-wrap justify-start gap-4 mb-6 ml-13">
                       {toolkit.colors.map((colors, i) => {
                         const [name, hex] = colors.split(":");
                         return (
@@ -64,7 +64,7 @@ const Pages = () => {
                             className="flex items-center gap-2 text-sm"
                           >
                             <span
-                              className="w-4 h-4 rounded-full border shadow-sm"
+                              className="w-8 h-4 rounded border"
                               style={{ backgroundColor: hex.trim() }}
                             ></span>
                             <span>
@@ -79,7 +79,7 @@ const Pages = () => {
                   <a
                     href={toolkit.file}
                     download
-                    className="mt-auto px-6 py-2 bg-blue-900 text-white border border-blue-900 rounded-md hover:bg-transparent hover:text-blue-900 transition-colors"
+                    className="mt-auto px-6 py-2 bg-ieee-darkblue-90 text-white border border-ieee-darkblue-75 rounded-sm hover:bg-transparent hover:text-ieee-darkblue-75 transition-colors"
                   >
                     Download PNG
                   </a>

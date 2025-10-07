@@ -89,7 +89,7 @@ const Achievements = () => {
                               transition-all duration-500"
                 >
                   {award.title} -{" "}
-                  <span style={{ color: `${award.primaryColor}` }}>
+                  <span>
                     {award.winner}
                   </span>
                 </div>

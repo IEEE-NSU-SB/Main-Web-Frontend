@@ -32,7 +32,7 @@ const BlogCard: React.FC = () => {
   // Fetch JSON
   const {
     loading,
-    data: events,
+    data: blogs,
     error,
     refetch,
   } = useFetchDataAPI<BlogData[]>({
@@ -44,24 +44,24 @@ const BlogCard: React.FC = () => {
   // Unique categories
   const categories = [
     "All categories",
-    ...Array.from(new Set(events?.map((e) => e.category))),
+    ...Array.from(new Set(blogs?.map((e) => e.category))),
   ];
 
   // Filter & search
-  let filteredEvents =
-    events?.filter((event) =>
+  let filteredBlogs =
+    blogs?.filter((event) =>
       (event.title + event.author + event.category + event.description)
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     ) || [];
 
   if (selectedCategory !== "All categories") {
-    filteredEvents = filteredEvents.filter(
+    filteredBlogs = filteredBlogs.filter(
       (e) => e.category === selectedCategory
     );
   }
 
-  filteredEvents.sort((a, b) => {
+  filteredBlogs.sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
     return dateOrder === "latest" ? dateB - dateA : dateA - dateB;
@@ -135,8 +135,8 @@ const BlogCard: React.FC = () => {
       {/* Blog cards */}
       {!loading && !error && (
         <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-5 px-5 max-sm:px-5">
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map((event) => (
+          {filteredBlogs.length > 0 ? (
+            filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
                 <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
