@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "date": "2025-10-07",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Exploring Modern Web Design",
+    "description": "An introduction to the key principles and trends shaping modern web design."
+  },
+  {
+    "id": 2,
+    "date": "2025-10-06",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "The Basics of Front-End Development",
+    "description": "Learn the essential tools and technologies every front-end developer should know."
+  },
+  {
+    "id": 3,
+    "date": "2025-10-05",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Building Interactive UI Components",
+    "description": "Discover how to create interactive and dynamic UI components using JavaScript frameworks."
+  },
+  {
+    "id": 4,
+    "date": "2025-10-04",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Responsive Design Techniques",
+    "description": "A guide to making your websites look great on any device with responsive CSS."
+  },
+  {
+    "id": 5,
+    "date": "2025-10-03",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Understanding Back-End Logic",
+    "description": "An overview of how back-end logic and databases work together to power web applications."
+  },
+  {
+    "id": 6,
+    "date": "2025-10-02",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Getting Started with APIs",
+    "description": "Learn how APIs enable data exchange between applications and services."
+  },
+  {
+    "id": 7,
+    "date": "2025-10-01",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Version Control with Git",
+    "description": "Understand how Git helps developers collaborate and track code changes effectively."
+  },
+  {
+    "id": 8,
+    "date": "2025-09-30",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Optimizing Website Performance",
+    "description": "Techniques and best practices to improve loading speed and user experience."
+  },
+  {
+    "id": 9,
+    "date": "2025-09-29",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Mastering HTML and CSS",
+    "description": "A beginner-friendly guide to mastering the building blocks of the web."
+  },
+  {
+    "id": 10,
+    "date": "2025-09-28",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "JavaScript for Beginners",
+    "description": "Learn how JavaScript brings interactivity and logic to modern web pages."
+  },
+  {
+    "id": 11,
+    "date": "2025-09-27",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Deploying Your First Website",
+    "description": "Step-by-step guide to hosting and deploying your website online."
+  },
+  {
+    "id": 12,
+    "date": "2025-09-26",
+    "by": "King Shohan",
+    "image": "https://i.ibb.co.com/mFC9jKLD/WIN-20250825-03-49-10-Pro.jpg",
+    "title": "Web Security Essentials",
+    "description": "Understand the fundamentals of web security and how to protect your projects."
+  }
+]
