@@ -6,13 +6,13 @@ import {
 } from "react-router-dom";
 
 // Global Components
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ScrollToTopButton from "./components/ui/scroll-to-top";
 
 import HomePage from "./pages/home/page";
 import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
-import About from "@/pages/about/pages[id]/pages";
+
 
 import JoinINSB from "@/pages/get-involved/join-insb/page";
 import AllMembers from "@/pages/members/all-members-statistcs/page";
@@ -25,6 +25,7 @@ import Toolkit from "./pages/publications/toolkit/pages";
 import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
+import IEEER10 from "./pages/about/IEEE Region10/page";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
@@ -57,11 +58,12 @@ const App = () => {
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
           {/* About */}
-          <Route path="/about/:id" element={<About />} />
+          
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/toolkit" element={<Toolkit />} />
+          <Route path="/about/ieee-region-10" element={ <IEEER10 /> }> </Route>
           {/* Get Involved */}
           <Route
             path="/join-ieee-nsu-sb"
