@@ -27,6 +27,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
 import ScrollToTop from "./components/ui/scroll-to-top";
 import Contact from "./pages/Contact/page";
+import Pages from "./pages/activities/News/Pages";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
@@ -54,6 +55,8 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           {/* Activities */}
           <Route path="/achievements" element={<Achievements />} />
+          {/* news  */}
+          <Route path="news" element={<Pages></Pages>}></Route>
           {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
           {/* contact  */}

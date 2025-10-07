@@ -1,7 +1,7 @@
 import Skeleton from "@/components/skeleton";
 import ErrorMessage from "@/components/ui/error-msg";
 import FadeIn from "@/components/ui/fade-in";
-import ScaleUp from "@/components/ui/scale-up";
+
 
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { MapPin, Mail, Phone, Share2, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
