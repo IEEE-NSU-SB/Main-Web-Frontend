@@ -1,6 +1,6 @@
 import Wave from "@/components/wave";
 
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/error-msg";
 import Skeleton from "@/components/skeleton";
 import FadeIn from "@/components/ui/fade-in";
@@ -13,8 +13,8 @@ type Toolkit = {
 };
 
 const Pages = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON<Toolkit[]>({
-    path: "pages/publications/toolkit/data/toolkit.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<Toolkit[]>({
+    apiUrl: "main_website/get_toolkit/",
   });
 
   const toolkit: Toolkit[] = data ?? [];

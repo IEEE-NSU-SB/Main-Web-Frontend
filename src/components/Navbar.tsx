@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
           {/* Portal button */}
           <div className="hidden md:inline-block mx-5">
             <Link
-              to="/portal"
+              to={import.meta.env.VITE_PORTAL_URL}
               className="
               relative
               inline-block
