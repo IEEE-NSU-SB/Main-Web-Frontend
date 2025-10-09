@@ -26,7 +26,7 @@ const Wave: React.FC<WaveProps> = ({ title, subtitle }) => {
       {/* Title */}
       <div className="flex flex-col text-center py-16 md:py-28 relative z-10">
         <h2
-          className={`text-ieee-white font-bold text-[25px] uppercase mb-2 leading-7`}
+          className={`text-ieee-white font-bold text-[30px] uppercase mb-2 leading-7`}
         >
           {title}
         </h2>
