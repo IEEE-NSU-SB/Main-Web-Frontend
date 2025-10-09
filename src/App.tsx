@@ -17,8 +17,6 @@ import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
 import JoinINSB from "@/pages/get-involved/join-insb/page";
 import AllMembers from "@/pages/members/all-members-statistcs/page";
 import Achievements from "./pages/activities/achievements/page";
-
-import "odometer/themes/odometer-theme-default.css";
 import ResearchPapers from "./pages/publications/research Paper/page";
 import Blogs from "./pages/publications/blogs/page";
 import Toolkit from "./pages/publications/toolkit/pages";
@@ -29,13 +27,13 @@ import ScrollToTop from "./components/ui/scroll-to-top";
 import Contact from "./pages/contact/page";
 import Events from "./pages/activities/events/page";
 import IEEER10 from "./pages/about/IEEE Region 10/page";
+import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
 
-// ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet /> {/* child routes render here */}
+      <Outlet />
       <ScrollToTopButton />
       <Footer />
     </>
@@ -47,12 +45,9 @@ const App = () => {
     <Router>
       <ScrollToTop/>
       <Routes>
-        {/* Welcome Page without Navbar/Footer */}
         <Route path="/welcome-page" element={<WelcomePage />} />
 
-        {/* All other pages use MainLayout */}
         <Route element={<MainLayout />}>
-          {/* Home */}
           <Route path="/" element={<HomePage />} />
 
           {/* Activities */}
@@ -77,7 +72,8 @@ const App = () => {
 
           {/* Contact  */}
           <Route path="/contact" element={<Contact/>} />
-          
+          <Route path="/executive-body" element={<ExecutiveBodySection />} />
+
           {/* Get Involved */}
           <Route
             path="/join-ieee-nsu-sb"
