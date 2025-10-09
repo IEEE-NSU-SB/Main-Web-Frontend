@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom"; // assuming you use react-router
+import { Link } from "react-router-dom";
 import dummy1 from "../../assets/dummy/image1.png";
 import dummy2 from "../../assets/dummy/image2.png";
 import dummy3 from "../../assets/dummy/image3.png";
@@ -24,7 +24,6 @@ interface EventsCarouselProps {
   width?: string;
 }
 
-// Map image paths in JSON to actual imports
 const imageMap: Record<string, string> = {
   "/assets/dummy/image1.png": dummy1,
   "/assets/dummy/image2.png": dummy2,
@@ -42,7 +41,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
 
-  // 🔹 Fetch events.json with error handling
+  // Fetch async JSON
   const { loading, data, error, refetch } = useFetchDataJSON({
     path: "pages/home/data/events-carousel.json",
   });
@@ -52,24 +51,18 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
       id: idx,
       src: imageMap[event.src] || event.src,
       alt: event.alt,
-      link: `/event_details/${idx}`, // dynamic link
+      link: `/event_details/${idx}`,
     })) ?? [];
 
-  // 🔹 Measure card width for scroll
+  // Measure card width after data loads
   useEffect(() => {
-    const measureCardWidth = () => {
-      if (!scrollRef.current) return;
-      const firstCard = scrollRef.current.querySelector("div > div");
-      if (firstCard) {
-        setCardWidth((firstCard as HTMLElement).offsetWidth);
-      }
-    };
-    measureCardWidth();
-    window.addEventListener("resize", measureCardWidth);
-    return () => window.removeEventListener("resize", measureCardWidth);
-  }, []);
+    if (!scrollRef.current) return;
+    const firstCard = scrollRef.current.querySelector("div > div");
+    if (firstCard) {
+      setCardWidth((firstCard as HTMLElement).offsetWidth);
+    }
+  }, [data]); // 👈 recalc when data changes
 
-  // 🔹 Smooth scroll animation
   const animateScrollTo = (
     element: HTMLElement,
     target: number,
@@ -91,7 +84,6 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     requestAnimationFrame(animate);
   };
 
-  // 🔹 Scroll to index
   const scrollToIndex = (index: number) => {
     if (!scrollRef.current || cardWidth === 0) return;
     const container = scrollRef.current;
@@ -107,7 +99,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     setCurrentIndex(index);
   };
 
-  // 🔹 Auto-scroll effect
+  // Auto-scroll after images + cardWidth are ready
   useEffect(() => {
     if (cardWidth === 0 || images.length === 0) return;
 
@@ -122,9 +114,8 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [cardWidth, images.length]);
+  }, [cardWidth, images]); // 👈 rerun when data or size changes
 
-  // 🔹 Update index on manual scroll
   const handleScroll = () => {
     if (!scrollRef.current || cardWidth === 0) return;
     const container = scrollRef.current;
@@ -144,14 +135,15 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     <div className="w-full py-4 relative">
       <SectionHeading title={title} widthClass={`w-${width}`} />
       <FadeIn>
-        {/* 🔹 Error State */}
         {error && (
           <div className="py-10">
-            <ErrorMessage message={"Failed to load featured events"} onRetry={refetch} />
+            <ErrorMessage
+              message="Failed to load featured events"
+              onRetry={refetch}
+            />
           </div>
         )}
 
-        {/* 🔹 Loading State */}
         {loading && (
           <div className="flex gap-4 overflow-hidden py-6 max-sm:flex-col">
             <Skeleton className="w-150 max-sm:w-70 h-60 rounded-lg m-auto" />
@@ -160,8 +152,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
           </div>
         )}
 
-        {/* 🔹 Carousel when data is ready */}
-        {!loading && !error && (
+        {!loading && !error && images.length > 0 && (
           <>
             {/* Left Arrow */}
             <button

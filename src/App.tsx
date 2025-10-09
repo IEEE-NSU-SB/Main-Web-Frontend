@@ -10,6 +10,7 @@ import ScrollToTopButton from "./components/ui/scroll-to-top";
 import HomePage from "./pages/home/page";
 import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
 import About from "@/pages/about/pages[id]/pages";
+
 import JoinINSB from "@/pages/get-involved/join-insb/page";
 import AllMembers from "@/pages/members/all-members-statistcs/page";
 import Achievements from "./pages/activities/achievements/page";
@@ -19,11 +20,6 @@ import Toolkit from "./pages/publications/toolkit/pages";
 import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
-import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
-
-import "odometer/themes/odometer-theme-default.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
 const MainLayout = () => {
   return (
@@ -39,6 +35,7 @@ const MainLayout = () => {
 const App = () => {
   return (
     <Router>
+      <ScrollToTop/>
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />
 
@@ -46,9 +43,12 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
+          {/* Members */}
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
+          {/* About */}
           <Route path="/about/:id" element={<About />} />
+          {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/toolkit" element={<Toolkit />} />

@@ -4,7 +4,7 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 import FadeIn from "@/components/ui/fade-in";
 import Skeleton from "@/components/skeleton";
 import ErrorMessage from "../../components/ui/error-msg";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 
 interface Person {
   id: number;
@@ -25,8 +25,8 @@ export default function TopPerformers() {
   const [personIndex, setPersonIndex] = useState(0);
 
   // Fetch performers JSON
-  const { loading, data, error, refetch } = useFetchDataJSON<Tab[]>({
-    path: "pages/home/data/performers-tab.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<Tab[]>({
+    apiUrl: "main_website/get_volunteer_awards/",
   });
 
   const tabs: Tab[] = data || [];
@@ -154,6 +154,11 @@ export default function TopPerformers() {
                     src={people[personIndex].img}
                     alt={people[personIndex].name}
                     className="w-44 h-44 sm:w-60 sm:h-60 rounded-full object-cover shadow-md bg-glow"
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.onerror = null; // prevent loop
+                      target.src = `${import.meta.env.VITE_API_URL}/static/images/default_profile_picture.png`;
+                    }}
                   />
                 </div>
 

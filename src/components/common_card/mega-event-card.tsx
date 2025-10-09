@@ -50,7 +50,7 @@ const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
 
     return (
         <>
-            <FadeIn>
+          
                 <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3">
                     {eventsToShow.length > 0 && (
                         <SectionHeading title="Mega Events" widthClass="w-45"></SectionHeading>
@@ -104,7 +104,7 @@ const MegaEvents: FC<MegaEventsProps> = ({ megaEventsPromise }) => {
                         ))}
                     </div>
                 </div>
-            </FadeIn>
+         
 
 
 

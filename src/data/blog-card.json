@@ -1,42 +1,52 @@
 [
   {
+    "id":"1",
     "image": "/src/assets/dummy/image1.png",
     "date": "2025-12-23",
     "author": "Azima Islam Ruba",
     "category": "Science & Technology",
     "title": "Human, In a battleground with Human-made Machines",
-    "description": "To begin with the pressing question, what will happen to human if AI takes over all our jobs. When it comes to employment being “taken over” by AI, it’s more likely to say that the more complex and specialized jobs will be “replaced” by AI. AI’s or Robots have a unique strength which is they are strongly programmed to be precise, fast, be able to store more data and information, and lacking emotions and sense for which they won’t be off to any machined and complex works and be more efficient. Thus the jobs AI will take and be replaced by are more of the routine, repetitive, optimizing jobs along with the high and more complex jobs. Since AI be taking over the more complex and programmed jobs, it brings to the possibilities and what works could humans be doing in the AI era. AI will bring us serendipity as it will help us know the true existence of human life. Human life is not about the routine jobs. Human purpose in life is not only about working hard and attain wealth and respect but more about expressing love and compassion, making a positive difference to others and the social values."
+    "description": "To begin with the pressing question, what will happen to human if AI takes over all our jobs. When it comes to employment being “taken over” by AI, it’s more likely to say that the more complex and specialized jobs will be “replaced” by AI. AI’s or Robots have a unique strength which is they are strongly programmed to be precise, fast, be able to store more data and information, and lacking emotions and sense for which they won’t be off to any machined and complex works and be more efficient. Thus the jobs AI will take and be replaced by are more of the routine, repetitive, optimizing jobs along with the high and more complex jobs. Since AI be taking over the more complex and programmed jobs, it brings to the possibilities and what works could humans be doing in the AI era. AI will bring us serendipity as it will help us know the true existence of human life. Human life is not about the routine jobs. Human purpose in life is not only about working hard and attain wealth and respect but more about expressing love and compassion, making a positive difference to others and the social values.",
+    "link": "/"
   },
   {
+    "id":"2",
     "image": "/src/assets/dummy/image2.png",
     "date": "2025-12-22",
     "author": "Azima Islam Ruba",
     "category": "Education",
     "title": "Ivy League Insights for Aspiring Engineers",
-    "description": "Signal processing, a cornerstone of scientific and engineering endeavors, finds its essence in extracting meaningful information from often noisy datasets. In our recent project, we delved into the expansive world of signal processing using MATLAB, aiming to uncover the effects of different filters on two fundamental signal types: rectangular and triangular pulses. Our journey began by leveraging MATLAB’s robust signal generation functions to create baseline pulses, which then underwent a transformation as we introduced carefully controlled levels of noise. In the realm of signal processing, noise is an inevitable adversary, mimicking the real-world challenges that engineers and scientists encounter. Our goal was to simulate these challenges and observe how various filters, including lowpass filters, respond to restore clarity and precision in the signals."
+    "description": "Signal processing, a cornerstone of scientific and engineering endeavors, finds its essence in extracting meaningful information from often noisy datasets. In our recent project, we delved into the expansive world of signal processing using MATLAB, aiming to uncover the effects of different filters on two fundamental signal types: rectangular and triangular pulses. Our journey began by leveraging MATLAB’s robust signal generation functions to create baseline pulses, which then underwent a transformation as we introduced carefully controlled levels of noise. In the realm of signal processing, noise is an inevitable adversary, mimicking the real-world challenges that engineers and scientists encounter. Our goal was to simulate these challenges and observe how various filters, including lowpass filters, respond to restore clarity and precision in the signals.",
+    "link": "#"
   },
   {
+    "id":"3",
     "image": "/src/assets/dummy/image3.png",
     "date": "2025-12-21",
     "author": "Azima Islam Ruba",
     "category": "Technology",
     "title": "AI & Future of Bangladesh",
-    "description": "Whether AI will take over jobs in future, what will the future be for human and what affect will the AI bring to the work life, what will AI mean for the future of work. All these questions have arisen as computers and technology have progressed. John McCarthy initially invented the term artificial intelligence (AI) in 1956, defining it as “the science and engineering of creating intelligent machines, which is the simulation of human intelligence processed by computers.” However, today’s AI is based on the current state of the art and functions as an optimizer. It is still debated if AI poses a threat to humanity. While no one can predict exactly how AI’s will evolve in the future, the current trends and developments picture of how AI will become part of our lives."
+    "description": "Whether AI will take over jobs in future, what will the future be for human and what affect will the AI bring to the work life, what will AI mean for the future of work. All these questions have arisen as computers and technology have progressed. John McCarthy initially invented the term artificial intelligence (AI) in 1956, defining it as “the science and engineering of creating intelligent machines, which is the simulation of human intelligence processed by computers.” However, today’s AI is based on the current state of the art and functions as an optimizer. It is still debated if AI poses a threat to humanity. While no one can predict exactly how AI’s will evolve in the future, the current trends and developments picture of how AI will become part of our lives.",
+    "link": "#"
   },
   {
+    "id":"4",
     "image": "/src/assets/dummy/image4.png",
     "date": "2025-12-20",
     "author": "Azima Islam Ruba",
     "category": "Research",
     "title": "Advancements in Quantum Computing",
-    "description": "Quantum computing has emerged as a new paradigm in computing technology, offering the potential to solve complex problems exponentially faster than classical computers. Our team explored recent breakthroughs and real-world applications of quantum algorithms, with focus on cryptography, material science, and optimization challenges."
+    "description": "Quantum computing has emerged as a new paradigm in computing technology, offering the potential to solve complex problems exponentially faster than classical computers. Our team explored recent breakthroughs and real-world applications of quantum algorithms, with focus on cryptography, material science, and optimization challenges.",
+    "link": "#"
   },
   {
+    "id":"5",
     "image": "/src/assets/dummy/image5.png",
     "date": "2025-12-19",
     "author": "Azima Islam Ruba",
     "category": "Innovation",
     "title": "Startups and the Tech Ecosystem in Bangladesh",
-    "description": "Bangladesh’s tech ecosystem is rapidly evolving. This article covers the emerging startups, investment trends, and innovation hubs that are shaping the future of technology and entrepreneurship in the country."
+    "description": "Bangladesh’s tech ecosystem is rapidly evolving. This article covers the emerging startups, investment trends, and innovation hubs that are shaping the future of technology and entrepreneurship in the country.",
+    "link": "#"
   }
 ]

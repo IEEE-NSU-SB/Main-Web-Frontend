@@ -1,101 +1,96 @@
-import Wave from "@/components/wave"
+import Wave from "@/components/wave";
 
-import insbPng from "@/assets/logo/insb.png"
-import ras from "@/assets/logo/ras.png"
-import pes from "@/assets/logo/pes.png"
-import ias from "@/assets/logo/ias.png"
-import wie from "@/assets/logo/wie.png"
-import insbMain from "@/assets/logo/insbMain.png"
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+import ErrorMessage from "@/components/ui/error-msg";
+import Skeleton from "@/components/skeleton";
 import FadeIn from "@/components/ui/fade-in";
 
-
-const logos = [
-  {
-    title: "IEEE NSU SB Logo",
-    img: insbMain,
-    colors: ["Blue: #137AAC", "Yellow: #FEC937", "White: #F7FAFC"],
-    file: insbMain
-  },
-  {
-    title: "IEEE NSU SB Logo (Rectangular)",
-    img: insbPng,
-    colors: ["Blue: #137AAC", "Yellow: #FEC937", "White: #F7FAFC"],
-    file: insbPng
-  },
-  {
-    title: "IEEE NSU RAS SBC Logo",
-    img: ras,
-    colors: ["Purple: #602569", "Magenta: #961A31"],
-    file: ras
-  },
-  {
-    title: "IEEE NSU PES SBC Logo",
-    img: pes,
-    colors: ["Green: #659941", "Yellow: #F6EB12", "Light Green: #61A60E"],
-    file: pes
-  },
-  {
-    title: "IEEE NSU IAS SBC Logo",
-    img: ias,
-    colors: ["Blue: #008BC2", "Yellow: #FEC937", "Green: #0F904B"],
-    file: ias
-  },
-  {
-    title: "IEEE NSU SB WIE AG Logo",
-    img: wie,
-    colors: ["Blue: #006699", "Purple: #6A2874"],
-    file: wie
-  },
-]
+type Toolkit = {
+  title: string;
+  img: string;
+  colors: string[];
+  file: string;
+};
 
 const Pages = () => {
+  const { loading, data, error, refetch } = useFetchDataJSON<Toolkit[]>({
+    path: "pages/publications/toolkit/data/toolkit.json",
+  });
+
+  const toolkit: Toolkit[] = data ?? [];
+
+  console.log("Fetched data:", toolkit);
   return (
     <>
       <Wave title="Toolkit" />
-
       <section className="max-w-[1080px] mx-auto px-0 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
-          {logos.map((logo, index) => (
-            <FadeIn key={index}>
-            <div
-              key={index}
-              className="w-[295px] bg-white rounded-2xl shadow-lg p-6 flex flex-col text-center border hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full"
-            >
-              <img src={logo.img} alt={logo.title} className="h-20 mx-auto mb-4 object-contain" />
-              <h4 className="text-lg font-bold">{logo.title}</h4>
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+            <Skeleton className="h-85 w-70" />
+            <Skeleton className="h-85 w-70" />
+            <Skeleton className="h-85 w-70" />
+            <Skeleton className="h-85 w-70" />
+            <Skeleton className="h-85 w-70" />
+            <Skeleton className="h-85 w-70" />
+          </div>
+        ) : error ? (
+          <ErrorMessage message={"Failed to load stats"} onRetry={refetch} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+            {toolkit.map((toolkit, index) => (
+              <FadeIn key={index}>
+                <div className="w-[295px] bg-ieee-white rounded-lg shadow-lg p-6 flex flex-col text-center border hover:shadow-xl transition-all duration-300 h-full">
+                  <img
+                    src={toolkit.img}
+                    alt={toolkit.title}
+                    className="h-20 mx-auto mb-4 object-contain"
+                  />
+                  <h4 className="text-lg font-semibold">{toolkit.title}</h4>
 
-              <div className={`${logo.title === "IEEE NSU SB Logo (Rectangular)" ? "mt-4" : "mt-10"}`}>
-                <p className="font-semibold mb-2">Color codes</p>
-                <ul className="flex flex-wrap justify-center gap-4 mb-6">
-                  {logo.colors.map((color, i) => {
-                    const [name, hex] = color.split(":")
-                    return (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <span
-                          className="w-4 h-4 rounded-full border shadow-sm"
-                          style={{ backgroundColor: hex.trim() }}
-                        ></span>
-                        <span>{name}: {hex}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
+                  <div
+                    className={`${
+                      toolkit.title === "IEEE NSU SB Logo (Rectangular)"
+                        ? "mt-4"
+                        : "mt-10"
+                    }`}
+                  >
+                    <p className="font-semibold mb-2">Color codes</p>
+                    <ul className="flex flex-wrap justify-start gap-4 mb-6 ml-13">
+                      {toolkit.colors.map((colors, i) => {
+                        const [name, hex] = colors.split(":");
+                        return (
+                          <li
+                            key={i}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <span
+                              className="w-8 h-4 rounded border"
+                              style={{ backgroundColor: hex.trim() }}
+                            ></span>
+                            <span>
+                              {name}: {hex}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
 
-              <a
-                href={logo.file}
-                download
-                className="mt-auto px-6 py-2 bg-blue-900 text-white border border-blue-900 rounded-md hover:bg-transparent hover:text-blue-900 transition-colors"
-              >
-                Download PNG
-              </a>
-            </div>
-            </FadeIn>
-          ))}
-        </div>
+                  <a
+                    href={toolkit.file}
+                    download
+                    className="mt-auto px-6 py-2 bg-ieee-darkblue-90 text-white border border-ieee-darkblue-75 rounded-sm hover:bg-transparent hover:text-ieee-darkblue-75 transition-colors"
+                  >
+                    Download PNG
+                  </a>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        )}
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Pages
+export default Pages;

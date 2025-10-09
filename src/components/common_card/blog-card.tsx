@@ -7,8 +7,10 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "../skeleton";
 import ErrorMessage from "../ui/error-msg";
 import { Link } from "react-router-dom";
+import Tag from "@/pages/publications/blogs/tag";
 
-export interface EventData {
+export interface BlogData {
+  id: number;
   image: string;
   date: string;
   author: string;
@@ -25,37 +27,41 @@ const BlogCard: React.FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<string>("All categories");
 
+  const isLandingPage = location.pathname === "/";
+
   // Fetch JSON
   const {
     loading,
-    data: events,
+    data: blogs,
     error,
     refetch,
-  } = useFetchDataAPI<EventData[]>({
-    apiUrl: "main_website/get_blogs/",
+  } = useFetchDataAPI<BlogData[]>({
+    apiUrl: isLandingPage
+      ? "main_website/get_blogs/landing/"
+      : "main_website/get_blogs/",
   });
 
   // Unique categories
   const categories = [
     "All categories",
-    ...Array.from(new Set(events?.map((e) => e.category))),
+    ...Array.from(new Set(blogs?.map((e) => e.category))),
   ];
 
   // Filter & search
-  let filteredEvents =
-    events?.filter((event) =>
+  let filteredBlogs =
+    blogs?.filter((event) =>
       (event.title + event.author + event.category + event.description)
         .toLowerCase()
         .includes(searchTerm.toLowerCase())
     ) || [];
 
   if (selectedCategory !== "All categories") {
-    filteredEvents = filteredEvents.filter(
+    filteredBlogs = filteredBlogs.filter(
       (e) => e.category === selectedCategory
     );
   }
 
-  filteredEvents.sort((a, b) => {
+  filteredBlogs.sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
     return dateOrder === "latest" ? dateB - dateA : dateA - dateB;
@@ -129,9 +135,9 @@ const BlogCard: React.FC = () => {
       {/* Blog cards */}
       {!loading && !error && (
         <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-5 px-5 max-sm:px-5">
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map((event, index) => (
-              <FadeIn key={index}>
+          {filteredBlogs.length > 0 ? (
+            filteredBlogs.map((event) => (
+              <FadeIn key={event.id}>
                 <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
                     <Link to={event.link}>
@@ -141,26 +147,29 @@ const BlogCard: React.FC = () => {
                         className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
                       />
                     </Link>
+                    {/* Publisher */}
+                    {/* <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
+                      Branch
+                    </span> */}
                   </div>
                   <div className="p-4 rounded-sm">
                     <div className="flex items-center gap-2 text-sm font-semibold text-ieee-gray mb-1">
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(event.date).toLocaleDateString()}</span>
                     </div>
-
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray truncate">
-                      <NotebookPen className="w-4 h-4" />
-                      By {event.author}
-                    </p>
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray truncate">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray">
                       <FolderClosed className="w-4 h-4" />
                       {event.category}
+                    </p>
+                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray overflow-hidden text-ellipsis whitespace-nowrap">
+                      {/* <NotebookPen className="w-4 h-4" /> */}
+                      By {event.author}
                     </p>
                     <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75 h-12">
                       {event.title}
                     </h3>
                     <p
-                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify"
+                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify h-18"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
                     <Link to={event.link}>
@@ -175,6 +184,17 @@ const BlogCard: React.FC = () => {
           ) : (
             <p className="text-ieee-gray-15">No blogs found.</p>
           )}
+        </div>
+      )}
+
+      {/* "See All Blogs" button only on landing page */}
+      {isLandingPage && (
+        <div className="flex justify-center mt-8">
+          <Link to="/blogs">
+            <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+              See All Blogs
+            </button>
+          </Link>
         </div>
       )}
     </div>
