@@ -26,7 +26,8 @@ import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
 import ScrollToTop from "./components/ui/scroll-to-top";
-import Contact from "./pages/Contact/page";
+import Contact from "./pages/contact/page";
+import Events from "./pages/activities/events/page";
 import IEEER10 from "./pages/about/IEEE Region 10/page";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
@@ -53,22 +54,30 @@ const App = () => {
         <Route element={<MainLayout />}>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
+
           {/* Activities */}
+          <Route path="/events" element={<Events />} />
           <Route path="/achievements" element={<Achievements />} />
+
           {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
-          {/* contact  */}
-          <Route path="/contact" element={<Contact></Contact>} />
+
           {/* Members */}
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
+
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
           <Route path="/about/ieee-region-10" element={< IEEER10/>} />
+
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/toolkit" element={<Toolkit />} />
+
+          {/* Contact  */}
+          <Route path="/contact" element={<Contact/>} />
+          
           {/* Get Involved */}
           <Route
             path="/join-ieee-nsu-sb"
