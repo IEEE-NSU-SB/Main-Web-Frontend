@@ -5,6 +5,7 @@ import Mega_and_Featured from './Mega_and_Featured';
 import ScAgMissionVision from './ScAgMissionVision';
 import ScAgContact from './ScAgContact';
 import ScAgAbout from './ScAgAbout';
+import ExecutiveBodySection from './ScAgExecutive';
 
 // parallax fetch 
 const parallaxImgData = async () => {
@@ -35,6 +36,7 @@ const SocietyOrAg = () => {
       <AgParallax parallaxImagePromise={parallaxImagePromise}></AgParallax>
       <Mega_and_Featured></Mega_and_Featured>
       <ScAgMissionVision missionVisionPromise={missionVisionPromise}></ScAgMissionVision>
+      <ExecutiveBodySection></ExecutiveBodySection>
       <ScAgAbout aboutPromise={aboutPromise}></ScAgAbout>
       <ScAgContact></ScAgContact>
     </div>

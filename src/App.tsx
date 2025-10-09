@@ -5,33 +5,31 @@ import {
   Outlet,
 } from "react-router-dom";
 
-// Global Components
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import ScrollToTopButton from "./components/ui/scroll-to-top";
 
 import HomePage from "./pages/home/page";
 import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
 import About from "@/pages/about/pages[id]/pages";
-
 import JoinINSB from "@/pages/get-involved/join-insb/page";
 import AllMembers from "@/pages/members/all-members-statistcs/page";
 import Achievements from "./pages/activities/achievements/page";
-
-import "odometer/themes/odometer-theme-default.css";
 import ResearchPapers from "./pages/publications/research Paper/page";
 import Blogs from "./pages/publications/blogs/page";
 import Toolkit from "./pages/publications/toolkit/pages";
 import Panel from "./pages/members/panel/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 import WelcomePage from "./pages/welcome/page";
+import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
 
-// ✅ Layout with Navbar + Footer + ScrollToTop
+import "odometer/themes/odometer-theme-default.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet /> {/* child routes render here */}
+      <Outlet />
       <ScrollToTopButton />
       <Footer />
     </>
@@ -42,27 +40,19 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Welcome Page without Navbar/Footer */}
         <Route path="/welcome-page" element={<WelcomePage />} />
 
-        {/* All other pages use MainLayout */}
         <Route element={<MainLayout />}>
-          {/* Home */}
           <Route path="/" element={<HomePage />} />
-          {/* Activities */}
           <Route path="/achievements" element={<Achievements />} />
-          {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
-          {/* Members */}
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
-          {/* About */}
           <Route path="/about/:id" element={<About />} />
-          {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/toolkit" element={<Toolkit />} />
-          {/* Get Involved */}
+          <Route path="/executive-body" element={<ExecutiveBodySection />} />
           <Route
             path="/join-ieee-nsu-sb"
             element={
