@@ -29,6 +29,7 @@ import Events from "./pages/activities/events/page";
 import IEEER10 from "./pages/about/IEEE Region 10/page";
 import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
 import EventDescription from "./pages/activities/events/EventDescription";
+import Pages from "./pages/activities/News/Pages";
 
 const MainLayout = () => {
   return (
@@ -57,6 +58,8 @@ const App = () => {
           <Route path="/event_details" element={<EventDescription/>} />
           <Route path="/achievements" element={<Achievements />} />
 
+          {/* news  */}
+          <Route path="news" element={<Pages></Pages>}></Route>
           {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
 
