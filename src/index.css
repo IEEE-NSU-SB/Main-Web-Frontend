@@ -264,7 +264,8 @@
   }
 }
 
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -412,10 +413,12 @@ html, body {
     transform: translateX(25%);
   }
 }
+
 @keyframes bgScroll {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -445,15 +448,19 @@ html, body {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
 }
 
 @keyframes bounce-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -466,4 +473,112 @@ html, body {
 
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradient-move 5s linear infinite;
+}
+
+@keyframes text-shine {
+  0% {
+    background-position: -200%;
+  }
+
+  100% {
+    background-position: 200%;
+  }
+}
+
+.animate-text-shine {
+  background-size: 200% auto;
+  animation: text-shine 3s linear infinite;
+}
+
+.shine-text {
+  position: relative;
+  font-weight: 800;
+  background: linear-gradient(90deg,
+      /* Horizontal gradient */
+      #008ddf 0%,
+      #00629b 25%,
+      #008ddf 50%,
+      #00629b 75%,
+      #008ddf 100%);
+  background-size: 200% auto;
+  /* Extra width for animation */
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 3s linear infinite;
+  letter-spacing: 2px;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+    /* Start from right */
+  }
+
+  100% {
+    background-position: 0% center;
+    /* Move to left */
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes borderGlowDiagonal {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+.perspective {
+  perspective: 600px;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  50% {
+    transform: rotateX(-90deg);
+  }
+
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+.animate-flip {
+  animation: flip 0.6s ease-in-out forwards;
 }
