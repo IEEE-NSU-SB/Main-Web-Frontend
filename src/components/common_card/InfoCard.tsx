@@ -21,15 +21,16 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <div className="flex-1 border-l border-gray-600 pl-6 text-gray-200 max-w-xl">
-      <h2 className="text-xl font-bold mb-3 border-b-2 border-yellow-400 inline-block">
+      <h2 className="text-3xl whitespace-nowrap font-bold mb-3 inline-block ">
         {title}
+        <span className="block w-20 h-1 bg-white mt-2 rounded"></span>
       </h2>
-      <p className="text-sm leading-relaxed mb-4">{description}</p>
+      <p className="text-lg leading-relaxed mb-4">{description}</p>
       <a
         href={linkUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-yellow-400 font-semibold flex items-center gap-1 hover:text-yellow-300"
+        className="text-yellow-400 text-xl font-semibold flex items-center gap-1 hover:text-white"
       >
         ↗ {linkText}
       </a>
