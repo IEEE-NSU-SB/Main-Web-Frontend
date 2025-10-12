@@ -23,7 +23,7 @@ const HomePage = () => {
       <EventCarousel title="Featured Events" width="62" />
       <TopPerformers />
       <Blog />
-      <Tag />
+      {/* <Tag /> */}
     </>
   );
 };

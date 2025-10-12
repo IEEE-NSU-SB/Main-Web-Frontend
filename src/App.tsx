@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 
 // Global Components
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/footer";
 import ScrollToTopButton from "./components/ui/scroll-to-top-btn";
 
 import HomePage from "./pages/home/page";
@@ -28,6 +28,7 @@ import Contact from "./pages/contact/page";
 import Events from "./pages/activities/events/page";
 import IEEER10 from "./pages/about/IEEE Region 10/page";
 import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
+import EventDescription from "./pages/activities/events/EventDescription";
 
 const MainLayout = () => {
   return (
@@ -52,6 +53,8 @@ const App = () => {
 
           {/* Activities */}
           <Route path="/events" element={<Events />} />
+          <Route path="/news" element={<Events />} />
+          <Route path="/event_details" element={<EventDescription/>} />
           <Route path="/achievements" element={<Achievements />} />
 
           {/* Societies & AG */}
