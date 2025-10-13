@@ -1,6 +1,6 @@
-import Table from "@/components/table";
-import FadeIn from "@/components/ui/fade-in";
-import Wave from "@/components/wave";
+import Table from "@/components/Table";
+import FadeIn from "@/components/ui/FadeIn";
+import Wave from "@/components/Wave";
 
 const membersData = [
   {

@@ -1,5 +1,5 @@
-import FadeIn from '@/components/ui/fade-in';
-import SectionHeading from '@/components/ui/section-heading';
+import FadeIn from '@/components/ui/FadeIn';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 
 const ReachUs = () => {

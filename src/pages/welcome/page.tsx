@@ -1,5 +1,5 @@
 import INSB from "../../assets/logo/insb.gif";
-import TextType from './textType';
+import TextType from "./textType";
 
 
 const Button = ({ children, className = "", ...props }: React.PropsWithChildren<{ className?: string }>) => {

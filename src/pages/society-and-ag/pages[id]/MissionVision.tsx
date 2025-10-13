@@ -1,5 +1,5 @@
 
-import FadeIn from '@/components/ui/fade-in';
+import FadeIn from '@/components/ui/FadeIn';
 import { use, type FC } from 'react';
 import { useParams } from 'react-router';
 

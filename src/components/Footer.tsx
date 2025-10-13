@@ -9,7 +9,7 @@ import {
 import ieee from "./../assets/logo/ieee.png";
 import insb from "./../assets/logo/insb.png";
 import {} from "lucide-react";
-import FadeIn from "./ui/fade-in";
+import FadeIn from "./ui/FadeIn";
 
 const footerLinks = [
   {

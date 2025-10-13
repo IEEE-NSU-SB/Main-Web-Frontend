@@ -6,11 +6,11 @@ import dummy3 from "../../assets/dummy/image3.png";
 import dummy4 from "../../assets/dummy/image4.png";
 import dummy5 from "../../assets/dummy/image5.png";
 
-import SectionHeading from "@/components/ui/section-heading";
-import FadeIn from "@/components/ui/fade-in";
-import Skeleton from "@/components/skeleton";
+import SectionHeading from "@/components/ui/SectionHeading";
+import FadeIn from "@/components/ui/FadeIn";
+import Skeleton from "@/components/Skeleton";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import ErrorMessage from "@/components/ui/error-msg";
+import ErrorMessage from "@/components/ui/ErrorMessage";
 
 interface EventImage {
   id: number;
@@ -33,8 +33,6 @@ const imageMap: Record<string, string> = {
 };
 
 const EventsCarousel: React.FC<EventsCarouselProps> = ({
-  title = "Featured Events",
-  width = "36",
 }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -43,7 +41,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
 
   // Fetch async JSON
   const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "pages/home/data/events-carousel.json",
+    path: "pages/home/data/EventsCarousel.json",
   });
 
   const images: EventImage[] =
@@ -61,7 +59,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     if (firstCard) {
       setCardWidth((firstCard as HTMLElement).offsetWidth);
     }
-  }, [data]); // 👈 recalc when data changes
+  }, [data]); // recalc when data changes
 
   const animateScrollTo = (
     element: HTMLElement,
@@ -114,7 +112,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [cardWidth, images]); // 👈 rerun when data or size changes
+  }, [cardWidth, images]); // rerun when data or size changes
 
   const handleScroll = () => {
     if (!scrollRef.current || cardWidth === 0) return;
@@ -133,7 +131,9 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
 
   return (
     <div className="w-full py-4 relative">
-      <SectionHeading title={title} widthClass={`w-${width}`} />
+      {location.pathname === "/" && (
+        <SectionHeading title="Featured Events" widthClass="w-58" />
+      )}
       <FadeIn>
         {error && (
           <div className="py-10">
@@ -157,8 +157,8 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
             {/* Left Arrow */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 md:left-10 top-[62%] transform -translate-y-1/2
-                bg-ieee-blue-50 text-ieee-white text-lg md:text-xl
+              className="absolute left-4 md:left-10 top-[52%] transform -translate-y-1/2
+                bg-ieee-black-25 text-ieee-white text-lg md:text-xl
                 rounded-full border p-3 md:px-5 shadow-lg hover:shadow-2xl
                 transition-all duration-300 ease-in-out z-20
                 flex items-center justify-center ring-1 ring-ieee-white-25 hover:ring-ieee-white-50
@@ -171,8 +171,8 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
             {/* Right Arrow */}
             <button
               onClick={nextSlide}
-              className="absolute right-4 md:right-10 top-[62%] transform -translate-y-1/2
-                bg-ieee-blue-50 text-ieee-white text-lg md:text-xl
+              className="absolute right-4 md:right-10 top-[52%] transform -translate-y-1/2
+                bg-ieee-black-25 text-ieee-white text-lg md:text-xl
                 rounded-full border p-3 md:px-5 shadow-lg hover:shadow-2xl
                 transition-all duration-300 ease-in-out z-20
                 flex items-center justify-center ring-1 ring-ieee-white-25 hover:ring-ieee-white-50

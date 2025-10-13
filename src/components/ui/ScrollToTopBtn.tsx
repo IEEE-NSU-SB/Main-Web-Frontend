@@ -30,7 +30,7 @@ const ScrollToTopButton = () => {
     <button
       onClick={scrollToTop}
       style={{ display: visible ? "block" : "none" }}
-      className="fixed bottom-6 right-6 p-3 bg-ieee-blue text-ieee-white rounded-full shadow-lg z-50 hover:bg-ieee-darkblue"
+      className="cursor-pointer fixed bottom-6 right-6 p-3 bg-ieee-blue text-ieee-white rounded-full shadow-lg z-50 hover:bg-ieee-darkblue"
       aria-label="Scroll to top"
     >
       <ArrowUp className="w-5 h-5" />

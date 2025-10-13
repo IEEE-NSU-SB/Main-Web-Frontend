@@ -1,0 +1,48 @@
+{
+  "ag_banner": [
+    {
+      "id": "ieee-nsu-ras-sbc",
+      "title": "About RAS",
+      "color": "#602569",
+      "description": [
+        "The IEEE NSU Robotics and Automation Society Student Chapter, established on January 5th, 2017, is a pivotal technical chapter within the IEEE NSU Student Branch.",
+        "It focuses on research, study, and knowledge exchange in Robotics & Automation and is the first RAS chapter in Bangladesh.",
+        "Through continuous evolution and member training, the chapter shapes future leaders in the field while upholding IEEE RAS standards of excellence."
+      ],
+      "image": "ras.png"
+    },
+    {
+      "id": "ieee-nsu-pes-sbc",
+      "title": "About PES",
+      "color": "#659941",
+      "description": [
+        "IEEE NSU PES Student Branch Chapter advances knowledge in electric power and energy.",
+        "It ranked 5th in IEEE Region 10 as a High Performing Student Branch Chapter in 2020.",
+        "The chapter received back-to-back awards from 2021–2024 for excellence in power and energy research."
+      ],
+      "image": "pes.png"
+    },
+    {
+      "id": "ieee-nsu-ias-sbc",
+      "title": "About IAS",
+      "color": "#0f904b",
+      "description": [
+        "IEEE IAS bridges the gap between academics and industry, fostering practical learning and career growth.",
+        "IEEE NSU IAS was formed on June 9, 2018, prioritizing collaboration between students and corporations.",
+        "The society has successfully organized summits and workshops with professionals to guide future engineers."
+      ],
+      "image": "ias.png"
+    },
+    {
+      "id": "ieee-nsu-wie-ag",
+      "title": "About WIE",
+      "color": "#006699",
+      "description": [
+        "IEEE NSU Women in Engineering Affinity Group empowers women to pursue careers in STEM.",
+        "Established on June 20, 2016, WIE actively works to increase female representation in IT and engineering.",
+        "Through workshops, mentorships, and events, it fosters confidence and technical skills among female students."
+      ],
+      "image": "wie.png"
+    }
+  ]
+}

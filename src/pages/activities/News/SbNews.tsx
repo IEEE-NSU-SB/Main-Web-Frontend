@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Skeleton from "@/components/skeleton";
-import ErrorMessage from "@/components/ui/error-msg";
-import Wave from "@/components/wave";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import Wave from "@/components/Wave";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import FadeIn from '@/components/ui/fade-in';
+import FadeIn from '@/components/ui/FadeIn';
 
 type SbNewsResponse = {
     id: number,

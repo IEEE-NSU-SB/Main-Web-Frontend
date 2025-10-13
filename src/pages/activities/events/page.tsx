@@ -1,5 +1,5 @@
-import Wave from '@/components/wave'
-import UpcomingEvent from './upcoming-event'
+import Wave from '@/components/Wave'
+import UpcomingEvent from './UpcomingEvent'
 import LollipopChart from './EventGraph1'
 
 const Events = () => {

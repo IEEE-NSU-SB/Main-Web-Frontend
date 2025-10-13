@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import Wave from "@/components/wave";
+import Wave from "@/components/Wave";
 import spac24Image from "../../../assets/dummy/image1.png";
-import FadeIn from "@/components/ui/fade-in";
+import FadeIn from "@/components/ui/FadeIn";
 
 const papers = [
   {

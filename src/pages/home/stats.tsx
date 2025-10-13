@@ -2,10 +2,10 @@ import { useRef, useEffect } from "react";
 import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
 
-import ScaleUp from "@/components/ui/scale-up";
-import Skeleton from "@/components/skeleton";
+import ScaleUp from "@/components/ui/ScaleUp";
+import Skeleton from "@/components/Skeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import ErrorMessage from "../../components/ui/error-msg";
+import ErrorMessage from "../../components/ui/ErrorMessage";
 
 type Stat = {
   label: string;
@@ -16,7 +16,7 @@ type StatsResponse = {
   stats: Stat[];
 };
 
-const StatsSection = () => {
+const Stats = () => {
   const { loading, data, error, refetch } = useFetchDataAPI<StatsResponse>({
     apiUrl: "main_website/get_sc_ag_stats/",
   });
@@ -56,7 +56,13 @@ const StatsSection = () => {
     const createShapes = () => {
       if (!backgroundRef.current) return;
       const shapeTypes = ["square", "circle", "triangle", "rectangle"];
-      for (let i = 0; i < 40; i++) {
+
+      // Decide number of shapes based on viewport width
+      let numberOfShapes = 40; // default for desktop
+      if (window.innerWidth < 768) numberOfShapes = 15; // phones
+      else if (window.innerWidth < 1024) numberOfShapes = 25; // tablets
+
+      for (let i = 0; i < numberOfShapes; i++) {
         const shape = document.createElement("div");
         shape.className = `shape ${
           shapeTypes[Math.floor(Math.random() * shapeTypes.length)]
@@ -78,43 +84,22 @@ const StatsSection = () => {
       }
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-
-      const shapes =
-        backgroundRef.current?.querySelectorAll<HTMLDivElement>(".shape");
-      shapes?.forEach((shape) => {
-        const initialX = parseFloat(shape.dataset.initialX || "0");
-        const initialY = parseFloat(shape.dataset.initialY || "0");
-
-        const moveX = initialX + x * 5;
-        const moveY = initialY + y * 5;
-
-        shape.style.left = `${moveX}%`;
-        shape.style.top = `${moveY}%`;
-      });
-    };
-
     createShapes();
-    document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const boxClasses =
-    "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
-  const valueClasses =
-    "text-3xl md:text-5xl font-bold mb-2 m-8 odometer text-stroke";
+    "rounded text-ieee-blue bg-ieee-white backdrop-blur-lg relative z-10 shadow-[2px_2px_4px_theme(colors.ieee-black-25)]";
+  const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer";
   const labelClasses = "text-sm md:text-lg font-bold mb-8";
 
   return (
-    <section className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue">
+    <section className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-darkblue">
       <div
         ref={backgroundRef}
         id="geometric-background"
         className="absolute inset-0 z-0"
       ></div>
-      <div className="absolute inset-0 bg-black/30 z-0"></div>
+      <div className="absolute inset-0  z-0"></div>
 
       <div className="relative max-w-[1040px] mx-auto z-10">
         <ScaleUp>
@@ -150,4 +135,4 @@ const StatsSection = () => {
   );
 };
 
-export default StatsSection;
+export default Stats;

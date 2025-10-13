@@ -1,5 +1,5 @@
-import Wave from '@/components/wave';
-import All_links from './All_links';
+import Wave from '@/components/Wave';
+import All_links from './AllLinks';
 import ReachUs from './ReachUs';
 import FollowUs from './FollowUs';
 import YtSection from './YtSection';

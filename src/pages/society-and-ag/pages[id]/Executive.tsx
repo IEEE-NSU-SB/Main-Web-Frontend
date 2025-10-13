@@ -1,9 +1,9 @@
-import FadeIn from "@/components/ui/fade-in";
-import SectionHeading from "@/components/ui/section-heading";
+import FadeIn from "@/components/ui/FadeIn";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import Skeleton from "@/components/skeleton";
-import ErrorMessage from "@/components/ui/error-msg";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
 
 const ExecutiveBodySection = () => {
   const { loading, data: members, error, refetch } = useFetchDataJSON({
@@ -14,8 +14,8 @@ const ExecutiveBodySection = () => {
     "https://img.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_488145-3540.jpg?semt=ais_hybrid&w=740&q=80";
 
   return (
-    <section className="max-w-[1080px] mx-auto py-2 pb-16 px-5 sm:px-12 lg:px-5">
-      <SectionHeading title="Meet Our Executive Body" widthClass="w-102" />
+    <section className="max-w-[1080px] mx-auto py-2 pb-16">
+      <SectionHeading title="Our Executive Body" widthClass="w-72" />
 
       {loading ? (
         <div className="flex flex-wrap justify-center items-center mt-26 gap-x-8 gap-y-17 max-w-[1020px]">
@@ -40,11 +40,11 @@ const ExecutiveBodySection = () => {
       ) : error ? (
         <ErrorMessage message="Failed to load members" onRetry={refetch} />
       ) : (
-        <div className="flex flex-wrap justify-center items-center mt-26 gap-x-8 gap-y-17 max-w-[1020px]">
+        <div className="flex flex-wrap justify-center items-center mt-26 gap-x-8 gap-y-17 px-5 max-w-[1080px]">
           {members.map((member: any, index: number) => (
             <FadeIn key={index}>
-              <div className="w-[220px] bg-white rounded-xl shadow-md text-center pt-14 pb-10 px-6 hover:shadow-xl transition-all duration-300 relative">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[45%] w-28 h-28 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
+              <div className="w-[235px] bg-white rounded-xl shadow-md border text-center pt-4 pb-10 hover:shadow-xl transition-all duration-300 relative">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[65%] w-28 h-28 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-200">
                   <img
                     src={defaultImage}
                     alt={member.name}

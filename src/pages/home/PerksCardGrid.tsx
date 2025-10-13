@@ -6,9 +6,9 @@ import iconSkillBuilding from "./assets/img/skills.png";
 import iconEvents from "./assets/img/events.png";
 import iconAchievements from "./assets/img/achievements.png";
 
-import FadeIn from "@/components/ui/fade-in";
-import Skeleton from "@/components/skeleton";
-import ErrorMessage from "../../components/ui/error-msg";
+import FadeIn from "@/components/ui/FadeIn";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "../../components/ui/ErrorMessage";
 
 type Perk = {
   title: string;
@@ -133,12 +133,12 @@ export default function PerksCardGrid() {
         </div>
       ) : (
         perks?.map((item, index) => (
-          <FadeIn key={index}>
+          <FadeIn delay={index/8} key={index} >
             <div className="flex items-start space-x-4">
               <img src={item.icon} alt={item.title} className="w-8 h-8" />
               <div className="text-left">
                 <h3 className="font-bold text-gray-800 mb-3">{item.title}</h3>
-                <p className="text-ieee-black-75 text-base/6 learning-card-grid.text text-justify text-wrap">
+                <p className="text-ieee-black-75 text-md learning-card-grid.text text-wrap">
                   {item.description}
                 </p>
               </div>

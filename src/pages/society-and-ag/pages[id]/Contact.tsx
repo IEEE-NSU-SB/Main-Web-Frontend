@@ -1,4 +1,4 @@
-import SectionHeading from "@/components/ui/section-heading";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const ScAgContact: React.FC = () => {
 

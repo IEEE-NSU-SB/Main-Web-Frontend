@@ -1,9 +1,9 @@
-import Wave from "@/components/wave";
+import Wave from "@/components/Wave";
 
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import ErrorMessage from "@/components/ui/error-msg";
-import Skeleton from "@/components/skeleton";
-import FadeIn from "@/components/ui/fade-in";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import Skeleton from "@/components/Skeleton";
+import FadeIn from "@/components/ui/FadeIn";
 
 type Toolkit = {
   title: string;

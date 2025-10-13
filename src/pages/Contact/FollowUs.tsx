@@ -1,4 +1,4 @@
-import FadeIn from "@/components/ui/fade-in";
+import FadeIn from "@/components/ui/FadeIn";
 import React, { useEffect, useState } from "react";
 
 const FollowUs: React.FC = () => {

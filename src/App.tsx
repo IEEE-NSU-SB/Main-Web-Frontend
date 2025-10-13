@@ -7,29 +7,31 @@ import {
 
 // Global Components
 import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
-import ScrollToTopButton from "./components/ui/scroll-to-top-btn";
+import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ui/ScrollToTopBtn";
 
-import HomePage from "./pages/home/page";
-import SocietyOrAg from "./pages/society-and-ag/pages[id]/ScAgPages";
+import HomePage from "./pages/home/Page";
+import SocietyOrAg from "./pages/society-and-ag/pages[id]/Pages";
 // import About from "@/pages/about/pages[id]/pages";
 
-import JoinINSB from "@/pages/get-involved/join-insb/page";
-import AllMembers from "@/pages/members/all-members-statistcs/page";
-import Achievements from "./pages/activities/achievements/page";
-import ResearchPapers from "./pages/publications/research Paper/page";
-import Blogs from "./pages/publications/blogs/page";
-import Toolkit from "./pages/publications/toolkit/pages";
+import JoinINSB from "@/pages/get-involved/join-insb/Page";
+import AllMembers from "@/pages/members/all-members-statistcs/Page";
+import Officers from "@/pages/members/officers/OfficerCard";
+import Volunteers from "@/pages/members/volunteers/VolunteerCard";
+import Achievements from "./pages/activities/achievements/Page";
+import ResearchPapers from "./pages/publications/research Paper/Page";
+import Blogs from "./pages/publications/blogs/Page";
+import Toolkit from "./pages/publications/toolkit/Pages";
 import Panel from "./pages/members/panel/page";
-import WriteBlog from "./pages/get-involved/write-a-blog/page";
-import WelcomePage from "./pages/welcome/page";
-import ScrollToTop from "./components/ui/scroll-to-top";
-import Contact from "./pages/contact/page";
-import Events from "./pages/activities/events/page";
-import IEEER10 from "./pages/about/IEEE Region 10/page";
-import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
+import WriteBlog from "./pages/get-involved/write-a-blog/Page";
+import WelcomePage from "./pages/welcome/Page";
+import ScrollToTop from "./components/ui/ScrollToTop";
+import Contact from "./pages/contact/Page";
+import Events from "./pages/activities/events/Page";
+import IEEER10 from "./pages/about/IEEE Region 10/Page";
+import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/Executive";
 import EventDescription from "./pages/activities/events/EventDescription";
-import Pages from "./pages/activities/News/Pages";
+import News from "./pages/activities/news/Pages";
 
 const MainLayout = () => {
   return (
@@ -50,22 +52,25 @@ const App = () => {
         <Route path="/welcome-page" element={<WelcomePage />} />
 
         <Route element={<MainLayout />}>
+          {/* Home */}
           <Route path="/" element={<HomePage />} />
+
 
           {/* Activities */}
           <Route path="/events" element={<Events />} />
-          <Route path="/news" element={<Events />} />
+          <Route path="/news" element={<News/>} />
           <Route path="/event_details" element={<EventDescription/>} />
           <Route path="/achievements" element={<Achievements />} />
 
-          {/* news  */}
-          <Route path="news" element={<Pages></Pages>}></Route>
+
           {/* Societies & AG */}
           <Route path="/society-ag/:id" element={<SocietyOrAg />} />
 
           {/* Members */}
-          <Route path="/all-members" element={<AllMembers />} />
           <Route path="/panels" element={<Panel />} />
+          <Route path="/officers" element={<Officers />} />
+          <Route path="/volunteers" element={<Volunteers />} />
+          <Route path="/all-members" element={<AllMembers />} />
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}

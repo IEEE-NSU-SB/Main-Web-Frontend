@@ -1,0 +1,60 @@
+{
+  "all_featured_events": [
+    {
+      "id": 1,
+      "key": "ras",
+      "super_event_name": "Robotics Workshop",
+      "super_event_description": "Hands-on workshop on building autonomous robots.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "RAS",
+      "date": "2025-10-15"
+    },
+    {
+      "id": 2,
+      "key": "pes",
+      "super_event_name": "Power Engineering Seminar",
+      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-11-01"
+    }
+  ],
+  "all_mega_events": [
+    {
+      "id": 1,
+      "key": "ras",
+      "super_event_name": "Robotics Workshop",
+      "super_event_description": "Hands-on workshop on building autonomous robots.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Robotics & Automation Society Student Branch Chapter",
+      "date": "2025-10-15"
+    },
+    {
+      "id": 2,
+      "key": "pes",
+      "super_event_name": "Power Engineering Seminar",
+      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-11-01"
+    },
+    {
+      "id": 3,
+      "key": "pes",
+      "super_event_name": "Power Engineering Seminar",
+      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-11-01"
+    },
+    {
+      "id": 4,
+      "key": "pes",
+      "super_event_name": "Power Engineering Seminar",
+      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-11-01"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
-import FadeIn from "@/components/ui/fade-in";
-import Skeleton from "@/components/skeleton";
-import SectionHeading from "@/components/ui/section-heading";
+import FadeIn from "@/components/ui/FadeIn";
+import Skeleton from "@/components/Skeleton";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import ErrorMessage from "../../components/ui/error-msg";
+import ErrorMessage from "../../components/ui/ErrorMessage";
 
 const VisionSection = () => {
   const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "pages/home/data/our-vision.json",
+    path: "pages/home/data/OurVision.json",
   });
 
   return (

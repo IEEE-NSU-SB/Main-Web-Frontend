@@ -1,5 +1,5 @@
 import PanelCard from "@/pages/members/panel-card";
-import Wave from "@/components/wave";
+import Wave from "@/components/Wave";
 
 export const counselorsData = [
   {

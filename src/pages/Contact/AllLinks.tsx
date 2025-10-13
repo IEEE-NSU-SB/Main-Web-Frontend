@@ -1,6 +1,6 @@
-import Skeleton from "@/components/skeleton";
-import ErrorMessage from "@/components/ui/error-msg";
-import FadeIn from "@/components/ui/fade-in";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { MapPin, Mail, Phone, Share2, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 
@@ -34,7 +34,7 @@ const All_links = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Address */}
                         <div className="flex flex-col items-center text-center">
-                            <div className="w-28 h-28 rounded-full bg-gray-600 hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
+                            <div className="w-28 h-28 rounded-full bg-ieee-darkblue-25 hover:bg-ieee-darkblue-75 cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
                                 <MapPin className="w-12 h-12 text-white" />
                             </div>
                             <h3 className="text-xl font-bold mb-3">Address</h3>
@@ -45,7 +45,7 @@ const All_links = () => {
 
                         {/* Email Address */}
                         <div className="flex flex-col items-center text-center">
-                            <div className="w-28 h-28 rounded-full bg-gray-600 hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
+                            <div className="w-28 h-28 rounded-full bg-ieee-darkblue-25 hover:bg-ieee-darkblue-75 cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
                                 <Mail className="w-12 h-12 text-white" />
                             </div>
                             <h3 className="text-xl font-bold mb-3">Email Address</h3>
@@ -62,7 +62,7 @@ const All_links = () => {
 
                         {/* Mobile Number */}
                         <div className="flex flex-col items-center text-center">
-                            <div className="w-28 h-28 rounded-full bg-gray-600 hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
+                            <div className="w-28 h-28 rounded-full bg-ieee-darkblue-25 hover:bg-ieee-darkblue-75 cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
                                 <Phone className="w-12 h-12 text-white" />
                             </div>
                             <h3 className="text-xl font-bold mb-3">Mobile Number</h3>
@@ -79,7 +79,7 @@ const All_links = () => {
 
                         {/* Social Media */}
                         <div className="flex flex-col items-center text-center">
-                            <div className="w-28 h-28 rounded-full bg-gray-600 hover:bg-black transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
+                            <div className="w-28 h-28 rounded-full bg-ieee-darkblue-25 hover:bg-ieee-darkblue-75 cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center mb-4">
                                 <Share2 className="w-12 h-12 text-white" />
                             </div>
                             <h3 className="text-xl font-bold mb-3">Social Media</h3>

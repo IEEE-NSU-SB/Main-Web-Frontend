@@ -1,0 +1,24 @@
+{
+  "media": [
+    {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80",
+      "alt": "IEEE NSU Event",
+      "firstText": "The",
+      "secondText": "Masterminds",
+      "description": "Experience the enchantment of anchoring phenomenon events throughout the year with IEEE NSU SB. Take part in the team's inclination to formulate and execute captivating events.",
+      "buttonText": "Join IEEE NSU SB",
+      "buttonLink": "https://ieeensusb.org/join"
+    },
+    {
+      "type": "image",
+      "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+      "alt": "IEEE Workshop",
+      "firstText": "The",
+      "secondText": "Orchestrators",
+      "description": "Empowering innovation and technology leadership since 2004.",
+      "buttonText": "Our Events",
+      "buttonLink": "https://ieeensusb.org/join"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import insb from "@/assets/logo/insb.png";
 import pes from "@/assets/logo/pes.png";
 import ras from "@/assets/logo/ras.png";
 import wie from "@/assets/logo/wie.png";
-import FadeIn from "@/components/ui/fade-in";
+import FadeIn from "@/components/ui/FadeIn";
 
 export default function LogoSection() {
   return (

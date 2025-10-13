@@ -1,7 +1,7 @@
-import Skeleton from "@/components/skeleton";
-import ErrorMessage from "@/components/ui/error-msg";
-import FadeIn from "@/components/ui/fade-in";
-import SectionHeading from "@/components/ui/section-heading";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import FadeIn from "@/components/ui/FadeIn";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 import { useParams } from "react-router-dom";

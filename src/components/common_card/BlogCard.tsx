@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import SectionHeading from "../ui/section-heading";
-import FadeIn from "../ui/fade-in";
+import SectionHeading from "../ui/SectionHeading";
+import FadeIn from "../ui/FadeIn";
 import { Calendar, FolderClosed, NotebookPen, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "../skeleton";
-import ErrorMessage from "../ui/error-msg";
+import Skeleton from "../Skeleton";
+import ErrorMessage from "../ui/ErrorMessage";
 import { Link } from "react-router-dom";
-import Tag from "@/pages/publications/blogs/tag";
+import Tag from "@/pages/publications/blogs/Tag";
 
 export interface BlogData {
   id: number;
@@ -70,7 +70,7 @@ const BlogCard: React.FC = () => {
   return (
     <div className="w-full py-4">
       {location.pathname === "/" && (
-        <SectionHeading title="Blogs" widthClass="w-32" />
+        <SectionHeading title="Recent Blogs" widthClass="w-55" />
       )}
 
       {location.pathname !== "/" && (
@@ -169,7 +169,7 @@ const BlogCard: React.FC = () => {
                       {event.title}
                     </h3>
                     <p
-                      className="text-ieee-black-75 mb-4 line-clamp-3 text-justify h-18"
+                      className="text-ieee-black-75 mb-4 line-clamp-3 h-18"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
                     <Link to={event.link}>
