@@ -30,7 +30,7 @@ import Contact from "./pages/contact/Page";
 import Events from "./pages/activities/events/Page";
 import IEEER10 from "./pages/about/IEEE Region 10/Page";
 import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/Executive";
-import EventDescription from "./pages/activities/events/EventDescription";
+import EventDescription from "./pages/activities/events/EventsDetails/EventDetailsPages";
 import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";

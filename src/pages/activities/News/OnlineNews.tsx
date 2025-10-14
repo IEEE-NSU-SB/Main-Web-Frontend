@@ -154,21 +154,7 @@ const OnlineNews = () => {
                                                 <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-800 group-hover:text-white transition-colors" />
                                             </button>
 
-                                            {/* Dots Indicator */}
-                                            <div className="flex justify-center gap-2 mt-12">
-                                                {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-                                                    <button
-                                                        key={idx}
-                                                        onClick={() => goToSlide(idx)}
-                                                        className={`h-2 rounded-full transition-all duration-300 ${
-                                                            idx === currentIndex 
-                                                                ? 'bg-[#00629B] w-8' 
-                                                                : 'bg-gray-300 w-2 hover:bg-gray-400'
-                                                        }`}
-                                                        aria-label={`Go to slide ${idx + 1}`}
-                                                    />
-                                                ))}
-                                            </div>
+                                         
 
                                            
                                         </>
