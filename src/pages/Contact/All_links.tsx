@@ -19,7 +19,7 @@ const All_links = () => {
 
 
     return (
-        <FadeIn>
+        <FadeIn> 
             <div className="max-w-[1080px] mx-auto px-4 py-6">
                 {loading ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

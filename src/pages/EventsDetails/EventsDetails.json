@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "https://example.com/images/techsummit2025.jpg",
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
     "date": "2025-11-20",
     "title": "Tech Innovators Summit 2025",
     "category": "Technology Conference",
@@ -26,7 +26,7 @@
   },
   {
     "id": 2,
-    "image": "https://example.com/images/roboticsworkshop.jpg",
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
     "date": "2025-12-05",
     "title": "Robotics Hands-on Workshop",
     "category": "Engineering Workshop",
@@ -51,7 +51,7 @@
   },
   {
     "id": 3,
-    "image": "https://example.com/images/greencampusfair.jpg",
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
     "date": "2026-01-15",
     "title": "Green Campus Sustainability Fair",
     "category": "Environmental Awareness",
