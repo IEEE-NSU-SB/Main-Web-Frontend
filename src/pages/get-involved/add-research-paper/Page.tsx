@@ -13,31 +13,19 @@ const chapters = [
 ];
 
 const categories = [
-  "Science & Technology",
-  "Robotics",
-  "Artificial Intelligence",
-  "Machine Learning",
-  "Neural Network",
-  "Life Science",
-  "Women Empowerment",
-  "Women in STEM",
-  "Power and Energy",
-  "Industry Automation",
-  "Tips & Tricks",
-  "News",
+  "Artificial Intelligence"
 ];
 
-const WriteBlog: React.FC = () => {
+const AddResearchPaper: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    ieeeId: "",
-    writerName: "",
+    authors: "",
     chapter: "",
     title: "",
     category: "",
-    shortDesc: "",
-    blogContent: "",
+    abstract: "",
+    publicationLink: "",
     bannerFile: null as File | null,
   });
 
@@ -57,7 +45,7 @@ const WriteBlog: React.FC = () => {
   useEffect(() => {
     if (!quill) return;
     quill.on("text-change", () => {
-      setFormData((prev) => ({ ...prev, blogContent: quill.root.innerHTML }));
+      setFormData((prev) => ({ ...prev, abstract: quill.root.innerHTML }));
     });
   }, [quill]);
 
@@ -93,15 +81,14 @@ const WriteBlog: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      alert("Blog publish request submitted successfully!");
+      alert("Research Paper add request submitted successfully!");
       setFormData({
-        ieeeId: "",
-        writerName: "",
+        authors: "",
         chapter: "",
         title: "",
         category: "",
-        shortDesc: "",
-        blogContent: "",
+        abstract: "",
+        publicationLink: "",
         bannerFile: null,
       });
       setBannerPreview(null);
@@ -112,30 +99,30 @@ const WriteBlog: React.FC = () => {
   return (
     <>
       <Wave
-        title="Write a Blog"
-        subtitle="Unleash your intellect on the realms of science and technology, guiding us towards a sustainable future with your insights on power and energy."
+        title="Add a Research Paper"
+        subtitle="Contribute your authentic research and insights to our IEEE NSU Student Branch community!"
       />
       <FadeIn>
-        <section className="max-w-[900px] mx-auto py-6 px-5 sm:px-12 lg:px-5 mb-10">
+        <section className="max-w-[900px] mx-auto py-6 px-5 sm:px-12 lg:px-5 mb-30">
           {/* Instructions */}
           <div className="mb-8 px-4 bg-ieee-gray-10 rounded-lg">
             <h2 className="text-xl font-bold mb-3 text-ieee-darkblue">
-              Read Instructions before submitting your Blog
+              Read Instructions before submitting your Research Paper
             </h2>
             <ul className="list-disc list-inside text-ieee-black-75 space-y-1">
               <li>
                 You must be a Registered IEEE NSU Student Branch Member to get
-                your blogs published in our website!
+                your Research Paper added on our website!
               </li>
               <li>
                 IEEE NSU Student Branch holds the right to decline or delete
-                your Blog.
+                your Research Paper.
               </li>
               <li>
-                IEEE NSU Student Branch will not publish any Blog that does not
-                go with the Code of Conduct!
+                IEEE NSU Student Branch will not publish any Research that is
+                not authentic and does not go with the Code of Conduct!
               </li>
-              <li>Keep Blogging! 😃 😁</li>
+              <li>Keep Grinding! 😃 😁</li>
             </ul>
           </div>
 
@@ -145,41 +132,26 @@ const WriteBlog: React.FC = () => {
             className="bg-ieee-gray/1 shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300 rounded-lg p-6"
           >
             <h3 className="text-2xl font-semibold mb-4 text-ieee-darkblue text-center">
-              Write Information
+              Author Information
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
-                <label className="block mb-1 font-medium">
-                  IEEE ID <span className="text-red-600">*</span>
-                </label>
-                <input
-                  type="number"
-                  name="ieeeId"
-                  value={formData.ieeeId}
-                  onChange={handleChange}
-                  placeholder="Enter your IEEE ID"
-                  className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block mb-1 font-medium">
-                  Writer Name <span className="text-red-600">*</span>
+                <label className="block mb-3 font-medium">
+                  Authors <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
-                  name="writerName"
-                  value={formData.writerName}
+                  name="authors"
+                  value={formData.authors}
                   onChange={handleChange}
-                  placeholder="Enter your full name"
+                  placeholder="Enter authors' names"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
                   required
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">
+                <label className="block mb-3 mt-2 font-medium">
                   From which Chapter/Affinity Group?{" "}
                   <span className="text-red-600">*</span>
                 </label>
@@ -203,11 +175,11 @@ const WriteBlog: React.FC = () => {
             <hr className="my-10 border-ieee-gray-15" />
 
             <h3 className="text-2xl font-semibold mb-4 text-ieee-darkblue text-center">
-              Blog Description
+              Research Paper Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1 font-medium">
+                <label className="block mb-3 font-medium">
                   Title <span className="text-red-600">*</span>
                 </label>
                 <input
@@ -215,14 +187,14 @@ const WriteBlog: React.FC = () => {
                   name="title"
                   value={formData.title}
                   onChange={handleChange}
-                  placeholder="Enter blog title"
+                  placeholder="Enter paper title"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
                   required
                 />
               </div>
 
               <div>
-                <label className="block mb-1 font-medium">
+                <label className="block mb-3 font-medium">
                   Category <span className="text-red-600">*</span>
                 </label>
                 <select
@@ -242,31 +214,30 @@ const WriteBlog: React.FC = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">
-                  Short Description of Blog{" "}
-                  <span className="text-red-600">*</span>
+                <label className="block mb-3 mt-2 font-medium">
+                  Abstract <span className="text-red-600">*</span>
                 </label>
-                <textarea
-                  name="shortDesc"
-                  value={formData.shortDesc}
+                <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" />
+              </div>
+
+              <div className="md:col-span-2 mt-24">
+                <label className="block mb-3 font-medium">
+                  Paper Publication Link <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="url"
+                  name="publicationLink"
+                  value={formData.publicationLink}
                   onChange={handleChange}
-                  placeholder="Write a short description of your blog..."
+                  placeholder="Enter publication URL"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  rows={3}
                   required
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">
-                  Write your blog <span className="text-red-600">*</span>
-                </label>
-                <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" />
-              </div>
-
-              <div className="md:col-span-2 mt-20">
-                <label className="block mb-1 font-medium">
-                  Blog Banner Picture <span className="text-red-600">*</span>
+                <label className="block mb-3 mt-2 font-medium">
+                  Research Banner Picture <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="file"
@@ -285,13 +256,14 @@ const WriteBlog: React.FC = () => {
                 )}
               </div>
             </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
                 className="mt-6 w-full md:w-auto border-1 border-ieee-blue bg-ieee-blue text-white font-semibold cursor-pointer px-6 py-2 rounded hover:text-ieee-blue hover:bg-ieee-white transition-all 300"
                 disabled={loading}
               >
-                {loading ? "Publishing..." : "Place Publish Request"}
+                {loading ? "Adding..." : "Place Add Request"}
               </button>
             </div>
           </form>
@@ -301,4 +273,4 @@ const WriteBlog: React.FC = () => {
   );
 };
 
-export default WriteBlog;
+export default AddResearchPaper;

@@ -3,58 +3,186 @@
     {
       "id": 1,
       "key": "ras",
-      "super_event_name": "Robotics Workshop",
-      "super_event_description": "Hands-on workshop on building autonomous robots.",
+      "name": "Robotics Workshop",
+      "description": "Hands-on workshop on building autonomous robots and automation systems using Arduino and sensors. Participants learned fundamental robotics design principles and practical implementation.",
       "banner_image": "assets/dummy/image1.png",
-      "group_name": "RAS",
-      "date": "2025-10-15"
+      "group_name": "IEEE NSU Robotics and Automation Society Student Branch Chapter",
+      "date": "2025-10-15",
+      "color": "#602569",
+      "category": "Technical"
     },
     {
       "id": 2,
       "key": "pes",
-      "super_event_name": "Power Engineering Seminar",
-      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "name": "Workshop on Advanced MATLAB and Simulink for Renewable Energy Research",
+      "description": "A professional-level workshop focused on MATLAB and Simulink applications in renewable energy research, modeling, and simulation for sustainable power systems.",
       "banner_image": "assets/dummy/image1.png",
       "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
-      "date": "2025-11-01"
+      "date": "2025-10-12",
+      "color": "#659941",
+      "category": "Professional"
+    },
+    {
+      "id": 3,
+      "key": "pes",
+      "name": "Power Engineering Seminar",
+      "description": "A technical seminar on renewable energy integration, smart grids, and energy storage systems presented by experts from academia and industry.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-08-05",
+      "color": "#659941",
+      "category": "Technical"
+    },
+    {
+      "id": 4,
+      "key": "ias",
+      "name": "Industrial Innovation and Automation Talk",
+      "description": "An industry-driven session focused on industrial automation trends, manufacturing innovation, and modern control systems.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Industry Applications Society Student Branch Chapter",
+      "date": "2025-09-10",
+      "color": "#0f904b",
+      "category": "Professional"
+    },
+    {
+      "id": 5,
+      "key": "wie",
+      "name": "Women in Tech Leadership Meetup",
+      "description": "A networking and leadership event empowering women in technology through mentorship, panel discussions, and skill development workshops.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Women in Engineering Affinity Group",
+      "date": "2025-11-20",
+      "color": "#006699",
+      "category": "Professional"
+    },
+    {
+      "id": 6,
+      "key": "ras",
+      "name": "Line Follower Robot Competition",
+      "description": "A fun, competitive event where participants design and build autonomous line-following robots to test their precision and speed.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Robotics and Automation Society Student Branch Chapter",
+      "date": "2025-06-18",
+      "color": "#602569",
+      "category": "Non Technical"
+    },
+    {
+      "id": 7,
+      "key": "wie",
+      "name": "Humanitarian Engineering for Change",
+      "description": "An initiative focusing on engineering solutions to real-world humanitarian challenges in rural and underserved communities.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Women in Engineering Affinity Group",
+      "date": "2025-05-25",
+      "color": "#006699",
+      "category": "Humanitarian"
+    },
+    {
+      "id": 8,
+      "key": "pes",
+      "name": "Administrative Officers Training Program",
+      "description": "A leadership and management training workshop for executive members to improve project organization, communication, and event execution.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
+      "date": "2025-04-02",
+      "color": "#659941",
+      "category": "Administrative"
+    },
+    {
+      "id": 9,
+      "key": "ias",
+      "name": "Industry Academia Collaboration Summit",
+      "description": "A collaborative platform between academic researchers and industry professionals to discuss innovation, research, and skill-building opportunities.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Industry Applications Society Student Branch Chapter",
+      "date": "2025-12-01",
+      "color": "#0f904b",
+      "category": "Professional"
+    },
+    {
+      "id": 10,
+      "key": "wie",
+      "name": "Tech Talk: Breaking Barriers in STEM",
+      "description": "An inspiring talk by women leaders in STEM fields discussing opportunities, challenges, and future pathways for young innovators.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Women in Engineering Affinity Group",
+      "date": "2025-03-14",
+      "color": "#006699",
+      "category": "Technical"
     }
   ],
   "all_mega_events": [
     {
       "id": 1,
       "key": "ras",
-      "super_event_name": "Robotics Workshop",
-      "super_event_description": "Hands-on workshop on building autonomous robots.",
+      "name": "National Robotics Challenge 2025",
+      "description": "A nationwide robotics competition hosted by IEEE NSU RAS SBC, featuring teams from universities across Bangladesh showcasing advanced autonomous robots.",
       "banner_image": "assets/dummy/image1.png",
       "group_name": "IEEE NSU Robotics & Automation Society Student Branch Chapter",
-      "date": "2025-10-15"
+      "date": "2025-12-10"
     },
     {
       "id": 2,
       "key": "pes",
-      "super_event_name": "Power Engineering Seminar",
-      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "name": "Green Energy Summit",
+      "description": "A mega symposium on renewable energy technologies, sustainable power grids, and global clean energy transitions.",
       "banner_image": "assets/dummy/image1.png",
       "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
-      "date": "2025-11-01"
+      "date": "2025-11-25"
     },
     {
       "id": 3,
-      "key": "pes",
-      "super_event_name": "Power Engineering Seminar",
-      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "key": "ias",
+      "name": "Industry Innovation Expo 2025",
+      "description": "An industrial exhibition and conference showcasing the latest in automation, manufacturing, and smart technologies.",
       "banner_image": "assets/dummy/image1.png",
-      "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
-      "date": "2025-11-01"
+      "group_name": "IEEE NSU Industry Applications Society Student Branch Chapter",
+      "date": "2025-10-22"
     },
     {
       "id": 4,
+      "key": "wie",
+      "name": "Women Engineers International Summit",
+      "description": "A landmark event celebrating women in technology, entrepreneurship, and research with international speakers and workshops.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Women in Engineering Affinity Group",
+      "date": "2025-09-05"
+    },
+    {
+      "id": 5,
+      "key": "ras",
+      "name": "National Robotics Challenge 2025",
+      "description": "A nationwide robotics competition hosted by IEEE NSU RAS SBC, featuring teams from universities across Bangladesh showcasing advanced autonomous robots.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Robotics & Automation Society Student Branch Chapter",
+      "date": "2025-12-10"
+    },
+    {
+      "id": 6,
       "key": "pes",
-      "super_event_name": "Power Engineering Seminar",
-      "super_event_description": "Seminar on renewable energy and smart grids.",
+      "name": "Green Energy Summit",
+      "description": "A mega symposium on renewable energy technologies, sustainable power grids, and global clean energy transitions.",
       "banner_image": "assets/dummy/image1.png",
       "group_name": "IEEE NSU Power & Energy Society Student Branch Chapter",
-      "date": "2025-11-01"
+      "date": "2025-11-25"
+    },
+    {
+      "id": 7,
+      "key": "ias",
+      "name": "Industry Innovation Expo 2025",
+      "description": "An industrial exhibition and conference showcasing the latest in automation, manufacturing, and smart technologies.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Industry Applications Society Student Branch Chapter",
+      "date": "2025-10-22"
+    },
+    {
+      "id": 8,
+      "key": "wie",
+      "name": "Women Engineers International Summit",
+      "description": "A landmark event celebrating women in technology, entrepreneurship, and research with international speakers and workshops.",
+      "banner_image": "assets/dummy/image1.png",
+      "group_name": "IEEE NSU Women in Engineering Affinity Group",
+      "date": "2025-09-05"
     }
   ]
 }

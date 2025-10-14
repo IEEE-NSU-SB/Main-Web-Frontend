@@ -3,12 +3,12 @@ import HeroCarousel from "./HeroCarousel";
 import PerksCardGrid from "./PerksCardGrid";
 import EventCarousel from "./FeaturedEventsCarousel";
 import PerformersTab from "./PerformersTab";
-import Blog from "@/components/common_card/BlogCard";
+import Blog from "@/components/BlogCard";
 // import Tag from "../publications/blogs/tag";
-import AchievementCard from "../../components/common_card/AchievementCard";
+import AchievementCard from "../../components/AchievementCard";
 import LogoSection from "./LogoSection";
 import Stats from "./Stats";
-import MegaEvents from "@/components/common_card/MegaEventCard";
+import MegaEvents from "@/components/MegaEventCard";
 // import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 const HomePage = () => {

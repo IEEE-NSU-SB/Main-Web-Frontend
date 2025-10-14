@@ -4,6 +4,7 @@ import Skeleton from "@/components/Skeleton";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SplitText from "@/components/ui/SplitText";
 
 interface IntroItem {
   id: string;
@@ -39,10 +40,10 @@ const Intro = () => {
       <div className="flex flex-col items-center gap-6 mt-10 m-auto">
         <Skeleton className="h-60 w-60" />
         <div className="flex flex-col gap-6">
-        <Skeleton className="h-6 w-[150px]" />
-        <Skeleton className="h-6 w-[1080px]" />
-        <Skeleton className="h-6 w-[1080px]" />
-        <Skeleton className="h-6 w-[1080px]" />
+          <Skeleton className="h-6 w-[150px]" />
+          <Skeleton className="h-6 w-[1080px]" />
+          <Skeleton className="h-6 w-[1080px]" />
+          <Skeleton className="h-6 w-[1080px]" />
         </div>
       </div>
     );
@@ -78,20 +79,29 @@ const Intro = () => {
 
       {/* Right Side Text */}
       <FadeIn>
-          <SectionHeading
-            title={ag.title}
-            widthClass="w-48"
-            titleColor={ag.color}       // dynamic title color
-            underlineColor={ag.color}   // dynamic underline color
+        <SectionHeading
+          title={ag.title}
+          widthClass="w-42"
+          titleColor={ag.color} // dynamic title color
+          underlineColor={ag.color} // dynamic underline color
+        />
+
+        {ag.description.map((para, index) => (
+          <SplitText
+            key={index}
+            text={para}
+            className="text-lg text-left px-5 mb-3"
+            // delay={4}
+            duration={0.3}
+            ease="elistic.out(1,0.3)"
+            splitType="lines"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="left"
           />
-          {ag.description.map((para, index) => (
-            <p
-              key={index}
-              className="text-lg text-left px-5"
-            >
-              {para}
-            </p>
-          ))}
+        ))}
       </FadeIn>
     </div>
   );

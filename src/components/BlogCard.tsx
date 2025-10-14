@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import SectionHeading from "../ui/SectionHeading";
-import FadeIn from "../ui/FadeIn";
+import SectionHeading from "./ui/SectionHeading";
+import FadeIn from "./ui/FadeIn";
 import { Calendar, FolderClosed, NotebookPen, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "../Skeleton";
-import ErrorMessage from "../ui/ErrorMessage";
+import Skeleton from "./Skeleton";
+import ErrorMessage from "./ui/ErrorMessage";
 import { Link } from "react-router-dom";
 import Tag from "@/pages/publications/blogs/Tag";
 
@@ -138,7 +138,7 @@ const BlogCard: React.FC = () => {
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
-                <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-white rounded-sm border overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
+                <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-gray/5 rounded-sm border overflow-hidden  hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)] transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
                     <Link to={event.link}>
                       <img

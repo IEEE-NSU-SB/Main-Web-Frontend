@@ -3,16 +3,18 @@ import Skeleton from "@/components/Skeleton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Calendar } from "lucide-react";
 
 interface FeaturedEvent {
   id: number;
   key: string;
-  super_event_name: string;
-  super_event_description: string;
+  name: string;
+  description: string;
   banner_image: string;
   group_name: string;
   date: string;
+  color: string;
 }
 
 interface FeaturedEventsData {
@@ -40,7 +42,6 @@ const FeaturedEventCard = () => {
   if (loading) {
     return (
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 space-y-4">
-        <Skeleton className="h-10 w-48" />
         <div className="flex flex-wrap justify-center gap-4">
           <Skeleton className="w-full md:w-[calc(33.333%-1rem)] h-[400px]" />
           <Skeleton className="w-full md:w-[calc(33.333%-1rem)] h-[400px]" />
@@ -53,10 +54,7 @@ const FeaturedEventCard = () => {
   if (error || !data) {
     return (
       <div className="min-h-[300px] flex items-center justify-center">
-        <ErrorMessage
-          message={error || "Failed to load Featured Events"}
-          onRetry={refetch}
-        />
+        <ErrorMessage message={"Failed to load Events"} onRetry={refetch} />
       </div>
     );
   }
@@ -91,26 +89,47 @@ const FeaturedEventCard = () => {
         {eventsToShow.map((event) => (
           <article
             key={event.id}
-            className="w-full md:w-[calc(33.333%-1rem)] bg-white h-[400px] border shadow-md rounded-md overflow-hidden transition-shadow hover:shadow-lg"
+            className="w-full md:w-[calc(33.333%-1rem)] bg-white h-[480px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]"
+            style={{ backgroundColor: `${event.color}E6` }}
           >
             <div className="relative h-[200px] overflow-hidden cursor-pointer">
-              <img
-                className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
-                src={getImageSrc(event.banner_image.split("/").pop() || "")}
-                alt={event.super_event_name}
-              />
+              <Link to={"/"}>
+                <img
+                  className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
+                  src={getImageSrc(event.banner_image.split("/").pop() || "")}
+                  alt={event.name}
+                />
+              </Link>
             </div>
             <div className="p-4">
-              <div className="text-sm text-[#A8A8A8] font-semibold mb-2">
-                {event.date} / By {event.group_name}
-              </div>
-              <h3 className="text-lg font-semibold mb-2 overflow-hidden line-clamp-2">
-                {event.super_event_name}
+              <h3 className="text-lg font-semibold mb-2 h-15 overflow-hidden line-clamp-2 rounded text-ieee-white">
+                <Link to={"/"}>
+                  <span className="cursor-pointer hover:underline">
+                    {event.name}
+                  </span>
+                </Link>
               </h3>
-              <p className="leading-relaxed text-gray-700 overflow-hidden line-clamp-2">
-                {event.super_event_description}
+              <h5 className="flex gap-2 text-sm text-ieee-white/90 font-semibold mb-2">
+                <Calendar className="w-4 h-4" />
+                {event.date}
+              </h5>
+              {/* <h5 className="text-sm text-ieee-white-75 font-semibold mb-2">
+                By - {event.group_name}
+                </h5> */}
+              <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 font-bold mb-5">
+                {event.description}
               </p>
-              <a href="#" className="font-medium hover:underline">
+              <a
+                href="#"
+                className={`hover:bg-ieee-white transition-all border-ieee-white border-1 300 ease-in-out hover:rounded-2xl hover:underline bg-ieee-white/15 px-4 py-1 rounded`}
+                style={{
+                  color: "#ffffff",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = `${event.color}CC`)
+                }
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+              >
                 Read More
               </a>
             </div>

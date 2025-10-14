@@ -158,7 +158,7 @@ const UpcomingEvent = () => {
               </h2>
             </FadeIn>
 
-            <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg shadow-[2px_2px_2px_theme(colors.ieee-black-25)]">
+            <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg">
               <FadeInRight xIndex={500} zIndex={-1} yIndex={0}>
                 <img
                   src={event.image}

@@ -1,13 +1,13 @@
-import AgWave from "./Wave";
+import AgWave from "./SCAGWave";
 import Intro from "./Intro";
-import MegaEvents from "@/components/common_card/MegaEventCard";
+import MegaEvents from "@/components/MegaEventCard";
 import AgParallax from "./Parallax";
-import FeaturedEventCard from "@/components/common_card/FeaturedEventCard";
+import FeaturedEventCard from "@/pages/society-and-ag/pages[id]/FeaturedEventCard";
+import SeeAllEvents from "./SeeAllEvents";
 import ScAgMissionVision from "./MissionVision";
 import ExecutiveBodySection from "./Executive";
 import About from "./About";
 import Contact from "./Contact";
-import { Calendar } from "lucide-react";
 
 const SocietyOrAg = () => {
   return (
@@ -17,11 +17,7 @@ const SocietyOrAg = () => {
       <MegaEvents />
       <AgParallax />
       <FeaturedEventCard />
-      <div className="text-center flex justify-center mb-6">
-        <button className="bg-[#50C878] cursor-pointer flex font-bold py-2 px-4 duration-300 rounded-md hover:bg-[#61A60E]">
-          <Calendar /> See All Events
-        </button>
-      </div>
+      <SeeAllEvents/>
       {/* <ScAgMissionVision /> */}
       <ExecutiveBodySection />
       <About />

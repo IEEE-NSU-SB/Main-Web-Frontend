@@ -15,11 +15,11 @@ import SocietyOrAg from "./pages/society-and-ag/pages[id]/Pages";
 // import About from "@/pages/about/pages[id]/pages";
 
 import JoinINSB from "@/pages/get-involved/join-insb/Page";
-import AllMembers from "@/pages/members/all-members-statistcs/Page";
+import AllMembers from "@/pages/members/all-members-statistics/Page";
 import Officers from "@/pages/members/officers/OfficerCard";
 import Volunteers from "@/pages/members/volunteers/VolunteerCard";
 import Achievements from "./pages/activities/achievements/Page";
-import ResearchPapers from "./pages/publications/research Paper/Page";
+import ResearchPapers from "./pages/publications/research-paper/Page";
 import Blogs from "./pages/publications/blogs/Page";
 import Toolkit from "./pages/publications/toolkit/Pages";
 import Panel from "./pages/members/panel/page";
@@ -32,6 +32,8 @@ import IEEER10 from "./pages/about/IEEE Region 10/Page";
 import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/Executive";
 import EventDescription from "./pages/activities/events/EventDescription";
 import News from "./pages/activities/news/Pages";
+import Gallery from "./pages/publications/gallery/Pages";
+import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 
 const MainLayout = () => {
   return (
@@ -79,6 +81,7 @@ const App = () => {
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />
 
           {/* Contact  */}
@@ -99,6 +102,7 @@ const App = () => {
             }
           />
           <Route path="/write-a-blog" element={<WriteBlog />} />
+          <Route path="/add-research-paper" element={<AddResearchPaper />} />
         </Route>
       </Routes>
     </Router>

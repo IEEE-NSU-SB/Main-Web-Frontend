@@ -1,0 +1,13 @@
+{
+  "recruitment": [
+    { "semester": "Summer 2023", "recruits": 112 },
+    { "semester": "Spring 2024", "recruits": 132 },
+    { "semester": "Summer 2024", "recruits": 86 },
+    { "semester": "Spring 2025", "recruits": 124 },
+    { "semester": "Fall 2025", "recruits": 157 }
+  ],
+  "genderDistribution": [
+    { "gender": "Male", "count": 423 },
+    { "gender": "Female", "count": 199 }
+  ]
+}

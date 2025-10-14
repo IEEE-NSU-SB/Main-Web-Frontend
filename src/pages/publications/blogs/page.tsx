@@ -1,4 +1,4 @@
-import BlogCard from "@/components/common_card/BlogCard";
+import BlogCard from "@/components/BlogCard";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
 
