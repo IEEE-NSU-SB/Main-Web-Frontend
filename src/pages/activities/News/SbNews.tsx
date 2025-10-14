@@ -20,9 +20,9 @@ const SbNews = () => {
         path: "pages/activities/News/sbnews.json"
     })
 
-    const toggleCard = (id) => {
+    const toggleCard = (id: number) => {
         setExpandedCard(expandedCard === id ? null : id);
-    };
+    };   
 
     const handleLoadMore = () => {
         setVisibleCount(prev => prev + 3);
@@ -52,7 +52,7 @@ const SbNews = () => {
                         ) : data && data.length > 0 ? (
                             <>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    {visibleData.map((item) => (
+                                    {visibleData?.map((item) => (
                                         <div
                                             key={item.id}
                                             className="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-fit"
