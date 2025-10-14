@@ -1,7 +1,6 @@
 // components/PanelCard.tsx
 import React from "react";
-import { FaLinkedin, FaFacebookSquare, FaCheckCircle } from "react-icons/fa";
-import { ImGoogle2 } from "react-icons/im";
+import { FaLinkedin, FaFacebookSquare, FaCheckCircle, FaEnvelope } from "react-icons/fa";
 
 interface Counselor {
   id: string;
@@ -38,7 +37,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="relative w-[270px] h-[420px] rounded-[30px] overflow-hidden
-                         border-[10px] border-white shadow-[0_14px_40px_rgba(0,0,0,0.18)]
+                         shadow-[0_14px_40px_rgba(0,0,0,0.18)]
                          bg-white cursor-pointer flex flex-col justify-end items-center text-center"
             >
               <img
@@ -103,7 +102,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       onClick={(e) => e.stopPropagation()}
                       className="flex justify-center items-center"
                     >
-                      <ImGoogle2 className="text-white/85 hover:text-white transition-all duration-300 text-[20px]" />
+                      <FaEnvelope className="text-white/85 hover:text-white transition-all duration-300 text-[20px]" />
                     </a>
                   )}
                 </div>
