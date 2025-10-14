@@ -1,30 +1,37 @@
 import React from "react";
-import waveImg from "@/assets/wave.png";
+import waveImg from "@/assets/wave.png"; // put wave.png in your assets
 
 interface WaveProps {
   title: string;
   subtitle?: string;
-  color?: string; // optional color prop
 }
 
-const Wave: React.FC<WaveProps> = ({ title, subtitle, color }) => {
-  const gradientFrom = color || "#002855"; // default color
-  const gradientTo = color || "#00629B"; // fallback for gradient end if needed
+const Wave: React.FC<WaveProps> = ({ title, subtitle }) => {
+  // dynamic font size adjustments
+  // con() => {
+  //   if (title.length > 80) return "text-[23px]";
+  //   if (title.length > 55) return "text-[25px]";
+  //   return "text-[35px]";
+  // };
+
+  // const getSubtitleClass = () => {
+  //   if (!subtitle) return "";
+  //   if (subtitle.length > 80) return "text-[17px]";
+  //   if (subtitle.length > 55) return "text-[18px]";
+  //   return "text-[20px]";
+  // };
 
   return (
-    <section
-      className="relative w-full h-90 overflow-hidden mt-[-3px]"
-      style={{
-        background: `linear-gradient(to bottom, ${gradientFrom}, ${gradientTo})`,
-      }}
-    >
+    <section className="relative w-full h-90 overflow-hidden bg-gradient-to-b from-ieee-darkblue to-[#519fff] mt-[-3px]">
       {/* Title */}
-      <div className="flex flex-col justify-center gap-4 items-center text-center py-16 md:py-28 relative z-10">
-        <h2 className="text-ieee-white font-bold text-[30px] uppercase mb-2 leading-7">
+      <div className="flex flex-col text-center py-16 md:py-28 relative z-10">
+        <h2
+          className={`text-ieee-white font-bold text-[30px] uppercase mb-2 leading-7`}
+        >
           {title}
         </h2>
         {subtitle && (
-          <h2 className="max-w-[1050px] text-ieee-white text-[20px] mx-5">{subtitle}</h2>
+          <h2 className={`text-ieee-white text-[20px] mx-5 `}>{subtitle}</h2>
         )}
       </div>
 
@@ -62,9 +69,16 @@ const Wave: React.FC<WaveProps> = ({ title, subtitle, color }) => {
         }}
       />
 
+      {/* Local Styles */}
       <style>{`
-        @keyframes wave1 { 0% { background-position-x: 0; } 100% { background-position-x: 1000px; } }
-        @keyframes wave2 { 0% { background-position-x: 0; } 100% { background-position-x: -1000px; } }
+        @keyframes wave1 {
+          0% { background-position-x: 0; }
+          100% { background-position-x: 1000px; }
+        }
+        @keyframes wave2 {
+          0% { background-position-x: 0; }
+          100% { background-position-x: -1000px; }
+        }
         .wave1 { animation: wave1 30s linear infinite; }
         .wave2 { animation: wave2 15s linear infinite; }
         .wave3 { animation: wave1 30s linear infinite; animation-delay: -2s; }

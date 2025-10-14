@@ -17,31 +17,18 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const societyColors: Record<string, string> = {
-    "ieee-nsu-ras-sbc": "#602569",
-    "ieee-nsu-pes-sbc": "#659941",
-    "ieee-nsu-ias-sbc": "#0f904b",
-    "ieee-nsu-wie-ag": "#006699",
-  };
-
-  const currentSlug = location.pathname.split("/").pop() ?? "";
-  const societyColor = societyColors[currentSlug];
   // Check if current page is Home
   const isHome = location.pathname === "/";
 
-  const scrollClass = societyColor
-    ? "" // we'll set color inline
-    : isHome
+  const scrollClass = isHome
     ? isScrolled
-      ? "bg-ieee-darkblue shadow-md"
-      : "bg-transparent"
-    : "bg-ieee-darkblue";
+      ? "bg-ieee-darkblue shadow-md" // home + scrolled
+      : "bg-transparent" // home + top
+    : "bg-ieee-darkblue"; // every other page
+
   return (
     <nav
       className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
-      style={{
-        backgroundColor: societyColor,
-      }}
     >
       <FadeIn>
         <div className="max-w-[1080px] mx-auto py-3  flex justify-between lg:justify-between md:justify-center items-center">
@@ -68,12 +55,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Activities
               </span>
-              <div
-                className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {["Events", "News", "Achievements"].map((item) => (
                   <Link
                     key={item}
@@ -91,12 +73,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Societies & AG
               </span>
-              <div
-                className="absolute text-center left-[-14px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {Object.entries({
                   "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
                   "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
@@ -119,12 +96,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Members
               </span>
-              <div
-                className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
                 {["Panels", "Officers", "Volunteers"].map((item) => (
                   <Link
                     key={item}
@@ -140,12 +112,7 @@ const Navbar: React.FC = () => {
                   <span className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">
                     Teams
                   </span>
-                  <div
-                    className="absolute left-full top-0 hidden group-hover/team:block  text-ieee-white shadow-lg rounded w-55 z-50"
-                    style={{
-                      backgroundColor: societyColor || "#002855",
-                    }}
-                  >
+                  <div className="absolute left-full top-0 hidden group-hover/team:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-55 z-50">
                     {[
                       "Content Writing and Publications",
                       "Website Development",
@@ -189,12 +156,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 About
               </span>
-              <div
-                className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
                 {Object.entries({
                   IEEE: "ieee",
                   "IEEE Region 10": "ieee-region-10",
@@ -218,12 +180,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Publications
               </span>
-              <div
-                className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {[
                   "Blogs",
                   "Research Papers",
@@ -255,12 +212,7 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Get Involved
               </span>
-              <div
-                className="absolute text-center left-[-16px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
-                style={{
-                  backgroundColor: societyColor || "#002855",
-                }}
-              >
+              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
                 {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
                   (item) => (
                     <Link
@@ -315,12 +267,7 @@ const Navbar: React.FC = () => {
       </FadeIn>
 
       {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-40  text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto"
-          style={{
-            backgroundColor: societyColor || "#002855",
-          }}
-        >
+        <div className="fixed inset-0 z-40 bg-ieee-darkblue text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto">
           {/* Close Button */}
           <div className="flex justify-end mb-4">
             <button onClick={toggleMobileMenu}>
@@ -365,7 +312,7 @@ const Navbar: React.FC = () => {
               ].map((item) => (
                 <Link
                   key={item}
-                  to={`society-ag/${item.toLowerCase().replace(/ /g, "-")}`}
+                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
                   className="block"
                   onClick={toggleMobileMenu}
                 >
