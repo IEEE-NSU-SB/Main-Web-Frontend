@@ -1,6 +1,6 @@
 // components/PanelCard.tsx
 import React from "react";
-import { FaLinkedin, FaFacebookSquare } from "react-icons/fa";
+import { FaLinkedin, FaFacebookSquare, FaCheckCircle } from "react-icons/fa";
 import { ImGoogle2 } from "react-icons/im";
 
 interface Counselor {
@@ -23,7 +23,6 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        {/* Section Heading */}
         <div className="mt-12 mb-8 flex flex-col items-center">
           <h3 className="text-[35px] font-semibold text-ieee-black uppercase text-center">
             {sectionTitle}
@@ -31,52 +30,58 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
           <div className="h-[5px] w-[150px] bg-ieee-yellow rounded-md"></div>
         </div>
 
-        {/* Profile Cards */}
-        <div className="flex flex-wrap justify-center gap-x-[30px] gap-y-[100px]">
+        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
           {counselors.map((counselor) => (
-            <div
+            <a
               key={counselor.id}
-              className="relative w-[230px] max-md:w-[250px] bg-gradient-to-t from-ieee-darkblue via-ieee-blue to-[#00B5E2] 
-             rounded-[10px_69px_10px_10px] shadow-lg border border-ieee-darkblue 
-             transition-all duration-500 hover:rounded-lg overflow-hidden
-             group bg-gradient-animate-card"
+              href={counselor.profileLink || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-[270px] h-[420px] rounded-[30px] overflow-hidden
+                         border-[10px] border-white shadow-[0_14px_40px_rgba(0,0,0,0.18)]
+                         bg-white cursor-pointer flex flex-col justify-end items-center text-center"
             >
-              {/* Image */}
-              <div
-                className="w-[250px] h-[250px] bg-ieee-white rounded-[10px_69px_10px_69px] overflow-hidden 
-               transition-all duration-500 group-hover:rounded-none"
-              >
-                <a
-                  href={counselor.profileLink || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={
-                      counselor.picture || "/images/default_profile_picture.png"
-                    }
-                    alt={counselor.name}
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                  />
-                </a>
-              </div>
+              <img
+                src={counselor.picture || "/images/default_profile_picture.png"}
+                alt={counselor.name}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
-              {/* Caption */}
-              <div className="text-center relative p-4 flex flex-col justify-between">
-                <h3 className="text-ieee-white font-semibold text-[21px]">
-                  {counselor.name}
-                </h3>
-                <p className="text-ieee-darkyellow text-[15px] font-medium mb-3">
+              <div
+                className="absolute bottom-0 w-full h-[40%] pointer-events-none"
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+                  maskImage:
+                    "linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+                  backdropFilter: "blur(12px)",
+                }}
+              ></div>
+
+              <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
+
+              <div className="relative z-10 flex flex-col items-center justify-end h-[180px] w-full p-5 text-center">
+                <div className="flex items-center justify-center gap-2 w-full">
+                  <h3 className="text-white font-semibold text-[22px] leading-tight tracking-tight">
+                    {counselor.name}
+                  </h3>
+                  <FaCheckCircle className="text-white/80 text-[18px]" />
+                </div>
+
+                <p className="text-white/85 text-[15px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center">
                   {counselor.position}
                 </p>
-                <div className="flex justify-center space-x-3">
+
+                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full">
                   {counselor.linkedin && (
                     <a
                       href={counselor.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex justify-center items-center"
                     >
-                      <FaLinkedin className="rounded-md text-ieee-white-75 hover:text-ieee-white transition-transform duration-300 transform hover:-translate-y-1 text-[21px]" />
+                      <FaLinkedin className="text-white/85 hover:text-white transition-all duration-300 text-[22px]" />
                     </a>
                   )}
                   {counselor.facebook && (
@@ -84,8 +89,10 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       href={counselor.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex justify-center items-center"
                     >
-                      <FaFacebookSquare className="rounded-md text-ieee-white-75 hover:text-ieee-white transition-transform duration-300 transform hover:-translate-y-1 text-[21px]" />
+                      <FaFacebookSquare className="text-white/85 hover:text-white transition-all duration-300 text-[22px]" />
                     </a>
                   )}
                   {counselor.email && (
@@ -93,13 +100,15 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       href={`mailto:${counselor.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex justify-center items-center"
                     >
-                      <ImGoogle2 className="rounded text-ieee-white-75 hover:text-ieee-white transition-transform duration-300 transform hover:-translate-y-1 text-[19px] mt-[1px]" />
+                      <ImGoogle2 className="text-white/85 hover:text-white transition-all duration-300 text-[20px]" />
                     </a>
                   )}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
