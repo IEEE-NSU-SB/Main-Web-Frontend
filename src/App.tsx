@@ -28,7 +28,7 @@ import WelcomePage from "./pages/welcome/page";
 import ScrollToTop from "./components/ui/scroll-to-top";
 import Contact from "./pages/Contact/page";
 import Pages from "./pages/activities/News/Pages";
-import EventDetailsPages from "./pages/EventsDetails/EventDetailsPages";
+import EventDetailsPages from "./pages/EventsDetails/Page";
 
 // ✅ Layout with Navbar + Footer + ScrollToTop
 const MainLayout = () => {
