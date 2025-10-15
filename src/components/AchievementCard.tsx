@@ -21,7 +21,7 @@ const AchievementCard = () => {
 
   const { loading, data, error, refetch } = useFetchDataAPI({
     apiUrl: isLandingPage
-      ? "main_website/get_achievements/"
+      ? "main_website/get_achievements/landing/"
       : "main_website/get_achievements/",
   });
 
