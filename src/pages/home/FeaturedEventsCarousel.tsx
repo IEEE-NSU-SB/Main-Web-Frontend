@@ -185,7 +185,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
                     <img
                       src={img.image}
                       alt={img.alt}
-                      className="w-full h-auto object-cover rounded-lg cursor-pointer"
+                      className="w-full h-[100%] object-cover rounded-lg cursor-pointer"
                       onClick={() => scrollToIndex(index)}
                     />
                   </Link>
