@@ -32,7 +32,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
           {counselors.map((counselor) => (
             <a
-              key={counselor.id}
+              key={counselor.id || "#"}
               href={counselor.profileLink || "#"}
               target="_blank"
               rel="noopener noreferrer"

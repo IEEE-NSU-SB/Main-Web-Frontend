@@ -4,6 +4,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import Wave from "@/components/Wave";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
+import { Link } from "react-router";
 
 type SbNewsResponse = {
   id: number;
@@ -63,10 +64,10 @@ const SbNews = () => {
                         src={item.image}
                         alt="404"
                         className="w-full h-full object-cover"
-                      />
+                        />
                     </div>
                     <div className="p-4 flex flex-col">
-                      <h2 className="text-xl font-semibold my-2 mb-4 line-clamp-1">
+                      <h2 className="cursor-pointer text-xl font-semibold my-2 mb-4 line-clamp-1">
                         {item.title}
                       </h2>
                       <div className="overflow-hidden">

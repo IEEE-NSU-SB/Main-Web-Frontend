@@ -66,7 +66,10 @@ const App = () => {
 
 
           {/* Societies & AG */}
-          <Route path="/society-ag/:id" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-pes-sbc" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-ras-sbc" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-wie-ag" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-ias-sbc" element={<SocietyOrAg />} />
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />

@@ -129,8 +129,8 @@ const OnlineNews = () => {
                               <div className="flex items-center gap-2 text-ieee-gray text-sm mb-3">
                                 <span>{item.date}</span>
                                 <span>•</span>
-                                <span className="hover:underline hover:text-[#004d7a] transition-colors">
-                                  <a href="#">By {item.by}</a>
+                                <span>
+                                  By {item.by}
                                 </span>
                               </div>
 

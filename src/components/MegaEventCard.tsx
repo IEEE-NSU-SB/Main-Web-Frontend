@@ -38,7 +38,7 @@ const getImageSrc = (filename: string) => {
 const MegaEventsCard = () => {
   const { id } = useParams();
   const { loading, data, error, refetch } = useFetchDataJSON<SocietiesData>({
-    path: "pages/society-and-ag/data/societies.json",
+    path: "pages/society-and-ag/data/Events.json",
   });
 
   const [visibleCount, setVisibleCount] = useState(4);
