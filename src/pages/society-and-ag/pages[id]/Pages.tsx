@@ -2,8 +2,7 @@ import AgWave from "./SCAGWave";
 import Intro from "./Intro";
 import MegaEvents from "@/components/MegaEventCard";
 import AgParallax from "./Parallax";
-import FeaturedEventCard from "@/pages/society-and-ag/pages[id]/FeaturedEventCard";
-import SeeAllEvents from "./SeeAllEvents";
+import FeaturedEventCard from "./FeaturedEventCard";
 import ScAgMissionVision from "./MissionVision";
 import ExecutiveBodySection from "./Executive";
 import About from "./About";
@@ -14,10 +13,9 @@ const SocietyOrAg = () => {
     <div>
       <AgWave />
       <Intro />
-      <MegaEvents />
       <AgParallax />
+      <MegaEvents />
       <FeaturedEventCard />
-      <SeeAllEvents/>
       {/* <ScAgMissionVision /> */}
       <ExecutiveBodySection />
       <About />

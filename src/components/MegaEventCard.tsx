@@ -8,15 +8,21 @@ import { useState } from "react";
 
 interface MegaEvent {
   id: number;
-  key: string;
   name: string;
   description: string;
   banner_image: string;
   group_name: string;
+  date: string;
+  color?: string;
 }
 
-interface MegaEventsCardData {
-  all_mega_events: MegaEvent[];
+interface SocietyData {
+  color: string;
+  mega_events: MegaEvent[];
+}
+
+interface SocietiesData {
+  [key: string]: SocietyData;
 }
 
 const images = import.meta.glob("/src/assets/dummy/*.{png,jpg,jpeg,svg}", {
@@ -31,12 +37,11 @@ const getImageSrc = (filename: string) => {
 
 const MegaEventsCard = () => {
   const { id } = useParams();
-  const { loading, data, error, refetch } =
-    useFetchDataJSON<MegaEventsCardData>({
-      path: "pages/society-and-ag/data/Events.json",
-    });
+  const { loading, data, error, refetch } = useFetchDataJSON<SocietiesData>({
+    path: "pages/society-and-ag/data/societies.json",
+  });
 
-  const [visibleCount, setVisibleCount] = useState(4); // show 4 by default
+  const [visibleCount, setVisibleCount] = useState(4);
 
   if (loading) {
     return (
@@ -56,42 +61,26 @@ const MegaEventsCard = () => {
   if (error || !data) {
     return (
       <div className="min-h-[300px] flex items-center justify-center">
-        <ErrorMessage
-          message={"Failed to load Mega Events"}
-          onRetry={refetch}
-        />
+        <ErrorMessage message={"Failed to load Mega Events"} onRetry={refetch} />
       </div>
     );
   }
 
-  const eventMapping: Record<string, MegaEvent[]> = {
-    "ieee-nsu-ras-sbc": data.all_mega_events.filter((e) =>
-      e.key.toLowerCase().includes("ras")
-    ),
-    "ieee-nsu-pes-sbc": data.all_mega_events.filter((e) =>
-      e.key.toLowerCase().includes("pes")
-    ),
-    "ieee-nsu-ias-sbc": data.all_mega_events.filter((e) =>
-      e.key.toLowerCase().includes("ias")
-    ),
-    "ieee-nsu-wie-ag": data.all_mega_events.filter((e) =>
-      e.key.toLowerCase().includes("wie")
-    ),
-  };
+  const societyData = id && data[id] ? data[id] : null;
+  if (!societyData || !societyData.mega_events) return null;
 
-  const eventsToShowAll =
-    id && eventMapping[id] ? eventMapping[id] : data.all_mega_events;
-  const visibleEvents = eventsToShowAll.slice(0, visibleCount);
+  const { mega_events, color: sectionColor } = societyData;
 
-  if (!eventsToShowAll || eventsToShowAll.length === 0) return null;
+  const visibleEvents = mega_events.slice(0, visibleCount);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => Math.min(prev + 2, eventsToShowAll.length));
+    setVisibleCount((prev) => Math.min(prev + 2, mega_events.length));
   };
 
   return (
     <FadeIn>
-      <SectionHeading title="Mega Events" widthClass="w-45" />
+      <SectionHeading title="Mega Events" widthClass="w-45" titleColor={sectionColor} />
+
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-6 mb-6">
         {visibleEvents.map((event) => (
           <article
@@ -109,9 +98,7 @@ const MegaEventsCard = () => {
                   <div className="text-white text-center">
                     <h3 className="text-lg font-semibold mb-2">{event.name}</h3>
                     <p className="text-sm line-clamp-3">{event.description}</p>
-                    <span className="text-xs mt-2 block">
-                      By {event.group_name}
-                    </span>
+                    <span className="text-xs mt-2 block">By {event.group_name}</span>
                   </div>
                 </div>
               </Link>
@@ -120,8 +107,7 @@ const MegaEventsCard = () => {
         ))}
       </div>
 
-      {/* Load More Button */}
-      {visibleCount < eventsToShowAll.length && (
+      {visibleCount < mega_events.length && (
         <div className="w-full flex justify-center mb-10">
           <button
             onClick={handleLoadMore}
