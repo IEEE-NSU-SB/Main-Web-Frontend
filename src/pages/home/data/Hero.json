@@ -1,8 +1,17 @@
-{
+[
+  {
+    "Type": "video",
+    "media": [
+      {
+        "link": "#"
+      }
+    ]
+  },
+  {
+  "Type": "image",
   "media": [
     {
-      "type": "image",
-      "src": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80",
+      "banner_image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&q=80",
       "alt": "IEEE NSU Event",
       "firstText": "The",
       "secondText": "Masterminds",
@@ -11,8 +20,7 @@
       "buttonLink": "https://ieeensusb.org/join"
     },
     {
-      "type": "image",
-      "src": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+      "banner_image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
       "alt": "IEEE Workshop",
       "firstText": "The",
       "secondText": "Orchestrators",
@@ -22,3 +30,4 @@
     }
   ]
 }
+]

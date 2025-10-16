@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/Button";
 import SplitText from "@/components/ui/SplitText";
 
 interface MediaItem {
-  type: "image" | "video";
   src: string;
   alt?: string;
   firstText?: string;
@@ -15,9 +14,12 @@ interface MediaItem {
   description?: string;
   buttonText?: string;
   buttonLink?: string;
+  banner_image?: string; // for images
+  link?: string; // for videos
 }
 
-interface MediaResponse {
+interface MediaGroup {
+  Type: "image" | "video";
   media: MediaItem[];
 }
 
@@ -30,28 +32,37 @@ const HeroCarousel = ({
   autoPlayInterval = 5000,
   showIndicators = true,
 }: HeroCarouselProps) => {
-  const { loading, data, error, refetch } = useFetchDataJSON<MediaResponse>({
+  const { loading, data, error, refetch } = useFetchDataJSON<MediaGroup[]>({
     path: "pages/home/data/hero.json",
   });
 
-  const media: MediaItem[] = data?.media ?? [];
+  const [media, setMedia] = useState<MediaItem[]>([]);
+  const [mediaType, setMediaType] = useState<"image" | "video">("image");
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const autoPlayTimerRef = useRef<number | null>(null);
 
-  // Helper: Convert YouTube URLs to embed format
-  const getYouTubeEmbedUrl = (url: string) => {
-    if (url.includes("youtube.com/embed/")) return url;
-    let videoId = "";
-    if (url.includes("youtu.be/")) {
-      videoId = url.split("youtu.be/")[1].split("?")[0];
-    } else if (url.includes("youtube.com/watch")) {
-      const urlParams = new URLSearchParams(url.split("?")[1]);
-      videoId = urlParams.get("v") || "";
+  // Process fetched data
+  useEffect(() => {
+    if (!data || !Array.isArray(data)) return;
+
+    const typeEntry = data.find(
+      (item) => item.Type === "image" || item.Type === "video"
+    );
+
+    if (typeEntry) {
+      setMediaType(typeEntry.Type);
+
+      const normalized = typeEntry.media.map((m) => ({
+        ...m,
+        src: typeEntry.Type === "image" ? m.banner_image! : m.link!,
+      }));
+
+      setMedia(normalized);
     }
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
-  };
+  }, [data]);
 
   const goToNext = () => {
     if (!media.length) return;
@@ -62,12 +73,9 @@ const HeroCarousel = ({
     setCurrentIndex(index);
   };
 
-  // Autoplay (for image-only carousels)
+  // Autoplay (only for images)
   useEffect(() => {
-    if (!media.length || !isPlaying) return;
-    const hasVideo = media.some((m) => m.type === "video");
-    if (hasVideo) return; // stop autoplay if video present
-
+    if (!media.length || !isPlaying || mediaType === "video") return;
     autoPlayTimerRef.current = window.setTimeout(() => {
       goToNext();
     }, autoPlayInterval);
@@ -75,26 +83,21 @@ const HeroCarousel = ({
     return () => {
       if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
     };
-  }, [currentIndex, isPlaying, autoPlayInterval, media]);
+  }, [currentIndex, isPlaying, autoPlayInterval, mediaType, media]);
 
   // Handle video playback
   useEffect(() => {
-    const currentMedia = media[currentIndex];
-    if (!currentMedia) return;
+    if (mediaType !== "video") return;
 
     videoRefs.current.forEach((video) => video?.pause());
-    if (currentMedia.type === "video") {
-      const videoElement = videoRefs.current[currentIndex];
-      if (videoElement && isPlaying) {
-        videoElement.currentTime = 0;
-        videoElement
-          .play()
-          .catch((err) => console.error("Video play error:", err));
-      }
+    const videoElement = videoRefs.current[currentIndex];
+    if (videoElement && isPlaying) {
+      videoElement.currentTime = 0;
+      videoElement.play().catch((err) => console.error("Video play error:", err));
     }
-  }, [currentIndex, isPlaying, media]);
+  }, [currentIndex, isPlaying, mediaType]);
 
-  // Loading / Error / Empty States
+  // Loading / Error / Empty
   if (loading)
     return (
       <div className="relative w-full h-[100vh] flex items-center justify-center bg-ieee-black mt-[-72px]">
@@ -116,53 +119,30 @@ const HeroCarousel = ({
       </div>
     );
 
-  // Rendering
-  const hasVideo = media.some((m) => m.type === "video");
-
+  // --- Rendering ---
   return (
     <div className="relative w-full h-[100vh] overflow-hidden bg-ieee-black mt-[-72px]">
-      {/* Video Mode (Only first video shown) */}
-      {hasVideo ? (
-        media
-          .filter((item) => item.type === "video")
-          .slice(0, 1)
-          .map((item, index) => (
-            <div key={index} className="absolute inset-0 w-full h-full">
-              {item.src.includes("youtube.com") ||
-              item.src.includes("youtu.be") ? (
-                <iframe
-                  src={`${getYouTubeEmbedUrl(
-                    item.src
-                  )}?autoplay=1&mute=1&loop=1&controls=0&playlist=${getYouTubeEmbedUrl(
-                    item.src
-                  )
-                    .split("/")
-                    .pop()}`}
-                  className="absolute inset-0 w-full h-full"
-                  style={{ objectFit: "cover" }}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen"
-                  title="Hero Video"
-                />
-              ) : (
-                <video
-                  ref={(el) => {
-                    videoRefs.current[index] = el;
-                  }}
-                  src={item.src}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  controls={false}
-                />
-              )}
-            </div>
-          ))
+      {mediaType === "video" ? (
+        // Video Mode
+        media.map((item, index) => (
+          <div key={index} className="absolute inset-0 w-full h-full">
+            <video
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
+              src={item.src}
+              className="absolute inset-0 w-full h-full object-cover"
+              muted
+              loop
+              playsInline
+              autoPlay
+              controls={false}
+            />
+          </div>
+        ))
       ) : (
+        // Image Carousel Mode
         <>
-          {/* Image Carousel */}
           {media.map((item, index) => (
             <div
               key={index}
@@ -176,7 +156,6 @@ const HeroCarousel = ({
                 alt={item.alt || "Hero image"}
                 className="w-full h-full object-cover"
               />
-              {/* dark overlay */}
               <div className="absolute inset-0 bg-black/50"></div>
 
               {/* Text Overlay */}
@@ -229,12 +208,12 @@ const HeroCarousel = ({
                 )}
 
                 {item.buttonLink && item.buttonText && (
-                    <Button
-                      onClick={() => window.open(item.buttonLink, "_blank")}
-                      className="bg-ieee-blue hover:bg-ieee-blue-75 text-white font-semibold w-fit px-6 py-2 rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.3)] cursor-pointer items-baseline"
-                    >
-                      {item.buttonText}
-                    </Button>
+                  <Button
+                    onClick={() => window.open(item.buttonLink, "_blank")}
+                    className="bg-ieee-blue hover:bg-ieee-blue-75 text-white font-semibold w-fit px-6 py-2 rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.3)] cursor-pointer items-baseline"
+                  >
+                    {item.buttonText}
+                  </Button>
                 )}
               </div>
             </div>
