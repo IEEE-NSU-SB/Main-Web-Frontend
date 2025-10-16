@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import dummy1 from "../../assets/dummy/image1.png";
-import dummy2 from "../../assets/dummy/image2.png";
-import dummy3 from "../../assets/dummy/image3.png";
-import dummy4 from "../../assets/dummy/image4.png";
-import dummy5 from "../../assets/dummy/image5.png";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
 interface EventImage {
   id: number;
-  src: string;
+  image: string;
   alt: string;
   link: string;
 }
@@ -24,14 +19,6 @@ interface EventsCarouselProps {
   width?: string;
 }
 
-const imageMap: Record<string, string> = {
-  "/assets/dummy/image1.png": dummy1,
-  "/assets/dummy/image2.png": dummy2,
-  "/assets/dummy/image3.png": dummy3,
-  "/assets/dummy/image4.png": dummy4,
-  "/assets/dummy/image5.png": dummy5,
-};
-
 const EventsCarousel: React.FC<EventsCarouselProps> = ({
 }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -40,16 +27,16 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
   const [cardWidth, setCardWidth] = useState(0);
 
   // Fetch async JSON
-  const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "pages/home/data/EventsCarousel.json",
+  const { loading, data, error, refetch } = useFetchDataAPI({
+    apiUrl: "main_website/get_featured_events/1/",
   });
 
   const images: EventImage[] =
     data?.map((event: any, idx: number) => ({
       id: idx,
-      src: imageMap[event.src] || event.src,
+      image: event.image,
       alt: event.alt,
-      link: `/event_details/${idx}`,
+      link: `/event_details/${event.id}`,
     })) ?? [];
 
   // Measure card width after data loads
@@ -196,7 +183,7 @@ const EventsCarousel: React.FC<EventsCarouselProps> = ({
                 >
                   <Link to={img.link}>
                     <img
-                      src={img.src}
+                      src={img.image}
                       alt={img.alt}
                       className="w-full h-auto object-cover rounded-lg cursor-pointer"
                       onClick={() => scrollToIndex(index)}

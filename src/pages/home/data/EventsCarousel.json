@@ -1,32 +1,32 @@
 [
   {
     "id": 1,
-    "src": "/assets/dummy/image1.png",
+    "image": "src/assets/dummy/image1.png",
     "alt": "Event 1"
   },
   {
     "id": 2,
-    "src": "/assets/dummy/image2.png",
+    "image": "src/assets/dummy/image2.png",
     "alt": "Event 2"
   },
   {
     "id": 3,
-    "src": "/assets/dummy/image3.png",
+    "image": "src/assets/dummy/image3.png",
     "alt": "Event 3"
   },
   {
     "id": 4,
-    "src": "/assets/dummy/image1.png",
+    "image": "src/assets/dummy/image1.png",
     "alt": "Event 1"
   },
   {
     "id": 5,
-    "src": "/assets/dummy/image2.png",
+    "image": "src/assets/dummy/image2.png",
     "alt": "Event 2"
   },
   {
     "id": 6,
-    "src": "/assets/dummy/image3.png",
+    "image": "src/assets/dummy/image3.png",
     "alt": "Event 3"
   }
 ]
