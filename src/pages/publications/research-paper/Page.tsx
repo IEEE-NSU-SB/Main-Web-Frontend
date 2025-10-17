@@ -4,7 +4,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 
 interface ResearchPaper {
   id: number;
@@ -13,20 +13,16 @@ interface ResearchPaper {
   link: string;
 }
 
-interface ResearchDataJSON {
-  papers: ResearchPaper[];
-}
-
 const ResearchPapers = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON<ResearchDataJSON>({
-    path: "pages/publications/research-paper/data/research.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<ResearchPaper[]>({
+    apiUrl: "main_website/get_research_papers/",
   });
 
   const [search, setSearch] = useState("");
 
   const filteredPapers = useMemo(() => {
-    if (!data?.papers) return [];
-    return data.papers.filter(
+    if (!data) return [];
+    return data.filter(
       (p) =>
         p.title.toLowerCase().includes(search.toLowerCase()) ||
         p.authors.some((a) => a.toLowerCase().includes(search.toLowerCase()))

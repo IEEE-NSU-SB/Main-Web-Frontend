@@ -1,6 +1,5 @@
-{
-  "papers": [
-    {
+[
+  {
       "id": 1,
       "title": "BulliShield: A Smart Cyberbullying Detection and Reporting System",
       "authors": [
@@ -29,5 +28,4 @@
       ],
       "link": "#"
     }
-  ]
-}
+]
