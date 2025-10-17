@@ -16,7 +16,7 @@ const EventDescription = () => {
 
     return (
         <FadeIn>
-            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] md:mt-6 md:mb-20">
+            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] my-6 md:mt-6 md:mb-20">
                 {loading ? (
                     <div className="space-y-4">
                         <Skeleton className="h-30 w-full" />

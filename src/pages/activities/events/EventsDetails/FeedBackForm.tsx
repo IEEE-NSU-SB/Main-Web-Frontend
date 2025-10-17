@@ -115,10 +115,10 @@ const FeedbackForm = () => {
                         ></textarea>
                     </div>
 
-                    <div className="flex justify-end pt-5">
+                    <div className="flex justify-endF">
                         <button
                             type="submit"
-                            className="w-full md:w-auto bg-[#002855] text-white px-12 py-4 rounded text-white"
+                            className="w-full md:w-auto bg-[#002855] text-white px-6 py-3 rounded"
                         >
                             SUBMIT
                         </button>
