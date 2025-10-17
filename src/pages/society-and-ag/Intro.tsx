@@ -1,35 +1,25 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SplitText from "@/components/ui/SplitText";
-
-interface AboutSection {
-  title: string;
-  description: string[];
-}
-
-interface PageData {
-  primaryColor: string;
-  logo: string;
-  about: AboutSection[];
-}
+import { type ChapterPageData } from "@/types/chapter";
 
 interface IntroProps {
-  pageData: PageData;
+  pageData: ChapterPageData;
 }
 
 const Intro: React.FC<IntroProps> = ({ pageData }) => {
   const ag = pageData;
 
+  if (!ag.about || ag.about.length === 0) return null;
+
   return (
     <div className="max-w-[1080px] mx-auto py-4 mb-5 items-center gap-8">
       {/* Logo */}
-      <FadeIn yIndex={0} duration={1.3}>
-        <img
-          src={ag.logo}
-          alt={`${ag.about[0].title} logo`}
-          className="w-70 h-auto object-contain m-auto"
-        />
-      </FadeIn>
+      {ag.logo && (
+        <FadeIn yIndex={0} duration={1.3}>
+          <img src={ag.logo} alt={`${ag.about[0].title} logo`} className="w-70 h-auto object-contain m-auto" />
+        </FadeIn>
+      )}
 
       {/* About Section */}
       <FadeIn>
@@ -39,7 +29,6 @@ const Intro: React.FC<IntroProps> = ({ pageData }) => {
           titleColor={ag.primaryColor}
           underlineColor={ag.primaryColor}
         />
-
         {ag.about[0].description.map((para, index) => (
           <SplitText
             key={index}
