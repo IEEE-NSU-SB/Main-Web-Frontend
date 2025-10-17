@@ -17,15 +17,15 @@ type EventDetailsResponse = {
 
 const BannerDetails = () => {
 
-    const {data, loading, error, refetch} = useFetchDataJSON<EventDetailsResponse[]>({
-            path: "pages/activities/events/EventsDetails/EventsDetails.json"
+    const { data, loading, error, refetch } = useFetchDataJSON<EventDetailsResponse[]>({
+        path: "pages/activities/events/EventsDetails/EventsDetails.json"
     })
 
     const eventData = data?.[0];
 
     return (
-         <FadeIn>
-              <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px]">
+        <FadeIn>
+            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px]">
                 {loading ? (
                     <div className="space-y-6">
                         <Skeleton className="h-96 w-full" />
@@ -50,11 +50,11 @@ const BannerDetails = () => {
                             <div className="flex items-center gap-3 mb-4">
                                 <Calendar className="w-5 h-5 text-[#00629B]" />
                                 <p className="text-sm uppercase tracking-wider text-[#00629B] font-semibold">
-                                    {new Date(eventData.date).toLocaleDateString('en-US', { 
+                                    {new Date(eventData.date).toLocaleDateString('en-US', {
                                         weekday: 'long',
-                                        year: 'numeric', 
-                                        month: 'long', 
-                                        day: 'numeric' 
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
                                     })}
                                 </p>
                             </div>
@@ -65,21 +65,23 @@ const BannerDetails = () => {
                             </h1>
 
                             {/* Category */}
-                            <div className="flex items-start gap-3 mb-4">
-                                <MapPin className="w-5 h-5 text-[#E87722] mt-1 flex-shrink-0" />
-                                <div>
-                                    <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Category</p>
-                                    <p className="text-base font-medium text-[#E87722]">
-                                        {eventData.category}
-                                    </p>
+                            {/* Category */}
+                            <div className="flex items-center gap-3 mb-4">
+                                <MapPin className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                                <div className="flex items-center gap-2">
+                                    <p className="text-xs uppercase tracking-wider text-gray-500">Category:</p>
+                                    <p className="text-base font-medium text-[#E87722]">{eventData.category}</p>
                                 </div>
                             </div>
 
+
                             {/* Organized By */}
-                            <div className="flex items-start gap-3 mb-4">
-                                <Users className="w-5 h-5 text-[#E87722] mt-1 flex-shrink-0" />
-                                <div>
-                                    <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Event Organised By</p>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Users className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                                <div className="flex items-center gap-2">
+                                    <p className="text-xs uppercase tracking-wider text-gray-500">
+                                        Event Organised By:
+                                    </p>
                                     <p className="text-base font-medium text-[#E87722]">
                                         {eventData.organized_by}
                                     </p>
@@ -87,10 +89,12 @@ const BannerDetails = () => {
                             </div>
 
                             {/* Collaboration */}
-                            <div className="flex items-start gap-3">
-                                <Building2 className="w-5 h-5 text-[#E87722] mt-1 flex-shrink-0" />
-                                <div>
-                                    <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">In Collaboration With</p>
+                            <div className="flex items-center gap-3">
+                                <Building2 className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                                <div className="flex items-center gap-2">
+                                    <p className="text-xs uppercase tracking-wider text-gray-500">
+                                        In Collaboration With:
+                                    </p>
                                     <p className="text-base font-medium text-[#E87722]">
                                         {eventData.collaboration}
                                     </p>
@@ -99,8 +103,8 @@ const BannerDetails = () => {
                         </div>
                     </div>
                 ) : null}
-              </div>
-         </FadeIn> 
+            </div>
+        </FadeIn>
     );
 };
 
