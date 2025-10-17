@@ -1,38 +1,28 @@
-import { useParams } from "react-router-dom";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SplitText from "@/components/ui/SplitText";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
 
-interface IntroItem {
-  id: string;
+interface AboutSection {
   title: string;
-  color: string; // hex color e.g. "#602569"
   description: string[];
-  image: string;
 }
 
-interface IntroResponse {
-  ag_banner: IntroItem[];
+interface ChapterData {
+  primaryColor: string;
+  logo: string;
+  about: AboutSection[];
 }
 
-const images = import.meta.glob("/src/assets/logo/*.{png,jpg,jpeg,svg}", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
+interface IntroProps {
+  chapterId: number; // dynamic prop passed from parent
+}
 
-// Helper function to resolve image by filename
-const getImageSrc = (filename: string) => {
-  const key = Object.keys(images).find((k) => k.includes(filename));
-  return key ? images[key] : "";
-};
-
-const Intro = () => {
-  const { id } = useParams();
-  const { loading, data, error, refetch } = useFetchDataJSON<IntroResponse>({
-    path: "/pages/society-and-ag/data/Banner.json",
+const Intro: React.FC<IntroProps> = ({ chapterId }) => {
+  const { loading, data, error, refetch } = useFetchDataJSON<Record<string, ChapterData[]>>({
+    path: "pages/society-and-ag/data/ScAg.json",
   });
 
   if (loading) {
@@ -58,40 +48,44 @@ const Intro = () => {
     );
   }
 
-  const ag = data?.ag_banner.find((item) => item.id === id);
+  // Access the chapter data directly by key
+  const agArray = data?.[String(chapterId)];
+  const ag = agArray?.[0]; // since each key maps to an array
 
   if (!ag) {
     return (
-      <ErrorMessage message="Affinity Group not found." onRetry={refetch} />
+      <ErrorMessage
+        message="Affinity Group not found."
+        onRetry={refetch}
+      />
     );
   }
 
   return (
     <div className="max-w-[1080px] mx-auto py-4 mb-5 items-center gap-8">
-      {/* Left Side Image */}
+      {/* Logo */}
       <FadeIn yIndex={0} duration={1.3}>
         <img
-          src={getImageSrc(ag.image)}
-          alt={`${ag.title} logo`}
+          src={ag.logo}
+          alt={`${ag.about[0].title} logo`}
           className="w-70 h-auto object-contain m-auto"
         />
       </FadeIn>
 
-      {/* Right Side Text */}
+      {/* About Section */}
       <FadeIn>
         <SectionHeading
-          title={ag.title}
+          title={ag.about[0].title}
           widthClass="w-42"
-          titleColor={ag.color} // dynamic title color
-          underlineColor={ag.color} // dynamic underline color
+          titleColor={ag.primaryColor}
+          underlineColor={ag.primaryColor}
         />
 
-        {ag.description.map((para, index) => (
+        {ag.about[0].description.map((para, index) => (
           <SplitText
             key={index}
             text={para}
             className="text-lg text-left px-5 mb-3"
-            // delay={4}
             duration={0.3}
             ease="elistic.out(1,0.3)"
             splitType="lines"

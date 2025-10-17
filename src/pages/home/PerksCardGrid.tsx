@@ -133,12 +133,12 @@ export default function PerksCardGrid() {
         </div>
       ) : (
         perks?.map((item, index) => (
-          <FadeIn delay={index/8} key={index} >
+          <FadeIn delay={index/10} key={index} >
             <div className="flex items-start space-x-4">
               <img src={item.icon} alt={item.title} className="w-8 h-8" />
               <div className="text-left">
                 <h3 className="font-bold text-gray-800 mb-3">{item.title}</h3>
-                <p className="text-ieee-black-75 text-md learning-card-grid.text text-wrap">
+                <p className="text-ieee-black-75 text-lg learning-card-grid.text text-wrap">
                   {item.description}
                 </p>
               </div>

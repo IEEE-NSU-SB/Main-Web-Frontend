@@ -3,24 +3,22 @@ import Skeleton from "@/components/Skeleton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "../../../hooks/fetchdata";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Calendar, Search } from "lucide-react";
 import { useState, useEffect, useMemo, useRef } from "react";
 
 interface FeaturedEvent {
   id: number;
-  key: string;
   name: string;
   description: string;
-  banner_image: string;
-  group_name: string;
+  image: string;
   date: string;
   color: string;
   category?: string;
 }
 
 interface FeaturedEventsData {
-  all_featured_events: FeaturedEvent[];
+  featured_events: FeaturedEvent[];
 }
 
 const images = import.meta.glob("/src/assets/dummy/*.{png,jpg,jpeg,svg}", {
@@ -34,39 +32,21 @@ const getImageSrc = (filename: string) => {
 };
 
 const EventCard = () => {
-  const { id } = useParams();
   const { loading, data, error, refetch } =
     useFetchDataJSON<FeaturedEventsData>({
       path: "pages/society-and-ag/data/Events.json",
     });
 
-  // --- Hooks at the top ---
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("latest");
   const [categoryFilter, setCategoryFilter] = useState("All");
-  const [groupFilter, setGroupFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(6);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  // --- Base events mapping ---
+  // --- Base events ---
   const baseEvents = useMemo(() => {
-    if (!data) return [];
-    const mapping: Record<string, FeaturedEvent[]> = {
-      "ieee-nsu-ras-sbc": data.all_featured_events.filter((e) =>
-        e.key.toLowerCase().includes("ras")
-      ),
-      "ieee-nsu-pes-sbc": data.all_featured_events.filter((e) =>
-        e.key.toLowerCase().includes("pes")
-      ),
-      "ieee-nsu-ias-sbc": data.all_featured_events.filter((e) =>
-        e.key.toLowerCase().includes("ias")
-      ),
-      "ieee-nsu-wie-ag": data.all_featured_events.filter((e) =>
-        e.key.toLowerCase().includes("wie")
-      ),
-    };
-    return id && mapping[id] ? mapping[id] : data.all_featured_events;
-  }, [data, id]);
+    return data?.featured_events ?? [];
+  }, [data]);
 
   // --- Filtering, searching, sorting ---
   const filteredEvents = useMemo(() => {
@@ -82,12 +62,6 @@ const EventCard = () => {
 
     if (categoryFilter !== "All") {
       filtered = filtered.filter((e) => e.category === categoryFilter);
-    }
-
-    if (groupFilter !== "All") {
-      filtered = filtered.filter((e) =>
-        e.key.toLowerCase().includes(groupFilter.toLowerCase())
-      );
     }
 
     filtered.sort((a, b) => {
@@ -108,7 +82,7 @@ const EventCard = () => {
     });
 
     return filtered;
-  }, [baseEvents, searchTerm, categoryFilter, groupFilter, sortOption]);
+  }, [baseEvents, searchTerm, categoryFilter, sortOption]);
 
   // --- Infinite scroll ---
   useEffect(() => {
@@ -117,7 +91,6 @@ const EventCard = () => {
         const target = entries[0];
         if (target.isIntersecting) {
           setVisibleCount((prev) => {
-            // On mobile, load 1 card at a time
             const increment = window.innerWidth < 768 ? 1 : 6;
             return Math.min(prev + increment, filteredEvents.length);
           });
@@ -134,7 +107,6 @@ const EventCard = () => {
 
   const visibleEvents = filteredEvents.slice(0, visibleCount);
 
-  // --- Conditional rendering ---
   if (loading) {
     return (
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 space-y-4">
@@ -164,10 +136,9 @@ const EventCard = () => {
         <SectionHeading title="Our Events" widthClass="w-42" />
       </FadeIn>
 
-      {/* --- Filter Bar --- */}
+      {/* Filter Bar */}
       <FadeIn>
         <div className="md:max-w-[1080px] w-full mx-auto mt-10 mb-5 flex flex-wrap items-center justify-between gap-4 px-5">
-          {/* Search Bar */}
           <div className="relative flex items-center w-full md:w-[48%]">
             <Search className="absolute left-3 text-gray-400 w-5 h-5" />
             <input
@@ -179,9 +150,7 @@ const EventCard = () => {
             />
           </div>
 
-          {/* Other Filters */}
           <div className="flex flex-wrap gap-3 w-full md:w-[48%] justify-end max-md:justify-center">
-            {/* Sort Dropdown */}
             <select
               className="border px-3 py-2 rounded-md text-sm max-md:w-[48%]"
               value={sortOption}
@@ -193,7 +162,6 @@ const EventCard = () => {
               <option value="za">Z–A</option>
             </select>
 
-            {/* Category Filter */}
             <select
               className="border px-3 py-2 rounded-md text-sm max-md:w-[48%]"
               value={categoryFilter}
@@ -206,39 +174,24 @@ const EventCard = () => {
               <option value="Administrative">Administrative</option>
               <option value="Humanitarian">Humanitarian</option>
             </select>
-
-            {/* Group Filter */}
-            <select
-              className="border px-3 py-2 rounded-md text-sm max-md:w-full"
-              value={groupFilter}
-              onChange={(e) => setGroupFilter(e.target.value)}
-            >
-              <option value="All">All Events</option>
-              <option value="ras">RAS</option>
-              <option value="pes">PES</option>
-              <option value="ias">IAS</option>
-              <option value="wie">WIE</option>
-            </select>
           </div>
         </div>
       </FadeIn>
 
-      {/* --- Event Cards --- */}
+      {/* Event Cards */}
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-4 mb-15">
         {visibleEvents.map((event, index) => (
           <FadeIn
             key={event.id}
             className="w-full md:w-[calc(33.333%-1rem)]"
-            delay={window.innerWidth < 768 ? index * 100 : 0} // stagger on mobile
+            delay={window.innerWidth < 768 ? index * 100 : 0}
           >
-            <article
-              className="bg-ieee-gray/5 h-[480px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]"
-            >
+            <article className="bg-ieee-gray/5 h-[480px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
               <div className="relative h-[200px] overflow-hidden cursor-pointer">
                 <Link to={"/"}>
                   <img
                     className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
-                    src={getImageSrc(event.banner_image.split("/").pop() || "")}
+                    src={event.image}
                     alt={event.name}
                   />
                 </Link>
@@ -269,7 +222,6 @@ const EventCard = () => {
           </FadeIn>
         ))}
 
-        {/* Loader div for infinite scroll */}
         {visibleCount < filteredEvents.length && (
           <div ref={loaderRef} className="w-full text-center py-5">
             <p className="text-gray-400">Loading more events...</p>

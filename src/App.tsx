@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ui/ScrollToTopBtn";
 
 import HomePage from "./pages/home/Page";
-import SocietyOrAg from "./pages/society-and-ag/pages[id]/Pages";
+import SocietyOrAg from "./pages/society-and-ag/Pages";
 // import About from "@/pages/about/pages[id]/pages";
 
 import JoinINSB from "@/pages/get-involved/join-insb/Page";
@@ -29,7 +29,7 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 import Contact from "./pages/contact/Page";
 import Events from "./pages/activities/events/Page";
 import IEEER10 from "./pages/about/IEEE Region 10/Page";
-import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/Executive";
+import ExecutiveBodySection from "@/pages/society-and-ag/Executive";
 import EventDescription from "./pages/activities/events/EventsDetails/EventDetailsPages";
 import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
@@ -49,7 +49,7 @@ const MainLayout = () => {
 const App = () => {
   return (
     <Router>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />
 
@@ -57,19 +57,29 @@ const App = () => {
           {/* Home */}
           <Route path="/" element={<HomePage />} />
 
-
           {/* Activities */}
           <Route path="/events" element={<Events />} />
-          <Route path="/news" element={<News/>} />
-          <Route path="/event_details" element={<EventDescription/>} />
+          <Route path="/news" element={<News />} />
+          <Route path="/event_details" element={<EventDescription />} />
           <Route path="/achievements" element={<Achievements />} />
 
-
           {/* Societies & AG */}
-          <Route path="/ieee-nsu-pes-sbc" element={<SocietyOrAg />} />
-          <Route path="/ieee-nsu-ras-sbc" element={<SocietyOrAg />} />
-          <Route path="/ieee-nsu-wie-ag" element={<SocietyOrAg />} />
-          <Route path="/ieee-nsu-ias-sbc" element={<SocietyOrAg />} />
+          <Route
+            path="/ieee-nsu-ras-sbc"
+            element={<SocietyOrAg chapterId={1} />}
+            />
+          <Route
+            path="/ieee-nsu-pes-sbc"
+            element={<SocietyOrAg chapterId={2} />}
+          />
+          <Route
+            path="/ieee-nsu-ias-sbc"
+            element={<SocietyOrAg chapterId={3} />}
+            />
+          <Route
+            path="/ieee-nsu-wie-ag"
+            element={<SocietyOrAg chapterId={4} />}
+          />
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
@@ -79,7 +89,7 @@ const App = () => {
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
-          <Route path="/about/ieee-region-10" element={< IEEER10/>} />
+          <Route path="/about/ieee-region-10" element={<IEEER10 />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
@@ -88,7 +98,7 @@ const App = () => {
           <Route path="/toolkit" element={<Toolkit />} />
 
           {/* Contact  */}
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/executive-body" element={<ExecutiveBodySection />} />
 
           {/* Get Involved */}

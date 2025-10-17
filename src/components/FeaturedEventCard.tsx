@@ -4,7 +4,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Link, useParams } from "react-router-dom";
 import { Calendar } from "lucide-react";
-import SeeAllEvents from "./SeeAllEvents";
+import SeeAllEvents from "../pages/society-and-ag/SeeAllEvents";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 interface FeaturedEvent {
