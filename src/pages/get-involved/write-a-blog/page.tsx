@@ -97,12 +97,12 @@ const WriteBlog: React.FC = () => {
 
     const fd = new FormData();
     fd.append("ieee_id", ieeeRef.current.value);
-    fd.append("author_names", authorRef.current.value);
-    fd.append("chapter", chapterRef.current.value);
+    fd.append("writer_name", authorRef.current.value);
+    fd.append("branch_or_society", chapterRef.current.value);
     fd.append("title", titleRef.current.value);
     fd.append("category", categoryRef.current.value);
     fd.append("short_description", shortDescRef.current.value);
-    fd.append("blogContent", blogContent);
+    fd.append("description", blogContent);
     fd.append("blog_banner_picture", bannerRef.current.files[0]);
     console.log("FormData contents:");
 
@@ -117,7 +117,7 @@ const WriteBlog: React.FC = () => {
     setLoading(true);
     try {
       // Dummy backend URL
-      const res = await fetch("https://dummyapi.io/blogs", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/main_website/get_blogs/`, {
         method: "POST",
         body: fd,
       });
