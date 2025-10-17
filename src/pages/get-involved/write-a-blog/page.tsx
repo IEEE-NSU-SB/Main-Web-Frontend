@@ -1,45 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FadeIn from "@/components/ui/FadeIn";
-import Wave from "@/components/Wave";
+import Wave from "@/components/wave";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 
 const chapters = [
-  "IEEE NSU Student Branch",
-  "IEEE NSU Power and Energy Society Student Branch Chapter",
-  "IEEE NSU Robotics and Automation Society Student Branch Chapter",
-  "IEEE NSU Industry Application Society Student Branch Chapter",
-  "IEEE NSU Student Branch - Women in Engineering Affinity Group",
+  { id: 1, label: "IEEE NSU Student Branch" },
+  { id: 2, label: "IEEE NSU Power and Energy Society Student Branch Chapter" },
+  {
+    id: 3,
+    label: "IEEE NSU Robotics and Automation Society Student Branch Chapter",
+  },
+  {
+    id: 4,
+    label: "IEEE NSU Industry Application Society Student Branch Chapter",
+  },
+  {
+    id: 5,
+    label: "IEEE NSU Student Branch - Women in Engineering Affinity Group",
+  },
 ];
 
 const categories = [
-  "Science & Technology",
-  "Robotics",
-  "Artificial Intelligence",
-  "Machine Learning",
-  "Neural Network",
-  "Life Science",
-  "Women Empowerment",
-  "Women in STEM",
-  "Power and Energy",
-  "Industry Automation",
-  "Tips & Tricks",
-  "News",
+  { id: 1, label: "Science & Technology" },
+  { id: 2, label: "Robotics" },
+  { id: 3, label: "Artificial Intelligence" },
+  { id: 4, label: "Machine Learning" },
+  { id: 5, label: "Neural Network" },
+  { id: 6, label: "Life Science" },
+  { id: 7, label: "Women Empowerment" },
+  { id: 8, label: "Women in STEM" },
+  { id: 9, label: "Power and Energy" },
+  { id: 10, label: "Industry Automation" },
+  { id: 11, label: "Tips & Tricks" },
+  { id: 12, label: "News" },
 ];
 
 const WriteBlog: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    ieee_id: "",
-    author_names: "",
-    chapter: "",
-    title: "",
-    category: "",
-    short_description: "",
-    blogContent: "",
-    blog_banner_picture: null as File | null,
-  });
+  const [modalMsg, setModalMsg] = useState<string>("");
+  const [showModal, setShowModal] = useState(false);
+
+  const ieeeRef = useRef<HTMLInputElement>(null);
+  const authorRef = useRef<HTMLInputElement>(null);
+  const chapterRef = useRef<HTMLSelectElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
+  const categoryRef = useRef<HTMLSelectElement>(null);
+  const shortDescRef = useRef<HTMLTextAreaElement>(null);
+  const bannerRef = useRef<HTMLInputElement>(null);
 
   const { quill, quillRef } = useQuill({
     theme: "snow",
@@ -54,49 +63,72 @@ const WriteBlog: React.FC = () => {
     },
   });
 
+  const [blogContent, setBlogContent] = useState("");
   useEffect(() => {
     if (!quill) return;
-    quill.on("text-change", () => {
-      setFormData((prev) => ({ ...prev, blogContent: quill.root.innerHTML }));
-    });
+    quill.on("text-change", () => setBlogContent(quill.root.innerHTML));
   }, [quill]);
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setFormData((prev) => ({ ...prev, bannerFile: file }));
-
       const reader = new FileReader();
       reader.onload = () => setBannerPreview(reader.result as string);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(e.target.files[0]);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    const allFilled = Object.values(formData).every(
-      (val) => val !== "" && val !== null
-    );
-    if (!allFilled) {
-      e.preventDefault();
-      alert("Please fill in all required fields!");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (
+      !ieeeRef.current?.value ||
+      !authorRef.current?.value ||
+      !chapterRef.current?.value ||
+      !titleRef.current?.value ||
+      !categoryRef.current?.value ||
+      !shortDescRef.current?.value ||
+      !blogContent ||
+      !bannerRef.current?.files?.[0]
+    ) {
+      setModalMsg("Please fill in all required fields!");
+      setShowModal(true);
       return;
     }
+
+    const fd = new FormData();
+    fd.append("ieee_id", ieeeRef.current.value);
+    fd.append("author_names", authorRef.current.value);
+    fd.append("chapter", chapterRef.current.value);
+    fd.append("title", titleRef.current.value);
+    fd.append("category", categoryRef.current.value);
+    fd.append("short_description", shortDescRef.current.value);
+    fd.append("blogContent", blogContent);
+    fd.append("blog_banner_picture", bannerRef.current.files[0]);
+    console.log("FormData contents:");
+
+    for (let [key, value] of fd.entries()) {
+      if (value instanceof File) {
+        console.log(key, value.name, value.type, value.size + " bytes");
+      } else {
+        console.log(key, value);
+      }
+    }
+    
     setLoading(true);
-    setTimeout(() => {
+    try {
+      // Dummy backend URL
+      const res = await fetch("https://dummyapi.io/blogs", {
+        method: "POST",
+        body: fd,
+      });
+      const data = await res.json();
+      setModalMsg(data?.message || "Blog submitted successfully!");
+    } catch (err: any) {
+      setModalMsg(err.message || "Something went wrong!");
+    } finally {
       setLoading(false);
-      alert("Blog publish request submitted successfully!");
-      setBannerPreview(null);
-      if (quill) quill.setText("");
-    }, 2000);
+      setShowModal(true);
+    }
   };
 
   return (
@@ -129,7 +161,6 @@ const WriteBlog: React.FC = () => {
             </ul>
           </div>
 
-          {/* Form */}
           <form
             method="POST"
             encType="multipart/form-data"
@@ -146,12 +177,9 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="number"
-                  name="ieee_id"
-                  value={formData.ieeeId}
-                  onChange={handleChange}
+                  ref={ieeeRef}
                   placeholder="Enter your IEEE ID"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 />
               </div>
 
@@ -161,12 +189,9 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  name="writer_name"
-                  value={formData.writerName}
-                  onChange={handleChange}
+                  ref={authorRef}
                   placeholder="Enter your full name"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 />
               </div>
 
@@ -176,16 +201,13 @@ const WriteBlog: React.FC = () => {
                   <span className="text-red-600">*</span>
                 </label>
                 <select
-                  name="chapter"
-                  value={formData.chapter}
-                  onChange={handleChange}
+                  ref={chapterRef}
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 >
                   <option value="">Select Chapter/Affinity Group</option>
-                  {chapters.map((c, i) => (
-                    <option key={i} value={c}>
-                      {c}
+                  {chapters.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.label}
                     </option>
                   ))}
                 </select>
@@ -204,12 +226,9 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleChange}
+                  ref={titleRef}
                   placeholder="Enter blog title"
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 />
               </div>
 
@@ -218,16 +237,13 @@ const WriteBlog: React.FC = () => {
                   Category <span className="text-red-600">*</span>
                 </label>
                 <select
-                  name="category"
-                  value={formData.category}
-                  onChange={handleChange}
+                  ref={categoryRef}
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 >
                   <option value="">Select Category</option>
-                  {categories.map((c, i) => (
-                    <option key={i} value={c}>
-                      {c}
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.label}
                     </option>
                   ))}
                 </select>
@@ -239,13 +255,10 @@ const WriteBlog: React.FC = () => {
                   <span className="text-red-600">*</span>
                 </label>
                 <textarea
-                  name="short_description"
-                  value={formData.shortDesc}
-                  onChange={handleChange}
+                  ref={shortDescRef}
                   placeholder="Write a short description of your blog..."
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
                   rows={3}
-                  required
                 />
               </div>
 
@@ -262,11 +275,10 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="file"
-                  name="blog_banner_picture"
+                  ref={bannerRef}
                   accept="image/*"
                   onChange={handleFileChange}
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
-                  required
                 />
                 {bannerPreview && (
                   <img
@@ -277,6 +289,7 @@ const WriteBlog: React.FC = () => {
                 )}
               </div>
             </div>
+
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -290,6 +303,21 @@ const WriteBlog: React.FC = () => {
           </form>
         </section>
       </FadeIn>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white rounded-lg p-6 w-80 text-center">
+            <p className="mb-4">{modalMsg || "Request sent successfully!"}</p>
+            <button
+              className="px-4 py-2 bg-ieee-blue text-white rounded hover:bg-ieee-darkblue"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
