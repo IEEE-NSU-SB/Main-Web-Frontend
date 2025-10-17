@@ -1,11 +1,8 @@
 import FadeIn from "@/components/ui/FadeIn";
-
-interface PageData {
-  parallax?: string;
-}
+import { type ChapterPageData } from "@/types/chapter";
 
 interface ParallaxProps {
-  pageData: PageData;
+  pageData: ChapterPageData;
 }
 
 const Parallax: React.FC<ParallaxProps> = ({ pageData }) => {

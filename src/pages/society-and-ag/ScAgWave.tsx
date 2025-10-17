@@ -1,20 +1,15 @@
 import Wave from "@/components/wave";
-
-interface PageData {
-  pageTitle: string;
-  pageSubtitle: string;
-  primaryColor?: string;
-}
+import { type ChapterPageData } from "@/types/chapter";
 
 interface ScAgWaveProps {
-  pageData: PageData;
+  pageData: ChapterPageData;
 }
 
 const ScAgWave: React.FC<ScAgWaveProps> = ({ pageData }) => {
   return (
     <Wave
-      title={pageData.pageTitle}
-      subtitle={pageData.pageSubtitle}
+      title={pageData.pageTitle || ""}
+      subtitle={pageData.pageSubtitle || ""}
       color={pageData.primaryColor || "#000"}
     />
   );

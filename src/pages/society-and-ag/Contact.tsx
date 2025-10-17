@@ -1,15 +1,10 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useState } from "react";
-
-interface PageData {
-  primaryColor?: string;
-  email?: string;
-  fb?: string;
-}
+import { type ChapterPageData } from "@/types/chapter";
 
 interface ContactProps {
-  pageData: PageData;
+  pageData: ChapterPageData;
 }
 
 const Contact: React.FC<ContactProps> = ({ pageData }) => {
