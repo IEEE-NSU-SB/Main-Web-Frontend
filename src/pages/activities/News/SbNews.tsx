@@ -2,7 +2,7 @@ import { useState } from "react";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import Wave from "@/components/Wave";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
 import { Link } from "react-router";
 
@@ -17,8 +17,8 @@ const SbNews = () => {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(3);
 
-  const { loading, data, error, refetch } = useFetchDataJSON<SbNewsResponse[]>({
-    path: "pages/activities/News/sbnews.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<SbNewsResponse[]>({
+    apiUrl: "main_website/get_sb_news/",
   });
 
   const toggleCard = (id: number) => {
@@ -64,6 +64,7 @@ const SbNews = () => {
                         src={item.image}
                         alt="404"
                         className="w-full h-full object-cover"
+                        loading='lazy'
                         />
                     </div>
                     <div className="p-4 flex flex-col">
