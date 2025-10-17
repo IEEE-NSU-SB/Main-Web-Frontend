@@ -1,6 +1,7 @@
 import Wave from '@/components/Wave';
 import TopSection from './TopSection';
 import MidSection from './MidSection';
+import FeedBackForm from './FeedBackForm';
 
 
 
@@ -11,8 +12,11 @@ const EventDetailsPages = () => {
             <div className="max-w-[1080px] mx-auto px-4 py-6">
                 <TopSection></TopSection>
             </div>
-            <div className='max-w-[1080px] mx-auto px-4 py-6"'>
+            <div className='max-w-[1080px] mx-auto px-4 py-6'>
                 <MidSection></MidSection>
+            </div>
+            <div className='max-w-[1080px] mx-auto px-4 pb-6'>
+                <FeedBackForm></FeedBackForm>
             </div>
         </>
     );

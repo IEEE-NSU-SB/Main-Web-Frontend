@@ -4,7 +4,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 
-import { Calendar, MapPin, Users, Building2 } from 'lucide-react';
+import { Calendar, Users, Building2, Tags } from 'lucide-react';
 
 type EventDetailsResponse = {
     image: string;
@@ -64,13 +64,17 @@ const BannerDetails = () => {
                                 {eventData.title}
                             </h1>
 
-                            {/* Category */}
+
                             {/* Category */}
                             <div className="flex items-center gap-3 mb-4">
-                                <MapPin className="w-5 h-5 text-[#E87722] flex-shrink-0" />
-                                <div className="flex items-center gap-2">
-                                    <p className="text-xs uppercase tracking-wider text-gray-500">Category:</p>
-                                    <p className="text-base font-medium text-[#E87722]">{eventData.category}</p>
+                                <Tags className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                                <div className="flex items-center">
+                                    <p className="text-xs uppercase tracking-wider text-gray-500">
+                                        Category:{' '}
+                                        <span className="normal-case text-base font-medium text-[#E87722]">
+                                            {eventData.category}
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
 
@@ -80,24 +84,27 @@ const BannerDetails = () => {
                                 <Users className="w-5 h-5 text-[#E87722] flex-shrink-0" />
                                 <div className="flex items-center gap-2">
                                     <p className="text-xs uppercase tracking-wider text-gray-500">
-                                        Event Organised By:
-                                    </p>
-                                    <p className="text-base font-medium text-[#E87722]">
-                                        {eventData.organized_by}
+                                        Event Organised By:{' '}
+                                        <span className="normal-case text-base font-medium text-[#E87722]">
+                                            {eventData.organized_by}
+                                        </span>
                                     </p>
                                 </div>
                             </div>
+
 
                             {/* Collaboration */}
                             <div className="flex items-center gap-3">
                                 <Building2 className="w-5 h-5 text-[#E87722] flex-shrink-0" />
                                 <div className="flex items-center gap-2">
                                     <p className="text-xs uppercase tracking-wider text-gray-500">
-                                        In Collaboration With:
+                                        In Collaboration With:{' '}
+                                        <span className="normal-case text-base font-medium text-[#E87722]">
+                                            {eventData.collaboration}
+                                        </span>
                                     </p>
-                                    <p className="text-base font-medium text-[#E87722]">
-                                        {eventData.collaboration}
-                                    </p>
+
+
                                 </div>
                             </div>
                         </div>
