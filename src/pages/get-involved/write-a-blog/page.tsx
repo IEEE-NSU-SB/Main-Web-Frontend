@@ -31,14 +31,14 @@ const WriteBlog: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    ieeeId: "",
-    writerName: "",
+    ieee_id: "",
+    author_names: "",
     chapter: "",
     title: "",
     category: "",
-    shortDesc: "",
+    short_description: "",
     blogContent: "",
-    bannerFile: null as File | null,
+    blog_banner_picture: null as File | null,
   });
 
   const { quill, quillRef } = useQuill({
@@ -82,11 +82,11 @@ const WriteBlog: React.FC = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     const allFilled = Object.values(formData).every(
       (val) => val !== "" && val !== null
     );
     if (!allFilled) {
+      e.preventDefault();
       alert("Please fill in all required fields!");
       return;
     }
@@ -94,16 +94,6 @@ const WriteBlog: React.FC = () => {
     setTimeout(() => {
       setLoading(false);
       alert("Blog publish request submitted successfully!");
-      setFormData({
-        ieeeId: "",
-        writerName: "",
-        chapter: "",
-        title: "",
-        category: "",
-        shortDesc: "",
-        blogContent: "",
-        bannerFile: null,
-      });
       setBannerPreview(null);
       if (quill) quill.setText("");
     }, 2000);
@@ -141,6 +131,8 @@ const WriteBlog: React.FC = () => {
 
           {/* Form */}
           <form
+            method="POST"
+            encType="multipart/form-data"
             onSubmit={handleSubmit}
             className="bg-ieee-gray/1 shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300 rounded-lg p-6"
           >
@@ -154,7 +146,7 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="number"
-                  name="ieeeId"
+                  name="ieee_id"
                   value={formData.ieeeId}
                   onChange={handleChange}
                   placeholder="Enter your IEEE ID"
@@ -169,7 +161,7 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  name="writerName"
+                  name="writer_name"
                   value={formData.writerName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
@@ -247,7 +239,7 @@ const WriteBlog: React.FC = () => {
                   <span className="text-red-600">*</span>
                 </label>
                 <textarea
-                  name="shortDesc"
+                  name="short_description"
                   value={formData.shortDesc}
                   onChange={handleChange}
                   placeholder="Write a short description of your blog..."
@@ -270,7 +262,7 @@ const WriteBlog: React.FC = () => {
                 </label>
                 <input
                   type="file"
-                  name="bannerFile"
+                  name="blog_banner_picture"
                   accept="image/*"
                   onChange={handleFileChange}
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
@@ -288,6 +280,7 @@ const WriteBlog: React.FC = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
+                name="submit_blog"
                 className="mt-6 w-full md:w-auto border-1 border-ieee-blue bg-ieee-blue text-white font-semibold cursor-pointer px-6 py-2 rounded hover:text-ieee-blue hover:bg-ieee-white transition-all 300"
                 disabled={loading}
               >
