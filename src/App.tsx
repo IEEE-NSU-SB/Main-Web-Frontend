@@ -35,6 +35,7 @@ import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import EventDescription from "./pages/activities/events/EventsDetails/EventDescription";
 import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
+import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
 
 const MainLayout = () => {
   return (
@@ -50,6 +51,7 @@ const MainLayout = () => {
 const App = () => {
   return (
     <Router>
+      <TrailingSlashRedirect />
       <ScrollToTop />
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />
