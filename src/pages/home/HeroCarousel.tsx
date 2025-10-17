@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import Skeleton from "@/components/Skeleton";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/Button";
 import SplitText from "@/components/ui/SplitText";
@@ -19,7 +19,7 @@ interface MediaItem {
 }
 
 interface MediaGroup {
-  Type: "image" | "video";
+  type: "image" | "video";
   media: MediaItem[];
 }
 
@@ -32,13 +32,12 @@ const HeroCarousel = ({
   autoPlayInterval = 5000,
   showIndicators = true,
 }: HeroCarouselProps) => {
-  const { loading, data, error, refetch } = useFetchDataJSON<MediaGroup[]>({
-    path: "pages/home/data/hero.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<MediaGroup>({
+    apiUrl: "main_website/get_hero_section_landing/",
   });
 
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [mediaType, setMediaType] = useState<"image" | "video">("image");
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
@@ -46,18 +45,15 @@ const HeroCarousel = ({
 
   // Process fetched data
   useEffect(() => {
-    if (!data || !Array.isArray(data)) return;
+    if (!data) return;
 
-    const typeEntry = data.find(
-      (item) => item.Type === "image" || item.Type === "video"
-    );
+    // Validate structure
+    if (data.type === "image" || data.type === "video") {
+      setMediaType(data.type);
 
-    if (typeEntry) {
-      setMediaType(typeEntry.Type);
-
-      const normalized = typeEntry.media.map((m) => ({
+      const normalized = data.media.map((m) => ({
         ...m,
-        src: typeEntry.Type === "image" ? m.banner_image! : m.link!,
+        src: data.type === "image" ? m.banner_image! : m.link!,
       }));
 
       setMedia(normalized);
