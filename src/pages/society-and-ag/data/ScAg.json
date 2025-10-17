@@ -60,9 +60,9 @@
       "pageTitle": "IEEE NSU Power & Energy Society Student Branch Chapter",
       "pageSubtitle": "Leveraging Technology by Powering the Future",
       "primaryColor": "#659941",
-      "secondaryColor": "#659941",
+      "secondaryColor": "#000",
       "missionVisionColor": "#659941",
-      "textColor": "#659941",
+      "textColor": "#fff",
       "logo": "src/assets/logo/pes.png",
       "about": [
         {
@@ -105,7 +105,10 @@
       "name":"IAS",
       "pageTitle": "IEEE NSU IAS STUDENT BRANCH CHAPTER",
       "pageSubtitle": "Connect to the Industry Professionals",
-      "color": "#0F904B",
+      "primaryColor": "#0F904B",
+      "secondaryColor": "#602569",
+      "missionVisionColor": "#000",
+      "textColor": "#fff",
       "logo": "src/assets/logo/ias.png",
       "about": [
         {
@@ -147,7 +150,10 @@
       "name":"WIE",
       "pageTitle": "IEEE NSU Student Branch, Women In Engineering Affinity Group",
       "pageSubtitle": "Empowering Futures: Women Leading Engineering Innovation",
-      "color": "#006699",
+      "primaryColor": "#006699",
+      "secondaryColor": "#602569",
+      "missionVisionColor": "#000",
+      "textColor": "#fff",
       "logo": "src/assets/logo/wie.png",
       "about": [
         {

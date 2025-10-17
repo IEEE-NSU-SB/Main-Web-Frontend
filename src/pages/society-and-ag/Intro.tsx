@@ -1,65 +1,24 @@
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
-import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SplitText from "@/components/ui/SplitText";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 interface AboutSection {
   title: string;
   description: string[];
 }
 
-interface ChapterData {
+interface PageData {
   primaryColor: string;
   logo: string;
   about: AboutSection[];
 }
 
 interface IntroProps {
-  chapterId: number; // dynamic prop passed from parent
+  pageData: PageData;
 }
 
-const Intro: React.FC<IntroProps> = ({ chapterId }) => {
-  const { loading, data, error, refetch } = useFetchDataJSON<Record<string, ChapterData[]>>({
-    path: "pages/society-and-ag/data/ScAg.json",
-  });
-
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center gap-6 mt-10 m-auto">
-        <Skeleton className="h-60 w-60" />
-        <div className="flex flex-col gap-6">
-          <Skeleton className="h-6 w-[150px]" />
-          <Skeleton className="h-6 w-[1080px]" />
-          <Skeleton className="h-6 w-[1080px]" />
-          <Skeleton className="h-6 w-[1080px]" />
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <ErrorMessage
-        message="Failed to load Affinity Group information"
-        onRetry={refetch}
-      />
-    );
-  }
-
-  // Access the chapter data directly by key
-  const agArray = data?.[String(chapterId)];
-  const ag = agArray?.[0]; // since each key maps to an array
-
-  if (!ag) {
-    return (
-      <ErrorMessage
-        message="Affinity Group not found."
-        onRetry={refetch}
-      />
-    );
-  }
+const Intro: React.FC<IntroProps> = ({ pageData }) => {
+  const ag = pageData;
 
   return (
     <div className="max-w-[1080px] mx-auto py-4 mb-5 items-center gap-8">

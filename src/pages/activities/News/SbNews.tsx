@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import Wave from "@/components/Wave";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
-import { Link } from "react-router";
+import Wave from "@/components/wave";
 
 type SbNewsResponse = {
   id: number;
@@ -35,7 +34,7 @@ const SbNews = () => {
   return (
     <FadeIn>
       <div>
-        <Wave title="News"></Wave>
+        <Wave title="News"/>
         <h1 className="text-center text-ieee-blue text-3xl font-semibold mb-4 md:mb-10 mt-10">
           IEEE NSU Student Branch News
         </h1>
@@ -73,10 +72,10 @@ const SbNews = () => {
                       </h2>
                       <div className="overflow-hidden">
                         <p
-                          className={`text-gray-600 text-justify  transition-all duration-500 ease-in-out ellipsis ${
+                          className={`text-gray-600 text-justify min-h-[12px]  transition-all duration-500 ease-in-out ellipsis ${
                             expandedCard === item.id
                               ? "max-h-[1000px] line-clamp-none"
-                              : "max-h-[72px] line-clamp-3"
+                              : "max-h-[32px]  line-clamp-1"
                           }`}
                         >
                           {item.description}
