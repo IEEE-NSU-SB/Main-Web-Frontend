@@ -30,10 +30,11 @@ import Contact from "./pages/contact/Page";
 import Events from "./pages/activities/events/Page";
 import IEEER10 from "./pages/about/IEEE Region 10/Page";
 import ExecutiveBodySection from "@/pages/society-and-ag/Executive";
-import EventDescription from "./pages/activities/events/EventsDetails/EventDetailsPages";
 import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
+import EventDescription from "./pages/activities/events/EventsDetails/EventDescription";
+import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
 
 const MainLayout = () => {
   return (
@@ -60,7 +61,7 @@ const App = () => {
           {/* Activities */}
           <Route path="/events" element={<Events />} />
           <Route path="/news" element={<News />} />
-          <Route path="/event_details" element={<EventDescription />} />
+          <Route path="/event_details" element={<EventDetailsPages />} />
           <Route path="/achievements" element={<Achievements />} />
 
           {/* Societies & AG */}
