@@ -43,7 +43,7 @@ const RegisterDetails = () => {
                                     {/* Start Time */}
                                     <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
                                         <div className="mt-0.5">
-                                            <Calendar className="w-5 h-5 text-orange-500" />
+                                            <Calendar className="w-5 h-5 text-[#E87722]" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">Start Time</h3>
@@ -54,7 +54,7 @@ const RegisterDetails = () => {
                                     {/* End Time */}
                                     <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
                                         <div className="mt-0.5">
-                                            <Calendar className="w-5 h-5 text-orange-500" />
+                                            <Calendar className="w-5 h-5 text-[#E87722]" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">End Time</h3>
@@ -65,7 +65,7 @@ const RegisterDetails = () => {
                                     {/* Cost */}
                                     <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
                                         <div className="mt-0.5">
-                                            <DollarSign className="w-5 h-5 text-orange-500" />
+                                            <DollarSign className="w-5 h-5 text-[#E87722]" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">COST</h3>
@@ -76,7 +76,7 @@ const RegisterDetails = () => {
                                     {/* More Info */}
                                     <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
                                         <div className="mt-0.5">
-                                            <Info className="w-5 h-5 text-orange-500" />
+                                            <Info className="w-5 h-5 text-[#E87722]" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">MORE INFO</h3>

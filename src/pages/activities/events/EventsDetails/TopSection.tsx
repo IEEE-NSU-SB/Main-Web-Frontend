@@ -7,7 +7,7 @@ const TopSection = () => {
       <div>
         <BannerDetails />
       </div>
-      <div className="bg-white">
+      <div className="bg-white md:block hidden">
         <RegisterDetails />
       </div>
     </div>
