@@ -4,26 +4,32 @@ import Wave from "@/components/Wave";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 
+// Chapters with numeric IDs
 const chapters = [
-  "IEEE NSU Student Branch",
-  "IEEE NSU Power and Energy Society Student Branch Chapter",
-  "IEEE NSU Robotics and Automation Society Student Branch Chapter",
-  "IEEE NSU Industry Application Society Student Branch Chapter",
-  "IEEE NSU Student Branch - Women in Engineering Affinity Group",
+  { id: 1, label: "IEEE NSU Student Branch" },
+  { id: 2, label: "IEEE NSU Power and Energy Society Student Branch Chapter" },
+  { id: 3, label: "IEEE NSU Robotics and Automation Society Student Branch Chapter" },
+  { id: 4, label: "IEEE NSU Industry Application Society Student Branch Chapter" },
+  { id: 5, label: "IEEE NSU Student Branch - Women in Engineering Affinity Group" },
 ];
 
+// Categories with numeric IDs
 const categories = [
-  "Artificial Intelligence"
+  { id: 1, label: "Artificial Intelligence" },
+  { id: 2, label: "Machine Learning" },
+  { id: 3, label: "Robotics" },
 ];
 
 const AddResearchPaper: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
+  const [modalMsg, setModalMsg] = useState<string>("");
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     authors: "",
-    chapter: "",
+    chapter: "", // will store numeric ID as string
     title: "",
-    category: "",
+    category: "", // will store numeric ID as string
     abstract: "",
     publicationLink: "",
     bannerFile: null as File | null,
@@ -50,9 +56,7 @@ const AddResearchPaper: React.FC = () => {
   }, [quill]);
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -69,31 +73,57 @@ const AddResearchPaper: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const allFilled = Object.values(formData).every(
-      (val) => val !== "" && val !== null
-    );
+
+    const allFilled =
+      formData.authors &&
+      formData.chapter &&
+      formData.title &&
+      formData.category &&
+      formData.abstract &&
+      formData.publicationLink &&
+      formData.bannerFile;
+
     if (!allFilled) {
-      alert("Please fill in all required fields!");
+      setModalMsg("Please fill in all required fields!");
+      setShowModal(true);
       return;
     }
+
+    // Prepare FormData
+    const fd = new FormData();
+    fd.append("authors", formData.authors);
+    fd.append("chapter", formData.chapter); // numeric ID as string
+    fd.append("title", formData.title);
+    fd.append("category", formData.category); // numeric ID as string
+    fd.append("abstract", formData.abstract);
+    fd.append("publicationLink", formData.publicationLink);
+    fd.append("bannerFile", formData.bannerFile!);
+
+    console.log("FormData contents:");
+    for (let [key, value] of fd.entries()) {
+      if (value instanceof File) {
+        console.log(key, value.name, value.type, value.size + " bytes");
+      } else {
+        console.log(key, value);
+      }
+    }
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert("Research Paper add request submitted successfully!");
-      setFormData({
-        authors: "",
-        chapter: "",
-        title: "",
-        category: "",
-        abstract: "",
-        publicationLink: "",
-        bannerFile: null,
+    try {
+      const res = await fetch("https://dummyapi.io/research-papers", {
+        method: "POST",
+        body: fd,
       });
-      setBannerPreview(null);
-      if (quill) quill.setText("");
-    }, 2000);
+      const data = await res.json();
+      setModalMsg(data?.message || "Research Paper submitted successfully!");
+    } catch (err: any) {
+      setModalMsg(err.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
+      setShowModal(true);
+    }
   };
 
   return (
@@ -111,16 +141,13 @@ const AddResearchPaper: React.FC = () => {
             </h2>
             <ul className="list-disc list-inside text-ieee-black-75 space-y-1">
               <li>
-                You must be a Registered IEEE NSU Student Branch Member to get
-                your Research Paper added on our website!
+                You must be a Registered IEEE NSU Student Branch Member to get your Research Paper added!
               </li>
               <li>
-                IEEE NSU Student Branch holds the right to decline or delete
-                your Research Paper.
+                IEEE NSU Student Branch holds the right to decline or delete your Research Paper.
               </li>
               <li>
-                IEEE NSU Student Branch will not publish any Research that is
-                not authentic and does not go with the Code of Conduct!
+                IEEE NSU Student Branch will not publish any Research that is not authentic!
               </li>
               <li>Keep Grinding! 😃 😁</li>
             </ul>
@@ -150,10 +177,9 @@ const AddResearchPaper: React.FC = () => {
                 />
               </div>
 
-              <div className="md:col-span-2">
+              <div>
                 <label className="block mb-3 mt-2 font-medium">
-                  From which Chapter/Affinity Group?{" "}
-                  <span className="text-red-600">*</span>
+                  From which Chapter/Affinity Group? <span className="text-red-600">*</span>
                 </label>
                 <select
                   name="chapter"
@@ -163,9 +189,9 @@ const AddResearchPaper: React.FC = () => {
                   required
                 >
                   <option value="">Select Chapter/Affinity Group</option>
-                  {chapters.map((c, i) => (
-                    <option key={i} value={c}>
-                      {c}
+                  {chapters.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.label}
                     </option>
                   ))}
                 </select>
@@ -205,9 +231,9 @@ const AddResearchPaper: React.FC = () => {
                   required
                 >
                   <option value="">Select Category</option>
-                  {categories.map((c, i) => (
-                    <option key={i} value={c}>
-                      {c}
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.label}
                     </option>
                   ))}
                 </select>
@@ -269,6 +295,21 @@ const AddResearchPaper: React.FC = () => {
           </form>
         </section>
       </FadeIn>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white rounded-lg p-6 w-80 text-center">
+            <p className="mb-4">{modalMsg || "Request sent successfully!"}</p>
+            <button
+              className="px-4 py-2 bg-ieee-blue text-white rounded hover:bg-ieee-darkblue"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
