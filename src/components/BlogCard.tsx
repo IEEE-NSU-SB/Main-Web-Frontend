@@ -134,17 +134,17 @@ const BlogCard: React.FC = () => {
 
       {/* Blog cards */}
       {!loading && !error && (
-        <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-5 px-5 max-sm:px-5">
+        <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-10 px-5 max-sm:px-5">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
-                <div className="max-w-[332px] lg:max-w-[313px] xl:max-w-[332px] bg-ieee-gray/5 rounded-sm border overflow-hidden  hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)] transition-all duration-300">
+                <div className="max-w-[305px] lg:max-w-[213px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition-all duration-300">
                   <div className="overflow-hidden h-48 w-full">
                     <Link to={event.link}>
                       <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105"
+                        className="w-full h-full object-cover transform  transition-transform duration-300 hover:scale-105"
                       />
                     </Link>
                     {/* Publisher */}
@@ -157,26 +157,26 @@ const BlogCard: React.FC = () => {
                       <Calendar className="w-4 h-4" />
                       <span>{new Date(event.date).toLocaleDateString()}</span>
                     </div>
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray">
+                    {/* <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray">
                       <FolderClosed className="w-4 h-4" />
                       {event.category}
-                    </p>
-                    <p className="flex items-center gap-2 text-sm font-semibold text-ieee-gray overflow-hidden text-ellipsis whitespace-nowrap">
+                    </p> */}
+                    <p className="flex items-center italic gap-2 text-sm font-semibold text-ieee-gray overflow-hidden text-ellipsis whitespace-nowrap">
                       {/* <NotebookPen className="w-4 h-4" /> */}
-                      By {event.author}
+                      {event.author}
                     </p>
-                    <h3 className="font-bold my-3 line-clamp-2 text-ieee-black-75 h-12">
+                    <h3 className="font-bold my-3 text-[20px] line-clamp-1 text-ieee-black-75">
                       {event.title}
                     </h3>
                     <p
-                      className="text-ieee-black-75 mb-4 line-clamp-3 h-18"
+                      className="text-ieee-black-75 mb-4 line-clamp-2 text-[16px]"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
-                    <Link to={event.link}>
+                    {/* <Link to={event.link}>
                       <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
                         Read More
                       </button>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </FadeIn>
@@ -191,7 +191,7 @@ const BlogCard: React.FC = () => {
       {isLandingPage && (
         <div className="flex justify-center mt-8">
           <Link to="/blogs">
-            <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+            <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
               See All Blogs
             </button>
           </Link>

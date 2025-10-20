@@ -137,8 +137,8 @@ export default function PerksCardGrid() {
             <div className="flex items-start space-x-4">
               <img src={item.icon} alt={item.title} className="w-8 h-8" />
               <div className="text-left">
-                <h3 className="font-bold text-gray-800 mb-3">{item.title}</h3>
-                <p className="text-ieee-black-75 text-lg learning-card-grid.text text-wrap">
+                <h3 className="font-bold text-gray-800 mb-3 text-[20px]">{item.title}</h3>
+                <p className="text-ieee-black-75 text-[16px] learning-card-grid.text text-wrap">
                   {item.description}
                 </p>
               </div>

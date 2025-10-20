@@ -17,7 +17,7 @@ import SocietyOrAg from "./pages/society-and-ag/Pages";
 import JoinINSB from "@/pages/get-involved/join-insb/Page";
 import AllMembers from "@/pages/members/all-members-statistics/Page";
 import Officers from "@/pages/members/officers/OfficerCard";
-import Volunteers from "@/pages/members/volunteers/VolunteerCard";
+import Volunteers from "@/pages/publications/volunteers/VolunteerCard";
 import Achievements from "./pages/activities/achievements/Page";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Blogs from "./pages/publications/blogs/Page";
@@ -33,8 +33,8 @@ import ExecutiveBodySection from "@/pages/society-and-ag/Executive";
 import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
-import EventDescription from "./pages/activities/events/EventsDetails/EventDescription";
 import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
+import TeamPage from "./pages/members/team/page";
 
 const MainLayout = () => {
   return (
@@ -87,6 +87,8 @@ const App = () => {
           <Route path="/officers" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/all-members" element={<AllMembers />} />
+          <Route path="/team" element={<AllMembers />} />
+          <Route path="/content-writing-and-publications" element={<TeamPage />} />
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
