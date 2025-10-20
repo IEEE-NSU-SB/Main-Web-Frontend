@@ -160,7 +160,7 @@ const Navbar: React.FC = () => {
                     ].map((team) => (
                       <Link
                         key={team}
-                        to={`/${team.toLowerCase().replace(/ /g, "-")}`}
+                        to={`/team/${team.toLowerCase().replace(/ /g, "-")}`}
                         className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                       >
                         {team}

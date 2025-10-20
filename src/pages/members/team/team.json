@@ -1,5 +1,12 @@
 {
-  "sub_executive": [
+  "team": [
+    {
+      "title": "web",
+      "img": "src/assets/dummy/luffy.jpeg",
+      "details":"HELLOOO"
+    }
+  ],
+  "subExecutive": [
     {
       "id":"/",
       "name": "Ayesha Rahman",
@@ -21,7 +28,7 @@
       "img": "src/assets/dummy/luffy.jpeg"
     }
   ],
-  "core_volunteers": [
+  "coreVolunteers": [
     {
       "id":"/",
       "name": "Rafi Chowdhury",

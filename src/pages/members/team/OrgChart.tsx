@@ -10,9 +10,9 @@ interface Member {
 
 interface OrgChartProps {
   data: {
-    sub_executive: Member[];
+    subExecutive: Member[];
     incharge: Member[];
-    core_volunteers: Member[];
+    coreVolunteers: Member[];
     volunteers: Member[];
   };
 }
@@ -263,9 +263,9 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center w-full mt-10">
-      {renderLevel(data.sub_executive, false, true)}
+      {renderLevel(data.subExecutive, false, true)}
       {renderLevel(data.incharge, true, true)}
-      {renderLevel(data.core_volunteers, true, false, false, true)}
+      {renderLevel(data.coreVolunteers, true, false, false, true)}
       {renderVolunteers(data.volunteers)}
     </div>
   );

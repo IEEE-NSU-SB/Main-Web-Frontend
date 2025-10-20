@@ -88,7 +88,8 @@ const App = () => {
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/team" element={<AllMembers />} />
-          <Route path="/content-writing-and-publications" element={<TeamPage />} />
+          <Route path="/team/:id" element={<TeamPage />} />
+
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
