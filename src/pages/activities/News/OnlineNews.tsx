@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
 import { Link } from "react-router";
 
@@ -16,10 +16,10 @@ type OnlineNewsResponse = {
 };
 
 const OnlineNews = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON<
+  const { loading, data, error, refetch } = useFetchDataAPI<
     OnlineNewsResponse[]
   >({
-    path: "pages/activities/News/OnlineNews.json",
+    apiUrl: "main_website/get_online_news/",
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
