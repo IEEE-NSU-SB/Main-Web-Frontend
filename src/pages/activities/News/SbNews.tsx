@@ -4,6 +4,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
+import { Link } from "react-router";
 
 type SbNewsResponse = {
   id: number;
@@ -13,16 +14,11 @@ type SbNewsResponse = {
 };
 
 const SbNews = () => {
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(3);
 
   const { loading, data, error, refetch } = useFetchDataAPI<SbNewsResponse[]>({
     apiUrl: "main_website/get_sb_news/",
   });
-
-  const toggleCard = (id: number) => {
-    setExpandedCard(expandedCard === id ? null : id);
-  };
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 3);
@@ -34,7 +30,7 @@ const SbNews = () => {
   return (
     <FadeIn>
       <div>
-        <Wave title="News"/>
+        <Wave title="News" />
         <h1 className="text-center text-ieee-blue text-3xl font-semibold mb-4 md:mb-10 mt-10">
           IEEE NSU Student Branch News
         </h1>
@@ -59,34 +55,29 @@ const SbNews = () => {
                     className="bg-ieee-gray/5 border border-ieee-white rounded-sm hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300 overflow-hidden flex flex-col h-fit"
                   >
                     <div className="w-full h-64 overflow-hidden flex-shrink-0">
-                      <img
-                        src={item.image}
-                        alt="404"
-                        className="w-full h-full object-cover"
-                        loading='lazy'
+                      <Link to={`/news/${item.id.toString()}`}>
+                        <img
+                          src={item.image}
+                          alt="404"
+                          className="w-full h-full object-cover"
+                          loading="lazy"
                         />
+                      </Link>
                     </div>
                     <div className="p-4 flex flex-col">
+                      <Link to={`/news/${item.id.toString()}`}>
                       <h2 className="cursor-pointer text-xl font-semibold my-2 mb-4 line-clamp-1">
                         {item.title}
                       </h2>
+                      </Link>
                       <div className="overflow-hidden">
                         <p
-                          className={`text-gray-600 text-justify min-h-[12px]  transition-all duration-500 ease-in-out ellipsis ${
-                            expandedCard === item.id
-                              ? "max-h-[1000px] line-clamp-none"
-                              : "max-h-[32px]  line-clamp-1"
+                          className={`text-gray-600 text-justify min-h-[12px]  transition-all duration-500 ease-in-out ellipsis max-h-[32px]  line-clamp-1
                           }`}
                         >
                           {item.description}
                         </p>
                       </div>
-                      <button
-                        onClick={() => toggleCard(item.id)}
-                        className="text-ieee-blue hover:text-ieee-blue/80 cursor-pointer font-medium mt-3 text-left transition-colors"
-                      >
-                        {expandedCard === item.id ? "Read Less" : "Read More"}
-                      </button>
                     </div>
                   </div>
                 ))}

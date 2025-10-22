@@ -7,7 +7,6 @@ const headers = [
   { key: "ieeeId", label: "IEEE ID" },
   { key: "nsuId", label: "NSU ID" },
   { key: "name", label: "Name" },
-  { key: "ieeeEmail", label: "IEEE Email" },
   { key: "nsuEmail", label: "NSU Email" },
   { key: "bloodGroup", label: "Blood Group" },
 ];

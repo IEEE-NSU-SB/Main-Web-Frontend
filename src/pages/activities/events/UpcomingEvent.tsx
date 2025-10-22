@@ -3,8 +3,9 @@ import FadeIn from "@/components/ui/FadeIn";
 import FadeInRight from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import { Undo } from "lucide-react";
-import { useFetchDataAPI, useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
+import { Link } from "react-router";
 
 interface TimeLeft {
   days: number;
@@ -14,6 +15,7 @@ interface TimeLeft {
 }
 
 interface EventData {
+  id: string;
   title: string;
   image: string;
   description: string;
@@ -22,21 +24,14 @@ interface EventData {
   registration_link: string;
 }
 
-interface EventResponse {
-  event: EventData;
-}
-
-interface FlipUnitProps {
-  value: number;
-  label: string;
-}
-
 const UpcomingEvent = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON<EventResponse>({
+  // ✅ Fetches directly an EventData object (no nested "event" key)
+  const { loading, data, error, refetch } = useFetchDataJSON<EventData>({
     path: "/pages/activities/events/data/UpcomingEvent.json",
   });
 
-  const event = data?.event;
+  const event = data;
+
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -100,7 +95,7 @@ const UpcomingEvent = () => {
   }, [fullText]);
 
   // Flip Digit
-  const FlipUnit = ({ value, label }: FlipUnitProps) => {
+  const FlipUnit = ({ value, label }: { value: number; label: string }) => {
     const [prevValue, setPrevValue] = useState<number>(value);
     const [flipping, setFlipping] = useState<boolean>(false);
 
@@ -146,25 +141,32 @@ const UpcomingEvent = () => {
             <Skeleton className="h-80 w-full rounded-md" />
           </div>
         ) : error ? (
-          <ErrorMessage message="Failed to load upcoming event" onRetry={refetch} />
+          <ErrorMessage
+            message="Failed to load upcoming event"
+            onRetry={refetch}
+          />
         ) : event ? (
           <>
             <FadeIn>
               <h2 className="text-3xl text-ieee-black-75 font-normal mb-2">
                 UPCOMING EVENT :
               </h2>
-              <h2 className="text-3xl shine-text line-clamp-2 text-left mb-5">
-                {decryptedText}
-              </h2>
+              <Link to={event.id}>
+                <h2 className="text-3xl shine-text line-clamp-2 text-left mb-5">
+                  {decryptedText}
+                </h2>
+              </Link>
             </FadeIn>
 
             <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg">
               <FadeInRight xIndex={500} zIndex={-1} yIndex={0}>
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-130 h-90 max-md:w-full max-md:h-auto object-cover rounded-[6px_0px_0_6px] max-lg:rounded-[6px_6px_0px_0px] shadow"
-                />
+                <Link to={event.id}>
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-130 h-90 max-md:w-full max-md:h-auto object-cover rounded-[6px_0px_0_6px] max-lg:rounded-[6px_6px_0px_0px] shadow"
+                  />
+                </Link>
               </FadeInRight>
 
               <div className="w-130 h-90 max-md:w-full bg-[#00629b] rounded-[0px_6px_6px_0px] max-lg:rounded-[0px_0px_6px_6px] py-6 text-left px-7">

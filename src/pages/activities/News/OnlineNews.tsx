@@ -13,6 +13,7 @@ type OnlineNewsResponse = {
   image: string;
   title: string;
   description: string;
+  article_link: string;
 };
 
 const OnlineNews = () => {
@@ -64,11 +65,6 @@ const OnlineNews = () => {
     setIsAutoPlaying(false); // Pause auto-play when manually navigating
   };
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-    setIsAutoPlaying(false); // Pause auto-play when manually navigating
-  };
-
   return (
     <FadeIn>
       <div>
@@ -114,7 +110,7 @@ const OnlineNews = () => {
                           >
                             {/* Image */}
                             <div className="w-full h-48 overflow-hidden bg-gray-100">
-                              <Link to={"#"}>
+                              <Link to={item.article_link}>
                                 <img
                                   src={item.image}
                                   alt={item.title}
@@ -126,7 +122,7 @@ const OnlineNews = () => {
                             {/* Content */}
                             <div className="p-4">
                               {/* Date and By */}
-                              <div className="flex items-center gap-2 text-ieee-gray text-sm mb-3">
+                              <div className="flex items-center gap-2 text-ieee-gray text-sm mb-3 line-clamp-1">
                                 <span>{item.date}</span>
                                 <span>•</span>
                                 <span>
@@ -135,16 +131,18 @@ const OnlineNews = () => {
                               </div>
 
                               {/* Title */}
+                              <Link to={item.article_link}>
                               <h3 className="text-lg line-clamp-2 h-15 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
                                 {item.title}
                               </h3>
+                              </Link>
 
                               {/* Description */}
                               <p className="line-clamp-4 h-25 text-gray-600 text-sm leading-relaxed">
                                 {item.description}
                               </p>
                               <button className="mt-4 text-ieee-blue font-semibold hover:underline hover:text-[#004d7a] transition-colors">
-                                <a href="#">Read More</a>
+                                <a href={item.article_link}>Read More</a>
                               </button>
                             </div>
                           </div>

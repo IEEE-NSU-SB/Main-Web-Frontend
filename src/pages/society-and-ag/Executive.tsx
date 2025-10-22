@@ -1,18 +1,17 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { Calendar } from "lucide-react";
 import { HiUserGroup } from "react-icons/hi2";
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 interface Member {
-  id: string;
+  id: number;
   name: string;
-  role: string;
-  email?: string;
-  facebook?: string;
-  linkedin?: string;
+  position: string;
   image?: string;
+  fb?: string;
+  linkedin?: string;
+  mail?: string;
 }
 
 interface ExecutiveProps {
@@ -20,10 +19,10 @@ interface ExecutiveProps {
   color?: string;
 }
 
-const Executive: React.FC<ExecutiveProps> = ({ members, color }) => {
+const Executive: React.FC<ExecutiveProps> = ({ members, color = "#00629b" }) => {
   const defaultImage = "/src/assets/dummy/placeholder.png";
 
-  if (!members || members.length === 0) return null; // don't render if no members
+  if (!members || members.length === 0) return null;
 
   return (
     <section className="max-w-[1080px] mx-auto py-2 pb-16">
@@ -55,20 +54,22 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color }) => {
               <h3 className="font-semibold text-lg text-gray-800 mt-12">
                 {member.name}
               </h3>
-              <p className="text-sm text-gray-600 mt-2 mb-6">{member.role}</p>
+              <p className="text-sm text-gray-600 mt-2 mb-6">
+                {member.position}
+              </p>
 
               <div className="flex justify-center gap-6 mt-auto">
-                {member.email && (
-                  <a href={`mailto:${member.email}`} style={{ color }}>
+                {member.mail && member.mail !== "/" && (
+                  <a href={`mailto:${member.mail}`} style={{ color }}>
                     <FaEnvelope size={20} />
                   </a>
                 )}
-                {member.facebook && (
-                  <a href={member.facebook} target="_blank" style={{ color }}>
+                {member.fb && member.fb !== "/" && (
+                  <a href={member.fb} target="_blank" style={{ color }}>
                     <FaFacebook size={20} />
                   </a>
                 )}
-                {member.linkedin && (
+                {member.linkedin && member.linkedin !== "/" && (
                   <a href={member.linkedin} target="_blank" style={{ color }}>
                     <FaLinkedin size={20} />
                   </a>
@@ -78,23 +79,24 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color }) => {
           </FadeIn>
         ))}
       </div>
-          <div className="text-center flex justify-center my-16">
+
+      <div className="text-center flex justify-center my-16">
         <Link to="/panels">
           <button
-            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-md "
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-md"
             style={{
               backgroundColor: "white",
               borderColor: color,
               color: color,
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = `${color}`,
-              e.currentTarget.style.color = `white`)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = `white`,
-              e.currentTarget.style.color = `${color}`)
-            }
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = color;
+              e.currentTarget.style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = color;
+            }}
           >
             <HiUserGroup className="w-4 h-4" /> See All Panels
           </button>

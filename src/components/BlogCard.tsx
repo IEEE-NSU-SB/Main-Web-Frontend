@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import SectionHeading from "./ui/SectionHeading";
 import FadeIn from "./ui/FadeIn";
-import { Calendar, FolderClosed, NotebookPen, Search } from "lucide-react";
+import { Calendar, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "./Skeleton";
 import ErrorMessage from "./ui/ErrorMessage";
 import { Link } from "react-router-dom";
-import Tag from "@/pages/publications/blogs/Tag";
 
 export interface BlogData {
   id: number;

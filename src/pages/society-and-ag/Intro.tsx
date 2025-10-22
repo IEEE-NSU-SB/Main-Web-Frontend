@@ -10,26 +10,31 @@ interface IntroProps {
 const Intro: React.FC<IntroProps> = ({ pageData }) => {
   const ag = pageData;
 
-  if (!ag.about || ag.about.length === 0) return null;
+  // ✅ Handle "about" as a single object (not an array)
+  if (!ag.about || !ag.about.title || !ag.about.description) return null;
 
   return (
     <div className="max-w-[1080px] mx-auto py-4 mb-5 items-center gap-8">
       {/* Logo */}
       {ag.logo && (
         <FadeIn yIndex={0} duration={1.3}>
-          <img src={ag.logo} alt={`${ag.about[0].title} logo`} className="w-70 h-auto object-contain m-auto" />
+          <img
+            src={ag.logo}
+            alt={`${ag.about.title} logo`}
+            className="w-70 h-auto object-contain m-auto"
+          />
         </FadeIn>
       )}
 
       {/* About Section */}
       <FadeIn>
         <SectionHeading
-          title={ag.about[0].title}
+          title={ag.about.title}
           widthClass="w-42"
           titleColor={ag.primaryColor}
           underlineColor={ag.primaryColor}
         />
-        {ag.about[0].description.map((para, index) => (
+        {ag.about.description.map((para: string, index: number) => (
           <SplitText
             key={index}
             text={para}

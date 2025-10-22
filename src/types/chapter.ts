@@ -15,7 +15,7 @@ export interface ChapterPageData {
   parallax?: string;
   email?: string;
   fb?: string;
-  about?: AboutSection[];
+  about?: AboutSection;
   missionDescription?: [];
   missionImage?: string;
   visionDescription?: [];

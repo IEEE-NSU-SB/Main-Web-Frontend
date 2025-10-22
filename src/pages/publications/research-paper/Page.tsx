@@ -1,7 +1,6 @@
 import { useState, useMemo } from "react";
 import Wave from "@/components/Wave";
 import FadeIn from "@/components/ui/FadeIn";
-import SectionHeading from "@/components/ui/SectionHeading";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataAPI } from "@/hooks/fetchdata";

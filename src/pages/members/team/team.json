@@ -1,11 +1,11 @@
 {
-  "team": [
+  "team": 
     {
       "title": "web",
       "img": "src/assets/dummy/luffy.jpeg",
       "details":"HELLOOO"
     }
-  ],
+  ,
   "subExecutive": [
     {
       "id":"/",
@@ -32,6 +32,12 @@
     {
       "id":"/",
       "name": "Rafi Chowdhury",
+      "position": "Core Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Mahiya Islam",
       "position": "Core Volunteer",
       "img": "src/assets/dummy/luffy.jpeg"
     },

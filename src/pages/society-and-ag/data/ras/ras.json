@@ -7,14 +7,14 @@
   "missionVisionColor": "#401F53",
   "textColor": "#fff",
   "logo": "src/assets/logo/ras.png",
-  "about": [
+  "about": 
     {
       "title": "About RAS",
       "description": [
         "The IEEE NSU Robotics and Automation Society Student Chapter, established on January 5th, 2017, is a pivotal technical chapter within the IEEE NSU Student Branch. Focused on research, study, and knowledge exchange in Robotics & Automation, It is the first Robotics and Automation Society Student Chapter in Bangladesh. Since its inception, the IEEE NSU RAS SB Chapter has been actively involved in promoting robotics and automation within the community. Through continuous evolution and member training, the chapter is committed to shaping future leaders in the field. Aligned with IEEE RAS standards, it maintains a steadfast dedication to upholding high academic standards in research and related literary endeavors."
       ]
     }
-  ],
+  ,
   "parallax": "src/assets/logo/ras.png",
   "missionDescription": [
     "Our mission is to foster a vibrant community of robotics and automation enthusiasts by sharing and exploring the latest technology and trends with the young engineers in robotics and automation while also cultivating a culture of innovation, collaboration, and lifelong learning."
