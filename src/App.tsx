@@ -33,6 +33,7 @@ import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
+import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
 import TeamPage from "./pages/members/team/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
 
@@ -50,6 +51,7 @@ const MainLayout = () => {
 const App = () => {
   return (
     <Router>
+      <TrailingSlashRedirect />
       <ScrollToTop />
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />

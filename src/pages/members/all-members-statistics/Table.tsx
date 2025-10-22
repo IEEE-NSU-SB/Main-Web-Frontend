@@ -2,21 +2,19 @@ import { useState, useMemo } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 
 interface TableProps<T> {
   title?: string;
   headers: { key: keyof T; label: string }[];
-  dataPath: string;
 }
 
 const Table = <T extends Record<string, any>>({
   title,
   headers,
-  dataPath,
 }: TableProps<T>) => {
-  const { loading, data, error, refetch } = useFetchDataJSON<{ items: T[] }>({
-    path: dataPath,
+  const { loading, data, error, refetch } = useFetchDataAPI<T[]>({
+    apiUrl: 'main_website/get_all_members/',
   });
 
   const [search, setSearch] = useState("");
@@ -24,10 +22,11 @@ const Table = <T extends Record<string, any>>({
   const [bloodFilter, setBloodFilter] = useState<string>("All");
   const rowsPerPage = 10;
 
+  // Filter data by search + blood group
   const filteredData = useMemo(() => {
-    if (!data?.items) return [];
+    if (!data) return [];
 
-    return data.items.filter((row) => {
+    return data.filter((row) => {
       const matchesSearch = Object.values(row).some((value) =>
         String(value).toLowerCase().includes(search.toLowerCase())
       );
@@ -45,11 +44,11 @@ const Table = <T extends Record<string, any>>({
     currentPage * rowsPerPage
   );
 
-  // Get unique blood groups for filter dropdown
+  // Get unique blood groups for dropdown
   const bloodGroups = useMemo(() => {
-    if (!data?.items) return [];
+    if (!data) return [];
     const groups = Array.from(
-      new Set(data.items.map((row) => row.bloodGroup))
+      new Set(data.map((row) => row.bloodGroup))
     ).filter((g) => g && g !== "None");
     return ["All", ...groups];
   }, [data]);
@@ -69,7 +68,7 @@ const Table = <T extends Record<string, any>>({
           </div>
         ) : error ? (
           <ErrorMessage message="Failed to load data" onRetry={refetch} />
-        ) : data?.items && data.items.length > 0 ? (
+        ) : data && data.length > 0 ? (
           <>
             {/* Search + Filter */}
             <div className="flex flex-col md:flex-row justify-between mb-6 gap-3">
@@ -120,12 +119,10 @@ const Table = <T extends Record<string, any>>({
                       }`}
                     >
                       {headers.map((header) => {
-                        const value = row[header.key];
+                        const value = header.key === "sl" ? (currentPage - 1) * rowsPerPage + idx + 1 : row[header.key];
                         return (
                           <td key={String(header.key)} className="px-4 py-3">
-                            {value !== null && value !== undefined
-                              ? String(value)
-                              : "-"}
+                            {value !== null && value !== undefined ? String(value) : "-"}
                           </td>
                         );
                       })}

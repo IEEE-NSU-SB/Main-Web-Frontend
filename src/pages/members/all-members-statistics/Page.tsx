@@ -20,7 +20,6 @@ const AllMemStats = () => {
       <MembersTable
         title="All Registered Members of IEEE NSU Student Branch"
         headers={headers}
-        dataPath="pages/members/all-members-statistics/data/MemStats.json"
       />
     </>
   );

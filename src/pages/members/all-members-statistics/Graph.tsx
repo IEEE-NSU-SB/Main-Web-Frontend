@@ -2,7 +2,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import {
   LineChart,
   Line,
@@ -32,8 +32,8 @@ interface GraphJSON {
 }
 
 const Graphs = () => {
-  const { loading, data, error, refetch } = useFetchDataJSON<GraphJSON>({
-    path: "pages/members/all-members-statistics/data/graph.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<GraphJSON>({
+    apiUrl: "main_website/get_all_members_stats/",
   });
 
   return (
