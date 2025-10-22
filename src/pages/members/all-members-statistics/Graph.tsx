@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
   Legend,
   BarChart,
-  Bar
+  Bar,
 } from "recharts";
 
 interface RecruitmentData {
@@ -59,7 +59,12 @@ const Graphs = () => {
                   margin={{ top: 20, right: 30, left: 10, bottom: 20 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
-                  <XAxis dataKey="semester" tick={{ fill: "#333" }} />
+                  <XAxis
+                    dataKey="semester"
+                    tick={{ fill: "#333", fontSize: 12, textAnchor: "end" }}
+                    interval={0} // ensures all labels are shown
+                    height={60} // extra space for rotated labels
+                  />
                   <YAxis tick={{ fill: "#333" }} domain={[0, "dataMax + 20"]} />
                   <Tooltip
                     cursor={{ stroke: "rgba(0,40,85,0.2)" }}
@@ -91,9 +96,19 @@ const Graphs = () => {
                   margin={{ top: 20, right: 30, left: 10, bottom: 20 }}
                 >
                   <defs>
-                    <linearGradient id="genderGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#FFC72C" stopOpacity={0.8} />
-                      <stop offset="100%" stopColor="#E87722" stopOpacity={0.9} />
+                    <linearGradient
+                      id="genderGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop offset="0%" stopColor="#002855" stopOpacity={0.8} />
+                      <stop
+                        offset="100%"
+                        stopColor="#00629B"
+                        stopOpacity={0.9}
+                      />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />

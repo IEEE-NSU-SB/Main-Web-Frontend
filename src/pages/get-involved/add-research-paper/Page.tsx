@@ -8,9 +8,18 @@ import "quill/dist/quill.snow.css";
 const chapters = [
   { id: 1, label: "IEEE NSU Student Branch" },
   { id: 2, label: "IEEE NSU Power and Energy Society Student Branch Chapter" },
-  { id: 3, label: "IEEE NSU Robotics and Automation Society Student Branch Chapter" },
-  { id: 4, label: "IEEE NSU Industry Application Society Student Branch Chapter" },
-  { id: 5, label: "IEEE NSU Student Branch - Women in Engineering Affinity Group" },
+  {
+    id: 3,
+    label: "IEEE NSU Robotics and Automation Society Student Branch Chapter",
+  },
+  {
+    id: 4,
+    label: "IEEE NSU Industry Application Society Student Branch Chapter",
+  },
+  {
+    id: 5,
+    label: "IEEE NSU Student Branch - Women in Engineering Affinity Group",
+  },
 ];
 
 // Categories with numeric IDs
@@ -56,7 +65,9 @@ const AddResearchPaper: React.FC = () => {
   }, [quill]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -130,7 +141,7 @@ const AddResearchPaper: React.FC = () => {
     <>
       <Wave
         title="Add a Research Paper"
-        subtitle="Contribute your authentic research and insights to our IEEE NSU Student Branch community!"
+        // subtitle="Contribute your authentic research and insights to our IEEE NSU Student Branch community!"
       />
       <FadeIn>
         <section className="max-w-[900px] mx-auto py-6 px-5 sm:px-12 lg:px-5 mb-30">
@@ -141,13 +152,16 @@ const AddResearchPaper: React.FC = () => {
             </h2>
             <ul className="list-disc list-inside text-ieee-black-75 space-y-1">
               <li>
-                You must be a Registered IEEE NSU Student Branch Member to get your Research Paper added!
+                You must be a Registered IEEE NSU Student Branch Member to get
+                your Research Paper added!
               </li>
               <li>
-                IEEE NSU Student Branch holds the right to decline or delete your Research Paper.
+                IEEE NSU Student Branch holds the right to decline or delete
+                your Research Paper.
               </li>
               <li>
-                IEEE NSU Student Branch will not publish any Research that is not authentic!
+                IEEE NSU Student Branch will not publish any Research that is
+                not authentic!
               </li>
               <li>Keep Grinding! 😃 😁</li>
             </ul>
@@ -179,7 +193,8 @@ const AddResearchPaper: React.FC = () => {
 
               <div>
                 <label className="block mb-3 mt-2 font-medium">
-                  From which Chapter/Affinity Group? <span className="text-red-600">*</span>
+                  From which Chapter/Affinity Group?{" "}
+                  <span className="text-red-600">*</span>
                 </label>
                 <select
                   name="chapter"
@@ -263,7 +278,8 @@ const AddResearchPaper: React.FC = () => {
 
               <div className="md:col-span-2">
                 <label className="block mb-3 mt-2 font-medium">
-                  Research Banner Picture <span className="text-red-600">*</span>
+                  Research Banner Picture{" "}
+                  <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="file"
@@ -286,7 +302,7 @@ const AddResearchPaper: React.FC = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="mt-6 w-full md:w-auto border-1 border-ieee-blue bg-ieee-blue text-white font-semibold cursor-pointer px-6 py-2 rounded hover:text-ieee-blue hover:bg-ieee-white transition-all 300"
+                className="mt-6 w-full md:w-auto border-1 border-ieee-blue hover:bg-ieee-blue hover:text-white font-semibold cursor-pointer px-6 py-2 rounded text-ieee-blue bg-transparent transition-all 300"
                 disabled={loading}
               >
                 {loading ? "Adding..." : "Place Add Request"}

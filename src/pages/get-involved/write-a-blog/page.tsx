@@ -113,14 +113,17 @@ const WriteBlog: React.FC = () => {
         console.log(key, value);
       }
     }
-    
+
     setLoading(true);
     try {
       // Dummy backend URL
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/main_website/get_blogs/`, {
-        method: "POST",
-        body: fd,
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/main_website/get_blogs/`,
+        {
+          method: "POST",
+          body: fd,
+        }
+      );
       const data = await res.json();
       setModalMsg(data?.message || "Blog submitted successfully!");
     } catch (err: any) {
@@ -135,7 +138,7 @@ const WriteBlog: React.FC = () => {
     <>
       <Wave
         title="Write a Blog"
-        subtitle="Unleash your intellect on the realms of science and technology, guiding us towards a sustainable future with your insights on power and energy."
+        // subtitle="Unleash your intellect on the realms of science and technology, guiding us towards a sustainable future with your insights on power and energy."
       />
       <FadeIn>
         <section className="max-w-[900px] mx-auto py-6 px-5 sm:px-12 lg:px-5 mb-10">
@@ -294,7 +297,7 @@ const WriteBlog: React.FC = () => {
               <button
                 type="submit"
                 name="submit_blog"
-                className="mt-6 w-full md:w-auto border-1 border-ieee-blue bg-ieee-blue text-white font-semibold cursor-pointer px-6 py-2 rounded hover:text-ieee-blue hover:bg-ieee-white transition-all 300"
+                className="mt-6 w-full md:w-auto border-1 border-ieee-blue hover:bg-ieee-blue hover:text-white font-semibold cursor-pointer px-6 py-2 rounded text-ieee-blue bg-transparent transition-all 300"
                 disabled={loading}
               >
                 {loading ? "Publishing..." : "Place Publish Request"}

@@ -27,7 +27,7 @@ export default function RecruitmentPage({ recruitSession }: Props) {
   });
 
   useEffect(() => {
-    document.title = "Join IEEE NSU Student Branch";
+    // document.title = "Join IEEE NSU Student Branch";
 
     if (!recruitSession?.session_end_date_time) return;
 
