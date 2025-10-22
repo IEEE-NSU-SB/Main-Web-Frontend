@@ -22,7 +22,7 @@ const AchievementCard = () => {
   const { loading, data, error, refetch } = useFetchDataAPI({
     apiUrl: isLandingPage
       ? "main_website/get_achievements/landing/"
-      : "main_website/get_achievements/landing/",
+      : "main_website/get_achievements/",
   });
 
   const [selectedAward, setSelectedAward] = useState<Award | null>(null);
