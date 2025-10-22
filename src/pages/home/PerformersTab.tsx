@@ -48,7 +48,7 @@ export default function TopPerformers() {
     setPersonIndex((prev) => (prev - 1 + people.length) % people.length);
   };
 
-  const tabWidth = 180;
+  const tabWidth = 220;
   const visibleCount = 4;
 
   return (
@@ -105,7 +105,7 @@ export default function TopPerformers() {
                         left: 0,
                       }}
                     >
-                      <span className="font-bold text-lg sm:text-md">
+                      <span className="font-bold text-[16px] sm:text-md">
                         {tab.label}
                       </span>
                     </motion.button>

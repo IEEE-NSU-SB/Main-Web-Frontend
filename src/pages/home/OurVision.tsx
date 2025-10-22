@@ -25,7 +25,7 @@ const VisionSection = () => {
         ) : error ? (
           <ErrorMessage message={"Failed to load stats"} onRetry={refetch} />
         ) : (
-          <p className="text-lg text-ieee-black-75 leading-relaxed text-justify">
+          <p className="text-[16px] text-ieee-black-75 leading-relaxed text-justify">
             {data.text}
           </p>
         )}
