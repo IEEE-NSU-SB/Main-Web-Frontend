@@ -54,11 +54,26 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
         ))}
 
         <FadeIn>
-          <div className="flex justify-center pt-4">
-            <button className="px-8 py-2 bg-ieee-blue-75 text-white text-md border border-ieee-blue rounded hover:bg-ieee-white hover:text-ieee-blue transition-colors duration-200">
-              SUBMIT
-            </button>
-          </div>
+            <div className="text-center flex justify-center my-16">
+          <button
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-8 duration-300 rounded-md "
+            style={{
+              backgroundColor: "white",
+              borderColor: primaryColor,
+              color: primaryColor,
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = `${primaryColor}`,
+              e.currentTarget.style.color = `white`)
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = `white`,
+              e.currentTarget.style.color = `${primaryColor}`)
+            }
+          >
+            Submit
+          </button>
+      </div>
         </FadeIn>
 
         <FadeIn>
@@ -75,7 +90,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
             )}
           </div>
         </FadeIn>
-      </div>
+      </div>``
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import FadeIn from "@/components/ui/FadeIn";
-import Wave from "@/components/wave";
+import Wave from "@/components/Wave";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 

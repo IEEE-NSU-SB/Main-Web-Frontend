@@ -1,98 +1,85 @@
-
-import FadeIn from '@/components/ui/FadeIn';
-import { use, type FC } from 'react';
-import { useParams } from 'react-router';
-
-
-interface MissionVision {
-    id: number;
-    filteredKey: string;
-    mission_image: string;
-    mission_description: string;
-    vision_image: string;
-    vision_description: string;
-}
-
-interface MissionVisionData {
-    missionVision: MissionVision[]
-}
+import FadeIn from "@/components/ui/FadeIn";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { type ChapterPageData } from "@/types/chapter";
 
 interface MissionVisionProps {
-    missionVisionPromise: Promise<MissionVisionData>
+  pageData: ChapterPageData;
 }
 
+const MissionVision: React.FC<MissionVisionProps> = ({ pageData }) => {
+  const primaryColor = pageData.primaryColor || "#006699";
+  const textColor = pageData.textColor || "#fff";
+  const missionColor = pageData.missionVisionColor || primaryColor;
 
+  const missionDescription =
+    Array.isArray(pageData.missionDescription)
+      ? pageData.missionDescription.join(" ")
+      : pageData.missionDescription || "";
 
-const ScAgMissionVision: FC<MissionVisionProps> = ({ missionVisionPromise }) => {
-    const { id } = useParams();
-    const missionVisionData: MissionVisionData = use(missionVisionPromise);
+  const visionDescription =
+    Array.isArray(pageData.visionDescription)
+      ? pageData.visionDescription.join(" ")
+      : pageData.visionDescription || "";
 
+  const missionImage = pageData.missionImage || "";
+  const visionImage = pageData.visionImage || "";
 
-    //   filtered 
-    const elementMapping: Record<string, MissionVision[]> = {
-        "ieee-nsu-ras-sbc": missionVisionData.missionVision.filter(event =>
-            event.filteredKey?.toLowerCase().includes("ras")
-        ),
-        "ieee-nsu-pes-sbc": missionVisionData.missionVision.filter(event =>
-            event.filteredKey?.toLowerCase().includes("pes")
-        ),
-        "ieee-nsu-ias-sbc": missionVisionData.missionVision.filter(event =>
-            event.filteredKey?.toLowerCase().includes("ias")
-        ),
-        "ieee-nsu-wie-ag": missionVisionData.missionVision.filter(event =>
-            event.filteredKey?.toLowerCase().includes("wie")
-        ),
-    }
-    // console.log(elementMapping);
+  return (
+    <>
+      <SectionHeading
+        title="Mission & Vision"
+        widthClass="w-48"
+        titleColor={primaryColor}
+        underlineColor={primaryColor}
+      />
 
+      <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 space-y-10">
+        {/* Mission */}
+        <FadeIn>
+          <div
+            className="flex flex-col md:flex-row rounded-md border overflow-hidden"
+            style={{ backgroundColor: missionColor, color: textColor }}
+          >
+            <div className="w-full md:w-1/2 p-7 text-justify">
+              <h1 className="text-4xl font-bold mb-6">Mission</h1>
+              <p>{missionDescription}</p>
+            </div>
+            {missionImage && (
+              <div className="w-full md:w-1/2">
+                <img
+                  src={missionImage}
+                  alt="Mission"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        </FadeIn>
 
-
-    const missionVisionShow = id && elementMapping[id] ? elementMapping[id] : missionVisionData.missionVision;
-
-
-    // console.log(missionVisionShow)
-
-
-
-    return (
-        <>
-            <FadeIn>
-                <div className="md:max-w-[1065px] w-full mx-auto my-10 px-3">
-                    {
-                        missionVisionShow.map((element, index) => (
-                            
-                              <div key={index}>
-                                  {/* mission  */}
-                                <div className='flex my-3 bg-[#006CA5]  md:flex-row flex-col rounded-md border'>
-                                    <div className="text-part w-full md:w-1/2 p-7  text-white text-justify">
-                                        <h1 className='text-5xl font-bold mb-7'>Mission</h1>
-                                        <p>{element.mission_description}</p>
-                                    </div>
-                                    <div className="img-part w-full md:w-1/2">
-                                        <img src={element.mission_image} className='rounded-r-md w-full h-full object-cover' alt="" />
-                                    </div>
-                                </div>
-                                {/* vision  */}
-                                <div className='flex my-6 bg-[#006CA5]  md:flex-row-reverse flex-col rounded-md border'>
-                                    <div className="text-part w-full md:w-1/2 p-7  text-white text-justify">
-                                        <h1 className='text-5xl font-bold mb-7'>Vision</h1>
-                                        <p>{element.vision_description}</p>
-                                    </div>
-                                    <div className="img-part w-full md:w-1/2">
-                                        <img src={element.vision_image} className='rounded-l-md w-full h-full object-cover' alt="" />
-                                    </div>
-                                </div>
-                              </div>
-
-
-                            
-                        ))
-                    }
-                </div>
-            </FadeIn>
-
-        </>
-    );
+        {/* Vision */}
+        <FadeIn>
+          <div
+            className="flex flex-col md:flex-row-reverse rounded-md border overflow-hidden"
+            style={{ backgroundColor: missionColor, color: textColor }}
+          >
+            <div className="w-full md:w-1/2 p-7 text-justify">
+              <h1 className="text-4xl font-bold mb-6">Vision</h1>
+              <p>{visionDescription}</p>
+            </div>
+            {visionImage && (
+              <div className="w-full md:w-1/2">
+                <img
+                  src={visionImage}
+                  alt="Vision"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+        </FadeIn>
+      </div>
+    </>
+  );
 };
 
-export default ScAgMissionVision;
+export default MissionVision;

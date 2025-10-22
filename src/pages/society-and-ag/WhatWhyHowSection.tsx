@@ -12,8 +12,8 @@ const WhatWhyHowSection: React.FC<WhatWhyHowProps> = ({ pageData }) => {
   return (
     <FadeIn>
       <div
-        className="w-full mx-auto my-10 md:px-0 px-3"
-        style={{ backgroundColor: element.missionVisionColor, color: element.textColor }}
+        className="w-full mx-auto my-10 md:px-0 px-3 bg-ieee-black"
+        style={{ color: element.textColor }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2">
           {["1", "2", "3", "4"].map((key, i) => (

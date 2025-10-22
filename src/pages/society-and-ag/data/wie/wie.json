@@ -1,0 +1,45 @@
+{
+  "name": "WIE",
+  "pageTitle": "IEEE NSU Student Branch, Women In Engineering Affinity Group",
+  "pageSubtitle": "Empowering Futures: Women Leading Engineering Innovation",
+  "primaryColor": "#006699",
+  "secondaryColor": "#602569",
+  "missionVisionColor": "#000",
+  "textColor": "#fff",
+  "logo": "src/assets/logo/wie.png",
+  "about": [
+    {
+      "title": "About WIE",
+      "description": [
+        "IEEE NSU Student Branch, Women in Engineering Affinity Group, is dedicated to empowering and inspiring women at North South University and beyond to pursue careers in IT and engineering. We envision a passionate community of IEEE members, both women and men, utilizing their talents for the betterment of our affinity group.",
+        "This affinity group was established in 20th June 2016 and since then its members have been actively working on their events and projects. Historically in Bangladesh (and also in NSU), the female presence has been low in science and engineering subjects. So we have been working hard to encourage, engage and motivate the female students through IEEE opportunities for developing their skills in IT and engineering for professional career development.",
+        "Our diverse events, encompassing both technical and non-technical events, aim to empower students through workshops, mentorship programs, and various initiatives, providing them with the skills and necessary support for success in STEM careers."
+      ]
+    }
+  ],
+  "parallax": "src/assets/logo/wie.png",
+  "missionDescription": [
+    "Our mission is to foster a vibrant community of robotics and automation enthusiasts by sharing and exploring the latest technology and trends with the young engineers in robotics and automation while also cultivating a culture of innovation, collaboration, and lifelong learning."
+  ],
+  "missionImage": "src/assets/logo/wie.png",
+  "visionDescription": [
+    "Our Vision is to inspire and foster the members to become the upcoming trailblazers and pioneers in the dynamic field of robotics and automation. We aspire to cultivate an environment that empowers creativity and innovation, propelling our members toward leadership roles and groundbreaking contributions in the realm of robotics and automation. We also envision to become the most recognized and respected student branch chapter in Robotics and Automation."
+  ],
+  "visionImage": "src/assets/logo/wie.png",
+  "question": [
+    {
+      "1": [
+        ""
+      ],
+      "2": [
+        ""
+      ],
+      "3": [
+        ""
+      ],
+      "4": [
+        ""
+      ]
+    }
+  ]
+}

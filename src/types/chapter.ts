@@ -16,8 +16,10 @@ export interface ChapterPageData {
   email?: string;
   fb?: string;
   about?: AboutSection[];
-  mission?: string[];
-  vision?: string[];
+  missionDescription?: [];
+  missionImage?: string;
+  visionDescription?: [];
+  visionImage?: string;
   question?: {
     "1": string[];
     "2": string[];

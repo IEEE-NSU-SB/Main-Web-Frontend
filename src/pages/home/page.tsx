@@ -24,7 +24,7 @@ const HomePage = () => {
       <Stats />
       <EventCarousel/>
       <PerformersTab />
-      <MegaEvents/>
+      <MegaEvents events={[]}/>
       <AchievementCard />
       <Blog />
       {/* <Tag /> */}

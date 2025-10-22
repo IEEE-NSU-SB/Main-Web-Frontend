@@ -21,16 +21,6 @@ interface FeaturedEventsData {
   featured_events: FeaturedEvent[];
 }
 
-const images = import.meta.glob("/src/assets/dummy/*.{png,jpg,jpeg,svg}", {
-  eager: true,
-  import: "default",
-}) as Record<string, string>;
-
-const getImageSrc = (filename: string) => {
-  const key = Object.keys(images).find((k) => k.includes(filename));
-  return key ? images[key] : "";
-};
-
 const EventCard = () => {
   const { loading, data, error, refetch } =
     useFetchDataJSON<FeaturedEventsData>({
@@ -197,7 +187,7 @@ const EventCard = () => {
                 </Link>
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-semibold mb-2 h-15 overflow-hidden line-clamp-2 rounded text-ieee-black">
+                <h3 className="text-lg font-semibold mb-4 overflow-hidden line-clamp-1 rounded text-ieee-black">
                   <Link to={"/"}>
                     <span className="cursor-pointer hover:underline">
                       {event.name}
@@ -213,7 +203,7 @@ const EventCard = () => {
                 </p>
                 <a
                   href="#"
-                  className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300"
+                  className="cursor-pointer hover:bg-ieee-darkblue-90  hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300"
                 >
                   Read More
                 </a>

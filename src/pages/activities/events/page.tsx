@@ -10,7 +10,7 @@ const Events = () => {
       <Wave title='Events'/>
       <UpcomingEvent/>   
       {/* <LollipopChart/> */}
-      <MegaEvents/>
+      <MegaEvents events={[]}/>
       <EventCard/>
     </>
   )

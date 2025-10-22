@@ -23,7 +23,6 @@ import ResearchPapers from "./pages/publications/research-paper/Page";
 import Blogs from "./pages/publications/blogs/Page";
 import Toolkit from "./pages/publications/toolkit/Pages";
 import Panel from "./pages/members/panel/page";
-import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import WelcomePage from "./pages/welcome/Page";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Contact from "./pages/contact/Page";
@@ -35,6 +34,7 @@ import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
 import TeamPage from "./pages/members/team/page";
+import WriteBlog from "./pages/get-involved/write-a-blog/page";
 
 const MainLayout = () => {
   return (
@@ -65,22 +65,10 @@ const App = () => {
           <Route path="/achievements" element={<Achievements />} />
 
           {/* Societies & AG */}
-          <Route
-            path="/ieee-nsu-ras-sbc"
-            element={<SocietyOrAg chapterId={1} />}
-            />
-          <Route
-            path="/ieee-nsu-pes-sbc"
-            element={<SocietyOrAg chapterId={2} />}
-          />
-          <Route
-            path="/ieee-nsu-ias-sbc"
-            element={<SocietyOrAg chapterId={3} />}
-            />
-          <Route
-            path="/ieee-nsu-wie-ag"
-            element={<SocietyOrAg chapterId={4} />}
-          />
+          <Route path="/ieee-nsu-ras-sbc" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-pes-sbc" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-ias-sbc" element={<SocietyOrAg />} />
+          <Route path="/ieee-nsu-wie-ag" element={<SocietyOrAg />} />
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
@@ -89,7 +77,6 @@ const App = () => {
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/team" element={<AllMembers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
@@ -103,7 +90,6 @@ const App = () => {
 
           {/* Contact  */}
           <Route path="/contact" element={<Contact />} />
-          <Route path="/executive-body" element={<ExecutiveBodySection />} />
 
           {/* Get Involved */}
           <Route
