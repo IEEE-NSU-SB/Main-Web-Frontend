@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import PanelCard from "@/pages/members/panel/PanelCard";
 import Wave from "@/components/Wave";
+import VolunteerCard from "./VolunteerCard";
 
-const Panel = () => {
+const Volunteers = () => {
   // Fetch JSON
   const { data, loading, error } = useFetchDataJSON<any>({
     path: "pages/members/panel/data.json",
@@ -22,7 +22,7 @@ const Panel = () => {
 
   return (
     <>
-      <Wave title="Executive Panel of IEEE NSU SB" />
+      <Wave title="Volunteer Panel of IEEE NSU SB" />
 
       {/* Year selector */}
       {/* Desktop buttons */}
@@ -58,18 +58,18 @@ const Panel = () => {
         </select>
       </div>
 
-      {/* Panels for the selected year */}
-      <PanelCard
+      {/* Officer for the selected year */}
+      <VolunteerCard
         sectionTitle="Branch Counselors"
         members={currentData.counselors}
       />
-      <PanelCard
+      <VolunteerCard
         sectionTitle="Chapter & Affinity Group Faculty Advisors"
         members={currentData.SCAG}
       />
-      <PanelCard sectionTitle="Executive Body" members={currentData.Excom} />
+      <VolunteerCard sectionTitle="Executive Body" members={currentData.Excom} />
     </>
   );
 };
 
-export default Panel;
+export default Volunteers;

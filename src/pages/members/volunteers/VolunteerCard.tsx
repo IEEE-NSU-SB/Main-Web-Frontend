@@ -1,4 +1,4 @@
-// components/OfficerCard.tsx
+// components/VolunteerCard.tsx
 import React from "react";
 import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
@@ -13,12 +13,12 @@ interface member {
   profileLink?: string;
 }
 
-interface OfficerCardProps {
+interface VolunteerCardProps {
   members: member[];
   sectionTitle: string;
 }
 
-const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
+const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) => {
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
@@ -104,4 +104,4 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
   );
 };
 
-export default OfficerCard;
+export default VolunteerCard;
