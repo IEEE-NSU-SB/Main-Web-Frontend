@@ -16,13 +16,10 @@ import SocietyOrAg from "./pages/society-and-ag/Pages";
 
 import JoinINSB from "@/pages/get-involved/join-insb/Page";
 import AllMembers from "@/pages/members/all-members-statistics/Page";
-import Officers from "@/pages/members/officers/OfficerCard";
-import Volunteers from "@/pages/publications/volunteers/VolunteerCard";
 import Achievements from "./pages/activities/achievements/Page";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Blogs from "./pages/publications/blogs/Page";
 import Toolkit from "./pages/publications/toolkit/Pages";
-import Panel from "./pages/members/panel/page";
 import WelcomePage from "./pages/welcome/Page";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Contact from "./pages/contact/Page";
@@ -35,6 +32,11 @@ import EventDetailsPages from "./pages/activities/events/EventsDetails/Pages";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
 import TeamPage from "./pages/members/team/page";
 import WriteBlog from "./pages/get-involved/write-a-blog/page";
+import Profile from "./pages/members/profile/page";
+import NewsPage from "./pages/activities/news/NewsDetails";
+import Panel from "./pages/members/panel/Page";
+import Officer from "./pages/members/officers/Page";
+import Volunteers from "./pages/members/volunteers/Page";
 
 const MainLayout = () => {
   return (
@@ -62,6 +64,7 @@ const App = () => {
           {/* Activities */}
           <Route path="/events" element={<Events />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/1" element={<NewsPage/>} />
           <Route path="/event_details" element={<EventDetailsPages />} />
           <Route path="/achievements" element={<Achievements />} />
 
@@ -73,11 +76,12 @@ const App = () => {
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
-          <Route path="/officers" element={<Officers />} />
+          <Route path="/officers" element={<Officer />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/team" element={<AllMembers />} />
           <Route path="/team/:id" element={<TeamPage />} />
+          <Route path="/profile" element={<Profile />} />
 
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}

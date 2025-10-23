@@ -65,7 +65,8 @@ const SbNews = () => {
                       </Link>
                     </div>
                     <div className="p-4 flex flex-col">
-                      <Link to={`/news/${item.id.toString()}`}>
+                      {/* <Link to={`/news/${item.id.toString()}`}> */}
+                      <Link to={`/news/1`}>
                       <h2 className="cursor-pointer text-xl font-semibold my-2 mb-4 line-clamp-1">
                         {item.title}
                       </h2>

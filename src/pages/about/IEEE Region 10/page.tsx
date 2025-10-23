@@ -5,7 +5,7 @@ const IEEER10 = () => {
   return (
     <>
       <Wave title="About - IEEE Region 10"/>
-      <IeeeR10></IeeeR10>
+      <IeeeR10/>
     </>
   )
 }

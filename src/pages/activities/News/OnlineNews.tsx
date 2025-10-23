@@ -110,7 +110,7 @@ const OnlineNews = () => {
                           >
                             {/* Image */}
                             <div className="w-full h-48 overflow-hidden bg-gray-100">
-                              <Link to={item.article_link}>
+                              <Link to={item.article_link} target="_blank">
                                 <img
                                   src={item.image}
                                   alt={item.title}
@@ -131,7 +131,7 @@ const OnlineNews = () => {
                               </div>
 
                               {/* Title */}
-                              <Link to={item.article_link}>
+                              <Link to={item.article_link} target="_blank">
                               <h3 className="text-lg line-clamp-2 h-15 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
                                 {item.title}
                               </h3>
@@ -142,7 +142,7 @@ const OnlineNews = () => {
                                 {item.description}
                               </p>
                               <button className="mt-4 text-ieee-blue font-semibold hover:underline hover:text-[#004d7a] transition-colors">
-                                <a href={item.article_link}>Read More</a>
+                                <a href={item.article_link} target="_blank">Read More</a>
                               </button>
                             </div>
                           </div>

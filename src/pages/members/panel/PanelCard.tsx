@@ -1,12 +1,12 @@
 // components/PanelCard.tsx
 import React from "react";
-import { FaLinkedin, FaFacebookSquare, FaCheckCircle, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
-interface Counselor {
+interface member {
   id: string;
   name: string;
   position: string;
-  picture: string;
+  image: string;
   linkedin?: string;
   facebook?: string;
   email?: string;
@@ -14,11 +14,11 @@ interface Counselor {
 }
 
 interface PanelCardProps {
-  counselors: Counselor[];
+  members: member[];
   sectionTitle: string;
 }
 
-const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
+const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
@@ -30,51 +30,40 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
-          {counselors.map((counselor) => (
+          {members.map((member) => (
             <a
-              key={counselor.id || "#"}
-              href={counselor.profileLink || "#"}
+              key={member.id || "#"}
+              href={member.profileLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-[270px] h-[420px] rounded-[30px] overflow-hidden
+              className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
                          shadow-[0_14px_40px_rgba(0,0,0,0.18)]
-                         bg-white cursor-pointer flex flex-col justify-end items-center text-center"
+                         bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={counselor.picture || "/images/default_profile_picture.png"}
-                alt={counselor.name}
-                className="absolute inset-0 w-full h-full object-cover"
+                src={member.image || "/images/default_profile_picture.png"}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
               />
-
-              <div
-                className="absolute bottom-0 w-full h-[40%] pointer-events-none"
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-                  maskImage:
-                    "linear-gradient(to top, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-                  backdropFilter: "blur(12px)",
-                }}
-              ></div>
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
 
               <div className="relative z-10 flex flex-col items-center justify-end h-[180px] w-full p-5 text-center">
-                <div className="flex items-center justify-center gap-2 w-full">
-                  <h3 className="text-white font-semibold text-[22px] leading-tight tracking-tight">
-                    {counselor.name}
-                  </h3>
-                  <FaCheckCircle className="text-white/80 text-[18px]" />
-                </div>
+                {/* Name - always visible, scales/moves on hover */}
+                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-40px] group-hover:-translate-y-2 group-hover:scale-115">
+                  {member.name}
+                </h3>
 
-                <p className="text-white/85 text-[15px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center">
-                  {counselor.position}
+                {/* Position - hidden by default, fade in on hover */}
+                <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {member.position}
                 </p>
 
-                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full">
-                  {counselor.linkedin && (
+                {/* Links - hidden by default, fade in on hover */}
+                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {member.linkedin && (
                     <a
-                      href={counselor.linkedin}
+                      href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
@@ -83,9 +72,9 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       <FaLinkedin className="text-white/85 hover:text-white transition-all duration-300 text-[22px]" />
                     </a>
                   )}
-                  {counselor.facebook && (
+                  {member.facebook && (
                     <a
-                      href={counselor.facebook}
+                      href={member.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
@@ -94,9 +83,9 @@ const PanelCard: React.FC<PanelCardProps> = ({ counselors, sectionTitle }) => {
                       <FaFacebookSquare className="text-white/85 hover:text-white transition-all duration-300 text-[22px]" />
                     </a>
                   )}
-                  {counselor.email && (
+                  {member.email && (
                     <a
-                      href={`mailto:${counselor.email}`}
+                      href={`mailto:${member.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
