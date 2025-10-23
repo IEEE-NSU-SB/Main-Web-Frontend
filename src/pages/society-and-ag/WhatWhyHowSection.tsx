@@ -7,7 +7,7 @@ interface WhatWhyHowProps {
 
 const WhatWhyHowSection: React.FC<WhatWhyHowProps> = ({ pageData }) => {
   const element = pageData;
-  const questions = element.question?.[0] || { "1": [""], "2": [""], "3": [""], "4": [""] };
+  const questions = element.question || { "1": "", "2": "", "3": "", "4": "" };
 
   return (
     <FadeIn>
@@ -31,7 +31,7 @@ const WhatWhyHowSection: React.FC<WhatWhyHowProps> = ({ pageData }) => {
                     ? `What activities do we usually do?`
                     : `How to join IEEE NSU ${element.name} SBC?`}
                 </h1>
-                <p>{questions[key as keyof typeof questions][0]}</p>
+                <p dangerouslySetInnerHTML={{ __html: questions[key as keyof typeof questions] }}/>
               </div>
             </div>
           ))}

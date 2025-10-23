@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
@@ -15,6 +14,7 @@ import FeaturedEventCard from "@/components/FeaturedEventCard";
 import Executive from "./Executive";
 import MissionVision from "./MissionVision";
 import Achievements from "./Achievements";
+import React from "react";
 
 // ✅ Interfaces
 interface PageData {
@@ -44,27 +44,25 @@ interface AchievementData {
 
 const SocietyOrAg: React.FC = () => {
   const location = useLocation();
-  const [baseName, setBaseName] = useState<string>(""); // default empty
 
-  // Detect society/AG name from URL
-  useEffect(() => {
+  const baseName = React.useMemo(() => {
     const path = location.pathname.toLowerCase();
-    if (path.includes("ras")) setBaseName("ras");
-    else if (path.includes("pes")) setBaseName("pes");
-    else if (path.includes("ias")) setBaseName("ias");
-    else if (path.includes("wie")) setBaseName("wie");
-    else setBaseName(""); // unknown
+    if (path.includes("ras")) return "3";
+    if (path.includes("pes")) return "2";
+    if (path.includes("ias")) return "4";
+    if (path.includes("wie")) return "5";
+    return "";
   }, [location.pathname]);
 
   // ✅ Only use hook paths if baseName is valid
-  const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
+  // const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
   const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
   const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
   const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
 
   // ✅ Hooks
   const { loading: pageLoading, data: pageData, error: pageError, refetch: refetchPage } =
-    useFetchDataJSON<PageData>({ path: pagePath });
+    useFetchDataAPI<PageData>({ apiUrl: `main_website/get_sc_ag_details/${baseName}/` });
 
   const { loading: eventsLoading, data: eventsData, error: eventsError, refetch: refetchEvents } =
     useFetchDataJSON<EventData>({ path: eventsPath });
