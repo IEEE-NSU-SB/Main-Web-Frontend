@@ -30,6 +30,7 @@ import IEEER10 from "./pages/about/IEEE Region 10/page";
 import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive";
 import EventDescription from "./pages/activities/events/EventDescription";
 import Pages from "./pages/activities/News/Pages";
+import FAQ from "./pages/about/faq";
 
 const MainLayout = () => {
   return (
@@ -70,6 +71,7 @@ const App = () => {
           {/* About */}
           {/* <Route path="/about/:id" element={<About />} /> */}
           <Route path="/about/ieee-region-10" element={< IEEER10/>} />
+          <Route path="/about/FAQ" element={<FAQ />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
