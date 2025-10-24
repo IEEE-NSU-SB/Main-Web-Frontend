@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
     "ieee-nsu-wie-ag": "#006699",
   };
 
-  const currentSlug = location.pathname.split("/").pop() ?? "";
+  const currentSlug = location.pathname.split("/")[1] ?? "";
   const societyColor = societyColors[currentSlug];
   // Check if current page is Home
   const isHome = location.pathname === "/";
