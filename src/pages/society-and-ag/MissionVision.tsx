@@ -10,16 +10,9 @@ const MissionVision: React.FC<MissionVisionProps> = ({ pageData }) => {
   const primaryColor = pageData.primaryColor || "#006699";
   const textColor = pageData.textColor || "#fff";
   const missionColor = pageData.missionVisionColor || primaryColor;
-
-  const missionDescription =
-    Array.isArray(pageData.missionDescription)
-      ? pageData.missionDescription.join(" ")
-      : pageData.missionDescription || "";
-
-  const visionDescription =
-    Array.isArray(pageData.visionDescription)
-      ? pageData.visionDescription.join(" ")
-      : pageData.visionDescription || "";
+  
+  const missionDescription = pageData.mission || "";
+  const visionDescription = pageData.vision || "";
 
   const missionImage = pageData.missionImage || "";
   const visionImage = pageData.visionImage || "";
@@ -42,7 +35,7 @@ const MissionVision: React.FC<MissionVisionProps> = ({ pageData }) => {
           >
             <div className="w-full md:w-1/2 p-7 text-justify">
               <h1 className="text-4xl font-bold mb-6">Mission</h1>
-              <p>{missionDescription}</p>
+              <p dangerouslySetInnerHTML={{ __html: missionDescription }}/>
             </div>
             {missionImage && (
               <div className="w-full md:w-1/2">
@@ -64,7 +57,7 @@ const MissionVision: React.FC<MissionVisionProps> = ({ pageData }) => {
           >
             <div className="w-full md:w-1/2 p-7 text-justify">
               <h1 className="text-4xl font-bold mb-6">Vision</h1>
-              <p>{visionDescription}</p>
+              <p dangerouslySetInnerHTML={{ __html: visionDescription }}/>
             </div>
             {visionImage && (
               <div className="w-full md:w-1/2">

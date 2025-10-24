@@ -1,7 +1,3 @@
-export interface AboutSection {
-  title: string;
-  description: string[];
-}
 
 export interface ChapterPageData {
   name?: string;
@@ -15,15 +11,15 @@ export interface ChapterPageData {
   parallax?: string;
   email?: string;
   fb?: string;
-  about?: AboutSection;
-  missionDescription?: [];
+  about?: string;
+  mission?: string;
   missionImage?: string;
-  visionDescription?: [];
+  vision?: string;
   visionImage?: string;
   question?: {
-    "1": string[];
-    "2": string[];
-    "3": string[];
-    "4": string[];
-  }[];
+    "1": string;
+    "2": string;
+    "3": string;
+    "4": string;
+  };
 }
