@@ -365,7 +365,7 @@ const Navbar: React.FC = () => {
               ].map((item) => (
                 <Link
                   key={item}
-                  to={`society-ag/${item.toLowerCase().replace(/ /g, "-")}`}
+                  to={`${item.toLowerCase().replace(/ /g, "-")}`}
                   className="block"
                   onClick={toggleMobileMenu}
                 >

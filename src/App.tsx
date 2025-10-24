@@ -24,7 +24,7 @@ import WelcomePage from "./pages/welcome/Page";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Contact from "./pages/contact/Page";
 import Events from "./pages/activities/events/Page";
-import IEEER10 from "./pages/about/IEEE Region 10/Page";
+import IEEER10 from "./pages/about/ieee-region-10/Page";
 import News from "./pages/activities/news/Pages";
 import Gallery from "./pages/publications/gallery/Pages";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
@@ -37,6 +37,7 @@ import NewsPage from "./pages/activities/news/NewsDetails";
 import Panel from "./pages/members/panel/Page";
 import Officer from "./pages/members/officers/Page";
 import Volunteers from "./pages/members/volunteers/Page";
+import AboutIEEE from "./pages/about/ieee/page";
 
 const MainLayout = () => {
   return (
@@ -84,8 +85,8 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
 
           {/* About */}
-          {/* <Route path="/about/:id" element={<About />} /> */}
           <Route path="/about/ieee-region-10" element={<IEEER10 />} />
+          <Route path="/about/ieee" element={<AboutIEEE />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
