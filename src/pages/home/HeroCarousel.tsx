@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Skeleton from "@/components/skeeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import SplitText from "@/components/ui/SplitText";
 
 interface MediaItem {
