@@ -65,7 +65,7 @@ const App = () => {
           {/* Activities */}
           <Route path="/events" element={<Events />} />
           <Route path="/news" element={<News />} />
-          <Route path="/news/1" element={<NewsPage/>} />
+          <Route path="/news/1" element={<NewsPage />} />
           <Route path="/event_details" element={<EventDetailsPages />} />
           <Route path="/achievements" element={<Achievements />} />
 
@@ -77,6 +77,7 @@ const App = () => {
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
+          <Route path="/panel/:year" element={<Panel />} />
           <Route path="/officers" element={<Officer />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/all-members" element={<AllMembers />} />
