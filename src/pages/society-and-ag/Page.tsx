@@ -56,7 +56,7 @@ const SocietyOrAg: React.FC = () => {
 
   // ✅ Only use hook paths if baseName is valid
   // const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
-  const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
+  // const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
   const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
   const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
 
@@ -65,7 +65,7 @@ const SocietyOrAg: React.FC = () => {
     useFetchDataAPI<PageData>({ apiUrl: `main_website/get_sc_ag_details/${baseName}/` });
 
   const { loading: eventsLoading, data: eventsData, error: eventsError, refetch: refetchEvents } =
-    useFetchDataJSON<EventData>({ path: eventsPath });
+    useFetchDataAPI<EventData>({ apiUrl: `main_website/get_mega_featured_events/${baseName}/` });
 
   const { loading: execLoading, data: execData, error: execError, refetch: refetchExec } =
     useFetchDataJSON<ExecutiveData>({ path: execPath });

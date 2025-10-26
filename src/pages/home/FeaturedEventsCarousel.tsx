@@ -5,37 +5,20 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
 
-// ✅ Keep your fetch hook as is
-export function useFetchDataJSON<T = any>({ path }: { path: string }) {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<T | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
-  const fetchData = React.useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
+interface FeaturedEvent {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+}
 
-      // Dynamically import JSON file
-      /* @vite-ignore */
-      const module = await import(/* @vite-ignore */ `/src/${path}`);
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      setData(module.default);
-    } catch (err: any) {
-      console.error(`Error loading local JSON file: ${path}`, err);
-      setError(err.message || "Something went wrong");
-      setData(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [path]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  return { loading, data, error, refetch: fetchData };
+interface FeaturedEventsCarouselProps {
+  events: FeaturedEvent[];
+  color?: string;
 }
 
 interface EventImage {
@@ -45,7 +28,9 @@ interface EventImage {
   link: string;
 }
 
-const FeaturedEventsCarousel: React.FC = () => {
+const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
+  events,
+}) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
@@ -57,10 +42,10 @@ const FeaturedEventsCarousel: React.FC = () => {
   });
 
   const images: EventImage[] =
-    data?.featured_events?.map((event: any) => ({
+    events?.map((event: any) => ({
       id: event.id,
-      image: event.image,
       alt: event.name,
+      image: event.image,
       link: `/event_details/${event.id}`,
     })) ?? [];
 

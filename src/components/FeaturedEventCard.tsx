@@ -55,9 +55,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               <h5 className="flex gap-2 text-sm font-semibold mb-2">
                 <Calendar className="w-4 h-4" /> {event.date}
               </h5>
-              <p className="text-[16px] line-clamp-4 h-24 mb-5">
-                {event.description}
-              </p>
+              <p className="text-[16px] line-clamp-4 h-24 mb-5" dangerouslySetInnerHTML={{ __html: event.description, }}/>
               <a
                 href="#"
                 className="border border-white bg-white/20 hover:bg-white text-white hover:text-black px-4 py-1 rounded transition-all"
