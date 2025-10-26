@@ -77,7 +77,7 @@ const App = () => {
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
-          <Route path="/panel/:year" element={<Panel />} />
+          <Route path="/panels/:year" element={<Panel />} />
           <Route path="/officers" element={<Officer />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/all-members" element={<AllMembers />} />

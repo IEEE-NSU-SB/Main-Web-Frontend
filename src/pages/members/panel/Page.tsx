@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
 import Wave from "@/components/waave";
+
+interface PanelYears {
+  year: string;
+}
 
 const Panel = () => {
   const { year } = useParams(); // e.g., /panel/:year
@@ -12,8 +16,8 @@ const Panel = () => {
 
   // Fetch available years from JSON
   const { data: yearList, loading: listLoading, error: listError } =
-    useFetchDataJSON<any>({
-      path: `pages/members/panel/commitee.json`,
+    useFetchDataAPI<PanelYears[]>({
+      apiUrl: 'main_website/get_panels/',
     });
 
   // Fetch panel data for the selected year
@@ -29,7 +33,7 @@ const Panel = () => {
 
   const handleYearChange = (newYear: string) => {
     setSelectedYear(newYear);
-    navigate(`/panel/${newYear}`);
+    navigate(`/panels/${newYear}`);
   };
 
   if (listLoading || panelLoading)
