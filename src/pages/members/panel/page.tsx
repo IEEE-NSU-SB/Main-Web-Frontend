@@ -1,78 +1,73 @@
-import PanelCard from "@/pages/members/panel-card";
-import Wave from "@/components/wave";
-
-// dummyCounselors.ts
-export const counselorsData = [
-  {
-    id: "1",
-    name: "Saif Ahmed",
-    position: "Branch Counselor",
-    picture: "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
-    linkedin: "https://linkedin.com/in/alicejohnson",
-    facebook: "https://facebook.com/alicejohnson",
-    email: "alice@example.com",
-    profileLink: "/member/alice",
-  }
-];
-export const SCAGData = [
-  {
-    id: "1",
-    name: "Saif Ahmed",
-    position: "Faculty Advisor, IEEE NSU PES SBC",
-    picture: "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
-    linkedin: "https://linkedin.com/in/alicejohnson",
-    email: "alice@example.com",
-    profileLink: "/member/alice",
-  },
-  {
-    id: "2",
-    name: "Dr. Lamia Iftekhar",
-    position: "Faculty Advisor, IEEE NSU RAS SBC",
-    picture: "https://ieeensusb.org/media_files/panel_profile_pictures/image11.png",
-    profileLink: "/member/alice",
-  },
-  {
-    id: "3",
-    name: "Omar-Ibne Shahid",
-    position: "Faculty Advisor, IEEE NSU RAS SBC",
-    picture: "https://ieeensusb.org/media_files/panel_profile_pictures/image13.jpeg",
-    linkedin: "https://linkedin.com/in/alicejohnson",
-    profileLink: "/member/alice",
-  },
-  {
-    id: "4",
-    name: "Dr. Riasat Khan",
-    position: "Faculty Advisor, IEEE NSU IAS SBC",
-    picture: "https://ieeensusb.org/media_files/panel_profile_pictures/image17.jpeg",
-    linkedin: "https://linkedin.com/in/alicejohnson",
-    facebook: "https://facebook.com/alicejohnson",
-    email: "alice@example.com",
-    profileLink: "/member/alice",
-  },
-];
-
-export const ExcomData = [
-  {
-    id:"1",
-    name:"Md Nafiur Rahman",
-    position: "Chair",
-    picture: "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg",
-    linkedin: "https://linkedin.com/in/alicejohnson",
-    facebook: "https://facebook.com/alicejohnson",
-    email: "alice@example.com",
-    profileLink: "/member/alice",
-  }
-]
-
+import { useState } from "react";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+import PanelCard from "@/pages/members/panel/PanelCard";
+import Wave from "@/components/Wave";
 
 const Panel = () => {
+  // Fetch JSON
+  const { data, loading, error } = useFetchDataJSON<any>({
+    path: "pages/members/panel/data.json",
+  });
+
+  const [selectedYear, setSelectedYear] = useState("CurrentExecutiveCommittee");
+
+  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+  if (!data) return null;
+
+  // Extract year options from JSON keys dynamically
+  const yearOptions = Object.keys(data);
+
+  const currentData = data[selectedYear];
+
   return (
     <>
-      <Wave title="Current Panel of IEEE NSU SB"></Wave>
-      <PanelCard sectionTitle="Branch Counselor" counselors={counselorsData} />
-      <PanelCard sectionTitle="Chapter and Affinity Group Faculty Advisors" counselors={SCAGData} />
-      <PanelCard sectionTitle="IEEE NSU Student Branch Executive Body" counselors={ExcomData} />
-      <PanelCard sectionTitle="Chapter and Affinity Group Chairs" counselors={ExcomData} />
+      <Wave title="Executive Panel of IEEE NSU SB" />
+
+      {/* Year selector */}
+      {/* Desktop buttons */}
+      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
+        {yearOptions.map((year) => (
+          <button
+            key={year}
+            onClick={() => setSelectedYear(year)}
+            className={`px-4 py-2 rounded-md font-medium transition-colors duration-300 cursor-pointer
+        ${
+          selectedYear === year
+            ? "bg-ieee-yellow text-black"
+            : "bg-ieee-white border border-gray-300 text-gray-700"
+        }`}
+          >
+            {year.replace(/([A-Z])/g, " $1").trim()}
+          </button>
+        ))}
+      </div>
+
+      {/* Mobile dropdown */}
+      <div className="md:hidden flex justify-center mb-8">
+        <select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value)}
+          className="px-4 py-2 border rounded-md"
+        >
+          {yearOptions.map((year) => (
+            <option key={year} value={year}>
+              {year.replace(/([A-Z])/g, " $1").trim()}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Panels for the selected year */}
+      <PanelCard
+        sectionTitle="Branch Counselors"
+        members={currentData.counselors}
+      />
+      <PanelCard
+        sectionTitle="Chapter & Affinity Group Faculty Advisors"
+        members={currentData.SCAG}
+      />
+      <PanelCard sectionTitle="Executive Body" members={currentData.Excom} />
     </>
   );
 };

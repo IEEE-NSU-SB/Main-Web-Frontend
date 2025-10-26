@@ -1,0 +1,137 @@
+{
+  "team": 
+    {
+      "title": "content",
+      "img": "src/assets/dummy/luffy.jpeg",
+      "details":"HELLOOO"
+    }
+  ,
+  "subExecutive": [
+    {
+      "id":"/",
+      "name": "Ayesha Rahman",
+      "position": "Sub Executive",
+      "img": "src/assets/dummy/luffy.jpeg"
+    }
+  ],
+  "incharge": [
+    {
+      "id":"/",
+      "name": "Fahim Hasan",
+      "position": "Incharge",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nafisa Karim",
+      "position": "Incharge",
+      "img": "src/assets/dummy/luffy.jpeg"
+    }
+  ],
+  "coreVolunteers": [
+    {
+      "id":"/",
+      "name": "Rafi Chowdhury",
+      "position": "Core Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Mahiya Islam",
+      "position": "Core Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Mahiya Islam",
+      "position": "Core Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Md. Shakib Shahariar Junayed",
+      "position": "Core Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    }
+  ],
+  "volunteers": [
+    {
+      "id":"/",
+      "name": "Md. Shakib Shahariar Junayed",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Arif Hossain",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Arif Hossain",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Arif Hossain",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Arif Hossain",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Arif Hossain",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Nadia Akter",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    },
+    {
+      "id":"/",
+      "name": "Imran Ahmed",
+      "position": "Volunteer",
+      "img": "src/assets/dummy/luffy.jpeg"
+    }
+  ]
+}

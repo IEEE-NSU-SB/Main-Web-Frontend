@@ -9,57 +9,57 @@ import {
 import ieee from "./../assets/logo/ieee.png";
 import insb from "./../assets/logo/insb.png";
 import {} from "lucide-react";
-import FadeIn from "./ui/fade-in";
+import FadeIn from "./ui/FadeIn";
 
 const footerLinks = [
   {
     links: [
-      { text: "Ieee.org", href: "#" },
-      { text: "IEEE Explore", href: "#" },
-      { text: "IEEE Standards", href: "#" },
-      { text: "IEEE Spectrum", href: "#" },
-      { text: "IEEE Collabratec", href: "#" },
-      { text: "More Sites", href: "#" },
+      { text: "Ieee.org", href: "https://www.ieee.org/" },
+      { text: "IEEE Explore", href: "https://ieeexplore.ieee.org/" },
+      { text: "IEEE Standards", href: "https://standards.ieee.org/" },
+      { text: "IEEE Spectrum", href: "https://spectrum.ieee.org/" },
+      { text: "IEEE Collabratec", href: "https://ieee-collabratec.ieee.org/" },
+      { text: "More Sites", href: "https://www.ieee.org/sitemap.html" },
     ],
   },
   {
     links: [
-      { text: "Ask a Question", href: "#" },
-      { text: "IEEE NSU SB", href: "#" },
-      { text: "IEEE NSU SB IAS", href: "#" },
-      { text: "IEEE NSU SB PES", href: "#" },
-      { text: "IEEE NSU SB RAS", href: "#" },
-      { text: "IEEE NSU SB WIE", href: "#" },
+      { text: "Ask a Question", href: "https://ieeensusb.org/faq" },
+      { text: "IEEE NSU SB", href: "https://ieeensusb.org/ieee_nsu_student_branch" },
+      { text: "IEEE NSU SB IAS", href: "https://ieeensusb.org/ieee_nsu_ias_sbc/" },
+      { text: "IEEE NSU SB PES", href: "https://ieeensusb.org/ieee_nsu_pes_sbc/" },
+      { text: "IEEE NSU SB RAS", href: "https://ieeensusb.org/ieee_nsu_ras_sbc/" },
+      { text: "IEEE NSU SB WIE", href: "https://ieeensusb.org/ieee_nsu_wie_sbc/" },
     ],
   },
   {
     links: [
-      { text: "News", href: "#" },
-      { text: "Upcoming Events", href: "#" },
-      { text: "Toolkit", href: "#" },
-      { text: "Gallery", href: "#" },
-      { text: "Magazines", href: "#" },
-      { text: "Research Papers", href: "#" },
+      { text: "News", href: "https://ieeensusb.org/news/" },
+      { text: "Upcoming Events", href: "https://ieeensusb.org/events/" },
+      { text: "Toolkit", href: "https://ieeensusb.org/toolkit" },
+      { text: "Gallery", href: "https://ieeensusb.org/gallery/" },
+      { text: "Magazines", href: "https://ieeensusb.org/magazines" },
+      { text: "Research Papers", href: "https://ieeensusb.org/research" },
     ],
   },
   {
     links: [
-      { text: "Join IEEE NSU SB", href: "#" },
-      { text: "Write a Blog", href: "#" },
-      { text: "Blogs", href: "#" },
-      { text: "Achievements", href: "#" },
-      { text: "Current Executive Body", href: "#" },
-      { text: "Exemplary Members", href: "#" },
+      { text: "Join IEEE NSU SB", href: "https://ieeensusb.org/join_insb" },
+      { text: "Write a Blog", href: "https://ieeensusb.org/write_blogs" },
+      { text: "Blogs", href: "https://ieeensusb.org/blogs" },
+      { text: "Achievements", href: "https://ieeensusb.org/achievements/" },
+      { text: "Current Executive Body", href: "https://ieeensusb.org/panels/" },
+      { text: "Exemplary Members", href: "https://ieeensusb.org/exemplary_members" },
     ],
   },
 ];
 
 const socialIcons = [
-  { icon: <Facebook />, link: "https://facebook.com" },
-  { icon: <Linkedin />, link: "https://linkedin.com" },
-  { icon: <Instagram />, link: "https://instagram.com" },
-  { icon: <Twitter />, link: "https://twitter.com" },
-  { icon: <Youtube />, link: "https://youtube.com" },
+  { icon: <Facebook />, link: "https://www.facebook.com/ieeensusb/" },
+  { icon: <Linkedin />, link: "https://www.linkedin.com/company/ieeensusb" },
+  { icon: <Instagram />, link: "https://instagram.com/ieeensusb?igshid=1g0f6asti4d02" },
+  { icon: <Twitter />, link: "https://www.twitter.com/ieeensusb" },
+  { icon: <Youtube />, link: "https://youtube.com/channel/UCR--MNc_lCe9lvgdnSWm6kA" },
 ];
 
 const contactInfo = [
@@ -71,7 +71,7 @@ const contactInfo = [
 function Footer() {
   return (
     <footer className="bg-[#252525] py-8">
-        <FadeIn>
+      <FadeIn>
         <div className="mx-auto px-8">
           {/* Logos */}
           <div className="flex flex-row items-center justify-evenly mb-6">
@@ -117,14 +117,18 @@ function Footer() {
               <ul>
                 {contactInfo.map((info, i) => (
                   <li key={i}>
-                    <a
-                      href="#"
-                      className="hover:underline hover:text-ieee-yellow-75 transition-all"
-                    >
-                      {info}
-                    </a>
-                  </li>
-                ))}
+                    {info.includes("@") ? (
+                      <a
+                       href={`mailto:${info}`}
+                       className="hover:underline hover:text-ieee-yellow-75 transition-all"
+                     >
+                       {info}
+                     </a>
+                   ) : (
+                     <span>{info}</span> 
+                   )}
+                 </li>
+               ))}
               </ul>
             </div>
           </div>
@@ -142,8 +146,8 @@ function Footer() {
             </p>
           </div>
         </div>
-    </FadeIn>
-      </footer>
+      </FadeIn>
+    </footer>
   );
 }
 

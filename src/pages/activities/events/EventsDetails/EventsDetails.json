@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
+    "date": "2025-11-20",
+    "title": "Tech Innovators Summit 2025",
+    "category": "Technology Conference",
+    "organized_by": "North South University Tech Club",
+    "collaboration": "Google Developers Group Dhaka", 
+    "start_time": "09:00 AM",
+    "end_time": "05:00 PM",
+    "cost": "Free Entry",
+    "read_more_link": "https://example.com/events/tech-innovators-summit-2025",
+    "four_event_share_links": {
+      "facebook": "https://facebook.com/share/techsummit2025",
+      "twitter": "https://twitter.com/share?techsummit2025",
+      "linkedin": "https://linkedin.com/shareArticle?mini=true&url=techsummit2025",
+      "instagram": "https://instagram.com/techsummit2025"
+    },
+    "description": "The Tech Innovators Summit 2025 brings together industry leaders, researchers, and students to explore emerging technologies shaping the future. Organized by the North South University Tech Club in collaboration with Google Developers Group Dhaka, this full-day conference features keynote sessions, workshops, and networking opportunities focused on AI, robotics, IoT, and software innovation.The Tech Innovators Summit 2025 brings together industry leaders, researchers, and students to explore emerging technologies shaping the future. Organized by the North South University Tech Club in collaboration with Google Developers Group Dhaka, this full-day conference features keynote sessions, workshops, and networking opportunities focused on AI, robotics, IoT, and software innovation.",
+    "gallary_images": [
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png"
+    ]
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
+    "date": "2025-12-05",
+    "title": "Robotics Hands-on Workshop",
+    "category": "Engineering Workshop",
+    "organized_by": "EEE Department, NSU",
+    "collaboration": "Bangladesh Robotics Foundation",
+    "start_time": "10:00 AM",
+    "end_time": "04:00 PM",
+    "cost": "BDT 500",
+    "read_more_link": "https://example.com/events/robotics-hands-on",
+    "four_event_share_links": {
+      "facebook": "https://facebook.com/share/roboticsworkshop",
+      "twitter": "https://twitter.com/share?roboticsworkshop",
+      "linkedin": "https://linkedin.com/shareArticle?mini=true&url=roboticsworkshop",
+      "instagram": "https://instagram.com/roboticsworkshop"
+    },
+    "description": "A practical workshop where participants build and program robots using Arduino and sensors. Perfect for beginners and tech enthusiasts looking to gain real-world experience.",
+    "gallary_images": [
+      "https://example.com/gallery/robotics1.jpg",
+      "https://example.com/gallery/robotics2.jpg",
+      "https://example.com/gallery/robotics3.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
+    "date": "2026-01-15",
+    "title": "Green Campus Sustainability Fair",
+    "category": "Environmental Awareness",
+    "organized_by": "NSU Environment Club",
+    "collaboration": "UNDP Bangladesh",
+    "start_time": "08:30 AM",
+    "end_time": "03:30 PM",
+    "cost": "BDT 200",
+    "read_more_link": "https://example.com/events/green-campus-fair",
+    "four_event_share_links": {
+      "facebook": "https://facebook.com/share/greencampusfair",
+      "twitter": "https://twitter.com/share?greencampusfair",
+      "linkedin": "https://linkedin.com/shareArticle?mini=true&url=greencampusfair",
+      "instagram": "https://instagram.com/greencampusfair"
+    },
+    "description": "An interactive sustainability fair featuring eco-project exhibitions, upcycling workshops, and climate talks to promote green living among university students.",
+    "gallary_images": [
+      "https://example.com/gallery/greenfair1.jpg",
+      "https://example.com/gallery/greenfair2.jpg",
+      "https://example.com/gallery/greenfair3.jpg"
+    ]
+  }
+]

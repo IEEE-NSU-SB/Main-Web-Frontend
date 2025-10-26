@@ -1,0 +1,7 @@
+{
+  "Item": [
+    { "id": "1", "url": "/assets/gallery/image1.png" },
+    { "id": "2", "url": "/assets/gallery/image2.png" },
+    { "id": "3", "url": "/assets/gallery/image3.png" }
+  ]
+}

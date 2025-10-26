@@ -1,25 +1,38 @@
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
-import ScaleUp from "@/components/ui/scale-up";
 
-const stats = [
-  { value: 4, label: "CHAPTER & AG" },
-  { value: 636, label: "MEMBERS" },
-  { value: 264, label: "EVENTS" },
-  { value: 57, label: "ACHIEVEMENTS" },
-];
+import ScaleUp from "@/components/ui/ScaleUp";
+import Skeleton from "@/components/Skeleton";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
+import ErrorMessage from "../../components/ui/ErrorMessage";
 
-const StatsSection = () => {
+type Stat = {
+  label: string;
+  value: number;
+};
+
+type StatsResponse = {
+  stats: Stat[];
+};
+
+const Stats = () => {
+  const { loading, data, error, refetch } = useFetchDataAPI<StatsResponse>({
+    apiUrl: "main_website/get_sc_ag_stats/",
+  });
+
+  const stats: Stat[] = data?.stats ?? [];
   const refs = useRef<(HTMLParagraphElement | null)[]>([]);
   const backgroundRef = useRef<HTMLDivElement | null>(null);
 
   // Odometer animation
   useEffect(() => {
+    if (!stats.length) return;
+
     refs.current.forEach((el, index) => {
       if (!el) return;
 
-      const odometer = new Odometer({ el: el, value: 0 });
+      const odometer = new Odometer({ el, value: 0 });
       let hasRun = false;
 
       const observer = new IntersectionObserver(
@@ -36,16 +49,24 @@ const StatsSection = () => {
 
       observer.observe(el);
     });
-  }, []);
+  }, [stats]);
 
   // Shapes move with mouse
   useEffect(() => {
     const createShapes = () => {
       if (!backgroundRef.current) return;
       const shapeTypes = ["square", "circle", "triangle", "rectangle"];
-      for (let i = 0; i < 40; i++) {
+
+      // Decide number of shapes based on viewport width
+      let numberOfShapes = 40; // default for desktop
+      if (window.innerWidth < 768) numberOfShapes = 15; // phones
+      else if (window.innerWidth < 1024) numberOfShapes = 25; // tablets
+
+      for (let i = 0; i < numberOfShapes; i++) {
         const shape = document.createElement("div");
-        shape.className = `shape ${shapeTypes[Math.floor(Math.random() * shapeTypes.length)]}`;
+        shape.className = `shape ${
+          shapeTypes[Math.floor(Math.random() * shapeTypes.length)]
+        }`;
 
         const posX = Math.random() * 100;
         const posY = Math.random() * 100;
@@ -63,58 +84,55 @@ const StatsSection = () => {
       }
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-
-      const shapes = backgroundRef.current?.querySelectorAll<HTMLDivElement>(".shape");
-      shapes?.forEach((shape) => {
-        const initialX = parseFloat(shape.dataset.initialX || "0");
-        const initialY = parseFloat(shape.dataset.initialY || "0");
-
-        const moveX = initialX + x * 5; // adjust 5 for intensity
-        const moveY = initialY + y * 5;
-
-        shape.style.left = `${moveX}%`;
-        shape.style.top = `${moveY}%`;
-      });
-    };
-
     createShapes();
-    document.addEventListener("mousemove", handleMouseMove);
-    return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const boxClasses = "rounded text-ieee-blue bg-ieee-white-75 backdrop-blur-l relative z-10";
-  const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer text-stroke";
+  const boxClasses =
+    "rounded text-ieee-blue bg-ieee-white backdrop-blur-lg relative z-10 shadow-[2px_2px_4px_theme(colors.ieee-black-25)]";
+  const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer";
   const labelClasses = "text-sm md:text-lg font-bold mb-8";
 
   return (
-    <section
-    className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-blue"
-    >
-      <div ref={backgroundRef} id="geometric-background" className="absolute inset-0 z-0"></div>
-      <div className="absolute inset-0 bg-black/30 z-0"></div>
+    <section className="w-full py-20 relative bg-cover bg-center overflow-hidden px-5 bg-ieee-darkblue">
+      <div
+        ref={backgroundRef}
+        id="geometric-background"
+        className="absolute inset-0 z-0"
+      ></div>
+      <div className="absolute inset-0  z-0"></div>
 
       <div className="relative max-w-[1040px] mx-auto z-10">
-      <ScaleUp>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat, index) => (
-            <div key={index} className={boxClasses}>
-              <p
-                className={valueClasses}
-                ref={(el) => {refs.current[index] = el}}
-              >
-                0
-              </p>
-              <p className={labelClasses}>{stat.label}</p>
+        <ScaleUp>
+          {loading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
+              <Skeleton className="h-35 w-full" />
             </div>
-          ))}
-        </div>
-      </ScaleUp>
+          ) : error ? (
+            <ErrorMessage message={"Failed to load stats"} onRetry={refetch} />
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((stat, index) => (
+                <div key={index} className={boxClasses}>
+                  <p
+                    className={valueClasses}
+                    ref={(el) => {
+                      refs.current[index] = el;
+                    }}
+                  >
+                    0
+                  </p>
+                  <p className={labelClasses}>{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </ScaleUp>
       </div>
     </section>
   );
 };
 
-export default StatsSection;
+export default Stats;

@@ -1,0 +1,15 @@
+{
+  "featuredEvents": [
+    {
+      "id": 1,
+      "title": "RAS Tech Expo 2025",
+      "description": "A grand exhibition of robotics and automation innovations by IEEE RAS NSU.",
+      "image": "src/assets/dummy/image1.png",
+      "date": "2025-08-12",
+      "category": "Technical"
+    }
+  ],
+  "megaEvents": [
+
+  ]
+}

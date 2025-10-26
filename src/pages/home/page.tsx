@@ -1,25 +1,33 @@
-import VisionSection from "@/components/our-vision"
-import HeroCarousel from "./hero-carousel"
-import LearningCardGrid from "./learning-card-grid"
-import LogoSection from "./logo-section"
-import StatsSection from "./stats"
-import EventCarousel from "./events-carousel"
-import TopPerformers from "./top-performers"
-import Blog from "@/components/common_card/blog-card"
+import VisionSection from "@/pages/home/OurVision";
+import HeroCarousel from "./HeroCarousel";
+import PerksCardGrid from "./PerksCardGrid";
+import EventCarousel from "./FeaturedEventsCarousel";
+import PerformersTab from "./PerformersTab";
+import Blog from "@/components/BlogCard";
+import AchievementCard from "../../components/AchievementCard";
+import LogoSection from "./LogoSection";
+import Stats from "./Stats";
+import MegaEvents from "@/components/MegaEventCard";
+// import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 const HomePage = () => {
+  // const { loading, data } = useFetchDataJSON({ path: "pages/home/data/vision-stats.json" });
+  // const { loading, data } = useFetchDataAPI({ path: "" });
+
   return (
     <>
-        <HeroCarousel/>
-        <LearningCardGrid/>
-        <LogoSection/>
-        <VisionSection/>
-        <StatsSection/>
-        <EventCarousel title="Featured Events" width="62"/>
-        <TopPerformers/>
-        <Blog/>
+      <HeroCarousel />
+      <PerksCardGrid />
+      <LogoSection />
+      <VisionSection />
+      <Stats />
+      <EventCarousel/>
+      <PerformersTab />
+      <MegaEvents events={[]}/>
+      <AchievementCard />
+      <Blog />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

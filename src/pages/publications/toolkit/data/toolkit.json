@@ -1,0 +1,60 @@
+[
+    {
+        "title": "IEEE NSU SB Logo",
+        "img": "src/assets/logo/insbMain.png",
+        "colors": [
+            "Blue: #137AAC",
+            "Yellow: #FEC937",
+            "White: #F7FAFC"
+        ],
+        "file": "src/assets/logo/insbMain.png"
+    },
+    {
+        "title": "IEEE NSU SB Logo (Rectangular)",
+        "img": "src/assets/logo/insb.png",
+        "colors": [
+            "Blue: #137AAC",
+            "Yellow: #FEC937",
+            "White: #F7FAFC"
+        ],
+        "file": "src/assets/logo/insb.png"
+    },
+    {
+        "title": "IEEE NSU RAS SBC Logo",
+        "img": "src/assets/logo/ras.png",
+        "colors": [
+            "Purple: #602569",
+            "Magenta: #961A31"
+        ],
+        "file": "src/assets/logo/ras.png"
+    },
+    {
+        "title": "IEEE NSU PES SBC Logo",
+        "img": "src/assets/logo/pes.png",
+        "colors": [
+            "Green: #659941",
+            "Yellow: #F6EB12",
+            "Light Green: #61A60E"
+        ],
+        "file": "src/assets/logo/pes.png"
+    },
+    {
+        "title": "IEEE NSU IAS SBC Logo",
+        "img": "src/assets/logo/ias.png",
+        "colors": [
+            "Blue: #008BC2",
+            "Yellow: #FEC937",
+            "Green: #0F904B"
+        ],
+        "file": "src/assets/logo/ias.png"
+    },
+    {
+        "title": "IEEE NSU SB WIE AG Logo",
+        "img": "src/assets/logo/wie.png",
+        "colors": [
+            "Blue: #006699",
+            "Purple: #6A2874"
+        ],
+        "file": "src/assets/logo/wie.png"
+    }
+]

@@ -1,0 +1,44 @@
+{
+  "name": "PES",
+  "pageTitle": "IEEE NSU Power & Energy Society Student Branch Chapter",
+  "pageSubtitle": "Leveraging Technology by Powering the Future",
+  "primaryColor": "#659941",
+  "secondaryColor": "#000",
+  "missionVisionColor": "#659941",
+  "textColor": "#fff",
+  "logo": "src/assets/logo/pes.png",
+  "about": [
+    {
+      "title": "About PES",
+      "description": [
+        "IEEE NSU PES Student Branch Chapter is a dynamic technical sub-unit of IEEE Societies committed to advancing knowledge and innovation in the field of electric power and energy. Its mission is to provide scientific and engineering information to benefit society and foster the professional development of our members.",
+        "IEEE NSU PES SBC is dedicated to conducting cutting-edge research activities and implementing advanced technological ideas to contribute to the field of Power and Energy. In recognition of its efforts, the IEEE NSU PES Student Branch Chapter has achieved notable milestones, including ranking 5th in the Asia Pacific [IEEE Region 10] as an IEEE PES High Performing Student Branch Chapter in 2020. Continuing the pursuit of excellence, this chapter has been awarded the title of High Performing Student Branch Chapter back-to-back in 2021, 2022, 2023 & 2024, with the highest grant received in Bangladesh. This recognition underscores the commitment to innovation, collaboration, and leadership in the realm of power and energy engineering. "
+      ]
+    }
+  ],
+  "parallax": "src/assets/logo/pes.png",
+  "mission": [
+    "Our mission is to foster a vibrant community of robotics and automation enthusiasts by sharing and exploring the latest technology and trends with the young engineers in robotics and automation while also cultivating a culture of innovation, collaboration, and lifelong learning."
+  ],
+  "vision": [
+    "Our Vision is to inspire and foster the members to become the upcoming trailblazers and pioneers in the dynamic field of robotics and automation. We aspire to cultivate an environment that empowers creativity and innovation, propelling our members toward leadership roles and groundbreaking contributions in the realm of robotics and automation. We also envision to become the most recognized and respected student branch chapter in Robotics and Automation."
+  ],
+  "question": [
+    {
+      "1": [
+        "The Robotics and Automation Society is abbreviated as RAS. By working to promote the research and application of robotics and automation engineering, the community maintains high professional standards among its members. The mission of RAS is to develop and facilitate the exchange of scientific and technological knowledge and thoughts in Robotics and Automation for the benefit of members as well as humanity. The Society also provides aid for promoting close cooperation and exchanging technical information among its Members and Affiliates."
+      ],
+      "2": [
+        "Joining RAS means becoming part of a dynamic professional society. As a member, you gain access to a variety of resources and opportunities designed to enhance your knowledge and expertise in both theoretical and applied aspects of the field. From staying updated on the latest technological breakthroughs to participating in cutting-edge research and development, RAS membership empowers you to remain at the forefront of innovation. Moreover, by connecting with like-minded professionals in your vicinity, you'll forge valuable networks and collaborations, fostering growth, learning, and professional development."
+      ],
+      "3": [
+        "At IEEE NSU RAS SBC, we organize a variety of entertaining activities throughout the year, such as seminars, workshops, competitions, tech talks, weekly meetings, and many more, all focused on the most recent developments and subjects in robotics and automation. These events provide great opportunities for members to enhance their understanding of robotics and automation while also promoting continuous learning and skill development."
+      ],
+      "4": [
+        "The member must be an active member of IEEE NSU Student Branch for at least 1 semester in NSU."
+      ]
+    }
+  ],
+  "email": "ras@northsouth.edu",
+  "fb": "ras@northsouth.edu"
+}
