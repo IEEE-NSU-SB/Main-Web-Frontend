@@ -61,9 +61,9 @@ export default function AboutIEEE() {
   if (!data) return null;
 
   return (
-    <div className="max-w-[1080px] mx-auto my-8 px-6">
+    <div className="">
       {/* About Section */}
-      <div className="flex flex-col md:flex-row gap-6 items-center mb-16">
+      <div className="max-w-[1080px] m-auto p-5 flex flex-col md:flex-row gap-6 items-center mb-16">
         <img
           src={data.aboutImage}
           alt="About IEEE"
@@ -98,9 +98,7 @@ export default function AboutIEEE() {
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Largest Community" widthClass="w-62" />
-              <p className="text-justify mb-6 pl-5">
-                {data.communityDetails}
-              </p>
+              <p className="text-justify mb-6 pl-5">{data.communityDetails}</p>
               {data.communityLinks.map((link, i) => (
                 <>
                   <a
@@ -125,200 +123,313 @@ export default function AboutIEEE() {
           </div>
         </div>
       </section>
-      {/* Dynamic Sections */}
-      {/* {[
-        ["Largest Community", data.communityDetails, data.communityLinks],
-        ["Start with IEEE", data.startWithIeeeDetails, data.startWithIeeeLinks],
-        ["Collaboration", data.collaborationDetails, data.collaborationLinks],
-        ["Publications", data.publicationsDetails, data.publicationsLinks],
-        [
-          "Events & Conferences",
-          data.eventsConferencesDetails,
-          data.eventsConferencesLinks,
-        ],
-      ].map(([title, desc, links], i) => (
-        <div key={i} className="mb-16">
-          <SectionHeading title={title as string} widthClass="w-52" />
-          <p className="text-justify mb-3">{desc as string}</p>
-          {(links as LinkItem[]).map((l, j) => (
-            <a
-              key={j}
-              href={l.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#002855] hover:text-[#FFC72C]"
-            >
-              <i className="fa-solid fa-arrow-up-right-from-square mr-2"></i>
-              {l.title}
-            </a>
-          ))}
+
+      {/* Start with IEEE */}
+      <section className="w-full bg-[#002855] flex justify-center">
+        <div className="max-w-[1080px] grid md:grid-cols-[1fr_1px_1fr] gap-10 p-6">
+          <FadeIn>
+            <div>
+              <h2 className="text-white font-bold text-xl mb-1">
+                Start with IEEE
+              </h2>
+              <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
+              <p className="text-white mb-4">{data.startWithIeeeDetails}</p>
+              {data.startWithIeeeLinks.map((l, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={l.link}
+                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                  >
+                    <ExternalLink size={16} />
+                    {l.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Collab */}
+          <div className="hidden md:block border-l border-white"></div>
+          <FadeIn>
+            <div>
+              <h2 className="text-white font-bold text-xl mb-1">
+                Collaboration
+              </h2>
+              <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
+              <p className="text-white mb-4">{data.collaborationDetails}</p>
+              {data.collaborationLinks.map((l, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={l.link}
+                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                  >
+                    <ExternalLink size={16} />
+                    {l.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
         </div>
-      ))} */}
+      </section>
+
+      {/* Publications */}
+      <section className="w-full bg-[#002855] flex justify-center mt-0 md:mt-[1px]">
+        <div className="max-w-[1080px] grid md:grid-cols-[1fr_1px_1fr] gap-10 p-6">
+          <FadeIn>
+            <div>
+              <h2 className="text-white font-bold text-xl mb-1">
+                Publications
+              </h2>
+              <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
+              <p className="text-white mb-4">{data.publicationsDetails}</p>
+              {data.publicationsLinks.map((l, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={l.link}
+                    className=" inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                  >
+                    <ExternalLink size={16} />
+                    {l.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Events and Conference */}
+          <div className="hidden md:block border-l border-white"></div>
+          <FadeIn>
+            <div>
+              <h2 className="text-white font-bold text-xl mb-1">
+                Events and Conference
+              </h2>
+              <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
+              <p className="text-white mb-4">{data.eventsConferencesDetails}</p>
+              {data.eventsConferencesLinks.map((l, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={l.link}
+                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                  >
+                    <ExternalLink size={16} />
+                    {l.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* Achievements */}
-      <SectionHeading title="Achievements" widthClass="w-52" />
-      <p className="text-justify mb-6">{data.achievementsDetails}</p>
-      <div className="flex flex-wrap gap-6 justify-center">
-        {data.achievementsLinks.map((a, i) => (
-          <div
-            key={i}
-            className="w-72 rounded-lg overflow-hidden shadow hover:shadow-lg transition"
-          >
-            <img
-              src={a.image}
-              alt={a.title}
-              className="w-full h-52 object-cover"
-            />
-            <div className="p-4 bg-[#002855] text-white text-center">
-              <h4 className="font-semibold mb-2">{a.title}</h4>
-              <a href={a.link} className="text-[#FFC72C] hover:text-white">
-                target="_blank" rel="noopener noreferrer"R ead More
-              </a>
-            </div>
+      <div className="max-w-[1080px] m-auto">
+        <FadeIn xIndex={-100} yIndex={0}>
+          <SectionHeading title="Achievements" widthClass="w-52" />
+          <p className="text-justify mb-6 md:p-5">{data.achievementsDetails}</p>
+          <div className="flex flex-wrap gap-7 justify-center p-5">
+            {data.achievementsLinks.map((a, i) => (
+              <div
+                key={i}
+                className="w-80 h-102 rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
+              >
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  className="w-full h-full object-cover hover:scale-110 duration-300 transition-all"
+                />
+                <div className="p-4 relative bottom-65 text-center">
+                  <h4 className="text-white text-lg font-bold mb-2">
+                    {a.title}
+                  </h4>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <a
+                    href={a.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#FFC72C] text-white font-semibold"
+                  >
+                    Read More
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </FadeIn>
       </div>
 
       {/* Innovation Section */}
-      <div className="flex flex-col md:flex-row gap-6 items-center my-16">
-        <img
-          src={data.innovationsDevelopmentsImage}
-          alt="Innovation"
-          className="w-full md:w-1/2 rounded-xl shadow"
-        />
-        <div>
-          <SectionHeading
-            title="Innovations & Developments"
-            widthClass="w-64"
-          />
-          <p className="text-justify mb-3">
-            {data.innovationsDevelopmentsDetails}
-          </p>
-          {data.innovationsDevelopmentsLinks.map((l, i) => (
-            <a
-              key={i}
-              href={l.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#002855] hover:text-[#FFC72C]"
-            >
-              <i className="fa-solid fa-arrow-up-right-from-square mr-2"></i>
-              {l.title}
-            </a>
-          ))}
+      <section className="w-full flex justify-center">
+        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+          <FadeIn xIndex={-100} yIndex={0}>
+            <div>
+              <SectionHeading
+                title="Innovations and Developments"
+                widthClass="w-62"
+              />
+              <p className="text-justify mb-6 pl-5">
+                {data.innovationsDevelopmentsDetails}
+              </p>
+              {data.innovationsDevelopmentsLinks.map((link, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={link.link}
+                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                  >
+                    <ExternalLink size={16} />
+                    {link.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+            <img
+              src={data.innovationsDevelopmentsImage}
+              alt="Largest Community"
+              className="object-contain"
+            />
+          </div>
         </div>
-      </div>
-
+      </section>
       {/* Student Activities */}
-      <div className="flex flex-col md:flex-row gap-6 items-center my-16">
-        <img
-          src={data.studentsAndMemberActivitiesImage}
-          alt="Student Activities"
-          className="w-full md:w-1/2 rounded-xl shadow"
-        />
-        <div>
-          <SectionHeading
-            title="Students and Member Activities"
-            widthClass="w-72"
-          />
-          <p className="text-justify mb-3">
-            {data.studentsAndMemberActivitiesDetails}
-          </p>
-          {data.studentsAndMemberActivitiesLinks.map((l, i) => (
-            <a
-              key={i}
-              href={l.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#002855] hover:text-[#FFC72C]"
-            >
-              <i className="fa-solid fa-arrow-up-right-from-square mr-2"></i>
-              {l.title}
-            </a>
-          ))}
+      <section className="w-full flex justify-center">
+        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+            <img
+              src={data.innovationsDevelopmentsImage}
+              alt="Students and Member Activities"
+              className="object-contain"
+            />
+          </div>
+          <FadeIn xIndex={-100} yIndex={0}>
+            <div>
+              <SectionHeading
+                title="Students and Member Activities"
+                widthClass="w-62"
+              />
+              <p className="text-justify mb-6 pl-5">
+                {data.innovationsDevelopmentsDetails}
+              </p>
+              {data.innovationsDevelopmentsLinks.map((link, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={link.link}
+                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                  >
+                    <ExternalLink size={16} />
+                    {link.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
         </div>
-      </div>
-
-      {/* Quality Section */}
-      <div className="flex flex-col md:flex-row gap-6 items-center my-16">
-        <img
-          src={data.qualityImage}
-          alt="Quality"
-          className="w-full md:w-1/2 rounded-xl shadow"
-        />
-        <div>
-          <SectionHeading title="Quality" widthClass="w-36" />
-          <p className="text-justify mb-3">{data.qualityDetails}</p>
-          {data.qualityLinks.map((l, i) => (
-            <a
-              key={i}
-              href={l.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#002855] hover:text-[#FFC72C]"
-            >
-              <i className="fa-solid fa-arrow-up-right-from-square mr-2"></i>
-              {l.title}
-            </a>
-          ))}
+      </section>
+      {/* Quality */}
+      <section className="w-full flex justify-center">
+        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+          <FadeIn xIndex={-100} yIndex={0}>
+            <div>
+              <SectionHeading title="Quality" widthClass="w-62" />
+              <p className="text-justify mb-6 pl-5">{data.qualityDetails}</p>
+              {data.qualityLinks.map((link, i) => (
+                <>
+                  <a
+                    key={i}
+                    href={link.link}
+                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                  >
+                    <ExternalLink size={16} />
+                    {link.title}
+                  </a>
+                  <br />
+                </>
+              ))}
+            </div>
+          </FadeIn>
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+            <img
+              src={data.qualityImage}
+              alt="Quality"
+              className="object-contain"
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Join Us */}
-      <div className="bg-[#002855] text-white rounded-xl my-12 p-8 flex flex-col md:flex-row justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold mb-4">
-            Join us for new <span className="text-[#FFC72C]">Adventure</span>
-          </h2>
-          <p className="max-w-lg">
-            Do you want to unleash your true potential? Join us and become a
-            part of a distinguished society that builds and boosts brilliance.
-          </p>
+      <div className="w-full bg-[#002855]">
+        <div className="max-w-[1080px] m-auto text-white my-12 p-5 flex flex-col md:flex-row justify-between items-center">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">
+              Join us for new <span className="text-[#FFC72C]">Adventure</span>
+            </h2>
+            <p className="max-w-lg">
+              Do you want to unleash your true potential? Join us and become a
+              part of a distinguished society that builds and boosts brilliance.
+            </p>
+          </div>
+          <a href={data.joinUsLink} target="_blank" rel="noopener noreferrer">
+            <button className="bg-[#FFC72C] text-white font-bold py-4 px-8 cursor-pointer rounded-full mt-6 md:mt-0 hover:bg-white hover:text-[#FFC72C] transition">
+              Join Now
+            </button>
+          </a>
         </div>
-        <a href={data.joinUsLink} target="_blank" rel="noopener noreferrer">
-          <button className="bg-[#FFC72C] text-white font-bold py-2 px-6 rounded-full mt-6 md:mt-0 hover:bg-white hover:text-[#FFC72C] transition">
-            Join Now
-          </button>
-        </a>
       </div>
 
       {/* Contact Section */}
-      <SectionHeading title="Contact Section" widthClass="w-60" />
-      <div className="grid gap-4">
-        <div className="grid grid-cols-3 gap-4 items-center">
-          <p className="font-semibold">Asia Pacific</p>
-          <a
-            href={data.asiaPacificLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="col-span-2 text-[#002855] hover:text-[#FFC72C]"
-          >
-            {data.asiaPacificLink}
-          </a>
-        </div>
-        <div className="grid grid-cols-3 gap-4 items-center">
-          <p className="font-semibold">IEEE Computer Organization</p>
-          <a
-            href={data.IeeeComputerOrgLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="col-span-2 text-[#002855] hover:text-[#FFC72C]"
-          >
-            {data.IeeeComputerOrgLink}
-          </a>
-        </div>
-        <div className="grid grid-cols-3 gap-4 items-center">
-          <p className="font-semibold">Customer Service</p>
-          <p className="col-span-2">{data.customerServiceNum}</p>
-        </div>
-        <div className="grid grid-cols-3 gap-4 items-center">
-          <p className="font-semibold">Presidents</p>
-          <p className="col-span-2">{data.presidents}</p>
-        </div>
-        <div className="grid grid-cols-3 gap-4 items-center">
-          <p className="font-semibold">Founders</p>
-          <p className="col-span-2">{data.founders}</p>
-        </div>
+      <div className="bg-white flex flex-col justify-baseline max-w-[1080px] m-auto mb-15">
+        <SectionHeading title="Contact IEEE R10" widthClass="w-62" />
+        <FadeIn>
+          <div className="grid gap-3 pl-5">
+            <div className="grid grid-cols-[1fr_2fr]">
+              <p>Asia Pacific:</p>
+              <a
+                href={data.asiaPacificLink}
+                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+              >
+                {data.asiaPacificLink}
+              </a>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr]">
+              <p>IEEE Computer Organization:</p>
+              <a
+                href={data.IeeeComputerOrgLink}
+                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+              >
+                {data.IeeeComputerOrgLink}
+              </a>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr]">
+              <p>Customer Service:</p>
+              <p>{data.customerServiceNum}</p>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr]">
+              <p>Presidents:</p>
+              <p>{data.presidents}</p>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr]">
+              <p>Founders:</p>
+              <p>{data.founders}</p>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </div>
   );

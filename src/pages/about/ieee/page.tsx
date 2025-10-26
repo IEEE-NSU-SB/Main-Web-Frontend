@@ -4,7 +4,7 @@ import AboutIEEE from './AboutIeee'
 const page = () => {
   return (
     <>
-      <Wave title='About IEEE'/>
+      <Wave title='About - IEEE'/>
       <AboutIEEE/>
     </>
   )

@@ -173,7 +173,7 @@ const IEEERegion10: React.FC = () => {
         </div>
       </section>
 
-      {/* Industry Relations */}
+      {/* Educational Activities */}
       <section className="w-full bg-[#002855] flex justify-center mt-0 md:mt-[1px]">
         <div className="max-w-[1080px] grid md:grid-cols-[1fr_1px_1fr] gap-10 p-6">
           <FadeIn>
@@ -199,6 +199,7 @@ const IEEERegion10: React.FC = () => {
             </div>
           </FadeIn>
 
+          {/* Industry Relations */}
           <div className="hidden md:block border-l border-white"></div>
           <FadeIn>
             <div>
