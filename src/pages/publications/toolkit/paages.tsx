@@ -2,7 +2,7 @@ import Wave from "@/components/waave";
 
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import FadeIn from "@/components/ui/FadeIn";
 
 type Toolkit = {

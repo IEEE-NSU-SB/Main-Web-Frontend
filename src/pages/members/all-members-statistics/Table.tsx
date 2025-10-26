@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 

@@ -6,7 +6,7 @@ import PerformersTab from "./PerformersTab";
 import Blog from "@/components/BlogCard";
 import AchievementCard from "../../components/AchievementCard";
 import LogoSection from "./LogoSection";
-import Stats from "./Stats";
+import Stats from "./staats";
 import MegaEvents from "@/components/MegaEventCard";
 // import { useFetchDataJSON } from "@/hooks/fetchdata";
 

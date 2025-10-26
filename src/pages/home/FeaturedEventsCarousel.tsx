@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
