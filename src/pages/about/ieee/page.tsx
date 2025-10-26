@@ -1,4 +1,4 @@
-import Wave from '@/components/Wave'
+import Wave from '@/components/waave'
 import AboutIEEE from './AboutIeee'
 
 const page = () => {

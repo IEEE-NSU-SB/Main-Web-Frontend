@@ -1,4 +1,4 @@
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";

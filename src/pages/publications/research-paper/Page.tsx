@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";

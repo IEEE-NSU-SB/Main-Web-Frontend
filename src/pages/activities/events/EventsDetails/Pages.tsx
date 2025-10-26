@@ -1,7 +1,7 @@
 import TopSection from './TopSection';
 import MidSection from './MidSection';
 import FeedBackForm from './FeedBackForm';
-import Wave from '@/components/Wave';
+import Wave from '@/components/waave';
 
 
 
