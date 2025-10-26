@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
 import Wave from "@/components/waave";
@@ -7,43 +7,31 @@ import Wave from "@/components/waave";
 const Panel = () => {
   const { year } = useParams(); // e.g., /panel/:year
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [selectedYear, setSelectedYear] = useState(year || "current");
-  const [baseName, setBaseName] = useState<string>("");
 
-  // ✅ Detect which base path the user is on
-  useEffect(() => {
-    const path = location.pathname.toLowerCase();
-    if (path.includes("panel")) setBaseName("panel");
-    else setBaseName("");
-  }, [location.pathname]);
-
-  // ✅ Fetch list of available committees
-  const { data: listData, loading: listLoading, error: listError } =
+  // Fetch available years from JSON
+  const { data: yearList, loading: listLoading, error: listError } =
     useFetchDataJSON<any>({
       path: `pages/members/panel/commitee.json`,
     });
 
-  // ✅ Fetch actual panel data for the selected year
+  // Fetch panel data for the selected year
   const { data: panelData, loading: panelLoading, error: panelError } =
     useFetchDataJSON<any>({
-      path: `pages/members/panel/data.json`,
-      // In the future you can switch this to pages/members/${baseName}/data/${selectedYear}.json if needed
+      // path: `api/panel/${selectedYear}`, // backend endpoint
+      path: `pages/members/panel/data.json`, // backend endpoint
     });
 
-  // ✅ Keep state synced with URL
   useEffect(() => {
-    setSelectedYear(year || "current");
+    if (year) setSelectedYear(year);
   }, [year]);
 
-  // ✅ Handle navigation for year changes
   const handleYearChange = (newYear: string) => {
     setSelectedYear(newYear);
-    navigate(newYear === "current" ? `/panels` : `/panel/${newYear}`);
+    navigate(`/panel/${newYear}`);
   };
 
-  // ✅ Handle loading/error states
   if (listLoading || panelLoading)
     return <p className="text-center mt-10">Loading...</p>;
   if (listError || panelError)
@@ -52,36 +40,39 @@ const Panel = () => {
         {listError || panelError}
       </p>
     );
-  if (!listData || !panelData) return null;
+  if (!yearList || !panelData) return null;
 
-  const committees = listData;
+  // Map JSON to year strings, prepend Current Executive Committee
+  const yearsWithCurrent = [
+    { year: "current", display: "Current Executive Committee" },
+    ...yearList.map((item: any) => ({ year: item.year, display: item.year })),
+  ];
 
   return (
     <>
       <Wave title="Executive Panel of IEEE NSU SB" />
 
-      {/* Year selector for desktop */}
-      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
-        {committees.map((item: any) => {
-          const id = item.name.toLowerCase().includes("current")
-            ? "current"
-            : item.name.replace("Executive Committee ", "");
+      {/* Year selector label */}
+      <div className="text-center mb-4 font-semibold text-lg uppercase">
+        Executive Committee
+      </div>
 
-          return (
-            <button
-              key={id}
-              onClick={() => handleYearChange(id)}
-              className={`px-4 py-2 rounded-md font-medium transition-colors duration-300 cursor-pointer
+      {/* Desktop buttons */}
+      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
+        {yearsWithCurrent.map((item: any) => (
+          <button
+            key={item.year}
+            onClick={() => handleYearChange(item.year)}
+            className={`px-4 py-2 rounded-md font-medium transition-colors duration-300 cursor-pointer
               ${
-                selectedYear === id
+                selectedYear === item.year
                   ? "bg-ieee-yellow text-black"
                   : "bg-ieee-white border border-gray-300 text-gray-700"
               }`}
-            >
-              {item.name}
-            </button>
-          );
-        })}
+          >
+            {item.display}
+          </button>
+        ))}
       </div>
 
       {/* Mobile dropdown */}
@@ -91,21 +82,15 @@ const Panel = () => {
           onChange={(e) => handleYearChange(e.target.value)}
           className="px-4 py-2 border rounded-md"
         >
-          {committees.map((item: any) => {
-            const id = item.name.toLowerCase().includes("current")
-              ? "current"
-              : item.name.replace("Executive Committee ", "");
-
-            return (
-              <option key={id} value={id}>
-                {item.name}
-              </option>
-            );
-          })}
+          {yearsWithCurrent.map((item: any) => (
+            <option key={item.year} value={item.year}>
+              {item.display}
+            </option>
+          ))}
         </select>
       </div>
 
-      {/* Panels for the selected year */}
+      {/* Panel data */}
       <PanelCard
         sectionTitle="Branch Counselors"
         members={panelData.counselors || []}
