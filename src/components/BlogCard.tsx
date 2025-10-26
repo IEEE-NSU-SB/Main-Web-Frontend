@@ -4,7 +4,7 @@ import FadeIn from "./ui/FadeIn";
 import { Calendar, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeeleton";
 import ErrorMessage from "./ui/ErrorMessage";
 import { Link } from "react-router-dom";
 

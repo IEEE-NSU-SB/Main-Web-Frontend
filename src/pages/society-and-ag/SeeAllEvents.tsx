@@ -1,7 +1,7 @@
 import { Calendar } from "lucide-react";
 import { useParams, Link } from "react-router-dom";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
 interface FeaturedEvent {

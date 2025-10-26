@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import SplitText from "@/components/ui/SplitText";
 
 interface MediaItem {
@@ -152,7 +152,7 @@ const HeroCarousel = ({
                 alt={item.alt || "Hero image"}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="absolute inset-0 bg-black/70"></div>
 
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col justify-center m-auto max-w-[1080px] px-5 text-left md:text-center">
@@ -206,7 +206,7 @@ const HeroCarousel = ({
                 {item.buttonLink && item.buttonText && (
                   <Button
                     onClick={() => window.open(item.buttonLink, "_blank")}
-                    className="bg-ieee-blue hover:bg-ieee-blue-75 text-white font-semibold w-fit px-6 py-2 rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.3)] cursor-pointer items-baseline"
+                    className="bg-ieee-darkblue hover:bg-ieee-blue-75 hover:text- text-white font-semibold w-fit px-6 py-8 rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.3)] cursor-pointer"
                   >
                     {item.buttonText}
                   </Button>

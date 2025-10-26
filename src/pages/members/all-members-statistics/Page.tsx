@@ -1,4 +1,4 @@
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 import MembersTable from "./Table";
 import Graph from "./Graph";
 

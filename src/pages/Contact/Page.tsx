@@ -1,4 +1,4 @@
-import Wave from '@/components/Wave';
+import Wave from '@/components/waave';
 import All_links from './AllLinks';
 import ReachUs from './ReachUs';
 import FollowUs from './FollowUs';
