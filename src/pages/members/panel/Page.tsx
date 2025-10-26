@@ -9,38 +9,38 @@ const Panel = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [selectedYear, setSelectedYear] = useState(year || "");
+  const [selectedYear, setSelectedYear] = useState(year || "current");
   const [baseName, setBaseName] = useState<string>("");
 
-  // ✅ Detect which base path the user is on (if panel page grows in the future)
+  // ✅ Detect which base path the user is on
   useEffect(() => {
     const path = location.pathname.toLowerCase();
     if (path.includes("panel")) setBaseName("panel");
     else setBaseName("");
   }, [location.pathname]);
 
-  // ✅ Fetch the list of all available committees
+  // ✅ Fetch list of available committees
   const { data: listData, loading: listLoading, error: listError } =
     useFetchDataJSON<any>({
       path: `pages/members/panel/commitee.json`,
     });
 
-  // ✅ Fetch the actual panel data for the selected year
+  // ✅ Fetch actual panel data for the selected year
   const { data: panelData, loading: panelLoading, error: panelError } =
     useFetchDataJSON<any>({
       path: `pages/members/panel/data.json`,
-      // pages/members/${baseName}/data/${selectedYear}.json
+      // In the future you can switch this to pages/members/${baseName}/data/${selectedYear}.json if needed
     });
 
-  // ✅ Update selectedYear when URL param changes
+  // ✅ Keep state synced with URL
   useEffect(() => {
-    if (year) setSelectedYear(year);
+    setSelectedYear(year || "current");
   }, [year]);
 
-  // ✅ When year changes, update both state and URL
+  // ✅ Handle navigation for year changes
   const handleYearChange = (newYear: string) => {
     setSelectedYear(newYear);
-    navigate(`/panel/${newYear}`);
+    navigate(newYear === "current" ? `/panels` : `/panel/${newYear}`);
   };
 
   // ✅ Handle loading/error states
@@ -54,21 +54,19 @@ const Panel = () => {
     );
   if (!listData || !panelData) return null;
 
-  // ✅ committees.json now only contains names
   const committees = listData;
 
   return (
     <>
       <Wave title="Executive Panel of IEEE NSU SB" />
 
-      {/* Year selector */}
+      {/* Year selector for desktop */}
       <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
         {committees.map((item: any) => {
-          // convert name into ID slug
-          const id =
-            item.name.toLowerCase().includes("current")
-              ? ""
-              : item.name.replace("Executive Committee ", "");
+          const id = item.name.toLowerCase().includes("current")
+            ? "current"
+            : item.name.replace("Executive Committee ", "");
+
           return (
             <button
               key={id}
@@ -94,10 +92,10 @@ const Panel = () => {
           className="px-4 py-2 border rounded-md"
         >
           {committees.map((item: any) => {
-            const id =
-              item.name.toLowerCase().includes("current")
-                ? "current"
-                : item.name.replace("Executive Committee ", "");
+            const id = item.name.toLowerCase().includes("current")
+              ? "current"
+              : item.name.replace("Executive Committee ", "");
+
             return (
               <option key={id} value={id}>
                 {item.name}
@@ -116,10 +114,7 @@ const Panel = () => {
         sectionTitle="Chapter & Affinity Group Faculty Advisors"
         members={panelData.SCAG || []}
       />
-      <PanelCard
-        sectionTitle="Executive Body"
-        members={panelData.Excom || []}
-      />
+      <PanelCard sectionTitle="Executive Body" members={panelData.Excom || []} />
     </>
   );
 };

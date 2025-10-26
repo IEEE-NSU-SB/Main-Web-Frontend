@@ -1,130 +1,20 @@
-{
-    "Website Development": [
-        {
-            "id": "1",
-            "name": "Saif Ahmed",
-            "position": "Faculty Advisor, IEEE NSU PES SBC",
-            "image": "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
-            "linkedin": "https://linkedin.com/in/alicejohnson",
-            "email": "alice@example.com",
-            "profileLink": "/member/alice"
-        },
-        {
-            "id": "2",
-            "name": "Dr. Lamia Iftekhar",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image11.png",
-            "profileLink": "/member/alice"
-        },
-        {
-            "id": "3",
-            "name": "Omar-Ibne Shahid",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image13.jpeg",
-            "linkedin": "https://linkedin.com/in/alicejohnson",
-            "profileLink": "/member/alice"
-        },
-        {
-            "id": "4",
-            "name": "Dr. Riasat Khan",
-            "position": "Faculty Advisor, IEEE NSU IAS SBC",
-            "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image17.jpeg",
-            "linkedin": "https://linkedin.com/in/alicejohnson",
-            "facebook": "https://facebook.com/alicejohnson",
-            "email": "alice@example.com",
-            "profileLink": "/member/alice"
-        }
-    ],
-    "Promotions": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Media": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Content Writing and Publications": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Membership Development": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Public Relation (PR)": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Event and Management": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Finance and Corporate": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Logistics and Operations": [
-        {
-            "id": "1",
-            "name": "Jane Doe",
-            "position": "Faculty Advisor, IEEE NSU RAS SBC",
-            "image": "/images/default_profile_picture.png",
-            "linkedin": "https://linkedin.com/in/janedoe",
-            "profileLink": "/member/jane"
-        }
-    ],
-    "Graphics": [
-        {
-            "id": "1",
-            "name": "Md Nafiur Rahman",
-            "position": "Chair",
-            "image": "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg",
-            "linkedin": "https://linkedin.com/in/alicejohnson",
-            "facebook": "https://facebook.com/alicejohnson",
-            "email": "alice@example.com",
-            "profileLink": "/member/alice"
-        }
-    ]
-}
+[
+  {
+    "id": "1",
+    "name": "Saif Ahmed",
+    "position": "Faculty Advisor, IEEE NSU PES SBC",
+    "image": "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
+    "linkedin": "https://linkedin.com/in/alicejohnson",
+    "email": "alice@example.com",
+    "profileLink": "/member/alice",
+    "team": "PES"
+  },
+  {
+    "id": "2",
+    "name": "Dr. Lamia Iftekhar",
+    "position": "Faculty Advisor, IEEE NSU RAS SBC",
+    "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image11.png",
+    "profileLink": "/member/alice",
+    "team": "RAS"
+  }
+]
