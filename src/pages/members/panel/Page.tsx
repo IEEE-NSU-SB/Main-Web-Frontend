@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 
 const Panel = () => {
   // Fetch JSON
