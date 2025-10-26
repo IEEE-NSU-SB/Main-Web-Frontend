@@ -1,11 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/skeeleton";
-import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
+import { useFetchDataJSON } from "@/hooks/fetchdata";
+
+
+interface FeaturedEvent {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+}
+
+interface FeaturedEventsCarouselProps {
+  events: FeaturedEvent[];
+  color?: string;
+}
 
 interface EventImage {
   id: number;
@@ -14,56 +28,56 @@ interface EventImage {
   link: string;
 }
 
-const EventsCarousel: React.FC = () => {
+const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
+  events,
+}) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
+  const location = useLocation();
 
-  const { loading, data, error, refetch } = useFetchDataAPI({
-    apiUrl: "main_website/get_featured_events/1/",
+  // ✅ Use fetchDataJSON and point path relative to src
+  const { loading, data, error, refetch } = useFetchDataJSON({
+    path: "pages/society-and-ag/data/Events.json",
   });
 
   const images: EventImage[] =
-    data?.map((event: any, idx: number) => ({
-      id: idx,
+    events?.map((event: any) => ({
+      id: event.id,
+      alt: event.name,
       image: event.image,
-      alt: event.alt,
       link: `/event_details/${event.id}`,
     })) ?? [];
 
-  // Duplicate images for seamless loop
   const loopImages = [...images, ...images];
 
   useEffect(() => {
     if (!scrollRef.current) return;
     const firstCard = scrollRef.current.querySelector("div > div");
-    if (firstCard) {
-      setCardWidth((firstCard as HTMLElement).offsetWidth);
-    }
+    if (firstCard) setCardWidth((firstCard as HTMLElement).offsetWidth);
   }, [data]);
 
-  // Continuous auto-scroll
   useEffect(() => {
     if (!scrollRef.current || images.length === 0) return;
 
     const container = scrollRef.current;
-    const scrollSpeed = 0.8; // adjust speed (px/frame)
+    const scrollSpeed = 0.8;
 
     const scroll = () => {
       container.scrollLeft += scrollSpeed;
-
-      // reset to half point (start again seamlessly)
-      if (container.scrollLeft >= container.scrollWidth / 2) {
+      if (container.scrollLeft >= container.scrollWidth / 2)
         container.scrollLeft = 0;
-      }
-
       animationRef.current = requestAnimationFrame(scroll);
     };
 
     animationRef.current = requestAnimationFrame(scroll);
 
+    // ✅ Proper cleanup function
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null; // reset
+      }
     };
   }, [images, cardWidth]);
 
@@ -117,4 +131,4 @@ const EventsCarousel: React.FC = () => {
   );
 };
 
-export default EventsCarousel;
+export default FeaturedEventsCarousel;

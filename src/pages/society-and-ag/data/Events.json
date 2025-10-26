@@ -1,5 +1,4 @@
 {
-  "color": "#602569",
   "featured_events": [
     {
       "id": 1,
@@ -7,8 +6,7 @@
       "description": "Hands-on workshop on building autonomous robots and automation systems using Arduino and sensors. Participants learned fundamental robotics design principles and practical implementation.",
       "image": "src/assets/dummy/image1.png",
       "date": "2025-10-15",
-      "category": "Technical",
-      "color": "#602569"
+      "category": "Technical"
     },
     {
       "id": 6,
@@ -16,8 +14,7 @@
       "description": "A fun, competitive event where participants design and build autonomous line-following robots to test their precision and speed.",
       "image": "src/assets/dummy/image1.png",
       "date": "2025-06-18",
-      "category": "Non Technical",
-      "color": "#602569"
+      "category": "Non Technical"
     }
   ],
   "mega_events": [
@@ -27,8 +24,7 @@
       "description": "A nationwide robotics competition hosted by IEEE NSU RAS SBC, featuring teams from universities across Bangladesh showcasing advanced autonomous robots.",
       "image": "src/assets/dummy/image1.png",
       "group_name": "ras",
-      "date": "2025-12-10",
-      "color": "#602569"
+      "date": "2025-12-10"
     }
   ]
 }

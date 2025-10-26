@@ -50,7 +50,7 @@ const MegaEventsCard: React.FC<MegaEventsCardProps> = ({
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                 <div className="text-white text-center">
                   <h3 className="text-lg font-semibold mb-2">{event.title}</h3>
-                  <p className="text-sm line-clamp-3">{event.description}</p>
+                  <p className="text-sm line-clamp-3" dangerouslySetInnerHTML={{ __html: event.description, }}/>
                 </div>
               </div>
             </div>
