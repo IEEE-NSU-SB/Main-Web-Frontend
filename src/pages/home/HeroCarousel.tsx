@@ -5,6 +5,7 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/button";
 import SplitText from "@/components/ui/SplitText";
+import FadeIn from "@/components/ui/FadeIn";
 
 interface MediaItem {
   src: string;
@@ -89,35 +90,37 @@ const HeroCarousel = ({
     const videoElement = videoRefs.current[currentIndex];
     if (videoElement && isPlaying) {
       videoElement.currentTime = 0;
-      videoElement.play().catch((err) => console.error("Video play error:", err));
+      videoElement
+        .play()
+        .catch((err) => console.error("Video play error:", err));
     }
   }, [currentIndex, isPlaying, mediaType]);
 
   // Loading / Error / Empty
   if (loading)
     return (
-      <div className="relative w-full h-[100vh] flex items-center justify-center bg-ieee-black mt-[-72px]">
+      <div className="relative w-full h-screen flex items-center justify-center bg-ieee-black mt-[-72px]">
         <Skeleton className="w-full h-full" />
       </div>
     );
 
   if (error)
     return (
-      <div className="relative w-full h-[100vh] flex items-center justify-center bg-ieee-black mt-[-72px]">
+      <div className="relative w-full h-screen flex items-center justify-center bg-ieee-black mt-[-72px]">
         <ErrorMessage message="Failed to load hero media" onRetry={refetch} />
       </div>
     );
 
   if (!media.length)
     return (
-      <div className="relative w-full h-[100vh] flex items-center justify-center bg-ieee-black mt-[-72px]">
-        <p className="text-ieee-white text-xl">No media available</p>
+      <div className="relative w-full h-screen flex items-center justify-center bg-ieee-black mt-[-72px]">
+        <p className="text-ieee-white text-[20px]">No media available</p>
       </div>
     );
 
   // --- Rendering ---
   return (
-    <div className="relative w-full h-[100vh] overflow-hidden bg-ieee-black mt-[-72px]">
+    <div className="relative w-full h-screen overflow-hidden bg-ieee-black mt-[-72px]">
       {mediaType === "video" ? (
         // Video Mode
         media.map((item, index) => (
@@ -204,12 +207,38 @@ const HeroCarousel = ({
                 )}
 
                 {item.buttonLink && item.buttonText && (
-                  <Button
-                    onClick={() => window.open(item.buttonLink, "_blank")}
-                    className="bg-ieee-darkblue hover:bg-ieee-blue-75 hover:text- text-white font-semibold w-fit px-6 py-8 rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.3)] cursor-pointer"
-                  >
-                    {item.buttonText}
-                  </Button>
+                  <FadeIn xIndex={80} yIndex={0} delay={1} duration={1.2}>
+                    <div className="flex items-start">
+                      <Button
+                        onClick={() => window.open(item.buttonLink, "_blank")}
+                        className="
+                    relative
+                    overflow-hidden
+                    bg-linear-to-r from-ieee-darkblue-75 via-ieee-blue to-ieee-darkblue
+                    text-white
+                    w-fit px-10 py-6 text-[20px]
+                    rounded-full
+                    shadow-2xl
+                    transform transition-all duration-300
+                    group cursor-pointer border-2 border-ieee-darkblue hover:border-white
+  "
+                      >
+                        {/* Animated overlay */}
+                        <span
+                          className="
+                      absolute inset-0 bg-white/20
+                      -translate-x-full rotate-45 group-hover:translate-x-[300px]
+                      transition-transform duration-1500
+                      "
+                        ></span>
+
+                        {/* Button text with subtle movement */}
+                        <span className="relative z-10 transition-all duration-300">
+                          {item.buttonText}
+                        </span>
+                      </Button>
+                    </div>
+                  </FadeIn>
                 )}
               </div>
             </div>
