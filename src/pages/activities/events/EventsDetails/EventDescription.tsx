@@ -1,4 +1,4 @@
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
@@ -16,7 +16,7 @@ const EventDescription = () => {
 
     return (
         <FadeIn>
-            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] my-6 md:mt-6 md:mb-20">
+            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] mb-10">
                 {loading ? (
                     <div className="space-y-4">
                         <Skeleton className="h-30 w-full" />
@@ -26,7 +26,7 @@ const EventDescription = () => {
                 ) : (
                     data && data.length > 0 && (
                         <div className="bg-white">
-                            <div className="text-[18px] text-justify">
+                            <div className="text-[16px] text-justify text-ieee-black-75">
                                 {data[0].description}
                             </div>
                         </div>

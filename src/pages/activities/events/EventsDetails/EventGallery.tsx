@@ -1,4 +1,4 @@
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
@@ -27,18 +27,17 @@ const EventGallery = () => {
                     <ErrorMessage message={"Failed to load event gallery"} onRetry={refetch} />
                 ) : (
                     data && data.length > 0 && data[0].gallary_images.length > 0 && (
-                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">Event Gallery</h2>
+                        <div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {data[0].gallary_images.map((image, index) => (
                                     <div 
                                         key={index} 
-                                        className="relative overflow-hidden rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                                        className="relative overflow-hidden rounded-sm border-2 border-ieee-white hover:shadow-lg transition-shadow duration-300 cursor-pointer"
                                     >
                                         <img
                                             src={image}
                                             alt={`Event gallery image ${index + 1}`}
-                                            className="w-full h-auto object-cover"
+                                            className="w-full h-auto object-cover hover:scale-105 duration-300 transition-all"
                                         />
                                     </div>
                                 ))}

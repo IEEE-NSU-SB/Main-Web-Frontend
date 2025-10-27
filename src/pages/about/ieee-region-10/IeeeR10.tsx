@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ExternalLink } from "lucide-react";

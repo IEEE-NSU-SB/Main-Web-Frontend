@@ -1,4 +1,4 @@
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
@@ -39,31 +39,29 @@ const BannerDetails = () => {
         ) : eventData ? (
           <div className="space-y-6">
             {/* Event Banner Image */}
-            <div className="relative overflow-hidden rounded-sm">
+            <div className="relative overflow-hidden ">
               <div className="w-full flex justify-center">
-                <div className="relative w-164">
+                <div className="relative w-200">
                   <img
                     src={eventData.image}
                     alt={eventData.title}
-                    className="w-full h-full object-cover rounded shadow-md z-2 relative scale-90 "
+                    className="w-full h-full object-cover rounded-md shadow-md z-2 relative"
                   />
-                  {/* Blurred background */}
-                  <div
-                    className="absolute left-[-200px] inset-0 bg-cover bg-center blur-lg opacity-90 rounded-md border-transparent w-300 max-sm:w-0"
-                    style={{ backgroundImage: `url(${eventData.image})` }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-t from-ieee-white to-transparent"></div>
-                  </div>
                 </div>
               </div>
             </div>
 
             {/* Event Details Section */}
             <div className="bg-white rounded-sm">
-              {/* Date */}
-              <div className="flex items-center gap-3 mb-4">
-                <Calendar className="w-5 h-5 text-[#00629B]" />
-                <p className="text-sm uppercase tracking-wider text-[#00629B] font-semibold">
+              {/* Title */}
+              <h1 className="text-3xl shine-text md:text-4xl font-bold mb-6 uppercase leading-tight">
+                {eventData.title}
+              </h1>
+
+              <div className="flex items-center gap-3 mb-4 text-ieee-black-50">
+                {/* Date */}
+                <Calendar className="w-5 h-5 text-ieee-darkorange-75" />
+                <p className="text-xs uppercase tracking-wider font-semibold">
                   {new Date(eventData.date).toLocaleDateString("en-US", {
                     weekday: "long",
                     year: "numeric",
@@ -73,18 +71,13 @@ const BannerDetails = () => {
                 </p>
               </div>
 
-              {/* Title */}
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 uppercase leading-tight">
-                {eventData.title}
-              </h1>
-
               {/* Category */}
               <div className="flex items-center gap-3 mb-4">
-                <Tags className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                <Tags className="w-5 h-5 text-ieee-darkorange-75 flex-shrink-0" />
                 <div className="flex items-center">
-                  <p className="text-xs uppercase tracking-wider text-gray-500">
+                  <p className="text-xs uppercase tracking-wider text-ieee-black-50 font-semibold">
                     Category:{" "}
-                    <span className="normal-case text-base font-medium text-[#E87722]">
+                    <span className="normal-case text-base font-medium text-ieee-darkorange-75">
                       {eventData.category}
                     </span>
                   </p>
@@ -93,11 +86,11 @@ const BannerDetails = () => {
 
               {/* Organized By */}
               <div className="flex items-center gap-3 mb-4">
-                <Users className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                <Users className="w-5 h-5 text-ieee-darkorange-75 flex-shrink-0" />
                 <div className="flex items-center gap-2">
-                  <p className="text-xs uppercase tracking-wider text-gray-500">
+                  <p className="text-xs uppercase tracking-wider text-ieee-black-50 font-semibold">
                     Event Organised By:{" "}
-                    <span className="normal-case text-base font-medium text-[#E87722]">
+                    <span className="normal-case text-base font-medium text-ieee-darkorange-75">
                       {eventData.organized_by}
                     </span>
                   </p>
@@ -106,11 +99,11 @@ const BannerDetails = () => {
 
               {/* Collaboration */}
               <div className="flex items-center gap-3">
-                <Building2 className="w-5 h-5 text-[#E87722] flex-shrink-0" />
+                <Building2 className="w-5 h-5 text-ieee-darkorange-75 flex-shrink-0" />
                 <div className="flex items-center gap-2">
-                  <p className="text-xs uppercase tracking-wider text-gray-500">
+                  <p className="text-xs uppercase tracking-wider text-ieee-black-50 font-semibold">
                     In Collaboration With:{" "}
-                    <span className="normal-case text-base font-medium text-[#E87722]">
+                    <span className="normal-case text-base font-medium text-ieee-darkorange-75">
                       {eventData.collaboration}
                     </span>
                   </p>

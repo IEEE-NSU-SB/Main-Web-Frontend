@@ -2,7 +2,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import { useEffect, useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "react-router-dom";

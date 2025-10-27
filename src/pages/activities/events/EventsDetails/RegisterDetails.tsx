@@ -1,5 +1,5 @@
 
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
@@ -37,13 +37,13 @@ const RegisterDetails = () => {
                 ) : (
                     data && data.length > 0 && (
                         <div className="max-w-sm mx-auto">
-                            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                            <div className="bg-white rounded-md shadow-sm border border-gray-200 overflow-hidden">
                                 {/* Event Details Section */}
-                                <div className="p-6 space-y-4">
+                                <div className="p-3 space-y-4">
                                     {/* Start Time */}
-                                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
-                                        <div className="mt-0.5">
-                                            <Calendar className="w-5 h-5 text-[#E87722]" />
+                                    <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
+                                        <div className="mt-2">
+                                            <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">Start Time</h3>
@@ -52,9 +52,9 @@ const RegisterDetails = () => {
                                     </div>
 
                                     {/* End Time */}
-                                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
-                                        <div className="mt-0.5">
-                                            <Calendar className="w-5 h-5 text-[#E87722]" />
+                                    <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
+                                        <div className="mt-2">
+                                            <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">End Time</h3>
@@ -63,9 +63,9 @@ const RegisterDetails = () => {
                                     </div>
 
                                     {/* Cost */}
-                                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
-                                        <div className="mt-0.5">
-                                            <DollarSign className="w-5 h-5 text-[#E87722]" />
+                                    <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
+                                        <div className="mt-2">
+                                            <DollarSign className="w-7 h-7 text-ieee-darkblue/90" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">COST</h3>
@@ -74,15 +74,15 @@ const RegisterDetails = () => {
                                     </div>
 
                                     {/* More Info */}
-                                    <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
-                                        <div className="mt-0.5">
-                                            <Info className="w-5 h-5 text-[#E87722]" />
+                                    <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
+                                        <div className="mt-2">
+                                            <Info className="w-7 h-7 text-ieee-darkblue/90" />
                                         </div>
                                         <div>
                                             <h3 className="text-sm font-semibold text-gray-700 mb-1">MORE INFO</h3>
                                             <a
                                                 href={data[0].read_more_link}
-                                                className="text-sm text-blue-600 hover:text-blue-700 hover:underline"
+                                                className="text-sm text-ieee-blue-75 hover:text-ieee-blue hover:underline"
                                             >
                                                 Read More
                                             </a>
@@ -91,16 +91,18 @@ const RegisterDetails = () => {
                                 </div>
 
                                 {/* Register Button */}
-                                <div className="px-6 pb-6">
-                                    <button className=" cursor-pointer w-full bg-[#002855] hover:bg-[#003366] text-white font-bold py-4 px-6 rounded transition-colors duration-200">
+                                <div className="px-3 pb-6">
+                                    <button className="border-1 border-ieee-darkblue cursor-pointer w-full bg-[#002855] hover:bg-ieee-white hover:text-ieee-darkblue text-white font-bold py-4 px-6 rounded transition-colors duration-200">
                                         REGISTER
                                     </button>
 
                                 </div>
 
+
+                            </div>
                                 {/* Share Section */}
-                                <div className="border-t border-gray-200 p-6">
-                                    <h3 className="text-center text-sm font-bold text-blue-900 mb-4">
+                                <div className="p-6 mt-6 rounded-md bg-ieee-white border border-gray-200 shadow-sm">
+                                    <h3 className="text-center text-md font-bold text-ieee-blue mb-4">
                                         SHARE THIS EVENT
                                     </h3>
 
@@ -156,8 +158,6 @@ const RegisterDetails = () => {
                                         </a>
                                     </div>
                                 </div>
-
-                            </div>
                         </div>
                     )
                 )}

@@ -7,7 +7,7 @@ import iconEvents from "./assets/img/events.png";
 import iconAchievements from "./assets/img/achievements.png";
 
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
+import Skeleton from "@/components/skeeleton";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 
 type Perk = {
