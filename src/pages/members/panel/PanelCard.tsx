@@ -40,6 +40,13 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
                 src={member.image || "/images/default_profile_picture.png"}
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
+                onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.onerror = null; // prevent loop
+                        target.src = `${
+                          import.meta.env.VITE_API_URL
+                        }/static/images/default_profile_picture.png`;
+                      }}
               />
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>

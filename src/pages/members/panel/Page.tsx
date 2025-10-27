@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
 import Wave from "@/components/Wave";
 
@@ -12,7 +12,7 @@ const Panel = () => {
   const { year } = useParams(); // e.g., /panel/:year
   const navigate = useNavigate();
 
-  const [selectedYear, setSelectedYear] = useState(year || "current");
+  const [selectedYear, setSelectedYear] = useState(year || "");
 
   // Fetch available years from JSON
   const { data: yearList, loading: listLoading, error: listError } =
@@ -22,9 +22,9 @@ const Panel = () => {
 
   // Fetch panel data for the selected year
   const { data: panelData, loading: panelLoading, error: panelError } =
-    useFetchDataJSON<any>({
-      // path: `api/panel/${selectedYear}`, // backend endpoint
-      path: `pages/members/panel/data.json`, // backend endpoint
+    useFetchDataAPI<any>({
+      apiUrl: selectedYear ? `main_website/get_panel_executives/${selectedYear}`
+                          : 'main_website/get_panel_executives/',
     });
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Panel = () => {
 
   // Map JSON to year strings, prepend Current Executive Committee
   const yearsWithCurrent = [
-    { year: "current", display: "Current Executive Committee" },
+    { year: "", display: "Current Executive Committee" },
     ...yearList.map((item: any) => ({ year: item.year, display: item.year })),
   ];
 
@@ -96,9 +96,12 @@ const Panel = () => {
       />
       <PanelCard
         sectionTitle="Chapter & Affinity Group Faculty Advisors"
-        members={panelData.SCAG || []}
+        members={panelData.sc_ag_faculty_advisors || []}
       />
-      <PanelCard sectionTitle="Executive Body" members={panelData.Excom || []} />
+      <PanelCard sectionTitle="Mentors" members={panelData.mentors || []} />
+      <PanelCard sectionTitle="Executive Body" members={panelData.excom || []} />
+
+      <PanelCard sectionTitle="Chapter & Affinity Group Chairs" members={panelData.sc_ag_chairs || []} />
     </>
   );
 };
