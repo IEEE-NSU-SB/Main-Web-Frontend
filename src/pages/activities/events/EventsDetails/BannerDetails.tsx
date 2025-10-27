@@ -45,7 +45,7 @@ const BannerDetails = () => {
                   <img
                     src={eventData.image}
                     alt={eventData.title}
-                    className="w-full h-full object-cover rounded shadow-md z-2 relative scale-95 "
+                    className="w-full h-full object-cover rounded shadow-md z-2 relative scale-90 "
                   />
                   {/* Blurred background */}
                   <div

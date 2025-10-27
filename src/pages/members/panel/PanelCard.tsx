@@ -23,13 +23,13 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <SectionHeading title={sectionTitle} />
+        <SectionHeading title={sectionTitle} align="center"/>
 
-        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
+        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
               key={member.id || "#"}
-              href={member.id ? member.id.toString() : "#"}
+              href={member.id ? `/member_profile/${member.id}` : "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden

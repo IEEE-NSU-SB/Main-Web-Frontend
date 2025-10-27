@@ -23,9 +23,9 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <SectionHeading title={sectionTitle}/>
+        <SectionHeading title={sectionTitle} align="center"/>
 
-        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
+        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
               key={member.id || "#"}

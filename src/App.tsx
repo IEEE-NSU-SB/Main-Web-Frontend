@@ -83,7 +83,7 @@ const App = () => {
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/team" element={<AllMembers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/member_profile/:id" element={<Profile />} />
 
           {/* About */}
           <Route path="/about/ieee-region-10" element={<IEEER10 />} />

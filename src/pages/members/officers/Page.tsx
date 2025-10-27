@@ -104,12 +104,12 @@ const Officer = () => {
           <button
             key={team}
             onClick={() => handleTeamChange(team)}
-            className={`px-4 py-2 rounded-md font-medium transition-colors duration-300 cursor-pointer
-            ${
-              selectedTeam === team
-                ? "bg-ieee-yellow text-black"
-                : "bg-ieee-white border border-gray-300 text-gray-700"
-            }`}
+            className={`px-3 py-2 rounded-xl font-medium transition-colors duration-300 cursor-pointer border border-ieee-darkblue-90
+              ${
+                selectedTeam === team
+                  ? "bg-ieee-darkblue-90 text-ieee-white"
+                  : "bg-ieee-white text-ieee-darkblue-90 hover:text-ieee-white hover:bg-ieee-darkblue-75"
+              }`}
           >
             {team}
           </button>

@@ -57,16 +57,16 @@ const Panel = () => {
       <Wave title="Executive Panel of IEEE NSU SB" />
 
       {/* Desktop buttons */}
-      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
+      <div className="max-w-[1080px] m-auto hidden md:flex flex-wrap justify-center my-8 gap-4">
         {yearsWithCurrent.map((item: any) => (
           <button
             key={item.year}
             onClick={() => handleYearChange(item.year)}
-            className={`px-4 py-2 rounded-md font-medium transition-colors duration-300 cursor-pointer
+            className={`px-3 py-2 rounded-xl font-medium transition-colors duration-300 cursor-pointer border border-ieee-darkblue-90
               ${
                 selectedYear === item.year
-                  ? "bg-ieee-yellow text-black"
-                  : "bg-ieee-white border border-gray-300 text-gray-700"
+                  ? "bg-ieee-darkblue-90 text-ieee-white"
+                  : "bg-ieee-white text-ieee-darkblue-90 hover:text-ieee-white hover:bg-ieee-darkblue-75"
               }`}
           >
             {item.display}
