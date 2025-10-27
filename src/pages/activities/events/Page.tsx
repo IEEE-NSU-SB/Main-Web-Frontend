@@ -1,4 +1,4 @@
-import Wave from '@/components/waave'
+import Wave from '@/components/Wave'
 import UpcomingEvent from './UpcomingEvent'
 import LollipopChart from './EventGraph1'
 import MegaEvents from '@/components/MegaEventCard'

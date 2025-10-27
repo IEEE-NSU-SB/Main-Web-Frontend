@@ -233,7 +233,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
 
   const renderVolunteers = (volunteers: Member[]) => (
     <div className="max-w-[1080px] mt-8 ">
-      <SectionHeading title="Our Volunteers" widthClass="w-58" />
+      <SectionHeading title="Our Volunteers" />
       <div className="flex flex-wrap gap-11 justify-center mt-12">
         {volunteers.map((vol, idx) => (
           <div

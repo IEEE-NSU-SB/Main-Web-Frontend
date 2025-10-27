@@ -1,5 +1,5 @@
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import ErrorMessage from "../../components/ui/ErrorMessage";
@@ -11,7 +11,7 @@ const VisionSection = () => {
 
   return (
     <FadeIn>
-      <SectionHeading title="Our Vision" widthClass="w-42" />
+      <SectionHeading title="Our Vision"/>
       <section className="max-w-[1080px] mx-auto py-2 pb-16 px-5 sm:px-12 lg:px-5">
         {loading ? (
           <div className="space-y-2">

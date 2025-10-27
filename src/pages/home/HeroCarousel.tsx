@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/button";
@@ -207,7 +207,7 @@ const HeroCarousel = ({
                 )}
 
                 {item.buttonLink && item.buttonText && (
-                  <FadeIn xIndex={80} yIndex={0} delay={1} duration={1.2}>
+                  <FadeIn xIndex={80} yIndex={0} delay={.6} duration={1.2}>
                     <div className="flex items-start">
                       <Button
                         onClick={() => window.open(item.buttonLink, "_blank")}
@@ -216,7 +216,7 @@ const HeroCarousel = ({
                     overflow-hidden
                     bg-linear-to-r from-ieee-darkblue-75 via-ieee-blue to-ieee-darkblue
                     text-white
-                    w-fit px-10 py-6 text-[20px]
+                    w-fit md:px-10 md:py-6 text-[16px]
                     rounded-full
                     shadow-2xl
                     transform transition-all duration-300

@@ -3,7 +3,7 @@ import BannerDetails from "./BannerDetails";
 
 const TopSection = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[67%_33%] gap-8">
+    <div className="grid grid-cols-1">
       <div>
         <BannerDetails />
       </div>

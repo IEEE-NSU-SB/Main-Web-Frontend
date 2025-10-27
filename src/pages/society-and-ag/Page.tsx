@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
 import ScAgWave from "./ScAgWave";

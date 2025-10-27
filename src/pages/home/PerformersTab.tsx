@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -53,7 +53,7 @@ export default function TopPerformers() {
 
   return (
     <>
-      <SectionHeading title="Our Stars & Champions" widthClass="w-92" />
+      <SectionHeading title="Our Stars & Champions"/>
       <div className="max-w-[1080px] mx-auto p-5">
         {/* Tabs */}
         <FadeIn>

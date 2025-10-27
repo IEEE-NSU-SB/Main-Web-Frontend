@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
-import Wave from "@/components/waave";
+import Wave from "@/components/Wave";
 
 interface PanelYears {
   year: string;
@@ -55,11 +55,6 @@ const Panel = () => {
   return (
     <>
       <Wave title="Executive Panel of IEEE NSU SB" />
-
-      {/* Year selector label */}
-      <div className="text-center mb-4 font-semibold text-lg uppercase">
-        Executive Committee
-      </div>
 
       {/* Desktop buttons */}
       <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">

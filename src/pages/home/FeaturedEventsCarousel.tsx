@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 
@@ -84,7 +84,7 @@ const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
   return (
     <div className="w-full py-4 relative">
       {location.pathname === "/" && (
-        <SectionHeading title="Featured Events" widthClass="w-58" />
+        <SectionHeading title="Featured Events"/>
       )}
       <FadeIn>
         {error && (

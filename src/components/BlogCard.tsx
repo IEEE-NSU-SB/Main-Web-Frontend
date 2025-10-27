@@ -4,7 +4,7 @@ import FadeIn from "./ui/FadeIn";
 import { Calendar, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "./skeeleton";
+import Skeleton from "./Skeleton";
 import ErrorMessage from "./ui/ErrorMessage";
 import { Link } from "react-router-dom";
 
@@ -69,7 +69,7 @@ const BlogCard: React.FC = () => {
   return (
     <div className="w-full py-4">
       {location.pathname === "/" && (
-        <SectionHeading title="Recent Blogs" widthClass="w-55" />
+        <SectionHeading title="Recent Blogs"/>
       )}
 
       {location.pathname !== "/" && (
@@ -119,7 +119,7 @@ const BlogCard: React.FC = () => {
       {loading && (
         <div className="flex flex-wrap justify-center items-start gap-7 p-6 max-sm:px-5">
           {[...Array(3)].map((_, idx) => (
-            <Skeleton key={idx} className="w-80 h-[24rem] rounded-md" />
+            <Skeleton key={idx} className="w-80 h-96 rounded-md" />
           ))}
         </div>
       )}
@@ -137,20 +137,21 @@ const BlogCard: React.FC = () => {
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
-                <div className="max-w-[305px] lg:max-w-[213px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition-all duration-300">
-                  <div className="overflow-hidden h-48 w-full">
-                    <Link to={event.link}>
+                <div className="max-w-110 lg:max-w-[300px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all duration-300">
+                <div className="overflow-hidden">
+
+                    <Link to={event.link} className="w-110 h-48">
                       <img
                         src={event.image}
                         alt={event.title}
-                        className="w-full h-full object-cover transform  transition-transform duration-300 hover:scale-105"
-                      />
+                        className="w-110 h-48 object-cover transform  transition-transform duration-300 hover:scale-105"
+                        />
                     </Link>
+                        </div>
                     {/* Publisher */}
                     {/* <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
                       Branch
                     </span> */}
-                  </div>
                   <div className="p-4 rounded-sm">
                     <div className="flex items-center gap-2 text-sm font-semibold text-ieee-gray mb-1">
                       <Calendar className="w-4 h-4" />
@@ -190,7 +191,7 @@ const BlogCard: React.FC = () => {
       {isLandingPage && (
         <div className="flex justify-center mt-8">
           <Link to="/blogs">
-            <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
+            <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300 mb-5">
               See All Blogs
             </button>
           </Link>

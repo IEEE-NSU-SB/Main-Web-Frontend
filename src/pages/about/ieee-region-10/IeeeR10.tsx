@@ -1,7 +1,7 @@
 import React from "react";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ExternalLink } from "lucide-react";
@@ -71,7 +71,7 @@ const IEEERegion10: React.FC = () => {
           </div>
           <FadeIn xIndex={100} yIndex={0} delay={0.1}>
             <div>
-              <SectionHeading title="IEEE Region 10" widthClass="w-52" />
+              <SectionHeading title="IEEE Region 10"/>
               <p className="text-justify mb-6 pl-5">
                 {data.region10Description}
               </p>
@@ -91,7 +91,7 @@ const IEEERegion10: React.FC = () => {
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
-              <SectionHeading title="Young Professionals" widthClass="w-62" />
+              <SectionHeading title="Young Professionals"/>
               <p className="text-justify mb-6 pl-5">
                 {data.youngProfDescription}
               </p>
@@ -241,7 +241,6 @@ const IEEERegion10: React.FC = () => {
             <div>
               <SectionHeading
                 title="Membership Development"
-                widthClass="w-62"
               />
               <p className="text-justify mb-6 pl-5">
                 {data.MembershipDescription}
@@ -278,7 +277,7 @@ const IEEERegion10: React.FC = () => {
       <section className="w-full bg-[#75787b17] flex justify-center">
         <FadeIn xIndex={-100} yIndex={0}>
           <div className="max-w-[1080px] m-6">
-            <SectionHeading title="Events and Conferences" widthClass="w-62" />
+            <SectionHeading title="Events and Conferences"/>
             <p className="pl-5 text-justify mb-4">
               {data.EventConferenceDetails}
             </p>
@@ -303,7 +302,7 @@ const IEEERegion10: React.FC = () => {
 
       {/* Contact Section */}
       <div className="bg-white flex flex-col justify-baseline max-w-[1080px] m-auto mb-15">
-        <SectionHeading title="Contact IEEE R10" widthClass="w-62" />
+        <SectionHeading title="Contact IEEE R10"/>
         <FadeIn>
           <p className="text-left font-medium mb-6 pl-5">
             For getting in touch with us please go through this site and join

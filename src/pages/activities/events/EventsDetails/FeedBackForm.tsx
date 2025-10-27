@@ -50,7 +50,7 @@ const FeedbackForm = () => {
         <div className="bg-white p-1">
             <div className="">
 
-                <SectionHeading title="Leave a Feedback" widthClass="w-60"></SectionHeading>
+                <SectionHeading title="Leave a Feedback" />
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                     <div>

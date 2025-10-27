@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { ExternalLink } from "lucide-react";
@@ -45,7 +45,7 @@ interface AboutIEEEData {
   qualityLinks: LinkItem[];
   joinUsLink: string;
   asiaPacificLink: string;
-  IeeeComputerOrgLink: string;
+  ieeeComputerOrgLink: string;
   customerServiceNum: string;
   presidents: string;
   founders: string;
@@ -70,7 +70,7 @@ export default function AboutIEEE() {
           className="w-full md:w-1/2"
         />
         <div>
-          <SectionHeading title="About IEEE" widthClass="w-40" />
+          <SectionHeading title="About IEEE"/>
           <p className="text-justify md:pl-5">{data.aboutDetails}</p>
           <div className="mt-4 flex gap-4 md:pl-5">
             <a
@@ -97,7 +97,7 @@ export default function AboutIEEE() {
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
-              <SectionHeading title="Largest Community" widthClass="w-62" />
+              <SectionHeading title="Largest Community"/>
               <p className="text-justify mb-6 pl-5">{data.communityDetails}</p>
               {data.communityLinks.map((link, i) => (
                 <>
@@ -233,7 +233,7 @@ export default function AboutIEEE() {
       {/* Achievements */}
       <div className="max-w-[1080px] m-auto">
         <FadeIn xIndex={-100} yIndex={0}>
-          <SectionHeading title="Achievements" widthClass="w-52" />
+          <SectionHeading title="Achievements"/>
           <p className="text-justify mb-6 md:p-5">{data.achievementsDetails}</p>
           <div className="flex flex-wrap gap-7 justify-center p-5">
             {data.achievementsLinks.map((a, i) => (
@@ -276,7 +276,6 @@ export default function AboutIEEE() {
             <div>
               <SectionHeading
                 title="Innovations and Developments"
-                widthClass="w-62"
               />
               <p className="text-justify mb-6 pl-5">
                 {data.innovationsDevelopmentsDetails}
@@ -319,7 +318,6 @@ export default function AboutIEEE() {
             <div>
               <SectionHeading
                 title="Students and Member Activities"
-                widthClass="w-62"
               />
               <p className="text-justify mb-6 pl-5">
                 {data.innovationsDevelopmentsDetails}
@@ -346,7 +344,7 @@ export default function AboutIEEE() {
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
-              <SectionHeading title="Quality" widthClass="w-62" />
+              <SectionHeading title="Quality"/>
               <p className="text-justify mb-6 pl-5">{data.qualityDetails}</p>
               {data.qualityLinks.map((link, i) => (
                 <>
@@ -395,7 +393,7 @@ export default function AboutIEEE() {
 
       {/* Contact Section */}
       <div className="bg-white flex flex-col justify-baseline max-w-[1080px] m-auto mb-15">
-        <SectionHeading title="Contact IEEE R10" widthClass="w-62" />
+        <SectionHeading title="Contact IEEE R10"/>
         <FadeIn>
           <div className="grid gap-3 pl-5">
             <div className="grid grid-cols-[1fr_2fr]">
@@ -410,10 +408,10 @@ export default function AboutIEEE() {
             <div className="grid grid-cols-[1fr_2fr]">
               <p>IEEE Computer Organization:</p>
               <a
-                href={data.IeeeComputerOrgLink}
+                href={data.ieeeComputerOrgLink}
                 className="link text-[#002855] font-bold hover:text-[#FFC72C]"
               >
-                {data.IeeeComputerOrgLink}
+                {data.ieeeComputerOrgLink}
               </a>
             </div>
             <div className="grid grid-cols-[1fr_2fr]">

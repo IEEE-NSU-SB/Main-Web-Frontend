@@ -3,7 +3,7 @@ import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
 
 import ScaleUp from "@/components/ui/ScaleUp";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 
@@ -88,7 +88,7 @@ const Stats = () => {
   }, []);
 
   const boxClasses =
-    "rounded text-ieee-blue bg-ieee-white backdrop-blur-lg relative z-10 shadow-[2px_2px_4px_theme(colors.ieee-black-25)]";
+    "rounded text-ieee-blue bg-ieee-white/80 backdrop-blur-lg relative z-10 shadow-[2px_2px_4px_theme(colors.ieee-black-25)]";
   const valueClasses = "text-3xl md:text-5xl font-bold mb-2 m-8 odometer";
   const labelClasses = "text-sm md:text-lg font-bold mb-8";
 

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 interface FeaturedEvent {
   id: string;
-  title: string;
+  name: string;
   description: string;
   image: string;
   date: string;
@@ -26,7 +26,6 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
     <FadeIn>
       <SectionHeading
         title="Featured Events"
-        widthClass="w-58"
         titleColor={color}
         underlineColor={color}
       />
@@ -41,7 +40,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               <div className="relative h-[200px] overflow-hidden">
                 <img
                   src={event.image}
-                  alt={event.title}
+                  alt={event.name}
                   className="w-full h-full object-cover transform transition duration-500 hover:scale-105 hover:brightness-90"
                 />
               </div>
@@ -49,7 +48,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
             <div className="p-4 text-white">
               <Link to={event.id}>
                 <h3 className="text-[20px] font-semibold mb-4 line-clamp-1">
-                  {event.title}
+                  {event.name}
                 </h3>
               </Link>
               <h5 className="flex gap-2 text-sm font-semibold mb-2">
@@ -58,7 +57,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               <p className="text-[16px] line-clamp-4 h-24 mb-5" dangerouslySetInnerHTML={{ __html: event.description, }}/>
               <a
                 href="#"
-                className="border border-white bg-white/20 hover:bg-white text-white hover:text-black px-4 py-1 rounded transition-all"
+                className="border border-white  hover:bg-white text-white hover:text-black px-4 py-1 rounded transition-all"
               >
                 Read More
               </a>
@@ -69,7 +68,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
       <div className="text-center flex justify-center my-16">
         <Link to="/events">
           <button
-            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-md "
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px] "
             style={{
               backgroundColor: "white",
               borderColor: color,
