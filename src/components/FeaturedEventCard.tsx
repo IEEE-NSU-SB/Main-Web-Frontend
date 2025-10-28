@@ -36,7 +36,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
             className="w-full md:w-[calc(33.333%-1rem)] bg-white h-[460px] border rounded-md overflow-hidden hover:shadow-lg transition-all"
             style={{ backgroundColor: `${color}E6` }}
           >
-            <Link to={event.id}>
+            <Link to={event.id ? `/events/${event.id}` : "#"}>
               <div className="relative h-[200px] overflow-hidden">
                 <img
                   src={event.image}
@@ -46,7 +46,9 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               </div>
             </Link>
             <div className="p-4 text-white">
-              <Link to={event.id}>
+              <Link
+                to={event.id ? `/events/${event.id}` : "#"}
+              >
                 <h3 className="text-[20px] font-semibold mb-4 line-clamp-1">
                   {event.name}
                 </h3>
@@ -54,9 +56,14 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               <h5 className="flex gap-2 text-sm font-semibold mb-2">
                 <Calendar className="w-4 h-4" /> {event.date}
               </h5>
-              <p className="text-[16px] line-clamp-4 h-24 mb-5" dangerouslySetInnerHTML={{ __html: event.description, }}/>
+              <p
+                className="text-[16px] line-clamp-4 h-24 mb-5"
+                dangerouslySetInnerHTML={{ __html: event.description }}
+              />
               <a
-                href="#"
+                href={event.id ? `/${event.id}` : "#"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white  hover:bg-white text-white hover:text-black px-4 py-1 rounded transition-all"
               >
                 Read More
@@ -74,14 +81,14 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               borderColor: color,
               color: color,
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = `${color}`,
-              e.currentTarget.style.color = `white`)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = `white`,
-              e.currentTarget.style.color = `${color}`)
-            }
+            onMouseEnter={(e) => (
+              (e.currentTarget.style.backgroundColor = `${color}`),
+              (e.currentTarget.style.color = `white`)
+            )}
+            onMouseLeave={(e) => (
+              (e.currentTarget.style.backgroundColor = `white`),
+              (e.currentTarget.style.color = `${color}`)
+            )}
           >
             <Calendar className="w-4 h-4" /> See All Events
           </button>

@@ -24,6 +24,10 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
     comment: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [modalMsg, setModalMsg] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
   const selectRef = useRef<HTMLDivElement>(null);
 
   const satisfactionOptions = [
@@ -32,7 +36,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
     { value: "not-satisfied", label: "Not Satisfied" },
   ];
 
-  // Example feedbacks (you can fetch from API later)
+  // Example feedbacks (can fetch from API)
   const feedbacks: Feedback[] = [
     {
       name: "Aarif Rahman",
@@ -67,7 +71,8 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleSelectOption = (value: string, label: string) => {
@@ -76,32 +81,68 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
     setIsOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Feedback submitted successfully!");
-  };
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // --- Form Submission ---
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validation
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.satisfaction ||
+      !formData.comment
+    ) {
+      setModalMsg("Please fill in all required fields!");
+      setShowModal(true);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/main_website/submit_feedback/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            event_id: eventData.id,
+            ...formData,
+          }),
+        }
+      );
+
+      const data = await res.json();
+      setModalMsg(data?.message || "Feedback submitted successfully!");
+      // Reset form
+      setFormData({ name: "", email: "", satisfaction: "", comment: "" });
+      setSelectedOption("How satisfied were you?");
+    } catch (err: any) {
+      setModalMsg(err.message || "Something went wrong!");
+    } finally {
+      setLoading(false);
+      setShowModal(true);
+    }
+  };
+
   // --- Carousel infinite scroll effect ---
   const carouselRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     let scrollAmount = 0;
-    const scrollSpeed = 1; // pixels per frame
+    const scrollSpeed = 1;
     const container = carouselRef.current;
 
     const scroll = () => {
       if (container) {
         scrollAmount += scrollSpeed;
-        if (scrollAmount >= container.scrollWidth / 2) {
-          scrollAmount = 0;
-        }
+        if (scrollAmount >= container.scrollWidth / 2) scrollAmount = 0;
         container.scrollLeft = scrollAmount;
       }
       requestAnimationFrame(scroll);
@@ -133,9 +174,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
                   <div className="flex flex-row items-center gap-3 mt-4">
                     <div>
                       <p className="font-semibold text-gray-900">{item.name}</p>
-                      <p className="text-sm text-gray-500">
-                        {item.satisfaction}
-                      </p>
+                      <p className="text-sm text-gray-500">{item.satisfaction}</p>
                     </div>
                   </div>
                 </div>
@@ -144,33 +183,30 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
           </div>
         </>
       )}
+
       {/* ---- Feedback Form ---- */}
       <SectionHeading title="Leave a Feedback" />
       <div className="px-4 max-w-[1080px] mx-auto">
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors"
-            />
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors"
+          />
 
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors"
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors"
+          />
 
           {/* Dropdown */}
           <div className="relative" ref={selectRef}>
@@ -179,13 +215,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
               className="w-full px-5 py-4 bg-[#f0f0f0] rounded text-base text-gray-800 cursor-pointer flex justify-between items-center hover:bg-[#e8e8e8] transition-colors"
             >
               <span>{selectedOption}</span>
-              <span
-                className={`transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
-              >
-                ▼
-              </span>
+              <span className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>▼</span>
             </div>
 
             <div
@@ -205,29 +235,41 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
             </div>
           </div>
 
-          {/* Comment */}
-          <div>
-            <textarea
-              name="comment"
-              placeholder="Your comment here...."
-              value={formData.comment}
-              onChange={handleInputChange}
-              rows={6}
-              className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors resize-y min-h-[150px]"
-            ></textarea>
-          </div>
+          <textarea
+            name="comment"
+            placeholder="Your comment here...."
+            value={formData.comment}
+            onChange={handleInputChange}
+            rows={6}
+            className="w-full px-5 py-4 bg-[#f0f0f0] text-base text-gray-800 rounded placeholder-gray-400 focus:outline-none focus:bg-[#e8e8e8] transition-colors resize-y min-h-[150px]"
+          ></textarea>
 
-          {/* Submit */}
           <div className="flex justify-center mb-8">
             <button
               type="submit"
+              disabled={loading}
               className="w-full md:w-auto transition-all duration-300 border-1 border-ieee-darkblue hover:bg-[#002855] hover:text-white text-[#002855] bg-white px-6 py-2 rounded cursor-pointer"
             >
-              SUBMIT
+              {loading ? "Submitting..." : "SUBMIT"}
             </button>
           </div>
         </form>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white rounded-lg p-6 w-80 text-center">
+            <p className="mb-4">{modalMsg}</p>
+            <button
+              className="px-4 py-2 bg-ieee-blue text-white rounded hover:bg-ieee-darkblue"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

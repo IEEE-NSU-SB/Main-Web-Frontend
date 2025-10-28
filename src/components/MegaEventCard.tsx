@@ -1,6 +1,7 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useState } from "react";
+import { Link } from "react-router";
 
 interface MegaEvent {
   id: number;
@@ -40,27 +41,31 @@ const MegaEventsCard: React.FC<MegaEventsCardProps> = ({
             key={idx}
             className="w-full md:w-[calc(50%-1rem)] border-ieee-white border hover:shadow-[4px_4px_10px_var(--color-ieee-black-50)] shadow-[2px_2px_8px_var(--color-ieee-black-50)] rounded-md overflow-hidden"
           >
-            <div className="relative w-full h-[250px] cursor-pointer overflow-hidden group">
-              <img
-                className="w-full h-full object-cover transform transition duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-90"
-                src={event.image || "/src/assets/dummy/placeholder.png"}
-                alt={event.name}
-              />
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                <div className="text-center">
-                  <h3 className="text-white text-lg font-semibold mb-2">
-                    {event.name}
-                  </h3>
-                  <p
-                    className="text-white text-sm line-clamp-3"
-                    style={{
-                      color: "#fff",
-                    }}
-                    dangerouslySetInnerHTML={{ __html: event.description }}
-                  />
+            <Link
+              to={event.id ? `/mega-event/${event.id}` : "#"}
+            >
+              <div className="relative w-full h-[250px] cursor-pointer overflow-hidden group">
+                <img
+                  className="w-full h-full object-cover transform transition duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-90"
+                  src={event.image || "/src/assets/dummy/placeholder.png"}
+                  alt={event.name}
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                  <div className="text-center">
+                    <h3 className="text-white text-lg font-semibold mb-2">
+                      {event.name}
+                    </h3>
+                    <p
+                      className="text-white text-sm line-clamp-3"
+                      style={{
+                        color: "#fff",
+                      }}
+                      dangerouslySetInnerHTML={{ __html: event.description }}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </article>
         ))}
       </div>

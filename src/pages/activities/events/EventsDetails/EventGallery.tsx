@@ -8,7 +8,7 @@ type EventDetailsProps = {
 const EventGallery: React.FC<EventDetailsProps> = ({ eventData }) => {
   return (
     <FadeIn>
-      <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] md:mb-10">
+      <div className="max-w-[1080px] mx-auto px-4 md:mb-10">
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {eventData.images.map((image, index) => (

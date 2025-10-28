@@ -8,10 +8,14 @@ type EventDetailsProps = {
 const EventDescription: React.FC<EventDetailsProps> = ({ eventData }) => {
   return (
     <FadeIn>
-      <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] mb-10">
+      <div className="max-w-[1080px] mx-auto px-5 mb-10">
         <div className="bg-white">
           <div className="text-[16px] text-justify text-ieee-black-75">
-            {eventData.description}
+            <p
+              dangerouslySetInnerHTML={{
+                __html: eventData.description,
+              }}
+            />
           </div>
         </div>
       </div>
