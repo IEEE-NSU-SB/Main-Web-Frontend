@@ -1,5 +1,5 @@
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "../../../hooks/fetchdata";

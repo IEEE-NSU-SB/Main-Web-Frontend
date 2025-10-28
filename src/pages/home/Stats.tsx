@@ -3,7 +3,7 @@ import Odometer from "odometer";
 import "odometer/themes/odometer-theme-default.css";
 
 import ScaleUp from "@/components/ui/ScaleUp";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 

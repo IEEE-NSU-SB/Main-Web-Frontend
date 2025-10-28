@@ -1,4 +1,4 @@
-import Wave from "@/components/waave"
+import Wave from "@/components/Wave"
 import IeeeR10 from "./IeeeR10"
 
 const IEEER10 = () => {

@@ -1,4 +1,4 @@
-import Wave from '@/components/waave'
+import Wave from '@/components/Wave'
 import AchievementCard from '../../../components/AchievementCard'
 
 const Achievements = () => {

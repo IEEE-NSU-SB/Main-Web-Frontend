@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { ExternalLink } from "lucide-react";

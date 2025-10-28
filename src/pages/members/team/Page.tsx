@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import FamilyTree from "./OrgChart";
-import Wave from "@/components/waave";
+import Wave from "@/components/Wave";
 
 interface Member {
   id: string;

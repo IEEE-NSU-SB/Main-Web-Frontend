@@ -1,5 +1,5 @@
 import FadeIn from "@/components/ui/FadeIn";
-import Wave from "@/components/waave";
+import Wave from "@/components/Wave";
 import { useState } from "react";
 
 
