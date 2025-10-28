@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 import OfficerCard from "./OfficerCard";
 
 interface OfficerData {

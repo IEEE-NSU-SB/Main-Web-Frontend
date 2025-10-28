@@ -76,13 +76,13 @@ const BlogCard: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-6 px-6 m-auto max-w-[1090px]">
           {/* Search */}
           <div className="relative w-full max-w-md">
-            <Search className="absolute left-3 top-2.5 text-ieee-gray w-5 h-5" />
+            <Search className="absolute left-3 top-4.5 text-ieee-gray w-5 h-5" />
             <input
               type="text"
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-ieee-gray-15 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75 text-sm"
+              className="w-full pl-10 pr-4 py-4 border border-ieee-gray-15 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75 text-md"
             />
           </div>
 
@@ -93,7 +93,7 @@ const BlogCard: React.FC = () => {
               onChange={(e) =>
                 setDateOrder(e.target.value as "latest" | "oldest")
               }
-              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
+              className="px-4 py-2 border rounded-md shadow-sm text-md focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
             >
               <option value="latest">Date: Latest</option>
               <option value="oldest">Date: Oldest</option>
@@ -103,7 +103,7 @@ const BlogCard: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border rounded-md shadow-sm text-sm focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
+              className="px-4 py-2 border rounded-md shadow-sm text-md focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
             >
               {categories.map((cat, idx) => (
                 <option key={idx} value={cat}>
@@ -133,7 +133,7 @@ const BlogCard: React.FC = () => {
 
       {/* Blog cards */}
       {!loading && !error && (
-        <div className="max-w-[1080px] m-auto mt-10 flex flex-wrap justify-center items-start gap-10 px-5 max-sm:px-5">
+        <div className="max-w-[1080px] m-auto my-10 flex flex-wrap justify-center items-start gap-10 px-5 max-sm:px-5">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
@@ -169,7 +169,7 @@ const BlogCard: React.FC = () => {
                       {event.title}
                     </h3>
                     <p
-                      className="text-ieee-black-75 mb-4 line-clamp-2 text-[16px]"
+                      className="text-ieee-black-75 mb-4 line-clamp-2 text-[16px] h-12"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
                     {/* <Link to={event.link}>

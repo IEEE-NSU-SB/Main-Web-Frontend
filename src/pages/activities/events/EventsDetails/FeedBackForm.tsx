@@ -108,35 +108,37 @@ const FeedbackForm = () => {
 
   return (
     <div>
-        {/* ---- Feedback Carousel ---- */}
-        {feedbacks.length > 0 && ( 
-      <><SectionHeading title="Participants Feedback" /><div
-                  ref={carouselRef}
-                  className="overflow-hidden whitespace-nowrap relative px-5 my-10"
-              >
-                  <div className="flex gap-6 animate-scroll">
-                      {[...feedbacks, ...feedbacks].map((item, i) => (
-                          <div
-                              key={i}
-                              className="min-w-[300px] md:min-w-[400px] bg-[#f7f7f7] rounded-2xl p-6 flex flex-col justify-between"
-                          >
-                              <p className="text-gray-700 text-sm md:text-base italic text-wrap">
-                                  “{item.feedback}”
-                              </p>
-                              <div className="flex flex-row items-center gap-3 mt-4">
-                                  <div className="rounded-full h-10 w-10 overflow-hidden">
-                                      <img src="https://i.ibb.co.com/yBsqX5Dy/image.png" alt="" className="w-full h-full" />
-                                  </div>
-                                  <div>
-                                      <p className="font-semibold text-gray-900">{item.name}</p>
-                                      <p className="text-sm text-gray-500">{item.satisfaction}</p>
-                                  </div>
-                              </div>
-                          </div>
-                      ))}
+      {/* ---- Feedback Carousel ---- */}
+      {feedbacks.length > 0 && (
+        <>
+          <SectionHeading title="Participants Feedback" />
+          <div
+            ref={carouselRef}
+            className="overflow-hidden whitespace-nowrap relative px-5 my-10"
+          >
+            <div className="flex gap-6 animate-scroll">
+              {[...feedbacks, ...feedbacks].map((item, i) => (
+                <div
+                  key={i}
+                  className="min-w-[300px] md:min-w-[400px] bg-[#f7f7f7] rounded-2xl p-6 flex flex-col justify-between"
+                >
+                  <p className="text-gray-700 text-sm md:text-base italic text-wrap">
+                    “{item.feedback}”
+                  </p>
+                  <div className="flex flex-row items-center gap-3 mt-4">
+                    <div>
+                      <p className="font-semibold text-gray-900">{item.name}</p>
+                      <p className="text-sm text-gray-500">
+                        {item.satisfaction}
+                      </p>
+                    </div>
                   </div>
-              </div></>
-)}
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
       {/* ---- Feedback Form ---- */}
       <SectionHeading title="Leave a Feedback" />
       <div className="px-4 max-w-[1080px] mx-auto">

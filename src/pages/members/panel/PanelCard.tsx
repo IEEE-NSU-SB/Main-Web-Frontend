@@ -7,6 +7,7 @@ interface member {
   id: string;
   name: string;
   position: string;
+  position_of: string;
   image: string;
   linkedin?: string;
   facebook?: string;
@@ -20,6 +21,7 @@ interface PanelCardProps {
 }
 
 const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
+  if (!members || members.length === 0) return null; // don't render if no members
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
@@ -59,7 +61,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
 
                 {/* Position - hidden by default, fade in on hover */}
                 <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {member.position}
+                  {member.position},{member.position_of}
                 </p>
 
                 {/* Links - hidden by default, fade in on hover */}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import PanelCard from "@/pages/members/panel/PanelCard";
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 
 interface PanelYears {
   year: string;

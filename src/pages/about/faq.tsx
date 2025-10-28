@@ -1,8 +1,7 @@
-"use client";
-
+import FadeIn from "@/components/ui/FadeIn";
+import Wave from "@/components/waave";
 import { useState } from "react";
-import Wave from "@/components/wave";
-import FadeIn from "@/components/ui/fade-in";
+
 
 interface QA {
   question: string;
@@ -75,7 +74,7 @@ const FAQPage = () => {
       <Wave title="Frequently Asked Questions - IEEE NSU SB" />
 
       <FadeIn>
-        <section className="py-16 px-6 flex flex-col items-center">
+        <section className="py-16 px-5 flex flex-col items-center max-w-[1080px] m-auto">
           <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8 md:gap-16">
             <div className="relative block md:hidden w-full">
               <button

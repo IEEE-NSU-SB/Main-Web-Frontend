@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-import Wave from "@/components/Wave";
+import Wave from "@/components/waave";
 import VolunteerCard from "./VolunteerCard";
 
 const Volunteers = () => {

@@ -38,6 +38,7 @@ import Panel from "./pages/members/panel/Page";
 import Officer from "./pages/members/officers/Page";
 import Volunteers from "./pages/members/volunteers/Page";
 import AboutIEEE from "./pages/about/ieee/Page";
+import FAQPage from "./pages/about/faq";
 
 const MainLayout = () => {
   return (
@@ -88,6 +89,7 @@ const App = () => {
           {/* About */}
           <Route path="/about/ieee-region-10" element={<IEEER10 />} />
           <Route path="/about/ieee" element={<AboutIEEE />} />
+          <Route path="/about/FAQ" element={<FAQPage />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
