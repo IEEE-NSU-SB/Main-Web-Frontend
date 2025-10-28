@@ -1,40 +1,22 @@
-import Skeleton from "@/components/Skeleton";
-import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import type { EventData } from "@/types/event";
 
+type EventDetailsProps = {
+  eventData: EventData;
+};
 
-type EventDescriptionResponse = {
-    description: string;
-}
-
-const EventDescription = () => {
-    const { data, loading, error, refetch } = useFetchDataJSON<EventDescriptionResponse[]>({
-        path: "pages/activities/events/EventsDetails/EventsDetails.json"
-    });
-    // E:\Main-Web-Frontend\src\pages\activities\events\EventsDetails\EventsDetails.json
-
-    return (
-        <FadeIn>
-            <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] mb-10">
-                {loading ? (
-                    <div className="space-y-4">
-                        <Skeleton className="h-30 w-full" />
-                    </div>
-                ) : error ? (
-                    <ErrorMessage message={"Failed to load event description"} onRetry={refetch} />
-                ) : (
-                    data && data.length > 0 && (
-                        <div className="bg-white">
-                            <div className="text-[16px] text-justify text-ieee-black-75">
-                                {data[0].description}
-                            </div>
-                        </div>
-                    )
-                )}
-            </div>
-        </FadeIn>
-    );
+const EventDescription: React.FC<EventDetailsProps> = ({ eventData }) => {
+  return (
+    <FadeIn>
+      <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px] mb-10">
+        <div className="bg-white">
+          <div className="text-[16px] text-justify text-ieee-black-75">
+            {eventData.description}
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  );
 };
 
 export default EventDescription;

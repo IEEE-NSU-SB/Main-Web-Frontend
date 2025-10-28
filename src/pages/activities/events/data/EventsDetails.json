@@ -1,0 +1,29 @@
+  {
+    "title": "Tech Innovators Summit 2025",
+    "category": "Technology Conference",
+    "id": 1,
+    "image": "https://i.ibb.co.com/yBsqX5Dy/image.png",
+    "organizer": "North South University Tech Club",
+    "collaboration": "Google Developers Group Dhaka",
+    "start_date": "09:00 AM",
+    "end_date": "05:00 PM",
+    "registration_fee_amount": "Free Entry",
+    "register_link": "https://example.com/events/tech-innovators-summit-2025",
+    "read_more_link": "https://example.com/events/tech-innovators-summit-2025",
+    "description": "The Tech Innovators Summit 2025 brings together industry leaders, researchers, and students to explore emerging technologies shaping the future. Organized by the North South University Tech Club in collaboration with Google Developers Group Dhaka, this full-day conference features keynote sessions, workshops, and networking opportunities focused on AI, robotics, IoT, and software innovation.The Tech Innovators Summit 2025 brings together industry leaders, researchers, and students to explore emerging technologies shaping the future. Organized by the North South University Tech Club in collaboration with Google Developers Group Dhaka, this full-day conference features keynote sessions, workshops, and networking opportunities focused on AI, robotics, IoT, and software innovation.",
+    "images": [
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png",
+      "https://i.ibb.co.com/yBsqX5Dy/image.png"
+    ],
+    "feedback": [
+      {
+        "name": "asd",
+        "review": "asd",
+        "feedback": "asd"
+      }
+    ]
+  }

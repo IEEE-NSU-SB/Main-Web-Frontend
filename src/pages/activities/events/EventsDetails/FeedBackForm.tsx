@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/ui/SectionHeading";
+import type { EventData } from "@/types/event";
 import React, { useState, useRef, useEffect } from "react";
 
 interface Feedback {
@@ -7,7 +8,11 @@ interface Feedback {
   satisfaction: string;
 }
 
-const FeedbackForm = () => {
+type EventDetailsProps = {
+  eventData: EventData;
+};
+
+const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(
     "How satisfied were you?"
@@ -227,4 +232,4 @@ const FeedbackForm = () => {
   );
 };
 
-export default FeedbackForm;
+export default FeedBackForm;

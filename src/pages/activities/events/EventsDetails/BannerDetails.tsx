@@ -1,42 +1,15 @@
-import Skeleton from "@/components/Skeleton";
-import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
-
+import type { EventData } from "@/types/event";
 import { Calendar, Users, Building2, Tags } from "lucide-react";
 
-type EventDetailsResponse = {
-  image: string;
-  date: string;
-  title: string;
-  category: string;
-  organized_by: string;
-  collaboration: string;
+type EventDetailsProps = {
+  eventData: EventData;
 };
 
-const BannerDetails = () => {
-  const { data, loading, error, refetch } = useFetchDataJSON<
-    EventDetailsResponse[]
-  >({
-    path: "pages/activities/events/EventsDetails/EventsDetails.json",
-  });
-
-  const eventData = data?.[0];
-
+const BannerDetails : React.FC<EventDetailsProps> = ({ eventData }) =>{
   return (
     <FadeIn>
       <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px]">
-        {loading ? (
-          <div className="space-y-6">
-            <Skeleton className="h-96 w-full" />
-            <Skeleton className="h-32 w-full" />
-          </div>
-        ) : error ? (
-          <ErrorMessage
-            message={"Failed to load event details"}
-            onRetry={refetch}
-          />
-        ) : eventData ? (
           <div className="space-y-6">
             {/* Event Banner Image */}
             <div className="relative overflow-hidden ">
@@ -62,7 +35,7 @@ const BannerDetails = () => {
                 {/* Date */}
                 <Calendar className="w-5 h-5 text-ieee-darkorange-75" />
                 <p className="text-xs uppercase tracking-wider font-semibold">
-                  {new Date(eventData.date).toLocaleDateString("en-US", {
+                  {new Date(eventData.start_date).toLocaleDateString("en-US", {
                     weekday: "long",
                     year: "numeric",
                     month: "long",
@@ -91,7 +64,7 @@ const BannerDetails = () => {
                   <p className="text-xs uppercase tracking-wider text-ieee-black-50 font-semibold">
                     Event Organised By:{" "}
                     <span className="normal-case text-base font-medium text-ieee-darkorange-75">
-                      {eventData.organized_by}
+                      {eventData.organizer}
                     </span>
                   </p>
                 </div>
@@ -111,7 +84,6 @@ const BannerDetails = () => {
               </div>
             </div>
           </div>
-        ) : null}
       </div>
     </FadeIn>
   );

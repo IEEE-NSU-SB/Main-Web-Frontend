@@ -134,7 +134,13 @@ const Officer = () => {
       {/* Officer cards */}
       <OfficerCard
         sectionTitle={
-          selectedTeam === "All" ? "All Officers" : `${selectedTeam} Officers`
+          selectedTeam === "All" ? "Our Officers" : `${selectedTeam} Officers`
+        }
+        members={filteredData}
+      />
+      <OfficerCard
+        sectionTitle={
+          selectedTeam === "All" ? "Our Incharges" : `${selectedTeam} Incharges`
         }
         members={filteredData}
       />

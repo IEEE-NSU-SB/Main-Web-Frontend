@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Saif Ahmed",
-    "position": "Faculty Advisor, IEEE NSU PES SBC",
+    "position": "Faculty Advisor",
     "image": "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
     "linkedin": "https://linkedin.com/in/alicejohnson",
     "email": "alice@example.com",
@@ -12,7 +12,7 @@
   {
     "id": "2",
     "name": "Dr. Lamia Iftekhar",
-    "position": "Faculty Advisor, IEEE NSU RAS SBC",
+    "position": "Faculty Advisor",
     "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image11.png",
     "profileLink": "/member/alice",
     "team": "RAS"
