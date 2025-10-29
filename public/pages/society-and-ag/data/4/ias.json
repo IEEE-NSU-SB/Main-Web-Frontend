@@ -1,0 +1,43 @@
+{
+  "name": "IAS",
+  "pageTitle": "IEEE NSU IAS STUDENT BRANCH CHAPTER",
+  "pageSubtitle": "Connect to the Industry Professionals",
+  "primaryColor": "#0F904B",
+  "secondaryColor": "#602569",
+  "missionVisionColor": "#000",
+  "textColor": "#fff",
+  "logo": "src/assets/logo/ias.png",
+  "about": [
+    {
+      "title": "About IAS",
+      "description": [
+        "Like other technical societies under the Institute of Electrical and Electronics Engineers (IEEE), the IEEE Industry Applications Society (IEEE IAS) is also a society that works to make the transition between academics and corporations easier to pursue a better career.",
+        "The IEEE North South University Industry Application Society was formed on June 9,2018 as a chapter of the IEEE North South University Student Branch. Since day one, the priority of this foundation has been to validate the collaboration between students and corporations. To achieve this target, the society's members are working with their full potential to set a benchmark for the future.",
+        "The society has also participated successfully in the very first summit of the IEEE Bangladesh Section Industry Application Society. Besides organizing events, they have also arranged several workshops in which professionals from different organizations instructed."
+      ]
+    }
+  ],
+  "parallax": "src/assets/logo/ias.png",
+  "mission": [
+    "Our mission is to foster a vibrant community of robotics and automation enthusiasts by sharing and exploring the latest technology and trends with the young engineers in robotics and automation while also cultivating a culture of innovation, collaboration, and lifelong learning."
+  ],
+  "vision": [
+    "Our Vision is to inspire and foster the members to become the upcoming trailblazers and pioneers in the dynamic field of robotics and automation. We aspire to cultivate an environment that empowers creativity and innovation, propelling our members toward leadership roles and groundbreaking contributions in the realm of robotics and automation. We also envision to become the most recognized and respected student branch chapter in Robotics and Automation."
+  ],
+  "question": [
+    {
+      "1": [
+        "The Robotics and Automation Society is abbreviated as RAS. By working to promote the research and application of robotics and automation engineering, the community maintains high professional standards among its members. The mission of RAS is to develop and facilitate the exchange of scientific and technological knowledge and thoughts in Robotics and Automation for the benefit of members as well as humanity. The Society also provides aid for promoting close cooperation and exchanging technical information among its Members and Affiliates."
+      ],
+      "2": [
+        "Joining RAS means becoming part of a dynamic professional society. As a member, you gain access to a variety of resources and opportunities designed to enhance your knowledge and expertise in both theoretical and applied aspects of the field. From staying updated on the latest technological breakthroughs to participating in cutting-edge research and development, RAS membership empowers you to remain at the forefront of innovation. Moreover, by connecting with like-minded professionals in your vicinity, you'll forge valuable networks and collaborations, fostering growth, learning, and professional development."
+      ],
+      "3": [
+        "At IEEE NSU RAS SBC, we organize a variety of entertaining activities throughout the year, such as seminars, workshops, competitions, tech talks, weekly meetings, and many more, all focused on the most recent developments and subjects in robotics and automation. These events provide great opportunities for members to enhance their understanding of robotics and automation while also promoting continuous learning and skill development."
+      ],
+      "4": [
+        "The member must be an active member of IEEE NSU Student Branch for at least 1 semester in NSU."
+      ]
+    }
+  ]
+}
