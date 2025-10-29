@@ -47,9 +47,11 @@ export function useFetchDataJSON<T = any>({ path }: { path: string }) {
 
       // Dynamically import JSON file
       /* @vite-ignore */
-      const module = await import(/* @vite-ignore */ `../${path}`);
+      const moduleUrl = (await import(/* @vite-ignore */`../${path}?url`)).default;
+      const res = await fetch(moduleUrl);
+      const json = await res.json();
       await new Promise((resolve) => setTimeout(resolve, 300));
-      setData(module.default);
+      setData(json);
     } catch (err: any) {
       console.error(`Error loading local JSON file: ${path}`, err);
       setError(err.message || "Something went wrong");

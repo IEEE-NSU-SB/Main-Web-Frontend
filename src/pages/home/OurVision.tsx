@@ -6,7 +6,7 @@ import ErrorMessage from "../../components/ui/ErrorMessage";
 
 const VisionSection = () => {
   const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "/pages/home/data/OurVision.json",
+    path: "pages/home/data/OurVision.json",
   });
 
   return (
