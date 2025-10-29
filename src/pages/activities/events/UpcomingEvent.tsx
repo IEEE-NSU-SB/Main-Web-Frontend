@@ -27,7 +27,7 @@ interface EventData {
 const UpcomingEvent = () => {
   // ✅ Fetches directly an EventData object (no nested "event" key)
   const { loading, data, error, refetch } = useFetchDataJSON<EventData>({
-    path: "/pages/activities/events/data/UpcomingEvent.json",
+    path: "pages/activities/events/data/UpcomingEvent.json",
   });
 
   const event = data;
