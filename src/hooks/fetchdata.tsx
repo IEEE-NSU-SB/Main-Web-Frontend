@@ -63,6 +63,7 @@ export function useFetchDataJSON<T = any>({ path }: { path: string }) {
       if (!res.ok) throw new Error(`Failed to fetch ${moduleUrl}`);
 
       const json = await res.json();
+      await new Promise((resolve) => setTimeout(resolve, 300));
       setData(json);
     } catch (err: any) {
       console.error(`Error loading local JSON file: ${path}`, err);
