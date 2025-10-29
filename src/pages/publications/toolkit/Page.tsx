@@ -56,8 +56,17 @@ const Pages = () => {
                   >
                     <p className="font-semibold mb-2">Color codes</p>
                     <ul className="flex flex-wrap justify-start gap-4 mb-6 ml-13">
-                      {toolkit.colors.map((colors, i) => {
-                        const [name, hex] = colors.split(":");
+                      {toolkit.colors.map((colorStr, i) => {
+                        const normalize = (str: string) =>
+                          str
+                            .replace(/\u00A0/g, " ")
+                            .replace(/&nbsp;/g, " ")
+                            .trim();
+
+                        const [name, hex] = colorStr
+                          .split(":")
+                          .map((v) => normalize(v));
+
                         return (
                           <li
                             key={i}
@@ -65,7 +74,7 @@ const Pages = () => {
                           >
                             <span
                               className="w-8 h-4 rounded border"
-                              style={{ backgroundColor: hex.trim() }}
+                              style={{ backgroundColor: hex }}
                             ></span>
                             <span>
                               {name}: {hex}
@@ -79,7 +88,7 @@ const Pages = () => {
                   <a
                     href={toolkit.file}
                     download
-                    className="mt-auto px-6 py-2 bg-ieee-darkblue-90 text-white border border-ieee-darkblue-75 rounded-sm hover:bg-transparent hover:text-ieee-darkblue-75 transition-colors"
+                    className="mt-auto px-6 py-2 hover:bg-ieee-darkblue-90 hover:text-white border border-ieee-darkblue-75 rounded-sm bg-transparent text-ieee-darkblue-75 transition-colors cursor-pointer"
                   >
                     Download PNG
                   </a>
