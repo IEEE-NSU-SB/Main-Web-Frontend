@@ -1,6 +1,7 @@
 import FadeIn from "@/components/ui/FadeIn";
 import type { EventData } from "@/types/event";
 import { Calendar, DollarSign, Info } from "lucide-react";
+import { Link } from "react-router";
 
 type EventDetailsProps = {
   eventData: EventData;
@@ -51,9 +52,12 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
                     COST
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {eventData.registration_fee_amount}
-                  </p>
+                  <p
+                    className="text-sm text-gray-600"
+                    dangerouslySetInnerHTML={{
+                      __html: eventData.registration_fee_amount,
+                    }}
+                  />
                 </div>
               </div>
 
@@ -68,6 +72,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                   </h3>
                   <a
                     href={eventData.read_more_link}
+                    target="_blank"
                     className="text-sm text-ieee-blue-75 hover:text-ieee-blue hover:underline"
                   >
                     Read More
@@ -78,9 +83,11 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
 
             {/* Register Button */}
             <div className="px-3 pb-6">
+              <Link to={eventData.register_link}>
               <button className="border-1 border-ieee-darkblue cursor-pointer w-full bg-[#002855] hover:bg-ieee-white hover:text-ieee-darkblue text-white font-bold py-4 px-6 rounded transition-colors duration-200">
                 REGISTER
               </button>
+              </Link>
             </div>
           </div>
           {/* Share Section */}

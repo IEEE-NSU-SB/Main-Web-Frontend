@@ -271,6 +271,27 @@ body {
   font-family: "Lato";
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00629B, #0096D6);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #00629B;
+}
+
 /* index.css or global.css */
 .scrollbar-hide {
   -ms-overflow-style: none;
