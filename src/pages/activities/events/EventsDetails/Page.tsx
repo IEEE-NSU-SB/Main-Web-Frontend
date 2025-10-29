@@ -1,25 +1,51 @@
-import TopSection from './TopSection';
-import MidSection from './MidSection';
-import FeedBackForm from './FeedBackForm';
-import Wave from '@/components/waave';
-
-
+import FeedBackForm from "./FeedBackForm";
+import Wave from "@/components/Wave";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import BannerDetails from "./BannerDetails";
+import RegisterDetails from "./RegisterDetails";
+import EventDescription from "./EventDescription";
+import EventGallery from "./EventGallery";
+import { useParams } from "react-router-dom";
 
 const EventDetailsPages = () => {
-    return (
+  
+  const { id } = useParams()
+
+  const { data, loading, error, refetch } = useFetchDataAPI<any>({
+    apiUrl: `main_website/get_event_details/${id}`,
+  });
+
+  return (
+    <>
+      <Wave title={data?.title || "Loading..."} />
+
+      {loading ? (
+        <Skeleton className="h-96 w-full" />
+      ) : error ? (
+        <ErrorMessage message="Failed to load event" onRetry={refetch} />
+      ) : (
         <>
-            <Wave title='EEEE STEP 2020: Transition to Sustainable Future' subtitle='IEEE NSU Student Branch'></Wave>
-            <div className="max-w-[1080px] mx-auto px-4 py-6">
-                <TopSection></TopSection>
+          <div className="max-w-[1080px] mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-[67%_31%] gap-6">
+              <div>
+                <BannerDetails eventData={data} />
+              </div>
+              <div className="bg-white md:block hidden">
+                <RegisterDetails eventData={data} />
+              </div>
             </div>
-            <div className='max-w-[1080px] mx-auto px-4 py-6'>
-                <MidSection></MidSection>
-            </div>
-            <div className='max-w-[1080px] mx-auto px-4 pb-6'>
-                <FeedBackForm></FeedBackForm>
-            </div>
+            <hr className="my-8" />
+          </div>
+
+          <EventDescription eventData={data} />
+          <EventGallery eventData={data} />
+          <FeedBackForm eventData={data} />
         </>
-    );
+      )}
+    </>
+  );
 };
 
 export default EventDetailsPages;

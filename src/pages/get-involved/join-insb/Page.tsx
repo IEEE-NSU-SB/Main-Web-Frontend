@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Hourglass from "../assets/img/hourglass.gif";
 import { ExternalLink } from "lucide-react";
 import FadeIn from "@/components/ui/FadeIn";
-import Wave from "@/components/waave";
+import Wave from "@/components/Wave";
 
 interface RecruitSession {
   session_end_date_time: string;

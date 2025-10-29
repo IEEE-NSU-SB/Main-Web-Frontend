@@ -2,7 +2,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "@/components/skeeleton";
+import Skeleton from "@/components/Skeleton";
 import { useEffect, useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Link } from "react-router-dom";
@@ -36,9 +36,9 @@ const AchievementCard = () => {
   return (
     <>
       {location.pathname === "/" && (
-        <SectionHeading title="Achievements" widthClass="w-55 mb-4" />
+        <SectionHeading title="Achievements"/>
       )}
-      
+
       {/* Error State */}
       {error && (
         <FadeIn>
@@ -61,7 +61,7 @@ const AchievementCard = () => {
         <FadeIn>
           <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="h-83 w-83" />
+              <Skeleton key={i} className="w-110 h-110" />
             ))}
           </div>
         </FadeIn>
@@ -69,18 +69,18 @@ const AchievementCard = () => {
 
       {/* Data Display */}
       {!loading && !error && (
-        <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
+        <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 px-5 sm:px-0">
           {awards.map((award, idx) => (
             <FadeIn key={idx}>
               <div
                 onClick={() => setSelectedAward(award)}
-                className="relative group cursor-pointer bg-ieee-white rounded-sm overflow-hidden shadow-[4px_4px_10px_theme('colors.ieee-black.25')] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_theme('colors.ieee-black.25')]"
+                className="w-full relative group cursor-pointer bg-ieee-white rounded-sm overflow-hidden shadow-[4px_4px_10px_var(--color-ieee-black-25)] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_var(--color-ieee-black-25)]"
               >
                 {/* Image */}
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-83 h-83 object-cover"
+                  className="w-110 h-110 md:w-83 md:h-83 object-cover"
                 />
 
                 {/* Year tag */}
@@ -91,8 +91,8 @@ const AchievementCard = () => {
                 {/* Overlay with title */}
                 <div
                   className="absolute bottom-0 left-0 w-full bg-ieee-blue bg-opacity-80 text-ieee-white text-center 
-                              text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
-                              transition-all duration-500"
+                      text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
+                      transition-all duration-500"
                 >
                   {award.title} - <span>{award.winner}</span>
                 </div>
@@ -173,7 +173,7 @@ const AchievementCard = () => {
           </motion.div>
         )}
       </AnimatePresence>
-            {/* "See All Blogs" button only on landing page */}
+      {/* "See All Blogs" button only on landing page */}
       {isLandingPage && (
         <div className="flex justify-center mt-8">
           <Link to="/achievements">

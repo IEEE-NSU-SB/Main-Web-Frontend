@@ -21,7 +21,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
 
   return (
     <>
-      <SectionHeading title="Contact" widthClass="w-33" titleColor={primaryColor} underlineColor={primaryColor} />
+      <SectionHeading title="Contact" titleColor={primaryColor} underlineColor={primaryColor} />
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 space-y-6">
         {["name", "email", "message"].map((field, idx) => (
           <FadeIn key={idx}>
@@ -56,7 +56,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
         <FadeIn>
             <div className="text-center flex justify-center my-16">
           <button
-            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-8 duration-300 rounded-md "
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-8 duration-300 rounded-[4px]"
             style={{
               backgroundColor: "white",
               borderColor: primaryColor,

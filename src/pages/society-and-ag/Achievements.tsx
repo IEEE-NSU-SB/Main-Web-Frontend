@@ -32,7 +32,6 @@ const Achievements: React.FC<AchievementsProps> = ({ achievements, color = "#006
     <section className="max-w-[1080px] mx-auto py-2 pb-16">
       <SectionHeading
         title="Achievements"
-        widthClass="w-64"
         titleColor={color}
         underlineColor={color}
       />

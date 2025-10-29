@@ -33,11 +33,12 @@ import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
 import TeamPage from "./pages/members/team/Page";
 import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import Profile from "./pages/members/profile/Page";
-import NewsPage from "./pages/activities/News/NewsDetails";
 import Panel from "./pages/members/panel/Page";
 import Officer from "./pages/members/officers/Page";
 import Volunteers from "./pages/members/volunteers/Page";
 import AboutIEEE from "./pages/about/ieee/Page";
+import FAQPage from "./pages/about/faq";
+import NewsDetails from "./pages/activities/News/NewsDetails";
 
 const MainLayout = () => {
   return (
@@ -64,9 +65,9 @@ const App = () => {
 
           {/* Activities */}
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetailsPages />} />
           <Route path="/news" element={<News />} />
-          <Route path="/news/1" element={<NewsPage />} />
-          <Route path="/event_details" element={<EventDetailsPages />} />
+          <Route path="/news/1" element={<NewsDetails />} />
           <Route path="/achievements" element={<Achievements />} />
 
           {/* Societies & AG */}
@@ -83,11 +84,12 @@ const App = () => {
           <Route path="/all-members" element={<AllMembers />} />
           <Route path="/team" element={<AllMembers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/member_profile/:id" element={<Profile />} />
 
           {/* About */}
           <Route path="/about/ieee-region-10" element={<IEEER10 />} />
           <Route path="/about/ieee" element={<AboutIEEE />} />
+          <Route path="/about/FAQ" element={<FAQPage />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />

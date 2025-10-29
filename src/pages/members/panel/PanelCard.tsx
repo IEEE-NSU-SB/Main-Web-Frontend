@@ -1,4 +1,5 @@
 // components/PanelCard.tsx
+import SectionHeading from "@/components/ui/SectionHeading";
 import React from "react";
 import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
@@ -6,6 +7,7 @@ interface member {
   id: string;
   name: string;
   position: string;
+  position_of: string;
   image: string;
   linkedin?: string;
   facebook?: string;
@@ -19,21 +21,17 @@ interface PanelCardProps {
 }
 
 const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
+  if (!members || members.length === 0) return null; // don't render if no members
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <div className="mt-12 mb-8 flex flex-col items-center">
-          <h3 className="text-[35px] font-semibold text-ieee-black uppercase text-center">
-            {sectionTitle}
-          </h3>
-          <div className="h-[5px] w-[150px] bg-ieee-yellow rounded-md"></div>
-        </div>
+        <SectionHeading title={sectionTitle} align="center"/>
 
-        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
+        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
               key={member.id || "#"}
-              href={member.profileLink || "#"}
+              href={member.id ? `/member_profile/${member.id}` : "#"}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
@@ -44,6 +42,13 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
                 src={member.image || "/images/default_profile_picture.png"}
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
+                onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.onerror = null; // prevent loop
+                        target.src = `${
+                          import.meta.env.VITE_API_URL
+                        }/static/images/default_profile_picture.png`;
+                      }}
               />
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
@@ -56,7 +61,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
 
                 {/* Position - hidden by default, fade in on hover */}
                 <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  {member.position}
+                  {member.position},{member.position_of}
                 </p>
 
                 {/* Links - hidden by default, fade in on hover */}

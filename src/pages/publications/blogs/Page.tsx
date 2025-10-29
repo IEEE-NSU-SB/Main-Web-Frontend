@@ -1,6 +1,6 @@
 import BlogCard from "@/components/BlogCard";
 import FadeIn from "@/components/ui/FadeIn";
-import Wave from "@/components/waave";
+import Wave from "@/components/Wave";
 
 const Blogs = () => {
   return (

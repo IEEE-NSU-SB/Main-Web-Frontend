@@ -1,48 +1,74 @@
+import { useEffect, useRef, useState } from "react";
 import FadeIn from "./FadeIn";
 
 interface SectionHeadingProps {
   title: string;
-  widthClass: string; // e.g., 'w-48'
-  titleColor?: string; // hex color from JSON or fallback
-  underlineColor?: string; // hex color from JSON or fallback
+  titleColor?: string;
+  underlineColor?: string;
+  align?: "left" | "center"; // optional alignment
 }
 
 const SectionHeading: React.FC<SectionHeadingProps> = ({
   title,
-  widthClass,
   titleColor,
   underlineColor,
+  align = "left",
 }) => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const [underlineWidth, setUnderlineWidth] = useState<number>(0);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (titleRef.current) {
+        setUnderlineWidth(titleRef.current.offsetWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [title]);
+
   return (
     <FadeIn>
-      <h2
-        className={`max-w-[1080px] mx-auto text-3xl font-bold mt-10 px-5 max-sm:px-5 max-lg:px-12 max-md:text-[25px] ${
-          !titleColor ? "text-ieee-darkblue/90" : ""
+      <div
+        className={`max-w-[1080px] mx-auto mt-10 mb-4 px-5 max-sm:px-5 max-lg:px-12 flex flex-col ${
+          align === "center" ? "items-center" : "items-start"
         }`}
-        style={{ color: titleColor }}
       >
-        {title}
-      </h2>
+        <h2
+          ref={titleRef}
+          className={`text-3xl font-bold max-md:text-[25px] inline-block ${
+            !titleColor ? "text-ieee-darkblue/90" : ""
+          }`}
+          style={{ color: titleColor }}
+        >
+          {title}
+        </h2>
 
-      <div className="flex gap-1 max-w-[1080px] mx-auto mt-1 mb-4 max-md:ml-4 px-5 max-sm:px-1 max-lg:px-12">
-        <div
-          className={`h-[3px] ${widthClass} rounded ${
-            !underlineColor ? "bg-ieee-darkblue/90" : ""
-          }`}
-          style={{ backgroundColor: underlineColor }}
-        ></div>
-        <div
-          className={`h-[3px] w-2 rounded ${
-            !underlineColor ? "bg-ieee-darkblue/90" : ""
-          }`}
-          style={{ backgroundColor: underlineColor || undefined }}
-        ></div>
-        <div
-          className={`h-[3px] w-2 rounded ${
-            !underlineColor ? "bg-ieee-darkblue/90" : ""
-          }`}
-          style={{ backgroundColor: underlineColor || undefined }}
-        ></div>
+        <div className="flex gap-1 mt-1">
+          <div
+            className={`h-[3px] rounded transition-all duration-300 ${
+              !underlineColor ? "bg-ieee-darkblue/90" : ""
+            }`}
+            style={{
+              backgroundColor: underlineColor,
+              width: underlineWidth ? `${underlineWidth * 1.1}px` : "80px",
+            }}
+          ></div>
+          <div
+            className={`h-[3px] w-2 rounded ${
+              !underlineColor ? "bg-ieee-darkblue/90" : ""
+            }`}
+            style={{ backgroundColor: underlineColor }}
+          ></div>
+          <div
+            className={`h-[3px] w-2 rounded ${
+              !underlineColor ? "bg-ieee-darkblue/90" : ""
+            }`}
+            style={{ backgroundColor: underlineColor }}
+          ></div>
+        </div>
       </div>
     </FadeIn>
   );

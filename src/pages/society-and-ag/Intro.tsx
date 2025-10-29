@@ -29,7 +29,6 @@ const Intro: React.FC<IntroProps> = ({ pageData }) => {
       <FadeIn>
         <SectionHeading
           title={`About ${ag.name}`}
-          widthClass="w-42"
           titleColor={ag.primaryColor}
           underlineColor={ag.primaryColor}
         />

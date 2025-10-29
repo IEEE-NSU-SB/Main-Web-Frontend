@@ -28,7 +28,6 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color = "#00629b" }) => 
     <section className="max-w-[1080px] mx-auto py-2 pb-16">
       <SectionHeading
         title="Our Executive Body"
-        widthClass="w-72"
         titleColor={color}
         underlineColor={color}
       />

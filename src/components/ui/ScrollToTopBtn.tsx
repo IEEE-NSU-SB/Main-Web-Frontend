@@ -14,23 +14,32 @@ const ScrollToTopButton = () => {
   }, []);
 
   const scrollToTop = () => {
-    const scrollDuration = 300;
-    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    const startY = window.scrollY;
+    const duration = 300; // ⚡ faster than default browser smooth scroll
+    const startTime = performance.now();
 
-    const scrollInterval = setInterval(() => {
-      if (window.scrollY !== 0) {
-        window.scrollBy(0, scrollStep);
-      } else {
-        clearInterval(scrollInterval);
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      window.scrollTo(0, startY * (1 - ease));
+
+      if (elapsed < duration) {
+        requestAnimationFrame(animateScroll);
       }
-    }, 10); 
+    };
+
+    requestAnimationFrame(animateScroll);
   };
 
   return (
     <button
       onClick={scrollToTop}
-      style={{ display: visible ? "block" : "none" }}
-      className="cursor-pointer fixed bottom-6 right-6 p-3 bg-ieee-blue text-ieee-white rounded-full shadow-lg z-50 hover:bg-ieee-darkblue"
+      style={{
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+      }}
+      className="fixed bottom-6 right-6 p-3 bg-ieee-blue text-ieee-white rounded-full shadow-lg z-50 hover:bg-ieee-darkblue transition-opacity duration-300"
       aria-label="Scroll to top"
     >
       <ArrowUp className="w-5 h-5" />
