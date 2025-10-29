@@ -5,7 +5,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
 
 
 interface FeaturedEvent {
@@ -18,6 +17,9 @@ interface FeaturedEvent {
 
 interface FeaturedEventsCarouselProps {
   events: FeaturedEvent[];
+  loading: boolean;
+  error?: string;
+  refetch: any;
   color?: string;
 }
 
@@ -30,23 +32,21 @@ interface EventImage {
 
 const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
   events,
+  loading,
+  error,
+  refetch
 }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const location = useLocation();
 
-  // ✅ Use fetchDataJSON and point path relative to src
-  const { loading, data, error, refetch } = useFetchDataJSON({
-    path: "pages/society-and-ag/data/Events.json",
-  });
-
   const images: EventImage[] =
     events?.map((event: any) => ({
       id: event.id,
       alt: event.name,
       image: event.image,
-      link: `/event_details/${event.id}`,
+      link: `/events/${event.id}`,
     })) ?? [];
 
   const loopImages = [...images, ...images];
@@ -55,7 +55,7 @@ const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
     if (!scrollRef.current) return;
     const firstCard = scrollRef.current.querySelector("div > div");
     if (firstCard) setCardWidth((firstCard as HTMLElement).offsetWidth);
-  }, [data]);
+  }, [events]);
 
   useEffect(() => {
     if (!scrollRef.current || images.length === 0) return;

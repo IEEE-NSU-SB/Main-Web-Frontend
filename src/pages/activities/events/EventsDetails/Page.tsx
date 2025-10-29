@@ -1,19 +1,22 @@
 import FeedBackForm from "./FeedBackForm";
 import Wave from "@/components/Wave";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import BannerDetails from "./BannerDetails";
 import RegisterDetails from "./RegisterDetails";
 import EventDescription from "./EventDescription";
 import EventGallery from "./EventGallery";
+import { useParams } from "react-router-dom";
 
 const EventDetailsPages = () => {
-  const { data, loading, error, refetch } = useFetchDataJSON<any>({
-    path: "pages/activities/events/data/EventsDetails.json",
+  
+  const { id } = useParams()
+
+  const { data, loading, error, refetch } = useFetchDataAPI<any>({
+    apiUrl: `main_website/get_event_details/${id}`,
   });
 
-  console.log(data);
   return (
     <>
       <Wave title={data?.title || "Loading..."} />
