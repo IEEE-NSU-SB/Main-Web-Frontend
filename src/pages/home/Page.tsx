@@ -17,7 +17,7 @@ interface EventData {
 
 const HomePage = () => {
   // const { loading, data } = useFetchDataJSON({ path: "pages/home/data/vision-stats.json" });
-  const { data } = useFetchDataAPI<EventData>({ apiUrl: "main_website/get_mega_featured_events/1" });
+  const { loading, data, error, refetch } = useFetchDataAPI<EventData>({ apiUrl: "main_website/get_mega_featured_events/1" });
 
   return (
     <>
@@ -26,7 +26,7 @@ const HomePage = () => {
       <LogoSection />
       <VisionSection />
       <Stats />
-      <EventCarousel events={data?.featuredEvents || []}/>
+      <EventCarousel events={data?.featuredEvents || []} loading={loading} error={error || ''} refetch={refetch}/>
       <PerformersTab />
       <MegaEvents events={data?.megaEvents || []}/>
       <AchievementCard />

@@ -51,9 +51,8 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
                     COST
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {eventData.registration_fee_amount}
-                  </p>
+                  <p className="text-sm text-gray-600"
+                  dangerouslySetInnerHTML={{ __html: eventData.registration_fee_amount }}/>
                 </div>
               </div>
 
