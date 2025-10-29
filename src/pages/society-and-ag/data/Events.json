@@ -2,19 +2,51 @@
   "featured_events": [
     {
       "id": 1,
-      "name": "Robotics Workshop",
-      "description": "Hands-on workshop on building autonomous robots and automation systems using Arduino and sensors. Participants learned fundamental robotics design principles and practical implementation.",
-      "image": "src/assets/dummy/image1.png",
-      "date": "2025-10-15",
+      "name": "IEEE NSU Student Branch Presents “Connect &",
+      "description": "All the newly recruited members! Get ready for an exciting session! The IEEE NSU Student Branch is excited to organize an interactive session titled ‘Connect & Converse’ on Friday at 4 PM.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/IMG_8381.jpeg",
+      "date": "2025-10-24",
+      "category": "Non Technical"
+    },
+    {
+      "id": 2,
+      "name": "IEEE Day 2025: Tech Talk.",
+      "description": "IEEE Day is a global celebration that recognizes the contributions of the IEEE, the world's largest professional organization. The IEEE Student Branch at NSU has organized several interactive activities to inspire and educate its members on this special occasion.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/IMG_8141.jpeg",
+      "date": "2025-10-17",
+      "category": "Technical"
+    },
+    {
+      "id": 3,
+      "name": "Smash ’n Shuttle Showdown 2.0.",
+      "description": "IEEE Day celebrates the first time in history that engineers worldwide gathered to share their technical ideas in 1884. This day highlights the ways IEEE members work together to collaborate on ideas that use technology to create a better future for all.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/IMG_7938.jpeg",
+      "date": "2025-10-06",
+      "category": "Technical"
+    },
+    {
+      "id": 4,
+      "name": "IEEE Connect 4.0 - A Promotional Campaign.",
+      "description": "The IEEE NSU Student Branch (IEEE NSU SB) is excited to welcome all the newly admitted students of Fall 2025 to North South University! To mark the occasion, IEEE NSU SB is hosting “IEEE Connect 4.0 - A Promotional Campaign”, a booth specially designed to introduce all the newly recruited students to the dynamic opportunities that IEEE offers.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/IMG_7939.jpeg",
+      "date": "2025-09-15",
+      "category": "Technical"
+    },
+    {
+      "id": 5,
+      "name": "Introduction to MicroPython with Raspberry Pi Pico",
+      "description": "Technology is moving fast, and so are the tools we use to build innovative projects. In today’s world of innovation, microcontrollers and development boards have become essential tools for upgrading projects. While microcontrollers like Arduino are excellent for simple tasks, for more complex projects Raspberry Pi steps in as a powerful solution. But programming on Raspberry Pi doesn’t have to feel overwhelming, that’s where MicroPython comes in. MicroPython is a simpler version of Python, making learning and experimenting much more accessible for students.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/Facebook_Image_3.jpeg",
+      "date": "2025-09-15",
       "category": "Technical"
     },
     {
       "id": 6,
-      "name": "Line Follower Robot Competition",
-      "description": "A fun, competitive event where participants design and build autonomous line-following robots to test their precision and speed.",
-      "image": "src/assets/dummy/image1.png",
-      "date": "2025-06-18",
-      "category": "Non Technical"
+      "name": "IEEE Day 2025 Celebration",
+      "description": "IEEE Day is an annual event organized by the Institute of Electrical and Electronics Engineers (IEEE) to celebrate and commemorate the contributions made by engineers, professors, researchers, and organizations around the world. Through IEEE Day, we come together to honor all the achievements made in the engineering, scientific, and technological fields for the benefit of humanity.",
+      "image": "https://ieeensusb.org/media_files/Event_Banner_Image/IMG_8035.jpeg",
+      "date": "2025-10-07",
+      "category": "Technical"
     }
   ],
   "mega_events": [
