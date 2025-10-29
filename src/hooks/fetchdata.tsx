@@ -34,6 +34,10 @@ export function useFetchDataAPI<T = any>({ apiUrl }: { apiUrl: string }) {
   return { loading, data, error, refetch: fetchData };
 }
 
+const jsonModules = import.meta.glob("../pages/**/*.json", {
+  eager: false,      // important: we want lazy import
+  query: "?url",      // emit as URL
+}) as Record<string, () => Promise<{ default: string }>>;
 
 export function useFetchDataJSON<T = any>({ path }: { path: string }) {
   const [loading, setLoading] = useState(true);
@@ -45,12 +49,20 @@ export function useFetchDataJSON<T = any>({ path }: { path: string }) {
       setLoading(true);
       setError(null);
 
-      // Dynamically import JSON file
-      /* @vite-ignore */
-      const moduleUrl = (await import(/* @vite-ignore */`../${path}?url`)).default;
+      const fullPath = `../${path}`;
+      const importFn = jsonModules[fullPath];
+
+      if (!importFn) {
+        throw new Error(`No JSON file found at: ${fullPath}`);
+      }
+
+      const module = await importFn(); // TS now knows module.default is string
+      const moduleUrl = module.default;
+
       const res = await fetch(moduleUrl);
+      if (!res.ok) throw new Error(`Failed to fetch ${moduleUrl}`);
+
       const json = await res.json();
-      await new Promise((resolve) => setTimeout(resolve, 300));
       setData(json);
     } catch (err: any) {
       console.error(`Error loading local JSON file: ${path}`, err);
