@@ -1,0 +1,14 @@
+{
+  "featuredEvents": [
+
+  ],
+  "megaEvents": [
+    {
+      "id": 1,
+      "title": "Bangladesh Robotics Championship 2025",
+      "description": "Annual mega robotics event featuring line followers, AI bots, and more.",
+      "image": "src/assets/dummy/image1.png",
+      "date": "2025-11-23"
+    }
+  ]
+}
