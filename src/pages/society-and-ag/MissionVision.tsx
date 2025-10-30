@@ -21,8 +21,8 @@ const MissionVision: React.FC<MissionVisionProps> = ({ pageData }) => {
     <>
       <SectionHeading
         title="Mission & Vision"
-        titleColor={primaryColor}
-        underlineColor={primaryColor}
+        titleColor={`${primaryColor}b6`}
+        underlineColor={`${primaryColor}b6`}
       />
 
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 space-y-10">

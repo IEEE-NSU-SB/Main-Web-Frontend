@@ -108,7 +108,7 @@ const SocietyOrAg: React.FC = () => {
 
       {eventsData && (
         <>
-          <MegaEventsCard events={eventsData.megaEvents} color={pageData.primaryColor} />
+          <MegaEventsCard events={eventsData.megaEvents} color={`${pageData.primaryColor}b6`} />
           <FeaturedEventCard events={eventsData.featuredEvents} color={pageData.primaryColor} />
         </>
       )}
@@ -119,7 +119,7 @@ const SocietyOrAg: React.FC = () => {
 
       <MissionVision pageData={pageData} />
 
-      {execData && <Executive members={execData.executives} color={pageData.primaryColor} />}
+      {execData && <Executive members={execData.executives} color={`${pageData.primaryColor}b6`} />}
 
       <WhatWhyHowSection pageData={pageData} />
       <Contact pageData={pageData} />

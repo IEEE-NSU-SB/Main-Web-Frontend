@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import FadeIn from "@/components/ui/fade-in";
-import Wave from "@/components/wave";
 import { motion, AnimatePresence } from "framer-motion";
+import Wave from "@/components/Wave";
+import FadeIn from "@/components/ui/FadeIn";
 
 interface Magazine {
   title: string;
@@ -19,56 +19,29 @@ const magazineData: Magazine[] = [
     title: "Innovators Quarterly",
     publishedBy: "IEEE NSU SB",
     publishDate: "July 2024",
-    picture: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200",
+    picture: "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Chronics.png",
     description:
-      "A deep dive into innovation in AI and emerging tech with insights from students and faculty.",
+    "Chronicons is the first edition of IEEE NSU Student Branch’s magazine. Chronicons is not just a magazine, it is an assortment of research papers, technical articles and interviews that will spur the mind of everyone who has a reach to this spectacular piece of brochure",
     file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
   },
   {
     title: "Tech Horizon",
     publishedBy: "IEEE NSU SB",
     publishDate: "March 2024",
-    picture: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200",
+    picture: "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Zenith.png",
     description:
-      "Exploring next-generation computing paradigms and the social impact of emerging technologies.",
+    "“Zenith” is the footmark of the first event organized by PES, “POWERBUZZ”. It is an event which connected the faculties and the students in the same bond. Zenith features works from the students and the faculties and let them express their contribution in the field of engineering.",
     file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
   },
   {
     title: "Circuit Chronicles",
     publishedBy: "IEEE NSU SB",
     publishDate: "November 2023",
-    picture: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200",
+    picture: "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Prodigy.png",
     description:
-      "Highlighting innovation, community projects, and IEEE activities shaping the global tech world.",
+      "Prodigy’ is a testimony to what this student body (WIE) stands for. The sole purpose of this publication is to promote Women in Engineering. Even in 21st century whenever we hear the term ‘ENGINEER’, we automatically imagine a guy or a male, WIE is working towards breaking this taboo. Prodigy is the first step of reaching that goal.",
     file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
-  },
-  {
-    title: "Neural Frontiers",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "February 2023",
-    picture: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200",
-    description:
-      "Exploring neural interfaces, robotics, and the expanding frontiers of human-machine collaboration.",
-    file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
-  },
-  {
-    title: "The Quantum Pulse",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "October 2022",
-    picture: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200",
-    description:
-      "From qubits to reality — exploring the next revolution in quantum communication and computing.",
-    file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
-  },
-  {
-    title: "Future Vision",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "May 2022",
-    picture: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=1200",
-    description:
-      "Imagining sustainable innovation through technology, leadership, and interdisciplinary synergy.",
-    file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
-  },
+  }
 ];
 
 export default function MagazinesPage() {
@@ -111,7 +84,7 @@ export default function MagazinesPage() {
 
   return (
     <>
-      <Wave title="Magazines - IEEE NSU SB" />
+      <Wave title="Magazines" />
       <FadeIn>
         <section className="py-20 px-6 bg-[#FFFFFF] flex flex-col items-center">
           <div className="max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">

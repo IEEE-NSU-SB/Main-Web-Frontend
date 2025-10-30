@@ -26,18 +26,28 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
     <FadeIn>
       <SectionHeading
         title="Featured Events"
-        titleColor={color}
-        underlineColor={color}
+        titleColor={`${color}b6`}
+        underlineColor={`${color}b6`}
       />
-      <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-4 mb-15">
+      <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-13 mb-15">
         {events.map((event) => (
           <article
             key={event.id}
-            className="w-full md:w-[calc(33.333%-1rem)] bg-white h-[460px] border rounded-md overflow-hidden hover:shadow-lg transition-all"
-            style={{ backgroundColor: `${color}E6` }}
+            className="w-full md:w-[calc(31.333%-1rem)] h-[400px] border rounded-md overflow-hidden hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all"
+            style={{
+              background: `linear-gradient(
+              to bottom right,
+              ${color} 0%,              
+              ${color}52 26%,    
+              ${color}32 27%,        
+              ${color}32 85%,              
+              ${color}52 86%,    
+              ${color}d6 100%       
+            )`,
+            }}
           >
             <Link to={event.id ? `/events/${event.id}` : "#"}>
-              <div className="relative h-[200px] overflow-hidden">
+              <div className="relative h-[180px] overflow-hidden">
                 <img
                   src={event.image}
                   alt={event.name}
@@ -45,10 +55,8 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
                 />
               </div>
             </Link>
-            <div className="p-4 text-white">
-              <Link
-                to={event.id ? `/events/${event.id}` : "#"}
-              >
+            <div className="p-4 text-ieee-black-75">
+              <Link to={event.id ? `/events/${event.id}` : "#"}>
                 <h3 className="text-[20px] font-semibold mb-4 line-clamp-1">
                   {event.name}
                 </h3>
@@ -56,18 +64,12 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               <h5 className="flex gap-2 text-sm font-semibold mb-2">
                 <Calendar className="w-4 h-4" /> {event.date}
               </h5>
-              <p
-                className="text-[16px] line-clamp-4 h-24 mb-5"
-                dangerouslySetInnerHTML={{ __html: event.description }}
-              />
-              <a
-                href={event.id ? `/${event.id}` : "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white  hover:bg-white text-white hover:text-black px-4 py-1 rounded transition-all"
-              >
-                Read More
-              </a>
+              <Link to={event.id ? `/events/${event.id}` : "#"}>
+                <p
+                  className="text-[16px] line-clamp-4 h-24 mb-5"
+                  dangerouslySetInnerHTML={{ __html: event.description }}
+                />
+              </Link>
             </div>
           </article>
         ))}

@@ -29,8 +29,8 @@ const Intro: React.FC<IntroProps> = ({ pageData }) => {
       <FadeIn>
         <SectionHeading
           title={`About ${ag.name}`}
-          titleColor={ag.primaryColor}
-          underlineColor={ag.primaryColor}
+          titleColor={`${ag.primaryColor}b6`}
+          underlineColor={`${ag.primaryColor}b6`}
         />
         <p
             dangerouslySetInnerHTML={{ __html: ag.about }}
