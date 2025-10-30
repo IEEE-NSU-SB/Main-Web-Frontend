@@ -4,6 +4,57 @@ import { Link, useLocation } from "react-router-dom";
 import insbLogo from "./../assets/logo/insb.gif";
 import FadeIn from "./ui/FadeIn";
 
+interface AccordionProps {
+  title: string;
+  links: string[];
+  toggleMobileMenu: () => void;
+}
+
+const AccordionSection: React.FC<AccordionProps> = ({
+  title,
+  links,
+  toggleMobileMenu,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-ieee-blue-75">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-2 cursor-pointer font-medium"
+      >
+        {title}
+        <span
+          className={`transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        >
+          ▼
+        </span>
+      </button>
+      <div
+        className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="ml-4 space-y-1 mt-2">
+          {links.map((link) => (
+            <Link
+              key={link}
+              to={`/${link.toLowerCase().replace(/ /g, "-")}`}
+              className="block py-1 hover:pl-2 transition-all"
+              onClick={toggleMobileMenu}
+            >
+              {link}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -314,218 +365,98 @@ const Navbar: React.FC = () => {
         </div>
       </FadeIn>
 
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-40  text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto"
-          style={{
-            backgroundColor: societyColor || "#002855",
-          }}
-        >
-          {/* Close Button */}
-          <div className="flex justify-end mb-4">
-            <button onClick={toggleMobileMenu}>
-              <X size={28} />
-            </button>
-          </div>
+<div
+  className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
+    transition-all duration-500 ease-in-out
+    ${
+      isMobileMenuOpen
+        ? "opacity-100 scale-100"
+        : "opacity-0 scale-90 pointer-events-none"
+    }`}
+  style={{
+    backgroundColor: societyColor || "#002855",
+  }}
+>
+  {/* Close Button */}
+  <div className="flex justify-end mb-4">
+    <button onClick={toggleMobileMenu}>
+      <X size={28} />
+    </button>
+  </div>
 
-          <Link
-            to="/"
-            className="block py-2 border-b border-ieee-blue-75"
-            onClick={toggleMobileMenu}
-          >
-            Home
-          </Link>
+  <div className="space-y-4 text-sm">
+    <Link
+      to="/"
+      className="block py-2 border-b border-ieee-blue-75 transition-all hover:pl-2"
+      onClick={toggleMobileMenu}
+    >
+      Home
+    </Link>
 
-          {/* Activities */}
-          <details>
-            <summary className="py-2 cursor-pointer">Activities</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Events", "News", "Achievements"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
+    {[
+      {
+        title: "Activities",
+        links: ["Events", "News", "Achievements"],
+      },
+      {
+        title: "Societies & AG",
+        links: [
+          "IEEE NSU RAS SBC",
+          "IEEE NSU PES SBC",
+          "IEEE NSU IAS SBC",
+          "IEEE NSU WIE AG",
+        ],
+      },
+      {
+        title: "Members",
+        links: [
+          "Panels",
+          "Officers",
+          "Volunteers",
+          "Teams",
+          "Exemplary Members",
+          "All Members & Statistics",
+        ],
+      },
+      {
+        title: "About",
+        links: [
+          "IEEE",
+          "IEEE Region 10",
+          "IEEE Bangladesh Section",
+          "IEEE NSU Student Branch",
+          "FAQ",
+        ],
+      },
+      {
+        title: "Publications",
+        links: ["Blogs", "Research Papers", "Magazines", "Gallery", "Toolkit"],
+      },
+      {
+        title: "Get Involved",
+        links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
+      },
+    ].map((section) => (
+      <AccordionSection
+        key={section.title}
+        title={section.title}
+        links={section.links}
+        toggleMobileMenu={toggleMobileMenu}
+      />
+    ))}
 
-          {/* Societies & AG */}
-          <details>
-            <summary className="py-2 cursor-pointer">Societies & AG</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE NSU RAS SBC",
-                "IEEE NSU PES SBC",
-                "IEEE NSU IAS SBC",
-                "IEEE NSU WIE AG",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  to={`${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
+    <Link
+      to="/portal"
+      className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+      onClick={toggleMobileMenu}
+    >
+      IEEE NSU SB Portal
+    </Link>
+  </div>
+</div>
 
-          {/* Members */}
-          <details>
-            <summary className="py-2 cursor-pointer">Members</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Panels", "Officers", "Volunteers"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-
-              <details>
-                <summary className="cursor-pointer">Teams</summary>
-                <div className="ml-4 space-y-1">
-                  {[
-                    "Content Writing and Publications",
-                    "Website Development",
-                    "Media",
-                    "Events and Management",
-                    "Graphics",
-                    "Public Relation (PR)",
-                    "Promotions",
-                    "Finance and Corporate",
-                    "Logistics and Operations",
-                    "Membership Development",
-                  ].map((team) => (
-                    <Link
-                      key={team}
-                      to={`/${team.toLowerCase().replace(/ /g, "-")}`}
-                      className="block"
-                      onClick={toggleMobileMenu}
-                    >
-                      {team}
-                    </Link>
-                  ))}
-                </div>
-              </details>
-
-              <Link
-                to="/exemplary-members"
-                className="block"
-                onClick={toggleMobileMenu}
-              >
-                Exemplary Members
-              </Link>
-              <Link
-                to="/all-members"
-                className="block"
-                onClick={toggleMobileMenu}
-              >
-                All Members & Statistics
-              </Link>
-            </div>
-          </details>
-
-          {/* About */}
-          <details>
-            <summary className="py-2 cursor-pointer">About</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE",
-                "IEEE Region 10",
-                "IEEE Bangladesh Section",
-                "IEEE NSU Student Branch",
-                "FAQ",
-              ].map((about) => (
-                <Link
-                  key={about}
-                  to={`/${about.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {about}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Publications */}
-          <details>
-            <summary className="py-2 cursor-pointer">Publications</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "Blogs",
-                "Research Papers",
-                "Magazines",
-                "Gallery",
-                "Toolkit",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Get Involved */}
-          <details>
-            <summary className="py-2 cursor-pointer">Get Involved</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                (item) => (
-                  <Link
-                    key={item}
-                    to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block"
-                    onClick={toggleMobileMenu}
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
-            </div>
-          </details>
-
-          <Link
-            to="/portal"
-            className="relative
-              inline-block
-              px-4 py-2
-              rounded
-              text-ieee-white
-              text-xs
-              font-semibold
-              overflow-hidden
-              cursor-pointer
-              border-0
-              shadow-lg
-              transform
-              transition-all
-              duration-300
-              ease-in-out
-              hover:scale-105
-              hover:shadow-[0_0_20px_rgba(0,98,155,0.7)]
-              bg-gradient-animate
-              w-full
-              text-center"
-            onClick={toggleMobileMenu}
-          >
-            IEEE NSU SB Portal
-          </Link>
-        </div>
       )}
     </nav>
   );
