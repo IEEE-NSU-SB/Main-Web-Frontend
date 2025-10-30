@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
@@ -49,8 +49,8 @@ interface IEEERegion10Data {
 }
 
 const IEEERegion10: React.FC = () => {
-  const { loading, data, error } = useFetchDataJSON<IEEERegion10Data>({
-    path: "pages/about/ieee-region-10/data.json",
+  const { loading, data, error } = useFetchDataAPI<IEEERegion10Data>({
+    apiUrl: "main_website/get_ieee_r10_details/",
   });
 
   if (loading) return <Skeleton />;
@@ -72,9 +72,7 @@ const IEEERegion10: React.FC = () => {
           <FadeIn xIndex={100} yIndex={0} delay={0.1}>
             <div>
               <SectionHeading title="IEEE Region 10"/>
-              <p className="text-justify mb-6 pl-5">
-                {data.region10Description}
-              </p>
+              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.region10Description }}/>
               <a
                 href={data.historyLink}
                 className="bg-[#002855] text-white font-bold py-2 px-4 rounded hover:bg-[#FFC72C] transition mx-5"
@@ -92,9 +90,7 @@ const IEEERegion10: React.FC = () => {
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Young Professionals"/>
-              <p className="text-justify mb-6 pl-5">
-                {data.youngProfDescription}
-              </p>
+              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.youngProfDescription }}/>
               {data.youngProfLinks.map((link, i) => (
                 <>
                   <a
@@ -129,7 +125,7 @@ const IEEERegion10: React.FC = () => {
                 Women in Engineering
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.WIEDescription}</p>
+              <p className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.WIEDescription }}/>
               {data.WIELinks.map((l, i) => (
                 <>
                   <a
@@ -154,7 +150,7 @@ const IEEERegion10: React.FC = () => {
                 Students and Member Activities
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.StudentMemDescription}</p>
+              <p className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.StudentMemDescription }}/>
               {data.StudentMemLinks.map((l, i) => (
                 <>
                   <a
@@ -182,7 +178,7 @@ const IEEERegion10: React.FC = () => {
                 Educational Activities and Involvements
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.EduActivitiesDescription}</p>
+              <p className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.EduActivitiesDescription }}/>
               {data.EduActivitiesLinks.map((l, i) => (
                 <>
                   <a
@@ -207,7 +203,7 @@ const IEEERegion10: React.FC = () => {
                 Industry Relations
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.IndustryDescription}</p>
+              <p className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.IndustryDescription }}/>
               {data.IndustryLinks.map((l, i) => (
                 <>
                   <a
@@ -242,9 +238,7 @@ const IEEERegion10: React.FC = () => {
               <SectionHeading
                 title="Membership Development"
               />
-              <p className="text-justify mb-6 pl-5">
-                {data.MembershipDescription}
-              </p>
+              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.MembershipDescription }}/>
               {data.MembershipLinks.map((l, i) => (
                 <>
                   <a
@@ -278,9 +272,7 @@ const IEEERegion10: React.FC = () => {
         <FadeIn xIndex={-100} yIndex={0}>
           <div className="max-w-[1080px] m-6">
             <SectionHeading title="Events and Conferences"/>
-            <p className="pl-5 text-justify mb-4">
-              {data.EventConferenceDetails}
-            </p>
+            <p className="pl-5 text-justify mb-4" dangerouslySetInnerHTML={{ __html: data.EventConferenceDetails }}/>
             {data.EventConferenceLinks.map((l, i) => (
               <>
                 <a
