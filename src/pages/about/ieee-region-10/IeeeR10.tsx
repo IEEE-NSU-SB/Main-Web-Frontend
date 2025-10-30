@@ -322,7 +322,7 @@ const IEEERegion10: React.FC = () => {
               </a>
             </div>
             <div className="grid grid-cols-[1fr_2fr]">
-              <p>Membership enquiry:</p>
+              <p>Membership enquiry :</p>
               <a
                 href={data.MembershipInquiryLink}
                 className="link text-[#002855] font-bold hover:text-[#FFC72C]"
