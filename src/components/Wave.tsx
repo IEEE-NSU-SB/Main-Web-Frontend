@@ -19,7 +19,7 @@ const Wave: React.FC<WaveProps> = ({ title, subtitle, color }) => {
       }}
     >
       {/* Title */}
-      <div className="flex flex-col justify-center gap-4 items-center text-center py-16 md:py-28 relative z-10">
+      <div className="flex flex-col max-w-[1080px] m-auto justify-center gap-4 items-center text-center py-16 md:py-28 relative z-10">
         <h2 className="text-ieee-white font-bold text-[30px] uppercase mb-2 leading-7">
           {title}
         </h2>

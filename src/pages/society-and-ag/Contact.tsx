@@ -8,7 +8,7 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ pageData }) => {
-  const primaryColor = pageData.primaryColor || "#000";
+  const primaryColor = `${pageData.primaryColor}b6` || "#000";
   const email = pageData.email || "";
   const fbLink = pageData.fb || "";
 
@@ -29,7 +29,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
   // Dynamic Input Border Styling
   const getFieldStyle = (field: string) => ({
     borderColor: focusedField === field ? primaryColor : "#d1d5db",
-    boxShadow: focusedField === field ? `0 0 6px ${primaryColor}80` : "none",
+    boxShadow: focusedField === field ? `0 0 6px ${primaryColor}` : "none",
     transition: "all 0.25s ease",
   });
 
@@ -113,7 +113,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="cursor-pointer font-bold py-2 px-10 rounded-md border duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="cursor-pointer font-bold py-2 px-10 rounded-[4px] border duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
               style={{
                 borderColor: primaryColor,
                 color: primaryColor,

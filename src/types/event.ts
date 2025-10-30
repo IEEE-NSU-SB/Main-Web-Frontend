@@ -12,4 +12,6 @@ export interface EventData {
   read_more_link: string;
   description: string;
   images: string[];
+  inter_branch: string,
+  intra_branch: string;
 }
