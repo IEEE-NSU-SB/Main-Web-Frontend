@@ -2,9 +2,9 @@ import FadeIn from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "../../../hooks/fetchdata";
+import { useFetchDataAPI } from "../../../hooks/fetchdata";
 import { Link } from "react-router-dom";
-import { Calendar, Search } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useState, useEffect, useMemo, useRef } from "react";
 import { BiCategory } from "react-icons/bi";
 
@@ -14,32 +14,71 @@ interface FeaturedEvent {
   description: string;
   image: string;
   date: string;
-  color: string;
   category?: string;
 }
 
 interface FeaturedEventsData {
-  featured_events: FeaturedEvent[];
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: FeaturedEvent[];
 }
 
-const EventCard = () => {
-  const { loading, data, error, refetch } =
-    useFetchDataJSON<FeaturedEventsData>({
-      path: "pages/society-and-ag/data/Events.json",
-    });
+const EventCard: React.FC = () => {
+  const INITIAL_URL = "main_website/get_all_events/";
 
+  const { loading, data, error, refetch } = useFetchDataAPI<FeaturedEventsData>({
+    apiUrl: INITIAL_URL,
+  });
+
+  const [baseEvents, setBaseEvents] = useState<FeaturedEvent[]>([]);
+  const [nextUrl, setNextUrl] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("latest");
   const [categoryFilter, setCategoryFilter] = useState("All");
-  const [visibleCount, setVisibleCount] = useState(6);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
-  // --- Base events ---
-  const baseEvents = useMemo(() => {
-    return data?.featured_events ?? [];
+  // Load first page
+  useEffect(() => {
+    if (data) {
+      setBaseEvents(data.results);
+      setNextUrl(data.next);
+    }
   }, [data]);
 
-  // --- Filtering, searching, sorting ---
+  // Fetch next pages manually
+  const fetchNextPage = async () => {
+    if (!nextUrl) return;
+    try {
+      const res = await fetch(`${nextUrl}`);
+      if (!res.ok) throw new Error("Failed to fetch next page");
+      const json: FeaturedEventsData = await res.json();
+      setBaseEvents((prev) => [...prev, ...json.results]);
+      setNextUrl(json.next);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Infinite scroll observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting && nextUrl) {
+          fetchNextPage();
+        }
+      },
+      { root: null, rootMargin: "20px", threshold: 1.0 }
+    );
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    };
+  }, [nextUrl]);
+
+  // Filtering & Sorting
   const filteredEvents = useMemo(() => {
     let filtered = [...baseEvents];
 
@@ -75,30 +114,10 @@ const EventCard = () => {
     return filtered;
   }, [baseEvents, searchTerm, categoryFilter, sortOption]);
 
-  // --- Infinite scroll ---
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const target = entries[0];
-        if (target.isIntersecting) {
-          setVisibleCount((prev) => {
-            const increment = window.innerWidth < 768 ? 1 : 6;
-            return Math.min(prev + increment, filteredEvents.length);
-          });
-        }
-      },
-      { root: null, rootMargin: "20px", threshold: 1.0 }
-    );
+  const visibleEvents = filteredEvents;
 
-    if (loaderRef.current) observer.observe(loaderRef.current);
-    return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
-    };
-  }, [filteredEvents]);
-
-  const visibleEvents = filteredEvents.slice(0, visibleCount);
-
-  if (loading) {
+  // JSX Rendering
+  if (loading && baseEvents.length === 0) {
     return (
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 space-y-4">
         <div className="flex flex-wrap justify-center gap-4">
@@ -113,7 +132,7 @@ const EventCard = () => {
     );
   }
 
-  if (error || !data) {
+  if (error && baseEvents.length === 0) {
     return (
       <div className="min-h-[300px] flex items-center justify-center">
         <ErrorMessage message={"Failed to load Events"} onRetry={refetch} />
@@ -131,7 +150,6 @@ const EventCard = () => {
       <FadeIn>
         <div className="md:max-w-[1080px] w-full mx-auto mt-10 mb-5 flex flex-wrap items-center justify-between gap-4 px-5">
           <div className="relative flex items-center w-full md:w-[48%]">
-            <Search className="absolute left-3 text-gray-400 w-5 h-5" />
             <input
               type="text"
               placeholder="Search events..."
@@ -178,7 +196,7 @@ const EventCard = () => {
             delay={window.innerWidth < 768 ? index * 100 : 0}
           >
             <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
-              <Link to={"/"}>
+              <Link to={`/events/${event.id}`}>
                 <div className="relative h-[200px] overflow-hidden cursor-pointer">
                   <img
                     className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
@@ -195,9 +213,7 @@ const EventCard = () => {
                     <BiCategory className="w-4 h-4" /> {event.category}
                   </h5>
                   <h3 className="text-[20px] font-semibold overflow-hidden line-clamp-1 rounded text-ieee-black mt-3 mb-2">
-                    <span className="cursor-pointer hover:underline">
-                      {event.name}
-                    </span>
+                    <span className="cursor-pointer hover:underline">{event.name}</span>
                   </h3>
                   <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5">
                     {event.description}
@@ -208,7 +224,7 @@ const EventCard = () => {
           </FadeIn>
         ))}
 
-        {visibleCount < filteredEvents.length && (
+        {nextUrl && (
           <div ref={loaderRef} className="w-full text-center py-5">
             <p className="text-gray-400">Loading more events...</p>
           </div>
