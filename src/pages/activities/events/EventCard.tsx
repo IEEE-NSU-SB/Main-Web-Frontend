@@ -215,9 +215,7 @@ const EventCard: React.FC = () => {
                   <h3 className="text-[20px] font-semibold overflow-hidden line-clamp-1 rounded text-ieee-black mt-3 mb-2">
                     <span className="cursor-pointer hover:underline">{event.name}</span>
                   </h3>
-                  <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5">
-                    {event.description}
-                  </p>
+                  <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5" dangerouslySetInnerHTML={{ __html: event.description }}/>
                 </div>
               </Link>
             </article>
