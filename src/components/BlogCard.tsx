@@ -68,9 +68,7 @@ const BlogCard: React.FC = () => {
 
   return (
     <div className="w-full py-4">
-      {location.pathname === "/" && (
-        <SectionHeading title="Recent Blogs"/>
-      )}
+      {location.pathname === "/" && <SectionHeading title="Recent Blogs" />}
 
       {location.pathname !== "/" && (
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-6 px-6 m-auto max-w-[1090px]">
@@ -105,11 +103,19 @@ const BlogCard: React.FC = () => {
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="px-4 py-2 border rounded-md shadow-sm text-md focus:outline-none focus:ring-1 focus:ring-ieee-blue-75 focus:border-ieee-blue-75"
             >
-              {categories.map((cat, idx) => (
-                <option key={idx} value={cat}>
-                  {cat}
-                </option>
-              ))}
+              {categories
+                .map((cat) =>
+                  cat
+                    .replace(/\u00A0/g, " ")
+                    .replace(/&nbsp;/g, " ")
+                    .trim()
+                )
+                .filter((cat) => cat !== "") // remove empty values
+                .map((cleanCat, idx) => (
+                  <option key={idx} value={cleanCat}>
+                    {cleanCat}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
@@ -138,18 +144,17 @@ const BlogCard: React.FC = () => {
             filteredBlogs.map((event) => (
               <FadeIn key={event.id}>
                 <div className="max-w-110 lg:max-w-[300px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all duration-300">
-                <div className="overflow-hidden">
-
+                  <div className="overflow-hidden">
                     <Link to={event.link} className="w-110 h-48">
                       <img
                         src={event.image}
                         alt={event.title}
                         className="w-110 h-48 object-cover transform  transition-transform duration-300 hover:scale-105"
-                        />
+                      />
                     </Link>
-                        </div>
-                    {/* Publisher */}
-                    {/* <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
+                  </div>
+                  {/* Publisher */}
+                  {/* <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
                       Branch
                     </span> */}
                   <div className="p-4 rounded-sm">

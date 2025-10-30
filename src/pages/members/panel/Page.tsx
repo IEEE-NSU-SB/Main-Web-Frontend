@@ -62,7 +62,7 @@ const Panel = () => {
           <button
             key={item.year}
             onClick={() => handleYearChange(item.year)}
-            className={`px-3 py-2 rounded-xl font-medium transition-colors duration-300 cursor-pointer border border-ieee-darkblue-90
+            className={`px-3 py-2 rounded-sm font-medium transition-colors duration-300 cursor-pointer border border-ieee-darkblue-90
               ${
                 selectedYear === item.year
                   ? "bg-ieee-darkblue-90 text-ieee-white"

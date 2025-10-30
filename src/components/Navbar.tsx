@@ -38,13 +38,13 @@ const Navbar: React.FC = () => {
     : "bg-ieee-darkblue";
   return (
     <nav
-      className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
+      className={`text-ieee-white text-[10px] xl:text-[.70rem] sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
       style={{
         backgroundColor: societyColor,
       }}
     >
       <FadeIn>
-        <div className="max-w-[1080px] mx-auto py-3  flex justify-between lg:justify-between md:justify-center items-center">
+        <div className="max-w-[1080px] mx-auto py-3  flex flex-wrap justify-between lg:justify-between md:justify-center items-center">
           {/* Logo */}
           <Link to="/">
             <img

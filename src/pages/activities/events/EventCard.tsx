@@ -6,6 +6,7 @@ import { useFetchDataJSON } from "../../../hooks/fetchdata";
 import { Link } from "react-router-dom";
 import { Calendar, Search } from "lucide-react";
 import { useState, useEffect, useMemo, useRef } from "react";
+import { BiCategory } from "react-icons/bi";
 
 interface FeaturedEvent {
   id: number;
@@ -123,7 +124,7 @@ const EventCard = () => {
   return (
     <>
       <FadeIn>
-        <SectionHeading title="Our Events"/>
+        <SectionHeading title="Our Events" />
       </FadeIn>
 
       {/* Filter Bar */}
@@ -169,45 +170,40 @@ const EventCard = () => {
       </FadeIn>
 
       {/* Event Cards */}
-      <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-4 mb-15">
+      <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-8 mb-15">
         {visibleEvents.map((event, index) => (
           <FadeIn
             key={event.id}
-            className="w-full md:w-[calc(33.333%-1rem)]"
+            className="w-full md:w-[calc(32.333%-1rem)]"
             delay={window.innerWidth < 768 ? index * 100 : 0}
           >
-            <article className="bg-ieee-gray/5 h-[480px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
-              <div className="relative h-[200px] overflow-hidden cursor-pointer">
-                <Link to={"/"}>
+            <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
+              <Link to={"/"}>
+                <div className="relative h-[200px] overflow-hidden cursor-pointer">
                   <img
                     className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
                     src={event.image}
                     alt={event.name}
                   />
-                </Link>
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-4 overflow-hidden line-clamp-1 rounded text-ieee-black">
-                  <Link to={"/"}>
+                </div>
+                <div className="p-4">
+                  <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray mr-2">
+                    <Calendar className="w-4 h-4" />
+                    {new Date(event.date).toISOString().split("T")[0]}
+                  </h5>
+                  <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray">
+                    <BiCategory className="w-4 h-4" /> {event.category}
+                  </h5>
+                  <h3 className="text-[20px] font-semibold overflow-hidden line-clamp-1 rounded text-ieee-black mt-3 mb-2">
                     <span className="cursor-pointer hover:underline">
                       {event.name}
                     </span>
-                  </Link>
-                </h3>
-                <h5 className="flex gap-2 text-sm text-ieee-black/90 font-semibold mb-2">
-                  <Calendar className="w-4 h-4" />
-                  {event.date}
-                </h5>
-                <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5">
-                  {event.description}
-                </p>
-                <a
-                  href="#"
-                  className="cursor-pointer hover:bg-ieee-darkblue-90  hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300"
-                >
-                  Read More
-                </a>
-              </div>
+                  </h3>
+                  <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5">
+                    {event.description}
+                  </p>
+                </div>
+              </Link>
             </article>
           </FadeIn>
         ))}

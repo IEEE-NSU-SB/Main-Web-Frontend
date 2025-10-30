@@ -71,8 +71,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleSelectOption = (value: string, label: string) => {
@@ -168,13 +167,16 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
                   key={i}
                   className="min-w-[300px] md:min-w-[400px] bg-[#f7f7f7] rounded-2xl p-6 flex flex-col justify-between"
                 >
-                  <p className="text-gray-700 text-sm md:text-base italic text-wrap">
-                    “{item.feedback}”
-                  </p>
+                  <p
+                    className="text-gray-700 text-sm md:text-base italic text-wrap"
+                    dangerouslySetInnerHTML={{ __html: item.feedback }}
+                  />
                   <div className="flex flex-row items-center gap-3 mt-4">
                     <div>
                       <p className="font-semibold text-gray-900">{item.name}</p>
-                      <p className="text-sm text-gray-500">{item.satisfaction}</p>
+                      <p className="text-sm text-gray-500">
+                        {item.satisfaction}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -215,7 +217,13 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
               className="w-full px-5 py-4 bg-[#f0f0f0] rounded text-base text-gray-800 cursor-pointer flex justify-between items-center hover:bg-[#e8e8e8] transition-colors"
             >
               <span>{selectedOption}</span>
-              <span className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>▼</span>
+              <span
+                className={`transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              >
+                ▼
+              </span>
             </div>
 
             <div

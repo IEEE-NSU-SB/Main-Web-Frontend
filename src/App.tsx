@@ -39,6 +39,7 @@ import Volunteers from "./pages/members/volunteers/Page";
 import AboutIEEE from "./pages/about/ieee/Page";
 import FAQPage from "./pages/about/faq";
 import NewsDetails from "./pages/activities/News/NewsDetails";
+import MagazinesPage from "./pages/publications/magazines/pages";
 
 const MainLayout = () => {
   return (
@@ -93,6 +94,7 @@ const App = () => {
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
+          <Route path="/magazines" element={<MagazinesPage />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />

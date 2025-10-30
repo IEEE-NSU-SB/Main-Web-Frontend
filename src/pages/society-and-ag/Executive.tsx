@@ -25,7 +25,7 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color = "#00629b" }) => 
   if (!members || members.length === 0) return null;
 
   return (
-    <section className="max-w-[1080px] mx-auto py-2 pb-16">
+    <section className="max-w-[1080px] mx-auto py-2">
       <SectionHeading
         title="Our Executive Body"
         titleColor={color}
@@ -37,7 +37,7 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color = "#00629b" }) => 
           <FadeIn key={index}>
             <div
               className="w-[235px] bg-white rounded-xl shadow-md border text-center pt-4 pb-10 hover:shadow-xl transition-all duration-300 relative"
-              style={{ borderColor: `${color}B3` }}
+              style={{ borderColor: color }}
             >
               <Link
                 to={`/member-profile/${member.id}`}
@@ -82,7 +82,7 @@ const Executive: React.FC<ExecutiveProps> = ({ members, color = "#00629b" }) => 
       <div className="text-center flex justify-center my-16">
         <Link to="/panels">
           <button
-            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-md"
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px]"
             style={{
               backgroundColor: "white",
               borderColor: color,

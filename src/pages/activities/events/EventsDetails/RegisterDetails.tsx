@@ -1,12 +1,22 @@
 import FadeIn from "@/components/ui/FadeIn";
 import type { EventData } from "@/types/event";
 import { Calendar, DollarSign, Info } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 type EventDetailsProps = {
   eventData: EventData;
 };
 
+
 const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
+  const [currentUrl, setCurrentUrl] = useState("");
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
   return (
     <FadeIn>
       <div className="max-w-[1080px] mx-auto px-[4px] md:px-[6px]">
@@ -51,8 +61,12 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
                     COST
                   </h3>
-                  <p className="text-sm text-gray-600"
-                  dangerouslySetInnerHTML={{ __html: eventData.registration_fee_amount }}/>
+                  <p
+                    className="text-sm text-gray-600"
+                    dangerouslySetInnerHTML={{
+                      __html: eventData.registration_fee_amount,
+                    }}
+                  />
                 </div>
               </div>
 
@@ -67,6 +81,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                   </h3>
                   <a
                     href={eventData.read_more_link}
+                    target="_blank"
                     className="text-sm text-ieee-blue-75 hover:text-ieee-blue hover:underline"
                   >
                     Read More
@@ -77,9 +92,11 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
 
             {/* Register Button */}
             <div className="px-3 pb-6">
-              <button className="border-1 border-ieee-darkblue cursor-pointer w-full bg-[#002855] hover:bg-ieee-white hover:text-ieee-darkblue text-white font-bold py-4 px-6 rounded transition-colors duration-200">
-                REGISTER
-              </button>
+              <Link to={eventData.register_link}>
+                <button className="border-1 border-ieee-darkblue cursor-pointer w-full bg-[#002855] hover:bg-ieee-white hover:text-ieee-darkblue text-white font-bold py-4 px-6 rounded transition-colors duration-200">
+                  REGISTER
+                </button>
+              </Link>
             </div>
           </div>
           {/* Share Section */}
@@ -91,7 +108,9 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
             <div className="flex justify-center items-center gap-4">
               {/* Facebook */}
               <a
-                href={""}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                  currentUrl
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#1877F2] hover:text-[#0C63D4] transition-colors"
@@ -108,7 +127,9 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
 
               {/* Twitter/X */}
               <a
-                href={""}
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  currentUrl
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-black hover:text-gray-700 transition-colors"
@@ -125,7 +146,9 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
 
               {/* LinkedIn */}
               <a
-                href={""}
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                  currentUrl
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#0A66C2] hover:text-[#004182] transition-colors"
@@ -142,7 +165,9 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
 
               {/* Email */}
               <a
-                href={`mailto:?subject=Event&body=Check out this event`}
+                href={`mailto:?subject=Check this out&body=${encodeURIComponent(
+                  currentUrl
+                )}`}
                 className="text-[#EA4335] hover:text-[#C5221F] transition-colors"
                 aria-label="Share via Email"
               >

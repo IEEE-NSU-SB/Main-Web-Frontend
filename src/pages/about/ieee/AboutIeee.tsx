@@ -309,7 +309,7 @@ export default function AboutIEEE() {
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
             <img
-              src={data.innovationsDevelopmentsImage}
+              src={data.studentsAndMemberActivitiesImage}
               alt="Students and Member Activities"
               className="object-contain"
             />
@@ -320,9 +320,9 @@ export default function AboutIEEE() {
                 title="Students and Member Activities"
               />
               <p className="text-justify mb-6 pl-5">
-                {data.innovationsDevelopmentsDetails}
+                {data.studentsAndMemberActivitiesDetails}
               </p>
-              {data.innovationsDevelopmentsLinks.map((link, i) => (
+              {data.studentsAndMemberActivitiesLinks.map((link, i) => (
                 <>
                   <a
                     key={i}

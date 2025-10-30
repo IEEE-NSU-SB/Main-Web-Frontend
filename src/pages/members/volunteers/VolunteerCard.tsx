@@ -1,8 +1,9 @@
 // components/VolunteerCard.tsx
+import SectionHeading from "@/components/ui/SectionHeading";
 import React from "react";
 import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
-interface member {
+interface Member {
   id: string;
   name: string;
   position: string;
@@ -11,10 +12,12 @@ interface member {
   facebook?: string;
   email?: string;
   profileLink?: string;
+  team?: string;
 }
 
+
 interface VolunteerCardProps {
-  members: member[];
+  members: Member[];
   sectionTitle: string;
 }
 
@@ -22,14 +25,9 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) 
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <div className="mt-12 mb-8 flex flex-col items-center">
-          <h3 className="text-[35px] font-semibold text-ieee-black uppercase text-center">
-            {sectionTitle}
-          </h3>
-          <div className="h-[5px] w-[150px] bg-ieee-yellow rounded-md"></div>
-        </div>
+        <SectionHeading title={sectionTitle} align="center"/>
 
-        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px]">
+        <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
               key={member.id || "#"}

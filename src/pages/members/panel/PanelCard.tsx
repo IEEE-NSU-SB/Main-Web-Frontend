@@ -55,7 +55,7 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
 
               <div className="relative z-10 flex flex-col items-center justify-end h-[180px] w-full p-5 text-center">
                 {/* Name - always visible, scales/moves on hover */}
-                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-40px] group-hover:-translate-y-2 group-hover:scale-115">
+                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-50px] group-hover:-translate-y-2 group-hover:scale-115">
                   {member.name}
                 </h3>
 
