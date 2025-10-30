@@ -31,6 +31,7 @@ import ExecutiveBodySection from "@/pages/society-and-ag/pages[id]/ScAgExecutive
 import EventDescription from "./pages/activities/events/EventDescription";
 import Pages from "./pages/activities/News/Pages";
 import FAQ from "./pages/about/faq";
+import MagazinesPage from "@/pages/publications/magazines/pages";
 
 const MainLayout = () => {
   return (
@@ -72,6 +73,8 @@ const App = () => {
           {/* <Route path="/about/:id" element={<About />} /> */}
           <Route path="/about/ieee-region-10" element={< IEEER10/>} />
           <Route path="/about/FAQ" element={<FAQ />} />
+          <Route path="magazines" element={<MagazinesPage />} />
+          
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
