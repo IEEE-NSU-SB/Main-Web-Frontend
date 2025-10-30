@@ -1,5 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { BiCategory } from "react-icons/bi";
 import { Calendar } from "lucide-react";
 import { Link } from "react-router";
 
@@ -9,6 +10,7 @@ interface FeaturedEvent {
   description: string;
   image: string;
   date: string;
+  category: string;
 }
 
 interface FeaturedEventCardProps {
@@ -38,11 +40,12 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               background: `linear-gradient(
               to bottom right,
               ${color} 0%,              
-              ${color}52 26%,    
-              ${color}32 27%,        
-              ${color}32 85%,              
-              ${color}52 86%,    
-              ${color}d6 100%       
+              ${color}b6 22%,    
+              ${color}32 33%,        
+              ${color}12 50%,        
+              ${color}12 82%,              
+              ${color}42 89%,    
+              ${color}86 100%       
             )`,
             }}
           >
@@ -54,23 +57,23 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
                   className="w-full h-full object-cover transform transition duration-500 hover:scale-105 hover:brightness-90"
                 />
               </div>
-            </Link>
-            <div className="p-4 text-ieee-black-75">
-              <Link to={event.id ? `/events/${event.id}` : "#"}>
-                <h3 className="text-[20px] font-semibold mb-4 line-clamp-1">
+              <div className="p-4 text-ieee-black-75">
+                <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray mr-2">
+                  <Calendar className="w-4 h-4" />
+                  {new Date(event.date).toISOString().split("T")[0]}
+                </h5>
+                <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray">
+                  <BiCategory className="w-4 h-4" /> {event.category}
+                </h5>
+                <h3 className="text-[20px] font-semibold mt-3 line-clamp-1 hover:underline">
                   {event.name}
                 </h3>
-              </Link>
-              <h5 className="flex gap-2 text-sm font-semibold mb-2">
-                <Calendar className="w-4 h-4" /> {event.date}
-              </h5>
-              <Link to={event.id ? `/events/${event.id}` : "#"}>
                 <p
                   className="text-[16px] line-clamp-4 h-24 mb-5"
                   dangerouslySetInnerHTML={{ __html: event.description }}
                 />
-              </Link>
-            </div>
+              </div>
+            </Link>
           </article>
         ))}
       </div>
