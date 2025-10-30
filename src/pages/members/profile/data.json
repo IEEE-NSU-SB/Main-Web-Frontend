@@ -2,31 +2,18 @@
   "name": "Md. Shakib Shahariar Junayed",
   "position": "Secretary (External)",
   "memberId": "99131140",
-  "tenure": "2025 - 2026",
-  "image": "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg", 
-  "socials": {
-    "facebook": "#",
-    "linkedin": "#",
-    "email": "mailto:shakib.junayed@northsouth.edu"
-  },
+  "recruitmentSession": "2025 - 2026",
+  "image": "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg",
+  "facebook": "#",
+  "linkedin": "#",
   "achievements": [
-      "Title dasadasdasd asdsada",
-      "Title dasadasdasd asdsada",
-      "Title dasadasdasd asdsada",
-      "Title dasadasdasd asdsada",
-      "Title dasadasdasd asdsada",
-      "Title dasadasdasd asdsada Title dasadasdasd asdsadaTitle dasadasdasd asdsada Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada",
-    "Title dasadasdasd asdsada"
+    {
+      "title":"Title dasadasdasd asdsada",
+      "tenure":"2025 - 2026"
+    }
   ],
-  "emails": {
-    "ieee": "junayed@ieee.org",
-    "nsu": "shakib.junayed@northsouth.edu"
-  },
+  "ieeeMail": "junayed@ieee.org",
+  "nsuMail": "shakib.junayed@northsouth.edu",
   "bloodGroup": "O+",
   "roles": [
     {
