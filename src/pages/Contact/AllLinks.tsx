@@ -1,7 +1,7 @@
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import FadeIn from "@/components/ui/FadeIn";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { MapPin, Mail, Phone, Share2, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 
 type ContactResponse = {
@@ -12,10 +12,9 @@ type ContactResponse = {
 };
 
 const All_links = () => {
-    const { data, loading, error, refetch } = useFetchDataJSON<ContactResponse>({
-        path: "pages/Contact/contact.json",
+    const { data, loading, error, refetch } = useFetchDataAPI<ContactResponse>({
+        apiUrl: "main_website/get_contact_info/",
     });
-
 
 
     return (
