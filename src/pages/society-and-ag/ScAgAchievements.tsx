@@ -41,7 +41,6 @@ const Achievements = () => {
 
   const {
     loading: achLoading,
-    data: achData,
     error: achError,
     refetch: refetchAch,
   } = useFetchDataAPI<Award[]>({

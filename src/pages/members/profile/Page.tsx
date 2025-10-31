@@ -6,7 +6,7 @@ import Wave from "@/components/Wave";
 const MemberProfile: React.FC = () => {
   return (
     <>
-      <Wave title={`${data.name}'s Profile`} />
+      <Wave title="Member Profile" subtitle={`${data.name}`} />
 
       <div className="max-w-[1080px] mx-auto px-4 py-10 space-y-10">
         {/* Top Section */}
@@ -30,9 +30,9 @@ const MemberProfile: React.FC = () => {
               <p className="text-[12px] md:text-[16px] text-ieee-black-75">
                 {data.memberId}
               </p>
-              <p className="text-[12px] md:text-[16px] text-ieee-black-75">
+              {/* <p className="text-[12px] md:text-[16px] text-ieee-black-75">
                 Recruitment Session : {data.recruitmentSession}
-              </p>
+              </p> */}
 
               <div className="flex gap-3 mt-3 text-gray-700 text-lg">
                 {data.facebook && (
@@ -87,12 +87,12 @@ const MemberProfile: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {data.roles.map((role, i) => (
               <div key={i}>
                 <div className="flex items-center gap-2 mb-1">
                   <div className="w-3 h-3 rounded-full bg-gradient-to-r from-ieee-blue to-ieee-cyan rotate-45"></div>
-                  <h3 className="font-bold text-[20px]">{role.organization}</h3>
+                  <h3 className="font-bold text-[22px]">{role.organization}</h3>
                 </div>
                 <p>Current Position: {role.currentPosition}</p>
                 <p>Team: {role.team}</p>

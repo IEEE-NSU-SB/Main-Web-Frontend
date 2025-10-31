@@ -33,8 +33,14 @@ interface EventData {
   megaEvents: any[];
   featuredEvents: any[];
 }
+interface Member {
+  id:number,
+  name:string,
+  position:string
+}
 
 interface ExecutiveData {
+  advisor: Member | undefined;
   executives: any[];
 }
 

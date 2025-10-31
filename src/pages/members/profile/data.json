@@ -1,78 +1,36 @@
 {
-  "name": "Md. Shakib Shahariar Junayed",
-  "position": "Secretary (External)",
-  "memberId": "99131140",
+  "name": "Md Nafiur Rahman",
+  "position": "Chair",
+  "memberId": "97454566",
   "recruitmentSession": "2025 - 2026",
   "image": "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg",
   "facebook": "#",
   "linkedin": "#",
   "achievements": [
     {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
+      "title":"Chair Branch",
+      "tenure":"2024 - 2025"
     },
     {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
-    },
-    {
-      "title":"Title dasadasdasd asdsada",
-      "tenure":"2025 - 2026"
+      "title":"Vice-Chair (Activity)",
+      "tenure":"2023 - 2024"
     }
   ],
-  "ieeeMail": "junayed@ieee.org",
-  "nsuMail": "shakib.junayed@northsouth.edu",
+  "ieeeMail": "mdnafiur.rahman19@ieee.org",
+  "nsuMail": "nafiur.rahman01@northsouth.edu",
   "bloodGroup": "O+",
   "roles": [
     {
       "organization": "IEEE NSU Student Branch",
-      "currentPosition": "Branch Counselor",
+      "currentPosition": "Chair",
       "team": "Branch",
-      "tenure": "2025 - 2026"
+      "tenure": "2024 - 2025"
     },
     {
       "organization": "IEEE NSU Student Branch",
-      "currentPosition": "Branch Counselor",
+      "currentPosition": "Vice-Chair (Activity)",
       "team": "Branch",
-      "tenure": "2025 - 2026"
-    },
-    {
-      "organization": "IEEE NSU Student Branch",
-      "currentPosition": "Branch Counselor",
-      "team": "Branch",
-      "tenure": "2025 - 2026"
+      "tenure": "2023 - 2024"
     }
   ]
 }

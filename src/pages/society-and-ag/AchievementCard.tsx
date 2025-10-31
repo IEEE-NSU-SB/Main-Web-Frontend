@@ -1,10 +1,9 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, X } from "lucide-react";
+import { X } from "lucide-react";
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 
 interface Achievement {
   year: string;
