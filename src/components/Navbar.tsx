@@ -18,7 +18,7 @@ const AccordionSection: React.FC<AccordionProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-ieee-blue-75">
+    <div className="border-b grayblue-75">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center py-2 cursor-pointer font-medium"
@@ -53,7 +53,6 @@ const AccordionSection: React.FC<AccordionProps> = ({
     </div>
   );
 };
-
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -255,7 +254,7 @@ const Navbar: React.FC = () => {
                 }).map(([label, path]) => (
                   <Link
                     key={path}
-                    to={`/about/${path}`}
+                    to={`${path}`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {label}
@@ -367,96 +366,105 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-<div
-  className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
+        <div
+          className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
     transition-all duration-500 ease-in-out
     ${
       isMobileMenuOpen
         ? "opacity-100 scale-100"
         : "opacity-0 scale-90 pointer-events-none"
     }`}
-  style={{
-    backgroundColor: societyColor || "#002855",
-  }}
->
-  {/* Close Button */}
-  <div className="flex justify-end mb-4">
-    <button onClick={toggleMobileMenu}>
-      <X size={28} />
-    </button>
-  </div>
+          style={{
+            backgroundColor: societyColor || "#002855",
+          }}
+        >
+          {/* Close Button */}
+          <div className="flex justify-end mb-4">
+            <button onClick={toggleMobileMenu}>
+              <X size={28} />
+            </button>
+          </div>
 
-  <div className="space-y-4 text-sm">
-    <Link
-      to="/"
-      className="block py-2 border-b border-ieee-blue-75 transition-all hover:pl-2"
-      onClick={toggleMobileMenu}
-    >
-      Home
-    </Link>
+          <div className="space-y-4 text-sm">
+            <Link
+              to="/"
+              className="block py-2 border-b border-ieee-gray transition-all hover:pl-2"
+              onClick={toggleMobileMenu}
+            >
+              Home
+            </Link>
 
-    {[
-      {
-        title: "Activities",
-        links: ["Events", "News", "Achievements"],
-      },
-      {
-        title: "Societies & AG",
-        links: [
-          "IEEE NSU RAS SBC",
-          "IEEE NSU PES SBC",
-          "IEEE NSU IAS SBC",
-          "IEEE NSU WIE AG",
-        ],
-      },
-      {
-        title: "Members",
-        links: [
-          "Panels",
-          "Officers",
-          "Volunteers",
-          "Teams",
-          "Exemplary Members",
-          "All Members & Statistics",
-        ],
-      },
-      {
-        title: "About",
-        links: [
-          "IEEE",
-          "IEEE Region 10",
-          "IEEE Bangladesh Section",
-          "IEEE NSU Student Branch",
-          "FAQ",
-        ],
-      },
-      {
-        title: "Publications",
-        links: ["Blogs", "Research Papers", "Magazines", "Gallery", "Toolkit"],
-      },
-      {
-        title: "Get Involved",
-        links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
-      },
-    ].map((section) => (
-      <AccordionSection
-        key={section.title}
-        title={section.title}
-        links={section.links}
-        toggleMobileMenu={toggleMobileMenu}
-      />
-    ))}
+            {[
+              {
+                title: "Activities",
+                links: ["Events", "News", "Achievements"],
+              },
+              {
+                title: "Societies & AG",
+                links: [
+                  "IEEE NSU RAS SBC",
+                  "IEEE NSU PES SBC",
+                  "IEEE NSU IAS SBC",
+                  "IEEE NSU WIE AG",
+                ],
+              },
+              {
+                title: "Members",
+                links: [
+                  "Panels",
+                  "Officers",
+                  "Volunteers",
+                  "Teams",
+                  "Exemplary Members",
+                  "All Members & Statistics",
+                ],
+              },
+              {
+                title: "About",
+                links: [
+                  "IEEE",
+                  "IEEE Region 10",
+                  "IEEE Bangladesh Section",
+                  "IEEE NSU Student Branch",
+                  "FAQ",
+                ],
+              },
+              {
+                title: "Publications",
+                links: [
+                  "Blogs",
+                  "Research Papers",
+                  "Magazines",
+                  "Gallery",
+                  "Toolkit",
+                ],
+              },
+              {
+                title: "Get Involved",
+                links: [
+                  "Join IEEE NSU SB",
+                  "Write a blog",
+                  "Add Research Paper",
+                ],
+              },
+            ].map((section) => (
+              <AccordionSection
+                key={section.title}
+                title={section.title}
+                links={section.links}
+                toggleMobileMenu={toggleMobileMenu}
+              />
+            ))}
 
-    <Link
-      to="/portal"
-      className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
-      onClick={toggleMobileMenu}
-    >
-      IEEE NSU SB Portal
-    </Link>
-  </div>
-</div>
-
+            <Link
+              to="/portal"
+              className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+              onClick={toggleMobileMenu}
+            >
+              IEEE NSU SB Portal
+            </Link>
+          </div>
+        </div>
       )}
     </nav>
   );

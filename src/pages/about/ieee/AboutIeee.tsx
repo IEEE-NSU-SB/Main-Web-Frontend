@@ -104,7 +104,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -139,7 +139,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -164,7 +164,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -192,7 +192,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={l.link}
-                    className=" inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className=" inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -217,7 +217,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -285,7 +285,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -327,7 +327,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -351,7 +351,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -400,7 +400,7 @@ export default function AboutIEEE() {
               <p>Asia Pacific:</p>
               <a
                 href={data.asiaPacificLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 {data.asiaPacificLink}
               </a>
@@ -409,7 +409,7 @@ export default function AboutIEEE() {
               <p>IEEE Computer Organization:</p>
               <a
                 href={data.ieeeComputerOrgLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 {data.ieeeComputerOrgLink}
               </a>
