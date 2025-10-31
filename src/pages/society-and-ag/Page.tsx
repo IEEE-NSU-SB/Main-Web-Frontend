@@ -38,8 +38,13 @@ interface ExecutiveData {
   executives: any[];
 }
 
-interface AchievementData {
-  achievements: any[];
+interface Award {
+  year: string;
+  image: string;
+  title: string;
+  winner: string;
+  primaryColor: string;
+  description: string;
 }
 
 const SocietyOrAg: React.FC = () => {
@@ -58,7 +63,7 @@ const SocietyOrAg: React.FC = () => {
   // const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
   // const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
   const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
-  const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
+  // const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
 
   // ✅ Hooks
   const { loading: pageLoading, data: pageData, error: pageError, refetch: refetchPage } =
@@ -71,7 +76,7 @@ const SocietyOrAg: React.FC = () => {
     useFetchDataJSON<ExecutiveData>({ path: execPath });
 
   const { loading: achLoading, data: achData, error: achError, refetch: refetchAch } =
-    useFetchDataJSON<AchievementData>({ path: achPath });
+    useFetchDataAPI<Award[]>({ apiUrl: `main_website/get_achievements/landing/${baseName}` });
 
   // ✅ Handle unknown baseName
   if (!baseName) return <ErrorMessage message="Unknown Society or AG page." />;
@@ -113,8 +118,8 @@ const SocietyOrAg: React.FC = () => {
         </>
       )}
 
-      {achData?.achievements && (
-        <Achievements achievements={achData.achievements} color={pageData.primaryColor} />
+      {achData && (
+        <Achievements achievements={achData} color={pageData.primaryColor} />
       )}
 
       <MissionVision pageData={pageData} />
