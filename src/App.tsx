@@ -9,37 +9,51 @@ import {
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ui/ScrollToTopBtn";
-
-import HomePage from "./pages/home/Page";
-import SocietyOrAg from "./pages/society-and-ag/Page";
-// import About from "@/pages/about/pages[id]/pages";
-
-import JoinINSB from "@/pages/get-involved/join-insb/Page";
-import AllMembers from "@/pages/members/all-members-statistics/Page";
-import Achievements from "./pages/activities/achievements/Page";
-import ResearchPapers from "./pages/publications/research-paper/Page";
-import Blogs from "./pages/publications/blogs/Page";
-import Toolkit from "./pages/publications/toolkit/Page";
-import WelcomePage from "./pages/welcome/Page";
 import ScrollToTop from "./components/ui/ScrollToTop";
-import Contact from "./pages/Contact/Page";
+
+//Home
+import HomePage from "./pages/home/Page";
+
+//Activities
 import Events from "./pages/activities/events/Page";
-import IEEER10 from "./pages/about/ieee-region-10/Page";
+import EventDetails from "./pages/activities/events/EventsDetails/Page";
+import Achievements from "./pages/activities/achievements/Page";
 import News from "./pages/activities/News/Page";
-import Gallery from "./pages/publications/gallery/Page";
-import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
-import EventDetailsPages from "./pages/activities/events/EventsDetails/Page";
-import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
-import TeamPage from "./pages/members/team/Page";
-import WriteBlog from "./pages/get-involved/write-a-blog/Page";
-import Profile from "./pages/members/profile/Page";
-import Panel from "./pages/members/panel/Page";
-import Officer from "./pages/members/officers/Page";
-import Volunteers from "./pages/members/volunteers/Page";
-import AboutIEEE from "./pages/about/ieee/Page";
-import FAQPage from "./pages/about/faq";
 import NewsDetails from "./pages/activities/News/NewsDetails";
-import MagazinesPage from "./pages/publications/magazines/pages";
+
+//Societies & AG
+import SocietyOrAg from "./pages/society-and-ag/Page";
+
+//Members
+import Panel from "./pages/members/panel/Page";
+import Officers from "./pages/members/officers/Page";
+import Volunteers from "./pages/members/volunteers/Page";
+import TeamPage from "./pages/members/team/Page";
+import AllMembers from "@/pages/members/all-members-statistics/Page";
+import Profile from "./pages/members/profile/Page";
+
+//About
+import AboutIEEE from "./pages/about/ieee/Page";
+import AboutIEEER10 from "./pages/about/ieee-region-10/Page";
+import AboutIEEEBDS from "./pages/about/ieee-bds-section/Page";
+import FAQPage from "./pages/about/faq";
+
+//Publications
+import Blogs from "./pages/publications/blogs/Page";
+import ResearchPapers from "./pages/publications/research-paper/Page";
+import Magazines from "./pages/publications/magazines/pages";
+import Gallery from "./pages/publications/gallery/Page";
+import Toolkit from "./pages/publications/toolkit/Page";
+
+//Contact
+import Contact from "./pages/Contact/Page";
+
+//Get Involved
+import JoinINSB from "@/pages/get-involved/join-insb/Page";
+import WriteBlog from "./pages/get-involved/write-a-blog/Page";
+import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
+import WelcomePage from "./pages/welcome/Page";
+import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
 
 const MainLayout = () => {
   return (
@@ -66,9 +80,9 @@ const App = () => {
 
           {/* Activities */}
           <Route path="/events" element={<Events />} />
-          <Route path="/events/:id" element={<EventDetailsPages />} />
+          <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/news" element={<News />} />
-          <Route path="/news/1" element={<NewsDetails />} />
+          <Route path="/news/:id" element={<NewsDetails />} />
           <Route path="/achievements" element={<Achievements />} />
 
           {/* Societies & AG */}
@@ -80,21 +94,22 @@ const App = () => {
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
           <Route path="/panels/:year" element={<Panel />} />
-          <Route path="/officers" element={<Officer />} />
+          <Route path="/officers" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
-          <Route path="/all-members" element={<AllMembers />} />
-          <Route path="/team" element={<AllMembers />} />
           <Route path="/team/:id" element={<TeamPage />} />
+          <Route path="/exemplary-members" />
           <Route path="/member_profile/:id" element={<Profile />} />
+          <Route path="/all-members" element={<AllMembers />} />
 
           {/* About */}
-          <Route path="/about/ieee-region-10" element={<IEEER10 />} />
-          <Route path="/about/ieee" element={<AboutIEEE />} />
-          <Route path="/about/FAQ" element={<FAQPage />} />
+          <Route path="/ieee" element={<AboutIEEE />} />
+          <Route path="/ieee-region-10" element={<AboutIEEER10 />} />
+          <Route path="/ieee-bangladesh-section" element={<AboutIEEEBDS/>} />
+          <Route path="/FAQ" element={<FAQPage />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
-          <Route path="/magazines" element={<MagazinesPage />} />
+          <Route path="/magazines" element={<Magazines />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />

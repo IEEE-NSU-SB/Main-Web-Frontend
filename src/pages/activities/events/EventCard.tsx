@@ -189,11 +189,10 @@ const EventCard: React.FC = () => {
 
       {/* Event Cards */}
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-8 mb-15">
-        {visibleEvents.map((event, index) => (
+        {visibleEvents.map((event) => (
           <FadeIn
             key={event.id}
             className="w-full md:w-[calc(32.333%-1rem)]"
-            delay={window.innerWidth < 768 ? index * 100 : 0}
           >
             <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
               <Link to={`/events/${event.id}`}>

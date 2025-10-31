@@ -8,8 +8,8 @@ interface WaveProps {
 }
 
 const Wave: React.FC<WaveProps> = ({ title, subtitle, color }) => {
-  const gradientFrom = color || "#002855"; // default color
-  const gradientTo = color || "#00629B"; // fallback for gradient end if needed
+  const gradientFrom = color ? `${color}d6` : "#002855"; // default color
+  const gradientTo = color ? `${color}86` : "#00629B"; // fallback for gradient end if needed
 
   return (
     <section

@@ -96,7 +96,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -131,7 +131,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -156,7 +156,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -184,7 +184,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={l.link}
-                    className=" inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className=" inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -209,7 +209,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#FFD100] font-bold hover:text-white mb-2"
+                    className="inline-flex items-center gap-2 text-[#FFD100] hover:text-white mb-2"
                   >
                     <ExternalLink size={16} />
                     {l.title}
@@ -244,7 +244,7 @@ const IEEERegion10: React.FC = () => {
                   <a
                     key={i}
                     href={l.link}
-                    className="inline-flex items-center gap-2 text-[#002855] font-bold hover:text-[#FFC72C] mb-2 pl-5"
+                    className="inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
                   >
                     <ExternalLink size={18} />
                     {l.title}
@@ -280,7 +280,7 @@ const IEEERegion10: React.FC = () => {
                   href={l.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 pl-5 text-[#002855] font-bold hover:text-[#FFC72C] mb-2"
+                  className="inline-flex items-center gap-2 pl-5 text-[#002855] hover:text-[#FFC72C] mb-2"
                 >
                   <ExternalLink size={18} />
                   {l.title}
@@ -307,7 +307,7 @@ const IEEERegion10: React.FC = () => {
               <p>Home page:</p>
               <a
                 href={data.HomePageLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 {data.HomePageLink}
               </a>
@@ -316,7 +316,7 @@ const IEEERegion10: React.FC = () => {
               <p>Website:</p>
               <a
                 href={data.WebsiteLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 IEEE Asia Pacific Region 10
               </a>
@@ -325,7 +325,7 @@ const IEEERegion10: React.FC = () => {
               <p>Membership enquiry :</p>
               <a
                 href={data.MembershipInquiryLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 IEEE Support Center
               </a>
@@ -334,7 +334,7 @@ const IEEERegion10: React.FC = () => {
               <p>Volunteers:</p>
               <a
                 href={data.ForVolunteersLink}
-                className="link text-[#002855] font-bold hover:text-[#FFC72C]"
+                className="link text-[#002855] hover:text-[#FFC72C]"
               >
                 Ewell Tan
               </a>
