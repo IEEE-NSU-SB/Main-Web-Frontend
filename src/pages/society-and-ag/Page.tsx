@@ -13,7 +13,7 @@ import MegaEventsCard from "@/components/MegaEventCard";
 import FeaturedEventCard from "@/components/FeaturedEventCard";
 import Executive from "./Executive";
 import MissionVision from "./MissionVision";
-import Achievements from "./Achievements";
+import Achievements from "./AchievementCard";
 import React from "react";
 
 // ✅ Interfaces
@@ -119,12 +119,13 @@ const SocietyOrAg: React.FC = () => {
       )}
 
       {achData && (
-        <Achievements achievements={achData} color={pageData.primaryColor} />
+        <Achievements achievements={achData} primaryColor={pageData.primaryColor} />
       )}
 
       <MissionVision pageData={pageData} />
 
-      {execData && <Executive members={execData.executives} color={`${pageData.primaryColor}b6`} />}
+      {execData && <Executive   advisor={execData.advisor}
+  executives={execData.executives} color={`${pageData.primaryColor}b6`} />}
 
       <WhatWhyHowSection pageData={pageData} />
       <Contact pageData={pageData} />

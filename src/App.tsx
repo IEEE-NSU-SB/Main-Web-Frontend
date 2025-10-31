@@ -23,6 +23,7 @@ import NewsDetails from "./pages/activities/News/NewsDetails";
 
 //Societies & AG
 import SocietyOrAg from "./pages/society-and-ag/Page";
+import ScAgAchievements from "./pages/society-and-ag/ScAgAchievements";
 
 //Members
 import Panel from "./pages/members/panel/Page";
@@ -84,6 +85,10 @@ const App = () => {
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsDetails />} />
           <Route path="/achievements" element={<Achievements />} />
+          <Route path="/ieee-nsu-ras-sbc/achievements" element={<ScAgAchievements />} />
+          <Route path="/ieee-nsu-pes-sbc/achievements" element={<ScAgAchievements />} />
+          <Route path="/ieee-nsu-ias-sbc/achievements" element={<ScAgAchievements />} />
+          <Route path="/ieee-nsu-wie-ag/achievements" element={<ScAgAchievements />} />
 
           {/* Societies & AG */}
           <Route path="/ieee-nsu-ras-sbc" element={<SocietyOrAg />} />

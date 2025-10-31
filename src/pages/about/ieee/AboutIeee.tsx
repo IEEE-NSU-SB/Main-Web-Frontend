@@ -232,7 +232,7 @@ export default function AboutIEEE() {
 
       {/* Achievements */}
       <div className="max-w-[1080px] m-auto">
-        <FadeIn xIndex={-100} yIndex={0}>
+        <FadeIn yIndex={100} delay={0}>
           <SectionHeading title="Achievements"/>
           <p className="text-justify mb-6 md:p-5">{data.achievementsDetails}</p>
           <div className="flex flex-wrap gap-7 justify-center p-5">

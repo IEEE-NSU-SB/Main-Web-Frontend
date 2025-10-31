@@ -1,106 +1,78 @@
 import FadeIn from "@/components/ui/FadeIn";
-import { X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "@/components/Skeleton";
-import { useEffect, useState } from "react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, X } from "lucide-react";
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-interface Award {
+interface Achievement {
   year: string;
   image: string;
   title: string;
   winner: string;
-  primaryColor: string;
   description: string;
 }
 
-const AchievementCard = () => {
-  const isLandingPage = location.pathname === "/";
+interface AchievementsProps {
+  achievements: Achievement[];
+  primaryColor?: string;
+}
 
-  const { loading, data, error, refetch } = useFetchDataAPI({
-    apiUrl: isLandingPage
-      ? "main_website/get_achievements/landing/"
-      : "main_website/get_achievements/",
-  });
-
-  const [selectedAward, setSelectedAward] = useState<Award | null>(null);
+const Achievements: React.FC<AchievementsProps> = ({
+  achievements,
+  primaryColor = "#006699",
+}) => {
+  const [selectedAward, setSelectedAward] = useState<Achievement | null>(null);
 
   // Disable background scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = selectedAward ? "hidden" : "auto";
   }, [selectedAward]);
 
-  const awards: Award[] = data || [];
+  if (!achievements || achievements.length === 0) return null;
+
   return (
     <>
-      {location.pathname === "/" && (
-        <SectionHeading title="Achievements"/>
-      )}
-
-      {/* Error State */}
-      {error && (
-        <FadeIn>
-          <div className="flex flex-col items-center justify-center text-center my-10 space-y-4">
-            <p className="text-ieee-red font-medium">
-              Failed to load achievements. Please try again.
-            </p>
-            <button
-              onClick={() => (refetch ? refetch() : window.location.reload())}
-              className="bg-ieee-blue text-ieee-white px-4 py-2 rounded-md shadow hover:bg-ieee-blue-75 transition"
-            >
-              Retry
-            </button>
-          </div>
-        </FadeIn>
-      )}
-
-      {/* Loading Skeleton */}
-      {loading && !error && (
-        <FadeIn>
-          <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 max-md:m-5">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} className="w-110 h-110" />
-            ))}
-          </div>
-        </FadeIn>
-      )}
+      <SectionHeading
+        title="Achievements"
+        titleColor={`${primaryColor}b6`}
+        underlineColor={`${primaryColor}b6`}
+      />
 
       {/* Data Display */}
-      {!loading && !error && (
-        <div className="max-w-[1080px] m-auto flex flex-wrap gap-6 justify-center my-6 px-5 sm:px-0">
-          {awards.map((award, idx) => (
-            <FadeIn key={idx}>
+      <div className="max-w-[1045px] m-auto flex flex-wrap gap-6 justify-baseline my-6 px-5 sm:px-0">
+        {achievements.slice(0, 3).map((award, idx) => (
+          <FadeIn key={idx}>
+            <div
+              onClick={() => setSelectedAward(award)}
+              className="w-full relative group cursor-pointer bg-ieee-white rounded-sm overflow-hidden shadow-[4px_4px_10px_var(--color-ieee-black-25)] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_var(--color-ieee-black-25)]"
+            >
+              {/* Image */}
+              <img
+                src={award.image}
+                alt={award.title}
+                className="w-113 h-80 md:w-83 md:h-83 object-cover"
+              />
+
+              {/* Year tag */}
+              <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
+                {award.year}
+              </span>
+
+              {/* Overlay with title */}
               <div
-                onClick={() => setSelectedAward(award)}
-                className="w-full relative group cursor-pointer bg-ieee-white rounded-sm overflow-hidden shadow-[4px_4px_10px_var(--color-ieee-black-25)] border-ieee-black transform transition-all duration-500 hover:-translate-y-2 hover:shadow-[5px_5px_6px_var(--color-ieee-black-25)]"
-              >
-                {/* Image */}
-                <img
-                  src={award.image}
-                  alt={award.title}
-                  className="w-113 h-80 md:w-83 md:h-83 object-cover"
-                />
-
-                {/* Year tag */}
-                <span className="absolute top-0 left-0 bg-ieee-blue text-ieee-white text-sm font-semibold px-3 py-1 rounded">
-                  {award.year}
-                </span>
-
-                {/* Overlay with title */}
-                <div
-                  className="absolute bottom-0 left-0 w-full bg-ieee-blue bg-opacity-80 text-ieee-white text-center 
+                className="absolute bottom-0 left-0 w-full bg-opacity-80 text-ieee-white text-center 
                       text-sm font-medium px-3 py-2 translate-y-full group-hover:translate-y-0 
                       transition-all duration-500"
-                >
-                  {award.title} - <span>{award.winner}</span>
-                </div>
+                style={{ background: primaryColor }}
+              >
+                {award.title} - <span>{award.winner}</span>
               </div>
-            </FadeIn>
-          ))}
-        </div>
-      )}
+            </div>
+          </FadeIn>
+        ))}
+      </div>
 
       {/* Modal */}
       <AnimatePresence>
@@ -153,7 +125,7 @@ const AchievementCard = () => {
                 <div className="text-left px-1">
                   <h3 className="text-xl font-semibold mb-2">
                     {selectedAward.title} -{" "}
-                    <span style={{ color: `${selectedAward.primaryColor}` }}>
+                    <span style={{ color: `${primaryColor}` }}>
                       {selectedAward.winner}
                     </span>
                   </h3>
@@ -173,18 +145,31 @@ const AchievementCard = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* "See All Blogs" button only on landing page */}
-      {isLandingPage && (
-        <div className="flex justify-center mt-8">
-          <Link to="/achievements">
-            <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
-              See All Achievements
-            </button>
-          </Link>
-        </div>
-      )}
+      {/* See All Achievments */}
+      {/* <div className="flex justify-center mt-8">
+        <Link to={`achievements/`}>
+          <button
+            className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px] "
+            style={{
+              backgroundColor: "white",
+              borderColor: primaryColor,
+              color: primaryColor,
+            }}
+            onMouseEnter={(e) => (
+              (e.currentTarget.style.backgroundColor = `${primaryColor}`),
+              (e.currentTarget.style.color = `white`)
+            )}
+            onMouseLeave={(e) => (
+              (e.currentTarget.style.backgroundColor = `white`),
+              (e.currentTarget.style.color = `${primaryColor}`)
+            )}
+          >
+            <Calendar className="w-4 h-4" /> See All Events
+          </button>
+        </Link>
+      </div> */}
     </>
   );
 };
 
-export default AchievementCard;
+export default Achievements;
