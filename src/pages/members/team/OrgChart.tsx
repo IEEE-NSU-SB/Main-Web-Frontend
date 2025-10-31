@@ -5,7 +5,7 @@ import { Link } from "react-router";
 interface Member {
   name: string;
   position: string;
-  img: string;
+  image: string;
 }
 
 interface OrgChartProps {
@@ -205,9 +205,16 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                   transition-all duration-300 ease-out hover:shadow-xl cursor-pointer"
                   >
                     <img
-                      src={member.img}
+                      src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.onerror = null; // prevent loop
+                        target.src = `${
+                          import.meta.env.VITE_API_URL
+                        }/static/images/default_profile_picture.png`;
+                      }}
                     />
                   </div>
                 </Link>
@@ -243,9 +250,16 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
             <Link to={"https://ieeensusb.org/member_profile/99579190"}>
               <div className="w-55 h-55 rounded overflow-hidden mb-6">
                 <img
-                  src={vol.img}
+                  src={vol.image}
                   alt={vol.name}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.onerror = null; // prevent loop
+                        target.src = `${
+                          import.meta.env.VITE_API_URL
+                        }/static/images/default_profile_picture.png`;
+                      }}
                 />
               </div>
             </Link>
