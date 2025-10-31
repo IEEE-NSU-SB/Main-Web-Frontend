@@ -1,23 +1,49 @@
-[
-  {
-    "id": 1,
-    "name": "AYEEE Rahman",
-    "position": "Chair",
-    "image": "src/assets/executives/ras/afsana.jpg",
-    "fb": "/",
-    "linkedin": "/",
-    "mail": "/"
-  },
-  {
-    "id": 2,
-    "name": "Rafi Ahmed",
-    "position": "Vice Chair",
-    "image": "src/assets/executives/ras/rafi.jpg"
-  },
-  {
-    "id": 3,
-    "name": "Tanzim Hasan",
-    "position": "Secretary",
-    "image": "src/assets/executives/ras/tanzim.jpg"
-  }
-]
+{
+  "executives": [
+    {
+      "id": 1,
+      "name": "Md Tasbeer Ahmed",
+      "position": "Chair, RAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/97124689_2694634367476220_8274075283938607104_n.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 2,
+      "name": "Washio Ferdous",
+      "position": "Treasurer, RAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99135451_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 3,
+      "name": "Shamsia Munira",
+      "position": "Secretary, RAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99580446_profile_picture.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 4,
+      "name": "Nishat Farhat Eva",
+      "position": "Vice-Chair (Activity), RAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/98717506_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 5,
+      "name": "Saima Alam",
+      "position": "Vice-Chair (Technical), RAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/98718135_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    }
+  ]
+}

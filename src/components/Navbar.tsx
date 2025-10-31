@@ -68,10 +68,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const societyColors: Record<string, string> = {
-    "ieee-nsu-ras-sbc": "#602569",
-    "ieee-nsu-pes-sbc": "#659941",
-    "ieee-nsu-ias-sbc": "#0f904b",
-    "ieee-nsu-wie-ag": "#006699",
+    "ieee-nsu-ras-sbc": "#52154E",
+    "ieee-nsu-pes-sbc": "#61A60E",
+    "ieee-nsu-ias-sbc": "#fbbf24",
+    "ieee-nsu-wie-ag": "#066697",
   };
 
   const currentSlug = location.pathname.split("/")[1] ?? "";
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
                 Activities
               </span>
               <div
-                className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-28px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -142,7 +142,7 @@ const Navbar: React.FC = () => {
                 Societies & AG
               </span>
               <div
-                className="absolute text-center left-[-14px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-14px] top-full mt-1 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -170,7 +170,7 @@ const Navbar: React.FC = () => {
                 Members
               </span>
               <div
-                className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-center left-[-48px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -240,7 +240,7 @@ const Navbar: React.FC = () => {
                 About
               </span>
               <div
-                className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-center left-[-55px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -269,7 +269,7 @@ const Navbar: React.FC = () => {
                 Publications
               </span>
               <div
-                className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-22px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -306,7 +306,7 @@ const Navbar: React.FC = () => {
                 Get Involved
               </span>
               <div
-                className="absolute text-center left-[-16px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-16px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}

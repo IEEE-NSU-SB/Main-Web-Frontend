@@ -1,4 +1,3 @@
-import FadeIn from "@/components/ui/FadeIn";
 import { type ChapterPageData } from "@/types/chapter";
 
 interface ParallaxProps {
@@ -9,7 +8,6 @@ const Parallax: React.FC<ParallaxProps> = ({ pageData }) => {
   if (!pageData.parallax) return null;
 
   return (
-    <FadeIn>
       <div className="min-h-[350px] relative [clip-path:inset(0)]">
         <img
           className="object-cover fixed brightness-75 left-0 top-0 w-full h-full"
@@ -17,7 +15,6 @@ const Parallax: React.FC<ParallaxProps> = ({ pageData }) => {
           alt="Chapter Parallax"
         />
       </div>
-    </FadeIn>
   );
 };
 

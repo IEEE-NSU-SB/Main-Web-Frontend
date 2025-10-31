@@ -245,10 +245,10 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
         {volunteers.map((vol, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center border-2 border-ieee-white pb-8 w-[227px] bg-ieee-blue/80 rounded-lg hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition cursor-pointer"
+            className="flex flex-col items-center border-2 border-ieee-white pb-8 w-[227px] bg-ieee-blue/80 rounded-lg hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition cursor-pointer overflow-hidden"
           >
             <Link to={"https://ieeensusb.org/member_profile/99579190"}>
-              <div className="w-55 h-55 rounded overflow-hidden mb-6">
+              <div className="w-[100%] h-55 rounded mb-6">
                 <img
                   src={vol.image}
                   alt={vol.name}
