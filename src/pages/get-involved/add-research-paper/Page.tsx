@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
-import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
+// import { useQuill } from "react-quilljs";
+// import "quill/dist/quill.snow.css";
 
 // Chapters with numeric IDs
 const chapters = [
@@ -44,25 +45,25 @@ const AddResearchPaper: React.FC = () => {
     bannerFile: null as File | null,
   });
 
-  const { quill } = useQuill({
-    theme: "snow",
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, false] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"],
-        ["clean"],
-      ],
-    },
-  });
+  // const { quill } = useQuill({
+  //   theme: "snow",
+  //   modules: {
+  //     toolbar: [
+  //       [{ header: [1, 2, false] }],
+  //       ["bold", "italic", "underline", "strike"],
+  //       [{ list: "ordered" }, { list: "bullet" }],
+  //       ["link", "image"],
+  //       ["clean"],
+  //     ],
+  //   },
+  // });
 
-  useEffect(() => {
-    if (!quill) return;
-    quill.on("text-change", () => {
-      setFormData((prev) => ({ ...prev, abstract: quill.root.innerHTML }));
-    });
-  }, [quill]);
+  // useEffect(() => {
+  //   if (!quill) return;
+  //   quill.on("text-change", () => {
+  //     setFormData((prev) => ({ ...prev, abstract: quill.root.innerHTML }));
+  //   });
+  // }, [quill]);
 
   const handleChange = (
     e: React.ChangeEvent<
