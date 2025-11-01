@@ -1,5 +1,6 @@
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 interface NewsItem {
   title: string;
@@ -23,8 +24,11 @@ interface NewsData {
 }
 
 export default function NewsPage() {
-  const { loading, data, error } = useFetchDataJSON<NewsData>({
-    path: "pages/activities/News/details.json",
+
+  const { id } = useParams()
+  
+  const { loading, data, error } = useFetchDataAPI<NewsData>({
+    apiUrl: `main_website/get_sb_news_details/${id}`,
   });
 
   if (loading)
@@ -109,7 +113,7 @@ export default function NewsPage() {
                     className="group bg-white overflow-hidden flex flex-col items-center"
                   >
                     <a
-                      href={`/news/${index + 1}`}
+                      href={`/news/${i.id}`}
                       className="block overflow-hidden"
                     >
                       <img
@@ -119,7 +123,7 @@ export default function NewsPage() {
                       />
                     </a>
                     <a
-                      href={`/news/${index + 1}`}
+                      href={`/news/${i.id}`}
                       className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
                     >
                       {i.title}
