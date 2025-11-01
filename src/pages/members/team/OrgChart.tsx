@@ -6,6 +6,7 @@ interface Member {
   name: string;
   position: string;
   image: string;
+  id: string;
 }
 
 interface OrgChartProps {
@@ -19,6 +20,9 @@ interface OrgChartProps {
 
 const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const DEFAULT_IMAGE = `${
+    import.meta.env.VITE_API_URL
+  }/static/images/default_profile_picture.png`;
 
   // Detect screen size
   useLayoutEffect(() => {
@@ -160,18 +164,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
           />
         ))}
 
-        {/* Bottom horizontal lines */}
-        {bottomLines.map((pos, idx) => (
-          <div
-            key={`bottom-${idx}`}
-            className="absolute h-[2px] bg-[#002855] z-0"
-            style={{
-              left: `${pos.left}px`,
-              width: `${pos.right - pos.left}px`,
-              top: `${pos.top}px`,
-            }}
-          />
-        ))}
+
 
         {/* Vertical lines */}
         {verticalLines.map((v, idx) => (
@@ -205,16 +198,13 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                   transition-all duration-300 ease-out hover:shadow-xl cursor-pointer"
                   >
                     <img
-                      src={member.image}
+                      src={member.image || DEFAULT_IMAGE}
                       alt={member.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.currentTarget as HTMLImageElement;
                         target.onerror = null; // prevent loop
-                        target.src = `${
-                          import.meta.env.VITE_API_URL
-                        }/static/images/default_profile_picture.png`;
-                      }}
+                        target.src = `${ DEFAULT_IMAGE}`}}
                     />
                   </div>
                 </Link>
@@ -245,28 +235,26 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
         {volunteers.map((vol, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center border-2 border-ieee-white pb-8 w-[227px] bg-ieee-blue/80 rounded-lg hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition cursor-pointer overflow-hidden"
+            className="flex flex-col items-center border-2 border-ieee-white pb-4 w-[227px] bg-ieee-darkblue/90 rounded-lg hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition cursor-pointer overflow-hidden"
           >
-            <Link to={"https://ieeensusb.org/member_profile/99579190"}>
-              <div className="w-[100%] h-55 rounded mb-6">
+            <Link to={`/member_profile/${vol.id}`}>
+              <div className="w-56 h-55 rounded mb-4">
                 <img
-                  src={vol.image}
+                  src={vol.image || DEFAULT_IMAGE}
                   alt={vol.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        target.onerror = null; // prevent loop
-                        target.src = `${
-                          import.meta.env.VITE_API_URL
-                        }/static/images/default_profile_picture.png`;
-                      }}
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.onerror = null; // prevent loop
+                    target.src = `${ DEFAULT_IMAGE}`;
+                  }}
                 />
               </div>
             </Link>
-            <p className="font-semibold text-sm text-center text-black">
+            <p className="font-semibold text-md text-center text-ieee-white">
               {vol.name}
             </p>
-            <p className="font-semibold text-sm text-ieee-yellow text-center">
+            <p className="font-semibold text-md text-ieee-yellow text-center">
               {vol.position}
             </p>
           </div>
