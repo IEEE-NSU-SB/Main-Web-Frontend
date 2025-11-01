@@ -65,18 +65,27 @@ export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", body = null, 
       if (isWriteMethod) await ensureCsrfCookie();
 
       const headers: Record<string, string> = {};
-      if (isWriteMethod) {
+      let requestBody: BodyInit | null = null;
+
+      if (isWriteMethod && body) {
+        if (body instanceof FormData) {
+          requestBody = body; // browser sets Content-Type automatically
+        } else {
+          requestBody = JSON.stringify(body);
+          headers["Content-Type"] = "application/json";
+        }
+
         const csrfToken = getCookie("csrftoken");
         if (csrfToken) headers["X-CSRFToken"] = csrfToken;
-        headers["Content-Type"] = "application/json";
       }
 
       const res = await fetch(`${api_domain}/${apiUrl}`, {
         method,
-        body: body ? JSON.stringify(body) : null,
+        body: requestBody,
         headers,
         // credentials: "include",
       });
+
 
       if (!res.ok) throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
 
