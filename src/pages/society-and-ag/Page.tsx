@@ -3,7 +3,6 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
-import ScAgWave from "./ScAgWave";
 import Intro from "./Intro";
 import Parallax from "./Parallax";
 import WhatWhyHowSection from "./WhatWhyHowSection";
@@ -114,7 +113,7 @@ const SocietyOrAg: React.FC = () => {
       {/* Page Header */}
       {pageLoading && (
         <div className="min-h-screen">
-          <Wave title="Loading..." color={pageData.primaryColor}/>
+          <Wave title="Loading..."/>
         </div>
       )}
       {pageError && (

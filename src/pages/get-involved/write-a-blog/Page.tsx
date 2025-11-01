@@ -269,10 +269,16 @@ const WriteBlog: React.FC = () => {
                 <label className="block mb-1 font-medium">
                   Write your blog <span className="text-red-600">*</span>
                 </label>
-                <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" />
+                <textarea
+                  
+                  placeholder="Write a short description of your blog..."
+                  className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
+                  rows={6}
+                />
+                {/* <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" /> */}
               </div>
 
-              <div className="md:col-span-2 mt-20">
+              <div className="md:col-span-2 mt-0">
                 <label className="block mb-1 font-medium">
                   Blog Banner Picture <span className="text-red-600">*</span>
                 </label>

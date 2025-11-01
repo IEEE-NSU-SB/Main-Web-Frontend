@@ -129,13 +129,7 @@ const App = () => {
           <Route
             path="/join-ieee-nsu-sb"
             element={
-              <JoinINSB
-                recruitSession={{
-                  session_end_date_time: "2025-08-20T23:59:59Z",
-                  recruitment_event_link:
-                    "https://facebook.com/ieeensu/events/xyz",
-                }}
-              />
+              <JoinINSB/>
             }
           />
           <Route path="/write-a-blog" element={<WriteBlog />} />
