@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { HiUserGroup } from "react-icons/hi2";
+// import { HiUserGroup } from "react-icons/hi2";
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
