@@ -20,7 +20,11 @@ interface ExecutiveProps {
   color?: string;
 }
 
-const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00629b" }) => {
+const Executive: React.FC<ExecutiveProps> = ({
+  advisor,
+  executives,
+  color = "#00629b",
+}) => {
   const defaultImage = "/src/assets/dummy/placeholder.png";
 
   const MemberCard = ({ member }: { member: Member }) => (
@@ -40,7 +44,9 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
           />
         </Link>
 
-        <h3 className="font-semibold text-[16px] text-gray-800 mt-12">{member.name}</h3>
+        <h3 className="font-semibold text-[16px] text-gray-800 mt-12">
+          {member.name}
+        </h3>
         <p className="text-sm text-gray-600 mt-2 mb-6">{member.position}</p>
 
         <div className="flex justify-center gap-6 mt-auto">
@@ -72,10 +78,10 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
         underlineColor={color}
       />
       {/* Faculty Advisor */}
-      {advisor && (
-      <div className="flex justify-center items-center mt-26 px-5">
-        <MemberCard member={advisor} />
-      </div>
+      {advisor && Object.keys(advisor).length > 0 && (
+        <div className="flex justify-center items-center mt-26 px-5">
+          <MemberCard member={advisor} />
+        </div>
       )}
 
       {/* Executive Members */}

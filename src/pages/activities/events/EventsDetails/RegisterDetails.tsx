@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import type { EventData } from "@/types/event";
-import { Calendar, DollarSign, Info } from "lucide-react";
+import { AlarmClock, Wallet, Info } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
@@ -27,7 +27,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
               {/* Start Time */}
               <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
                 <div className="mt-2">
-                  <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
+                  <AlarmClock className="w-7 h-7 text-ieee-darkblue/90" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
@@ -42,7 +42,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
               {/* End Time */}
               <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
                 <div className="mt-2">
-                  <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
+                  <AlarmClock className="w-7 h-7 text-ieee-darkblue/90" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
@@ -55,7 +55,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
               {/* Cost */}
               <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
                 <div className="mt-2">
-                  <DollarSign className="w-7 h-7 text-ieee-darkblue/90" />
+                  <Wallet className="w-7 h-7 text-ieee-darkblue/90" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
@@ -84,7 +84,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                     target="_blank"
                     className="text-sm text-ieee-blue-75 hover:text-ieee-blue hover:underline"
                   >
-                    Read More
+                    Facebook Event Link
                   </a>
                 </div>
               </div>
