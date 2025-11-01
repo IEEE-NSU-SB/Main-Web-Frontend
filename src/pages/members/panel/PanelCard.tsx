@@ -32,7 +32,6 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
             <a
               key={member.id || "#"}
               href={member.id ? `/member_profile/${member.id}` : "#"}
-              target="_blank"
               rel="noopener noreferrer"
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
                          shadow-[0_14px_40px_rgba(0,0,0,0.18)]
