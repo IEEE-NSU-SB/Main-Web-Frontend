@@ -41,6 +41,7 @@ import FAQPage from "./pages/about/faq";
 
 //Publications
 import Blogs from "./pages/publications/blogs/Page";
+import BlogPage from "./pages/publications/blogs/BlogDetails";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Magazines from "./pages/publications/magazines/pages";
 import Gallery from "./pages/publications/gallery/Page";
@@ -55,6 +56,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
+import Examplary from "./pages/members/examplary members/Page";
 
 const MainLayout = () => {
   return (
@@ -100,9 +102,10 @@ const App = () => {
           <Route path="/panels" element={<Panel />} />
           <Route path="/panels/:year" element={<Panel />} />
           <Route path="/officers" element={<Officers />} />
+          <Route path="/officers/:id" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          <Route path="/exemplary-members" />
+          <Route path="/exemplary-members" element={<Examplary/>}/>
           <Route path="/member_profile/:id" element={<Profile />} />
           <Route path="/all-members" element={<AllMembers />} />
 
@@ -116,6 +119,7 @@ const App = () => {
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/magazines" element={<Magazines />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogPage />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />
 
@@ -126,13 +130,7 @@ const App = () => {
           <Route
             path="/join-ieee-nsu-sb"
             element={
-              <JoinINSB
-                recruitSession={{
-                  session_end_date_time: "2025-08-20T23:59:59Z",
-                  recruitment_event_link:
-                    "https://facebook.com/ieeensu/events/xyz",
-                }}
-              />
+              <JoinINSB/>
             }
           />
           <Route path="/write-a-blog" element={<WriteBlog />} />

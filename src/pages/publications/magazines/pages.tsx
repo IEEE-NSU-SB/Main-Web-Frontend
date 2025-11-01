@@ -1,7 +1,4 @@
-"use client";
-
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Wave from "@/components/Wave";
 import FadeIn from "@/components/ui/FadeIn";
 
@@ -16,29 +13,29 @@ interface Magazine {
 
 const magazineData: Magazine[] = [
   {
-    title: "Innovators Quarterly",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "July 2024",
+    title: "Chronicons",
+    publishedBy: "A Publication of IEEE NSU Student Branch",
+    publishDate: "Dec. 17, 2018",
     picture:
       "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Chronics.png",
     description:
       "Chronicons is the first edition of IEEE NSU Student Branch’s magazine. Chronicons is not just a magazine, it is an assortment of research papers, technical articles and interviews that will spur the mind of everyone who has a reach to this spectacular piece of brochure",
-    file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
+    file: "https://ieeensusb.org/media_files/main_website_files/Magazine/Chronicons.pdf",
   },
   {
-    title: "Tech Horizon",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "March 2024",
+    title: "Zenith",
+    publishedBy: "A Publication of IEEE NSU Power and Energy Society Student Branch Chapter",
+    publishDate: "Feb. 1, 2018",
     picture:
       "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Zenith.png",
     description:
       "“Zenith” is the footmark of the first event organized by PES, “POWERBUZZ”. It is an event which connected the faculties and the students in the same bond. Zenith features works from the students and the faculties and let them express their contribution in the field of engineering.",
-    file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
+    file: "https://ieeensusb.org/media_files/main_website_files/Magazine/Zenith.pdf",
   },
   {
-    title: "Circuit Chronicles",
-    publishedBy: "IEEE NSU SB",
-    publishDate: "November 2023",
+    title: "Prodigy",
+    publishedBy: "A Publication of IEEE NSU Student Branch - Women in Engineering Affinity Group",
+    publishDate: "Oct. 1, 2016",
     picture:
       "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Prodigy.png",
     description:
@@ -48,37 +45,6 @@ const magazineData: Magazine[] = [
 ];
 
 export default function MagazinesPage() {
-  const [openPDF, setOpenPDF] = useState<string | null>(null);
-  const [activeTitle, setActiveTitle] = useState<string>("");
-
-  const overlayRef = useRef<HTMLDivElement>(null);
-
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === overlayRef.current) setOpenPDF(null);
-  };
-
-  useEffect(() => {
-    const closeOnEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenPDF(null);
-    };
-    window.addEventListener("keydown", closeOnEsc);
-    return () => window.removeEventListener("keydown", closeOnEsc);
-  }, []);
-
-  useEffect(() => {
-  if (openPDF) {
-    // Disable scroll
-    document.body.style.overflow = "hidden";
-  } else {
-    // Re-enable scroll
-    document.body.style.overflow = "";
-  }
-
-  return () => {
-    document.body.style.overflow = "";
-  };
-}, [openPDF]);
-
   const handleDownload = async (url: string, title: string) => {
     try {
       const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
@@ -103,14 +69,14 @@ export default function MagazinesPage() {
     <>
       <Wave title="Magazines" />
       <FadeIn>
-        <div className="bg-ieee-white max-w-[1080px] m-auto p-5 w-full grid grid-cols-1 sm:grid-cols-2  gap-10">
+        <div className="bg-ieee-white max-w-[1080px] m-auto p-5 w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
           {magazineData.map((mag, i) => (
             <motion.div
               key={i}
-              className="relative bg-white rounded-lg hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)]  transition-all overflow-hidden"
+              className="relative bg-white rounded-lg hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all overflow-hidden"
             >
               <div className="flex">
-                <div className="w-70 h-80 overflow-hidden">
+                <div className="w-70 h-100 overflow-hidden">
                   <img
                     src={mag.picture}
                     alt={mag.title}
@@ -136,15 +102,20 @@ export default function MagazinesPage() {
                       {mag.description}
                     </p>
                   </div>
-                  <div className="mt-4 flex justify-center mb-2">
+
+                  <div className="mt-4 flex flex-col gap-2 mb-2 text-center">
                     <button
-                      onClick={() => {
-                        setOpenPDF(mag.file);
-                        setActiveTitle(mag.title);
-                      }}
-                      className="hover:bg-ieee-darkblue hover:text-ieee-white text-ieee-darkblue py-1 px-8 rounded-[4px] bg-transparent transition-all duration-300 border-1 border-ieee-darkblue cursor-pointer"
+                      onClick={() => window.open(mag.file, "_blank")}
+                      className="hover:bg-ieee-darkblue hover:text-ieee-white text-ieee-darkblue py-1 px-8 rounded-[4px] bg-transparent transition-all duration-300 border border-ieee-darkblue cursor-pointer"
                     >
                       Read Magazine
+                    </button>
+
+                    <button
+                      onClick={() => handleDownload(mag.file, mag.title)}
+                      className="hover:bg-ieee-darkblue hover:text-ieee-white text-ieee-darkblue py-1 px-8 rounded-[4px] bg-transparent transition-all duration-300 border border-ieee-darkblue cursor-pointer"
+                    >
+                      Download PDF
                     </button>
                   </div>
                 </div>
@@ -153,58 +124,6 @@ export default function MagazinesPage() {
           ))}
         </div>
       </FadeIn>
-
-      <AnimatePresence>
-        {openPDF && (
-          <motion.div
-            ref={overlayRef}
-            onClick={handleOverlayClick}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="relative w-full max-w-6xl h-[90vh] bg-ieee-white rounded-xl overflow-hidden"
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-            >
-              <div className="flex items-center justify-between bg-gradient-to-r from-[#002855] to-[#003a78] text-white px-6 py-4">
-                <div>
-                  <h2 className="font-semibold text-lg">{activeTitle}</h2>
-                  {/* <p className="text-sm text-[#FFD100]">
-                    IEEE Digital Preview Edition
-                  </p> */}
-                </div>
-                <div className="flex items-center gap-6">
-                  <button
-                    onClick={() =>
-                      handleDownload(openPDF, activeTitle || "IEEE_Magazine")
-                    }
-                    className="cursor-pointer  hover:bg-ieee-darkblue bg-ieee-white hover:text-white text-ieee-darkblue ease-in-out duration-300 px-4 py-2 rounded-md font-medium text-sm shadow-md hover:shadow-lg transition-all"
-                  >
-                    Download
-                  </button>
-                  <button
-                    onClick={() => setOpenPDF(null)}
-                    className="w-9 h-9 rounded-full text-ieee-white text-lg font-semibold cursor-pointer flex items-center justify-center"
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
-              <iframe
-                src={`https://docs.google.com/gview?url=${encodeURIComponent(
-                  openPDF
-                )}&embedded=true`}
-                title="Magazine PDF Viewer"
-                className="w-full h-full bg-[#101820] border-none outline-none"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

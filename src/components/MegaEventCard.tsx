@@ -36,7 +36,7 @@ const MegaEventsCard: React.FC<MegaEventsCardProps> = ({
       />
 
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 flex flex-wrap justify-center gap-6 mb-6">
-        {visibleEvents.slice(0, 2).map((event, idx) => (
+        {visibleEvents.map((event, idx) => (
           <article
             key={idx}
             className="w-full md:w-[calc(50%-1rem)] border-ieee-white border hover:shadow-[4px_4px_10px_var(--color-ieee-black-50)] shadow-[2px_2px_8px_var(--color-ieee-black-50)] rounded-md overflow-hidden"

@@ -161,7 +161,7 @@ const EventCard: React.FC = () => {
 
           <div className="flex flex-wrap gap-3 w-full md:w-[48%] justify-end max-md:justify-center">
             <select
-              className="border px-3 py-2 rounded-md text-sm max-md:w-[48%]"
+              className="border px-5 py-2 rounded-md text-sm max-md:w-[48%]"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
             >

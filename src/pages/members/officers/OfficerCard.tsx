@@ -1,36 +1,37 @@
-// components/OfficerCard.tsx
 import SectionHeading from "@/components/ui/SectionHeading";
 import React from "react";
 import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
 
-interface member {
-  id: string;
+export interface Member {
+  id: string | number;
   name: string;
   position: string;
   image: string;
-  linkedin?: string;
-  facebook?: string;
-  email?: string;
+  linkedin?: string | null;
+  facebook?: string | null;
+  email?: string | null;
   profileLink?: string;
+  team?: string;
 }
 
 interface OfficerCardProps {
-  members: member[];
+  members: Member[];
   sectionTitle: string;
 }
 
 const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
+  if (!members.length) return null;
+
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <SectionHeading title={sectionTitle} align="center"/>
+        <SectionHeading title={sectionTitle} align="center" />
 
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
-              key={member.id || "#"}
+              key={member.id}
               href={member.profileLink || "#"}
-              target="_blank"
               rel="noopener noreferrer"
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
                          shadow-[0_14px_40px_rgba(0,0,0,0.18)]
@@ -45,18 +46,15 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
 
               <div className="relative z-10 flex flex-col items-center justify-end h-[180px] w-full p-5 text-center">
-                {/* Name - always visible, scales/moves on hover */}
-                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-40px] group-hover:-translate-y-2 group-hover:scale-115">
+                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-40px] group-hover:-translate-y-2 group-hover:scale-115 max-md:-translate-y-2 max-md:scale-115">
                   {member.name}
                 </h3>
 
-                {/* Position - hidden by default, fade in on hover */}
-                <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-md:opacity-100">
                   {member.position}
                 </p>
 
-                {/* Links - hidden by default, fade in on hover */}
-                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-md:opacity-100">
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
@@ -82,8 +80,6 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
                   {member.email && (
                     <a
                       href={`mailto:${member.email}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       className="flex justify-center items-center"
                     >

@@ -95,7 +95,7 @@ const OnlineNews = () => {
                   }).map((_, slideIndex) => (
                     <div
                       key={slideIndex}
-                      className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-1"
+                      className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-1 py-3"
                     >
                       {data
                         .slice(
@@ -141,14 +141,9 @@ const OnlineNews = () => {
                               </Link>
 
                               {/* Description */}
-                              <p className="line-clamp-4 h-25 text-gray-600 text-sm leading-relaxed">
+                              <p className="line-clamp-4 h-23 text-gray-600 text-sm leading-relaxed">
                                 {item.description}
                               </p>
-                              <button className="mt-4 text-ieee-blue font-semibold hover:underline hover:text-[#004d7a] transition-colors">
-                                <a href={item.article_link} target="_blank">
-                                  Read More
-                                </a>
-                              </button>
                             </div>
                           </div>
                         ))}
@@ -162,7 +157,7 @@ const OnlineNews = () => {
                 <>
                   <button
                     onClick={prevSlide}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-14 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
                     aria-label="Previous slide"
                   >
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-800 group-hover:text-ieee-white transition-colors" />
@@ -170,7 +165,7 @@ const OnlineNews = () => {
 
                   <button
                     onClick={nextSlide}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-14 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
                     aria-label="Next slide"
                   >
                     <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-800 group-hover:text-ieee-white transition-colors" />
