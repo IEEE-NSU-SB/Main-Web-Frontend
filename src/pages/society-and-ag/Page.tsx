@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
@@ -66,9 +66,7 @@ const SocietyOrAg: React.FC = () => {
   }, [location.pathname]);
 
   // ✅ Only use hook paths if baseName is valid
-  // const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
-  // const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
-  const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
+  // const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
   // const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
 
   // ✅ Hooks
@@ -79,7 +77,7 @@ const SocietyOrAg: React.FC = () => {
     useFetchDataAPI<EventData>({ apiUrl: `main_website/get_mega_featured_events/${baseName}/` });
 
   const { loading: execLoading, data: execData, error: execError, refetch: refetchExec } =
-    useFetchDataJSON<ExecutiveData>({ path: execPath });
+    useFetchDataAPI<ExecutiveData>({ apiUrl: `main_website/get_sc_ag_panel_executives/${baseName}/` });
 
   const { loading: achLoading, data: achData, error: achError, refetch: refetchAch } =
     useFetchDataAPI<Award[]>({ apiUrl: `main_website/get_achievements/landing/${baseName}` });
