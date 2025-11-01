@@ -87,8 +87,10 @@ const OnlineNews = () => {
             <div className="relative">
               {/* Carousel Container */}
               <div className="overflow-hidden rounded">
-                <div className="flex transition-transform duration-400 ease-in-out">
-                  {Array.from({
+                <div
+                  className="flex transition-transform duration-400 ease-in-out"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >                  {Array.from({
                     length: Math.ceil(data.length / itemsPerView),
                   }).map((_, slideIndex) => (
                     <div
