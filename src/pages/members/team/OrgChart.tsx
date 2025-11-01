@@ -151,6 +151,19 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
 
     return (
       <div className="relative flex justify-center items-start w-full">
+        {/* Bottom horizontal lines */}
+        {bottomLines.map((pos, idx) => (
+          <div
+            key={`bottom-${idx}`}
+            className="absolute h-[2px] bg-[#002855] z-0"
+            style={{
+              left: `${pos.left}px`,
+              width: `${pos.right - pos.left}px`,
+              top: `${pos.top}px`,
+            }}
+          />
+        ))}
+
         {/* Top horizontal lines */}
         {topLines.map((pos, idx) => (
           <div
@@ -163,8 +176,6 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
             }}
           />
         ))}
-
-
 
         {/* Vertical lines */}
         {verticalLines.map((v, idx) => (
@@ -204,7 +215,8 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                       onError={(e) => {
                         const target = e.currentTarget as HTMLImageElement;
                         target.onerror = null; // prevent loop
-                        target.src = `${ DEFAULT_IMAGE}`}}
+                        target.src = `${DEFAULT_IMAGE}`;
+                      }}
                     />
                   </div>
                 </Link>
@@ -246,7 +258,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     target.onerror = null; // prevent loop
-                    target.src = `${ DEFAULT_IMAGE}`;
+                    target.src = `${DEFAULT_IMAGE}`;
                   }}
                 />
               </div>
