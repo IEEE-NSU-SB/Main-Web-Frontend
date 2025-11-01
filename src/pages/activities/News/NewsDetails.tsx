@@ -1,6 +1,7 @@
 import Wave from "@/components/Wave";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 interface NewsItem {
   title: string;
@@ -23,9 +24,12 @@ interface NewsData {
   recentBlogs: BlogItem[];
 }
 
-export default function NewsDetails() {
-  const { loading, data, error } = useFetchDataJSON<NewsData>({
-    path: "pages/activities/News/details.json",
+export default function NewsPage() {
+
+  const { id } = useParams()
+  
+  const { loading, data, error } = useFetchDataAPI<NewsData>({
+    apiUrl: `main_website/get_sb_news_details/${id}`,
   });
 
   if (loading)
@@ -105,36 +109,36 @@ export default function NewsDetails() {
                   <span>YOU MIGHT ALSO LIKE</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {recentNews.map((i, index) => (
-                    <div
-                      key={index}
-                      className="group bg-white overflow-hidden flex flex-col items-center"
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {recentNews.map((i, index) => (
+                  <div
+                    key={index}
+                    className="group bg-white overflow-hidden flex flex-col items-center"
+                  >
+                    <a
+                      href={`/news/${i.id}`}
+                      className="block overflow-hidden"
                     >
-                      <a
-                        href={`/news/${index + 1}`}
-                        className="block overflow-hidden"
-                      >
-                        <img
-                          src={i.image}
-                          alt={i.title}
-                          className="w-full object-cover h-[140px] group-hover:scale-[1.05] transition-transform duration-500"
-                        />
-                      </a>
-                      <a
-                        href={`/news/${index + 1}`}
-                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
-                      >
-                        {i.title}
-                      </a>
-                      <p className="mt-2 text-sm text-gray-700 flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        <span>{i.date}</span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </article>
+                      <img
+                        src={i.image}
+                        alt={i.title}
+                        className="w-full object-cover h-[140px] group-hover:scale-[1.05] transition-transform duration-500"
+                      />
+                    </a>
+                    <a
+                      href={`/news/${i.id}`}
+                      className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
+                    >
+                      {i.title}
+                    </a>
+                    <p className="mt-2 text-sm text-gray-700 flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{i.date}</span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </article>
 
               {/* VERTICAL LINE */}
               <div className="hidden lg:block border-l border-gray-300 relative left-1" />
