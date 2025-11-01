@@ -1,5 +1,5 @@
 import Wave from "@/components/Wave";
-import { useFetchDataAPI, useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
 import { useParams } from "react-router-dom";
 

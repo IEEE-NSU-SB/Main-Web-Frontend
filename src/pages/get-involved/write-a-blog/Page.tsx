@@ -50,7 +50,7 @@ const WriteBlog: React.FC = () => {
   const shortDescRef = useRef<HTMLTextAreaElement>(null);
   const bannerRef = useRef<HTMLInputElement>(null);
 
-  const { quill, quillRef } = useQuill({
+  const { quill } = useQuill({
     theme: "snow",
     modules: {
       toolbar: [

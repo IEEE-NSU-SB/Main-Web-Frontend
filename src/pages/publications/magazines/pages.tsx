@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Wave from "@/components/Wave";
 import FadeIn from "@/components/ui/FadeIn";

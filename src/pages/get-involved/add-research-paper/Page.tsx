@@ -44,7 +44,7 @@ const AddResearchPaper: React.FC = () => {
     bannerFile: null as File | null,
   });
 
-  const { quill, quillRef } = useQuill({
+  const { quill } = useQuill({
     theme: "snow",
     modules: {
       toolbar: [
