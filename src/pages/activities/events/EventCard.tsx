@@ -27,11 +27,9 @@ interface FeaturedEventsData {
 const EventCard: React.FC = () => {
   const INITIAL_URL = "main_website/get_all_events/";
 
-  const { loading, data, error, refetch } = useFetchDataAPI<FeaturedEventsData>(
-    {
-      apiUrl: INITIAL_URL,
-    }
-  );
+  const { loading, data, error, refetch } = useFetchDataAPI<FeaturedEventsData>({
+    apiUrl: INITIAL_URL,
+  });
 
   const [baseEvents, setBaseEvents] = useState<FeaturedEvent[]>([]);
   const [nextUrl, setNextUrl] = useState<string | null>(null);
@@ -191,43 +189,37 @@ const EventCard: React.FC = () => {
 
       {/* Event Cards */}
       <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-8 mb-15">
-        {visibleEvents.map((event) => {
-          if (!event.image) return null;
-
-          return (
-            <FadeIn key={event.id} className="w-full md:w-[calc(32.333%-1rem)]">
-              <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
-                <Link to={`/events/${event.id}`}>
-                  <div className="relative h-[200px] overflow-hidden cursor-pointer">
-                    <img
-                      className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
-                      src={event.image}
-                      alt={event.name}
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray mr-2">
-                      <Calendar className="w-4 h-4" />
-                      {new Date(event.date).toISOString().split("T")[0]}
-                    </h5>
-                    <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray">
-                      <BiCategory className="w-4 h-4" /> {event.category}
-                    </h5>
-                    <h3 className="text-[20px] font-semibold overflow-hidden line-clamp-1 rounded text-ieee-black mt-3 mb-2">
-                      <span className="cursor-pointer hover:underline">
-                        {event.name}
-                      </span>
-                    </h3>
-                    <p
-                      className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5"
-                      dangerouslySetInnerHTML={{ __html: event.description }}
-                    />
-                  </div>
-                </Link>
-              </article>
-            </FadeIn>
-          );
-        })}
+        {visibleEvents.map((event) => (
+          <FadeIn
+            key={event.id}
+            className="w-full md:w-[calc(32.333%-1rem)]"
+          >
+            <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
+              <Link to={`/events/${event.id}`}>
+                <div className="relative h-[200px] overflow-hidden cursor-pointer">
+                  <img
+                    className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"
+                    src={event.image}
+                    alt={event.name}
+                  />
+                </div>
+                <div className="p-4">
+                  <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray mr-2">
+                    <Calendar className="w-4 h-4" />
+                    {new Date(event.date).toISOString().split("T")[0]}
+                  </h5>
+                  <h5 className="inline-flex gap-2 text-[12px] font-semibold px-2 py-1 border-1 rounded-full border-ieee-gray">
+                    <BiCategory className="w-4 h-4" /> {event.category}
+                  </h5>
+                  <h3 className="text-[20px] font-semibold overflow-hidden line-clamp-1 rounded text-ieee-black mt-3 mb-2">
+                    <span className="cursor-pointer hover:underline">{event.name}</span>
+                  </h3>
+                  <p className="h-25 text-ieee-black-75 overflow-hidden line-clamp-4 mb-5" dangerouslySetInnerHTML={{ __html: event.description }}/>
+                </div>
+              </Link>
+            </article>
+          </FadeIn>
+        ))}
 
         {nextUrl && (
           <div ref={loaderRef} className="w-full text-center py-5">
