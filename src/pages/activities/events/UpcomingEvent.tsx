@@ -160,7 +160,7 @@ const UpcomingEvent = () => {
 
             <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg">
               <FadeInRight xIndex={50} zIndex={-1} yIndex={0}>
-                <Link to={event.id}>
+                <Link to={event.registration_link}>
                   <img
                     src={event.image}
                     alt={event.title}

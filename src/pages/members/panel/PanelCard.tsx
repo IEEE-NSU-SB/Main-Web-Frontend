@@ -55,17 +55,17 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
 
               <div className="relative z-10 flex flex-col items-center justify-end h-[180px] w-full p-5 text-center">
                 {/* Name - always visible, scales/moves on hover */}
-                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-50px] group-hover:-translate-y-2 group-hover:scale-115">
+                <h3 className="text-white font-semibold text-[20px] leading-tight tracking-tight transition-transform duration-300 -translate-y-[-50px] group-hover:-translate-y-2 group-hover:scale-115 max-md:-translate-y-2 max-md:scale-115">
                   {member.name}
                 </h3>
 
                 {/* Position - hidden by default, fade in on hover */}
-                <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="text-white/85 text-[16px] font-medium mt-2 leading-snug max-w-[230px] break-words text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-md:opacity-100">
                   {member.position},{member.position_of}
                 </p>
 
                 {/* Links - hidden by default, fade in on hover */}
-                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="flex justify-center items-center gap-4 mt-3 h-[30px] w-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-md:opacity-100">
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
