@@ -9,9 +9,9 @@ interface Member {
   name: string;
   position: string;
   image?: string;
-  fb?: string;
+  facebook?: string;
   linkedin?: string;
-  mail?: string;
+  email?: string;
 }
 
 interface ExecutiveProps {
@@ -44,17 +44,17 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
         <p className="text-sm text-gray-600 mt-2 mb-6">{member.position}</p>
 
         <div className="flex justify-center gap-6 mt-auto">
-          {member.mail && member.mail !== "/" && (
-            <a href={`mailto:${member.mail}`} style={{ color }}>
+          {member.email && (
+            <a href={`mailto:${member.email}`} style={{ color }}>
               <FaEnvelope size={20} />
             </a>
           )}
-          {member.fb && member.fb !== "/" && (
-            <a href={member.fb} target="_blank" style={{ color }}>
+          {member.facebook && (
+            <a href={member.facebook} target="_blank" style={{ color }}>
               <FaFacebook size={20} />
             </a>
           )}
-          {member.linkedin && member.linkedin !== "/" && (
+          {member.linkedin && (
             <a href={member.linkedin} target="_blank" style={{ color }}>
               <FaLinkedin size={20} />
             </a>
