@@ -51,11 +51,14 @@ const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
 
   const loopImages = [...images, ...images];
 
-  useEffect(() => {
-    if (!scrollRef.current) return;
-    const firstCard = scrollRef.current.querySelector("div > div");
+useEffect(() => {
+  if (!scrollRef.current) return;
+  const timer = requestAnimationFrame(() => {
+    const firstCard = scrollRef.current!.querySelector("div > div");
     if (firstCard) setCardWidth((firstCard as HTMLElement).offsetWidth);
-  }, [events]);
+  });
+  return () => cancelAnimationFrame(timer);
+}, [events]);
 
   useEffect(() => {
     if (!scrollRef.current || images.length === 0) return;

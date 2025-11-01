@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { HiUserGroup } from "react-icons/hi2";
+// import { HiUserGroup } from "react-icons/hi2";
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,9 @@ interface Member {
   name: string;
   position: string;
   image?: string;
-  fb?: string;
+  facebook?: string;
   linkedin?: string;
-  mail?: string;
+  email?: string;
 }
 
 interface ExecutiveProps {
@@ -44,17 +44,17 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
         <p className="text-sm text-gray-600 mt-2 mb-6">{member.position}</p>
 
         <div className="flex justify-center gap-6 mt-auto">
-          {member.mail && member.mail !== "/" && (
-            <a href={`mailto:${member.mail}`} style={{ color }}>
+          {member.email && (
+            <a href={`mailto:${member.email}`} style={{ color }}>
               <FaEnvelope size={20} />
             </a>
           )}
-          {member.fb && member.fb !== "/" && (
-            <a href={member.fb} target="_blank" style={{ color }}>
+          {member.facebook && (
+            <a href={member.facebook} target="_blank" style={{ color }}>
               <FaFacebook size={20} />
             </a>
           )}
-          {member.linkedin && member.linkedin !== "/" && (
+          {member.linkedin && (
             <a href={member.linkedin} target="_blank" style={{ color }}>
               <FaLinkedin size={20} />
             </a>
@@ -85,7 +85,7 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
         ))}
       </div>
 
-      <div className="text-center flex justify-center my-16">
+      {/* <div className="text-center flex justify-center my-16">
         <Link to="/panels">
           <button
             className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px]"
@@ -106,7 +106,7 @@ const Executive: React.FC<ExecutiveProps> = ({ advisor, executives, color = "#00
             <HiUserGroup className="w-4 h-4" /> See All Panels
           </button>
         </Link>
-      </div>
+      </div> */}
     </section>
   );
 };

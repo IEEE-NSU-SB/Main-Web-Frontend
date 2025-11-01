@@ -87,10 +87,7 @@ const OnlineNews = () => {
             <div className="relative">
               {/* Carousel Container */}
               <div className="overflow-hidden rounded">
-                <div
-                  className="flex transition-transform duration-400 ease-in-out"
-                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
+                <div className="flex transition-transform duration-400 ease-in-out">
                   {Array.from({
                     length: Math.ceil(data.length / itemsPerView),
                   }).map((_, slideIndex) => (
@@ -106,7 +103,7 @@ const OnlineNews = () => {
                         .map((item) => (
                           <div
                             key={item.id}
-                            className="bg-ieee-gray/5 border border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300  transform hover:-translate-y-1"
+                            className="bg-ieee-gray/5 border border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300"
                           >
                             {/* Image */}
                             <div className="w-full h-48 overflow-hidden bg-gray-100">
@@ -123,18 +120,22 @@ const OnlineNews = () => {
                             <div className="p-4">
                               {/* Date and By */}
                               <div className="flex items-center gap-2 text-ieee-gray text-sm mb-3 line-clamp-1">
-                                <span>{item.date}</span>
-                                <span>•</span>
                                 <span>
-                                  By {item.by}
+                                  {
+                                    new Date(item.date)
+                                      .toISOString()
+                                      .split("T")[0]
+                                  }
                                 </span>
+                                <span>•</span>
+                                <span>By {item.by}</span>
                               </div>
 
                               {/* Title */}
                               <Link to={item.article_link} target="_blank">
-                              <h3 className="text-lg line-clamp-2 h-15 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
-                                {item.title}
-                              </h3>
+                                <h3 className="text-lg line-clamp-2 h-12 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
+                                  {item.title}
+                                </h3>
                               </Link>
 
                               {/* Description */}
@@ -142,7 +143,9 @@ const OnlineNews = () => {
                                 {item.description}
                               </p>
                               <button className="mt-4 text-ieee-blue font-semibold hover:underline hover:text-[#004d7a] transition-colors">
-                                <a href={item.article_link} target="_blank">Read More</a>
+                                <a href={item.article_link} target="_blank">
+                                  Read More
+                                </a>
                               </button>
                             </div>
                           </div>

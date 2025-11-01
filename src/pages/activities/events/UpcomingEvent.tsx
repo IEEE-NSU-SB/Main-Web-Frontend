@@ -159,7 +159,7 @@ const UpcomingEvent = () => {
             </FadeIn>
 
             <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg">
-              <FadeInRight xIndex={500} zIndex={-1} yIndex={0}>
+              <FadeInRight xIndex={50} zIndex={-1} yIndex={0}>
                 <Link to={event.id}>
                   <img
                     src={event.image}
