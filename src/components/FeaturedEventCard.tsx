@@ -32,7 +32,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
         underlineColor={`${color}b6`}
       />
       <FadeIn threshold={0}>
-        <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-baseline gap-11 mb-15">
+        <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 flex flex-wrap justify-baseline gap-11 mb-15">
           {events.slice(0, 6).map((event) => (
             <article
               key={event.id}
