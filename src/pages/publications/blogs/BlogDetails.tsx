@@ -1,29 +1,30 @@
 import { useFetchDataJSON } from "@/hooks/fetchdata";
-
-interface NewsItem {
-  title: string;
-  image: string;
-  date: string;
-  description: string;
-}
+import { Clock } from "lucide-react";
 
 interface BlogItem {
   title: string;
   image: string;
+  date: string;
+  id: string;
 }
 
-interface BlogData {
+interface NewsItem {
+  title: string;
+  id: string;
+}
+
+interface BlogsData {
   title: string;
   date: string;
   image: string;
   description: string;
-  recentNews: NewsItem[];
-  recentBlogs: BlogItem[];
+  recentNews: BlogItem[];
+  recentBlogs: NewsItem[];
 }
 
-export default function BlogDetails() {
-  const { loading, data, error } = useFetchDataJSON<BlogData>({
-    path: "pages/activities/news/details.json",
+export default function BlogPage() {
+  const { loading, data, error } = useFetchDataJSON<BlogsData>({
+    path: "pages/publications/blogs/details.json",
   });
 
   if (loading)
@@ -49,10 +50,10 @@ export default function BlogDetails() {
 
       <main className="flex justify-center px-4 py-8">
         <div className="w-full max-w-[1080px]">
-          <div className="grid lg:grid-cols-[3fr_.2fr_1fr] gap-8">
+          <div className="grid lg:grid-cols-[3.1fr_5px_1fr] gap-6">
             {/* LEFT CONTENT */}
             <article className="prose max-w-none">
-              <div className="overflow-hidden rounded-md">
+              <div className="overflow-hidden rounded-xs">
                 <img
                   src={data.image || "src/assets/dummy/image1.png"}
                   alt={title}
@@ -60,10 +61,9 @@ export default function BlogDetails() {
                 />
               </div>
 
-              <h1 className="mt-4 text-2xl font-extrabold text-left text-black">
+              <h1 className="my-4 text-2xl font-extrabold text-left text-black">
                 {title}
               </h1>
-              <hr className="my-4 border-t border-gray-300" />
 
               <div className="flex items-center text-sm font-medium text-gray-700">
                 <svg
@@ -106,7 +106,7 @@ export default function BlogDetails() {
                 {recentNews.map((i, index) => (
                   <div
                     key={index}
-                    className="group bg-white rounded-md shadow-sm overflow-hidden"
+                    className="group bg-white overflow-hidden flex flex-col items-center"
                   >
                     <a
                       href={`/news/${index + 1}`}
@@ -118,35 +118,23 @@ export default function BlogDetails() {
                         className="w-full object-cover h-[140px] group-hover:scale-[1.05] transition-transform duration-500"
                       />
                     </a>
-                    <div className="p-3">
-                      <a
-                        href={`/news/${index + 1}`}
-                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B]"
-                      >
-                        {i.title}
-                      </a>
-                      <p className="mt-2 text-xs text-gray-700 flex items-center gap-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-3 w-3"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                        </svg>
-                        <span>{i.date}</span>
-                      </p>
-                    </div>
+                    <a
+                      href={`/news/${index + 1}`}
+                      className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
+                    >
+                      {i.title}
+                    </a>
+                    <p className="mt-2 text-sm text-gray-700 flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
+                      <span>{i.date}</span>
+                    </p>
                   </div>
                 ))}
               </div>
             </article>
 
             {/* VERTICAL LINE */}
-            <div className="hidden lg:block border-l border-gray-300" />
-
+            <div className="hidden lg:block border-l border-gray-300 relative left-1" />
             {/* RIGHT SIDEBAR */}
             <aside className="pt-2">
               <div className="mb-2 text-lg font-normal text-gray-500">
@@ -159,18 +147,20 @@ export default function BlogDetails() {
                   <div key={index}>
                     <a
                       href={`/blog/${index + 1}`}
-                      className="flex items-center gap-2 text-sm text-gray-900 hover:text-[#00629B]"
+                      className="flex items-start gap-2 text-sm text-gray-900 hover:text-[#00629B]"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-3"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path d="M9 18l6-6-6-6" />
-                      </svg>
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                      </div>
                       <span>{b.title}</span>
                     </a>
                     <hr className="mt-2 border-t border-gray-200" />
@@ -182,7 +172,6 @@ export default function BlogDetails() {
         </div>
       </main>
 
-      <footer className="w-full">{/* <Footer /> */}</footer>
     </div>
   );
 }

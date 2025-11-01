@@ -112,7 +112,11 @@ const SocietyOrAg: React.FC = () => {
   return (
     <div>
       {/* Page Header */}
-      {pageLoading}
+      {pageLoading && (
+        <div className="min-h-screen">
+          <Wave title="Loading..." color={pageData.primaryColor}/>
+        </div>
+      )}
       {pageError && (
         <ErrorMessage
           message="Failed to load page details."
