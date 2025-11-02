@@ -54,7 +54,7 @@ export default function AboutIEEE() {
   return (
     <div>
       {/* About IEEE BDS Section */}
-      <div className="max-w-[1080px] m-auto p-5 flex flex-col md:flex-row gap-6 items-center mb-16">
+      <div className="max-w-[1080px] m-auto flex flex-col md:flex-row gap-6 items-center mb-16">
         <img
           src={data.aboutImage}
           alt="About IEEE Bangladesh Section"
@@ -62,8 +62,8 @@ export default function AboutIEEE() {
         />
         <div>
           <SectionHeading title="About IEEE" />
-          <p className="text-justify md:pl-5">{data.aboutDetails}</p>
-          <div className="mt-4 flex gap-4 md:pl-5">
+          <p className="text-justify md:pl-5 max-md:mx-5">{data.aboutDetails}</p>
+          <div className="mt-4 flex gap-4 md:pl-5 max-md:mx-5">
             <a
               href={data.ieeebdlink}
               target="_blank"
@@ -76,18 +76,17 @@ export default function AboutIEEE() {
         </div>
       </div>
 
-      <section className="w-full flex justify-center">
-        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Members and volunteers" />
-              <p className="text-justify mb-6 pl-5">{data.memVolDetails}</p>
+              <p className="text-justify mb-6 pl-5 max-md:mx-5 max-md:pl-0">{data.memVolDetails}</p>
               {data.memVolLinks.map((link, i) => (
                 <>
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:mx-5 max-md:pl-0"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -97,7 +96,7 @@ export default function AboutIEEE() {
               ))}
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0">
             <img
               src={data.memVolImage}
               alt="Largest Community"
@@ -105,7 +104,6 @@ export default function AboutIEEE() {
             />
           </div>
         </div>
-      </section>
 
       {/* Benefits */}
       <section className="w-full bg-[#002855] flex justify-center">
@@ -216,7 +214,7 @@ export default function AboutIEEE() {
       <div className="max-w-[1080px] m-auto">
         <FadeIn xIndex={-100} yIndex={0}>
           <SectionHeading title="Achievements" />
-          <p className="text-justify mb-6 md:p-5">{data.achievementsDetails}</p>
+          <p className="text-justify mb-6 md:p-5 max-md:mx-5">{data.achievementsDetails}</p>
           <div className="flex flex-wrap gap-7 justify-baseline p-5">
             {data.achievementsLinks.map((a, i) => (
               <div

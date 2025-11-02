@@ -20,7 +20,6 @@ interface MegaPageData {
   image: string;
   startDate: string;
   finalDate: string;
-  images: [];
   publishedFrom: string;
   description: string;
   megaEvents: MegaItem[];
@@ -54,7 +53,6 @@ export default function MegaPage() {
     startDate,
     finalDate,
     publishedFrom,
-    images,
   } = data;
 
   return (
@@ -125,7 +123,7 @@ export default function MegaPage() {
                   <div dangerouslySetInnerHTML={{ __html: description }} />
                 </div>
 
-                <div className="max-w-[1080px] mx-auto mt-2 md:mb-10">
+                {/* <div className="max-w-[1080px] mx-auto mt-2 md:mb-10">
                   <div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {images.map((image, index) => (
@@ -142,7 +140,7 @@ export default function MegaPage() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <hr className="my-6 border-t border-gray-300" />
 
                 <div className="mb-4 text-sm font-semibold text-[#002855] flex items-center gap-2">
