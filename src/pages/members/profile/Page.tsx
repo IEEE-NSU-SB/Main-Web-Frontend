@@ -71,24 +71,26 @@ const MemberProfile: React.FC = () => {
             </div>
   
             {/* Achievements */}
-            <div className="border-2 border-ieee-darkyellow rounded-border-ieee-darkyellow orange border-[2px_2px] rounded-[6px_20px] w-full md:w-80 bg-amber-200 overflow-hidden shadow-[2px_2px_8px_var(--color-ieee-gray-50)] w-full md:w-80 bg-amber-200 shadow">
-              <h2 className="font-semibold px-4 py-2">Achievements</h2>
-              <ul className="text-sm text-gray-600 space-y-3 max-h-29 overflow-y-auto p-2 bg-white ieee-scrollbar">
-                {data.achievements.map((ach: {title: string; tenure: string}, i:React.Key) => (
-                  <li
-                    key={i}
-                    className="flex flex-col gap-1 border-b pb-2 last:border-none"
-                  >
-                    <span className="flex items-center gap-2">
-                      ⭐{" "}
-                      <span className="font-medium">
-                        {ach.title} ({ach.tenure})
+            {data.achievements.length > 0 && (
+              <div className="border-2 border-ieee-darkyellow rounded-border-ieee-darkyellow orange border-[2px_2px] rounded-[6px_20px] w-full md:w-80 bg-amber-200 overflow-hidden shadow-[2px_2px_8px_var(--color-ieee-gray-50)] w-full md:w-80 bg-amber-200 shadow">
+                <h2 className="font-semibold px-4 py-2">Achievements</h2>
+                <ul className="text-sm text-gray-600 space-y-3 max-h-29 overflow-y-auto p-2 bg-white ieee-scrollbar">
+                  {data.achievements.map((ach: {title: string; tenure: string}, i:React.Key) => (
+                    <li
+                      key={i}
+                      className="flex flex-col gap-1 border-b pb-2 last:border-none"
+                    >
+                      <span className="flex items-center gap-2">
+                        ⭐{" "}
+                        <span className="font-medium">
+                          {ach.title} ({ach.tenure})
+                        </span>
                       </span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
   
           {/* About Me */}
