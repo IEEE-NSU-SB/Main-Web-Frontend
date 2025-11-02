@@ -41,7 +41,7 @@ interface Member {
 }
 
 interface ExecutiveData {
-  advisor: Member | undefined;
+  advisor: Member[];
   executives: any[];
 }
 

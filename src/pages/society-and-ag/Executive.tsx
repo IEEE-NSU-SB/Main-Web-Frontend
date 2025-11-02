@@ -15,7 +15,7 @@ interface Member {
 }
 
 interface ExecutiveProps {
-  advisor?: Member;
+  advisor: Member[];
   executives: Member[];
   color?: string;
 }
@@ -78,15 +78,15 @@ const Executive: React.FC<ExecutiveProps> = ({
         underlineColor={color}
       />
       {/* Faculty Advisor */}
-      {advisor && Object.keys(advisor).length > 0 && (
-        <div className="flex flex-wrap justify-center items-center mt-26 px-5">
-          <MemberCard member={advisor} />
-        </div>
-      )}
+      <div className="flex flex-wrap justify-center items-center mt-26 px-5 gap-x-8">
+        {advisor.length > 0 && advisor.map((member) => (
+          <MemberCard key={member.id} member={member} />
+        ))}
+      </div>
 
       {/* Executive Members */}
       <div className="flex flex-wrap justify-center items-center mt-26 gap-x-8 gap-y-27 px-5">
-        {executives.map((member) => (
+        {executives.length > 0 && executives.map((member) => (
           <MemberCard key={member.id} member={member} />
         ))}
       </div>
