@@ -273,10 +273,9 @@ export default function AboutIEEE() {
       {/* Innovation Section */}
       <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
         <FadeIn xIndex={-100} yIndex={0}>
-          <div>
-            <SectionHeading title="Innovations and Developments" />
-            <div>
-              <p className="mb-6 max-md:mx-5">
+            <SectionHeading title="Innovations & Developments" />
+            <div className="max-md:mx-5">
+              <p className="mb-6">
                 {data.innovationsDevelopmentsDetails}
               </p>
               {data.innovationsDevelopmentsLinks.map((link, i) => (
@@ -284,7 +283,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:pl-0 max-md:mx-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:pl-0"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -292,7 +291,6 @@ export default function AboutIEEE() {
                   <br />
                 </>
               ))}
-            </div>
           </div>
         </FadeIn>
         <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] pr-5">
@@ -308,7 +306,7 @@ export default function AboutIEEE() {
       <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12 md:flex-row-reverse">
         <FadeIn xIndex={-100} yIndex={0}>
           <div>
-            <SectionHeading title="Student And Member Activities" />
+            <SectionHeading title="Member Activities" />
             <div className="px-5">
               <p className="mb-6">{data.studentsAndMemberActivitiesDetails}</p>
               {data.studentsAndMemberActivitiesLinks.map((link, i) => (
