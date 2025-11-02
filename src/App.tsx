@@ -42,7 +42,7 @@ import FAQPage from "./pages/about/faq";
 
 //Publications
 import Blogs from "./pages/publications/blogs/Page";
-import BlogPage from "./pages/publications/blogs/BlogDetails";
+// import BlogPage from "./pages/publications/blogs/BlogDetails";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Magazines from "./pages/publications/magazines/pages";
 import Gallery from "./pages/publications/gallery/Page";
@@ -121,7 +121,7 @@ const App = () => {
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/magazines" element={<Magazines />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<BlogPage />} />
+          {/* <Route path="/blogs/:id" element={<BlogPage />} /> */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />
 
