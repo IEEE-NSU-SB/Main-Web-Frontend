@@ -4,7 +4,7 @@ import data from "./data.json";
 import Wave from "@/components/Wave";
 
 const MemberProfile: React.FC = () => {
-  const DEFAULT_IMAGE = "assets/default_profile_picture.png";
+  const DEFAULT_IMAGE = "/default_profile_picture.png";
   const BACKEND_DEFAULT =
     "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
