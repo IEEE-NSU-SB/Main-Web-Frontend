@@ -24,8 +24,8 @@ const footerLinks = [
   },
   {
     links: [
-      { text: "Ask a Question", href: "/faq/" },
-      { text: "IEEE NSU SB", href: "/ieee_nsu_student_branch/" },
+      // { text: "Ask a Question", href: "/faq/" },
+      // { text: "IEEE NSU SB", href: "/ieee_nsu_student_branch/" },
       { text: "IEEE NSU SB IAS", href: "/ieee-nsu-ias-sbc/" },
       { text: "IEEE NSU SB PES", href: "/ieee-nsu-pes-sbc/" },
       { text: "IEEE NSU SB RAS", href: "/ieee-nsu-ras-sbc/" },
@@ -37,7 +37,7 @@ const footerLinks = [
       { text: "News", href: "/news/" },
       { text: "Upcoming Events", href: "/events/" },
       { text: "Toolkit", href: "/toolkit/" },
-      { text: "Gallery", href: "/gallery/" },
+      // { text: "Gallery", href: "/gallery/" },
       { text: "Magazines", href: "/magazines/" },
       { text: "Research Papers", href: "/research/" },
     ],
@@ -49,7 +49,7 @@ const footerLinks = [
       { text: "Blogs", href: "/blogs/" },
       { text: "Achievements", href: "/achievements/" },
       { text: "Current Executive Body", href: "/panels/" },
-      { text: "Exemplary Members", href: "/exemplary_members" },
+      // { text: "Exemplary Members", href: "/exemplary_members" },
     ],
   },
 ];
