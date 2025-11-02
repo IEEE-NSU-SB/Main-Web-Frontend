@@ -4,6 +4,10 @@ import data from "./data.json";
 import Wave from "@/components/Wave";
 
 const MemberProfile: React.FC = () => {
+  const DEFAULT_IMAGE = "assets/default_profile_picture.png";
+  const BACKEND_DEFAULT =
+    "https://api.ieeensusb.org/static/images/default_profile_picture.png";
+
   return (
     <>
       <Wave title="Member Profile" subtitle={`${data.name}`} />
@@ -15,7 +19,9 @@ const MemberProfile: React.FC = () => {
             <div className="w-32 h-32 md:w-42 md:h-42 rounded-full overflow-hidden shadow-[2px_2px_8px_var(--color-ieee-gray-50)] border-1 border-ieee-white hover:border-ieee-blue transition-all duration-300">
               <img
                 className="w-full h-full hover:scale-105 object-cover transition-all duration-300 cursor-pointer"
-                src={data.image}
+                src={
+                  data.image === BACKEND_DEFAULT ? DEFAULT_IMAGE : data.image
+                }
                 alt={data.name}
               />
             </div>
@@ -64,7 +70,10 @@ const MemberProfile: React.FC = () => {
                   className="flex flex-col gap-1 border-b pb-2 last:border-none"
                 >
                   <span className="flex items-center gap-2">
-                    ⭐ <span className="font-medium">{ach.title} ({ach.tenure})</span>
+                    ⭐{" "}
+                    <span className="font-medium">
+                      {ach.title} ({ach.tenure})
+                    </span>
                   </span>
                 </li>
               ))}

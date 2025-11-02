@@ -19,13 +19,16 @@ interface PanelCardProps {
   members: member[];
   sectionTitle: string;
 }
+const DEFAULT_IMAGE = "assets/default_profile_picture.png";
+const BACKEND_DEFAULT =
+  "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
 const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
   if (!members || members.length === 0) return null; // don't render if no members
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
-        <SectionHeading title={sectionTitle} align="center"/>
+        <SectionHeading title={sectionTitle} align="center" />
 
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
@@ -38,16 +41,20 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
                          bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={member.image || "/images/default_profile_picture.png"}
+                src={
+                  member.image === BACKEND_DEFAULT
+                    ? DEFAULT_IMAGE
+                    : member.image
+                }
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
                 onError={(e) => {
-                        const target = e.currentTarget as HTMLImageElement;
-                        target.onerror = null; // prevent loop
-                        target.src = `${
-                          import.meta.env.VITE_API_URL
-                        }/static/images/default_profile_picture.png`;
-                      }}
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.onerror = null; // prevent loop
+                  target.src = `${
+                    import.meta.env.VITE_API_URL
+                  }/static/images/default_profile_picture.png`;
+                }}
               />
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>

@@ -20,10 +20,9 @@ interface OrgChartProps {
 
 const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
-  const DEFAULT_IMAGE = `${
-    import.meta.env.VITE_API_URL
-  }/static/images/default_profile_picture.png`;
-
+  const DEFAULT_IMAGE = "assets/default_profile_picture.png";
+  const BACKEND_DEFAULT =
+    "https://api.ieeensusb.org/static/images/default_profile_picture.png";
   // Detect screen size
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -209,7 +208,11 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                   transition-all duration-300 ease-out hover:shadow-xl cursor-pointer"
                   >
                     <img
-                      src={member.image || DEFAULT_IMAGE}
+                      src={
+                        member.image === BACKEND_DEFAULT
+                          ? DEFAULT_IMAGE
+                          : member.image
+                      }
                       alt={member.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -252,7 +255,11 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
             <Link to={`/member-profile/${vol.id}`}>
               <div className="w-56 h-55 rounded mb-4">
                 <img
-                  src={vol.image || DEFAULT_IMAGE}
+                  src={
+                        vol.image === BACKEND_DEFAULT
+                          ? DEFAULT_IMAGE
+                          : vol.image
+                      }
                   alt={vol.name}
                   className="w-full h-full object-cover"
                   onError={(e) => {
