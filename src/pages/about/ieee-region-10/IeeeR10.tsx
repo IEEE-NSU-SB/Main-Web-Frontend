@@ -105,7 +105,7 @@ const IEEERegion10: React.FC = () => {
               ))}
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0 max-md:mx-5">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0 max-md:mx-5 max-md:min-w-auto">
             <img
               src={data.youngProfImage}
               alt="Young Professionals"
