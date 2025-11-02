@@ -53,13 +53,13 @@ const ResearchPapers = () => {
             <ErrorMessage message="Failed to load research papers" onRetry={refetch} />
           ) : filteredPapers.length > 0 ? (
             <div className="overflow-x-auto transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)] rounded-lg">
-              <table className="min-w-full border border-ieee-black-25 rounded-lg overflow-hidden text-center">
-                <thead className="bg-ieee-blue/85 text-white">
+              <table className="min-w-full table-auto border border-ieee-black-25 rounded-lg overflow-hidden text-center">
+                <thead className="bg-ieee-darkblue/85 text-white">
                   <tr>
-                    <th className="py-3 px-4">SL.</th>
-                    <th className="py-3 px-4">Title</th>
-                    <th className="py-3 px-4">Authors</th>
-                    <th className="py-3 px-4">Link</th>
+                    <th className="py-3 px-4 whitespace-nowrap">SL.</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Title</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Authors</th>
+                    <th className="py-3 px-4 whitespace-nowrap">Link</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,11 +68,11 @@ const ResearchPapers = () => {
                       key={paper.id}
                       className="bg-ieee-gray/5 even:bg-ieee-gray-10 hover:bg-ieee-gray-15 transition-colors"
                     >
-                      <td className="py-3 px-4 text-ieee-black-75">{idx + 1}</td>
-                      <td className="py-3 px-4 text-ieee-black font-medium">
+                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black-75">{idx + 1}</td>
+                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black font-medium">
                         {paper.title}
                       </td>
-                      <td className="py-3 px-4 text-ieee-black-75 text-left">
+                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black-75 text-left">
                         <ul className="list-disc list-inside space-y-1">
                           {paper.authors.map((author, i) => (
                             <li key={i}>{author}</li>
