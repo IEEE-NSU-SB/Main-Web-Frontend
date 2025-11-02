@@ -295,11 +295,11 @@ export default function AboutIEEE() {
               ))}
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:w-50">
             <img
               src={data.innovationsDevelopmentsImage}
               alt="Largest Community"
-              className="object-contain"
+              className="object-contain h-full w-full"
             />
           </div>
         </div>
@@ -307,7 +307,7 @@ export default function AboutIEEE() {
       {/* Student Activities */}
       <section className="w-full flex justify-center">
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 ">
             <img
               src={data.studentsAndMemberActivitiesImage}
               alt="Students and Member Activities"

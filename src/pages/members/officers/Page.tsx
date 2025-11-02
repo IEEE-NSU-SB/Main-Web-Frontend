@@ -52,7 +52,6 @@ const Officer = () => {
     else navigate(`/officers/${team}`);
   };
 
-  if (panelLoading) return <p className="text-center mt-10">Loading...</p>;
   if (panelError) return <p className="text-center mt-10 text-red-500">{panelError}</p>;
   if (!panelData?.length) return <p className="text-center mt-10 text-gray-500">No data found.</p>;
 
@@ -66,10 +65,15 @@ const Officer = () => {
 
   return (
     <>
+        {panelLoading && (
+        <div className="min-h-screen">
+          <Wave title="Loading Officers..."/>
+        </div>
+      )}
       <Wave title="Officer Panel of IEEE NSU SB" />
 
       {/* Desktop team buttons */}
-      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4">
+      <div className="hidden md:flex flex-wrap justify-center mb-8 gap-4 max-w-[1080px] m-auto">
         <button
           onClick={() => handleTeamChange("All")}
           className={`px-3 py-2 rounded-sm font-medium transition-colors duration-300 cursor-pointer border border-ieee-darkblue-90

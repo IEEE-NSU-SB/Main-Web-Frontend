@@ -145,7 +145,7 @@ const BlogCard: React.FC = () => {
               <FadeIn key={event.id}>
                 <div className="max-w-110 lg:max-w-[300px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all duration-300">
                   <div className="overflow-hidden">
-                    <Link to={event.link} className="w-110 h-48">
+                    <Link to={`${event.id}`} className="w-110 h-48">
                       <img
                         src={event.image}
                         alt={event.title}

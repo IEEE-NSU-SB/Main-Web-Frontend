@@ -1,3 +1,4 @@
+import Wave from "@/components/Wave";
 import { useState } from "react";
 
 interface Member {
@@ -20,10 +21,15 @@ export default function Members({ members }: MembersProps) {
 
   return (
     <>
+      <Wave title="Exemplary Members" />
       <div className="max-w-[1080px] mx-auto my-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {members.map((m, index) => (
-            <MemberCard key={index} member={m} onOpen={() => setSelectedMember(m)} />
+            <MemberCard
+              key={index}
+              member={m}
+              onOpen={() => setSelectedMember(m)}
+            />
           ))}
         </div>
       </div>
@@ -31,7 +37,7 @@ export default function Members({ members }: MembersProps) {
       {/* Modal */}
       {selectedMember && (
         <div
-          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center backdrop-blur-sm"
+          className="fixed inset-0 z-51 bg-black/60 flex items-center justify-center backdrop-blur-sm"
           onClick={() => setSelectedMember(null)}
         >
           <div
@@ -61,14 +67,25 @@ export default function Members({ members }: MembersProps) {
   );
 }
 
-function MemberCard({ member, onOpen }: { member: Member; onOpen: () => void }) {
+function MemberCard({
+  member,
+  onOpen,
+}: {
+  member: Member;
+  onOpen: () => void;
+}) {
   return (
     <div className="relative rounded-md shadow overflow-hidden border group">
-      <div className="flex max-md:flex-col max-md:gap-10 p-8 items-center gap-10" style={{ backgroundColor: "#00629B" }}>
+      <div
+        className="flex max-md:flex-col max-md:gap-10 p-8 items-center gap-10"
+        style={{ backgroundColor: "#00629B" }}
+      >
         <div className="w-28 h-28 flex-shrink-0">
           <img
             src={member.member_picture}
-            onError={(e) => (e.currentTarget.src = "/images/default_profile_picture.png")}
+            onError={(e) =>
+              (e.currentTarget.src = "/images/default_profile_picture.png")
+            }
             alt={member.member_name}
             className="w-full h-full object-cover rounded-full shadow"
           />
@@ -82,7 +99,11 @@ function MemberCard({ member, onOpen }: { member: Member; onOpen: () => void }) 
           <p className="text-sm">{member.current_activity}</p>
 
           <div className="flex gap-4 mt-4 text-lg">
-            <a href={member.facebook_account_link} target="_blank" className="hover:text-gray-200">
+            <a
+              href={member.facebook_account_link}
+              target="_blank"
+              className="hover:text-gray-200"
+            >
               <i className="fa-brands fa-facebook"></i>
             </a>
             <a href={`mailto:${member.email}`} className="hover:text-gray-200">

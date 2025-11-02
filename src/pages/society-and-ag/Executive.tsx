@@ -79,7 +79,7 @@ const Executive: React.FC<ExecutiveProps> = ({
       />
       {/* Faculty Advisor */}
       {advisor && Object.keys(advisor).length > 0 && (
-        <div className="flex justify-center items-center mt-26 px-5">
+        <div className="flex flex-wrap justify-center items-center mt-26 px-5">
           <MemberCard member={advisor} />
         </div>
       )}

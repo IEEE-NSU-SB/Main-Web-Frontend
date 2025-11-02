@@ -1,36 +1,35 @@
 import Wave from "@/components/Wave";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
-import { BiCategory } from "react-icons/bi";
 
-interface BlogItem {
+interface EventItem {
   title: string;
   image: string;
   date: string;
   id: string;
 }
 
-interface NewsItem {
+interface MegaItem {
   title: string;
   id: string;
 }
 
-interface BlogsData {
+interface MegaPageData {
   title: string;
   date: string;
   image: string;
-  category: string;
-  writer: string;
-  ieeeId: string;
+  startDate: string;
+  finalDate: string;
+  images: [];
   publishedFrom: string;
   description: string;
-  recentNews: NewsItem[];
-  recentBlogs: BlogItem[];
+  megaEvents: MegaItem[];
+  organisedEvents: EventItem[];
 }
 
-export default function BlogPage() {
-  const { loading, data, error } = useFetchDataJSON<BlogsData>({
-    path: "pages/publications/blogs/details.json",
+export default function MegaPage() {
+  const { loading, data, error } = useFetchDataJSON<MegaPageData>({
+    path: "pages/activities/events/MegaEvent/data.json",
   });
 
   if (loading)
@@ -47,7 +46,16 @@ export default function BlogPage() {
       </div>
     );
 
-  const { title, date, description, recentNews, recentBlogs, category, ieeeId, writer, publishedFrom } = data;
+  const {
+    title,
+    description,
+    megaEvents,
+    organisedEvents,
+    startDate,
+    finalDate,
+    publishedFrom,
+    images,
+  } = data;
 
   return (
     <>
@@ -85,18 +93,30 @@ export default function BlogPage() {
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 6v6l4 2" />
                   </svg>
-                  <span>{date}</span>
+                  <p>
+                    Start Date :{" "}
+                    {new Date(startDate).toLocaleDateString("en-GB")}
+                  </p>
+                </div>
+                <div className="flex items-center text-md font-medium text-gray-700">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 mr-2"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <p>
+                    Final Date :{" "}
+                    {new Date(finalDate).toLocaleDateString("en-GB")}
+                  </p>
                 </div>
                 <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                  <BiCategory className="w-4 h-4"/>
-                  <p> Category : </p>
-                  <span> {category}</span>
-                </div>
-                <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                    <p>Writer : {writer} - {ieeeId}</p>
-                </div>
-                <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                    <p>Published From : {publishedFrom}</p>
+                  <p>Published From : {publishedFrom}</p>
                 </div>
 
                 <hr className="my-4 border-t border-gray-300" />
@@ -105,6 +125,24 @@ export default function BlogPage() {
                   <div dangerouslySetInnerHTML={{ __html: description }} />
                 </div>
 
+                <div className="max-w-[1080px] mx-auto mt-2 md:mb-10">
+                  <div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {images.map((image, index) => (
+                        <div
+                          key={index}
+                          className="relative overflow-hidden rounded-sm border-2 border-ieee-white hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                        >
+                          <img
+                            src={image}
+                            alt={`Event gallery image ${index + 1}`}
+                            className="w-full h-full object-cover hover:scale-105 duration-300 transition-all"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
                 <hr className="my-6 border-t border-gray-300" />
 
                 <div className="mb-4 text-sm font-semibold text-[#002855] flex items-center gap-2">
@@ -122,7 +160,7 @@ export default function BlogPage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {recentBlogs.map((i, index) => (
+                  {organisedEvents.map((i, index) => (
                     <div
                       key={index}
                       className="group bg-white overflow-hidden flex flex-col items-center"
@@ -157,12 +195,12 @@ export default function BlogPage() {
               {/* RIGHT SIDEBAR */}
               <aside className="pt-2">
                 <div className="mb-2 text-lg font-normal text-gray-500">
-                  Recent News
+                  Other Mega Events
                 </div>
                 <hr className="mb-4 border-t border-gray-300" />
 
                 <div className="space-y-4">
-                  {recentNews.map((b, index) => (
+                  {megaEvents.map((b, index) => (
                     <div key={index}>
                       <a
                         href={`/blog/${index + 1}`}
