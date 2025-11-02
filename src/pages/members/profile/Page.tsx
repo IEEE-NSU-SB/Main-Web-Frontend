@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 
 const MemberProfile: React.FC = () => {
-
-  const { id } = useParams();
-
-  const DEFAULT_IMAGE = "assets/default_profile_picture.png";
+  const DEFAULT_IMAGE = "/default_profile_picture.png";
   const BACKEND_DEFAULT =
     "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
