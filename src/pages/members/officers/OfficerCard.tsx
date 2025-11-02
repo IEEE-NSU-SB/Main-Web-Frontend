@@ -34,11 +34,11 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
           {members.map((member) => (
             <a
               key={member.id}
-              href={member.profileLink || "#"}
+              href={String(member.id)}
               rel="noopener noreferrer"
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
-                         shadow-[0_14px_40px_rgba(0,0,0,0.18)]
-                         bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
+              shadow-[0_14px_40px_rgba(0,0,0,0.18)]
+              bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
                 src={
