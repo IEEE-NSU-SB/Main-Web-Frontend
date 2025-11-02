@@ -226,7 +226,7 @@ const IEEERegion10: React.FC = () => {
           <div className="flex justify-center min-w-[255px] max-w-[500px]">
             <img
               src={data.MembershipImage}
-              alt="Membership Development"
+              alt="Membership"
               className="object-contain max-md:w-50 max-md:mt-10"
             />
           </div>
