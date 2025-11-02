@@ -15,6 +15,9 @@ interface MegaEvent {
 interface MegaEventsCardProps {
   events: MegaEvent[];
   color?: string; // optional
+  loading?: boolean;
+  error?: string;
+  refetch?: () => Promise<void>;
 }
 
 const MegaEventsCard: React.FC<MegaEventsCardProps> = ({

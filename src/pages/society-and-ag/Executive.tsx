@@ -78,7 +78,7 @@ const Executive: React.FC<ExecutiveProps> = ({
         underlineColor={color}
       />
       {/* Faculty Advisor */}
-      <div className="flex justify-center items-center mt-26 px-5 gap-x-8">
+      <div className="flex flex-wrap justify-center items-center mt-26 px-5 gap-x-8">
         {advisor.length > 0 && advisor.map((member) => (
           <MemberCard key={member.id} member={member} />
         ))}

@@ -35,7 +35,7 @@ const TeamPage = () => {
     else if (path.includes("graphics")) return "10";
     else if (path.includes("logistics")) return "4"; // add other teams similarly
     else if (path.includes("media")) return "9";
-    else if (path.includes("pr")) return "0";
+    else if (path.includes("public")) return "0";
     else if (path.includes("promotions")) return "5";
     else if (path.includes("finance")) return "11";
     else if (path.includes("membership")) return "7";

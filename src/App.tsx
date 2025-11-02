@@ -17,6 +17,7 @@ import HomePage from "./pages/home/Page";
 //Activities
 import Events from "./pages/activities/events/Page";
 import EventDetails from "./pages/activities/events/EventsDetails/Page";
+import MegaPage from "./pages/activities/events/MegaEvent/megaDetails";
 import Achievements from "./pages/activities/achievements/Page";
 import News from "./pages/activities/News/Page";
 import NewsDetails from "./pages/activities/News/NewsDetails";
@@ -84,6 +85,7 @@ const App = () => {
           {/* Activities */}
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/mega-event/:id" element={<MegaPage />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsDetails />} />
           <Route path="/achievements" element={<Achievements />} />
@@ -106,7 +108,7 @@ const App = () => {
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/team/:id" element={<TeamPage />} />
           <Route path="/exemplary-members" element={<Examplary/>}/>
-          <Route path="/member_profile/:id" element={<Profile />} />
+          <Route path="/member-profile/:id" element={<Profile />} />
           <Route path="/all-members" element={<AllMembers />} />
 
           {/* About */}

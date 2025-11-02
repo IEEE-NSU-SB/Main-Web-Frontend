@@ -203,7 +203,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
               {showTopLine && <div className="w-[2px] h-10 bg-[#002855]"></div>}
 
               <div className="w-[270px] relative flex flex-row items-center p-5 bg-[#153457] border-[#ffffff] border-2 rounded-2xl">
-                <Link to={"https://ieeensusb.org/member_profile/99579190"}>
+                <Link to={`/member-profile/${member.id}`}>
                   <div
                     className="w-25 h-25 rounded-full overflow-hidden shadow-md bg-gray-100 border-2
                   transition-all duration-300 ease-out hover:shadow-xl cursor-pointer"
@@ -249,7 +249,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
             key={idx}
             className="flex flex-col items-center border-2 border-ieee-white pb-4 w-[227px] bg-ieee-darkblue/90 rounded-lg hover:shadow-[4px_4px_10px_theme(colors.ieee-gray-50)] shadow-[2px_2px_8px_theme(colors.ieee-gray-50)] transition cursor-pointer overflow-hidden"
           >
-            <Link to={`/member_profile/${vol.id}`}>
+            <Link to={`/member-profile/${vol.id}`}>
               <div className="w-56 h-55 rounded mb-4">
                 <img
                   src={vol.image || DEFAULT_IMAGE}
@@ -277,9 +277,16 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
 
   return (
     <div className="flex flex-col items-center w-full mt-10">
-      {renderLevel(data.subExecutive, false, true)}
-      {renderLevel(data.incharge, true, true)}
-      {renderLevel(data.coreVolunteers, true, false, false, true)}
+      {data.subExecutive.length > 0 &&
+        renderLevel(data.subExecutive, false, true)}
+      {renderLevel(data.incharge, data.subExecutive.length > 0, true)}
+      {renderLevel(
+        data.coreVolunteers,
+        data.incharge.length > 0, // only show top line if incharge exists
+        false,
+        false,
+        true
+      )}
       {renderVolunteers(data.volunteers)}
     </div>
   );

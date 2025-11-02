@@ -87,7 +87,7 @@ const FAQPage = () => {
                     isDropdownOpen ? "rotate-180" : "rotate-0"
                   }`}
                 >
-                  😭
+                  
                 </span>
               </button>
 
