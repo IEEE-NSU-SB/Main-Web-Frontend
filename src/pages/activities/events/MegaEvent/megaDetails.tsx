@@ -1,9 +1,10 @@
 import Wave from "@/components/Wave";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 interface EventItem {
-  title: string;
+  name: string;
   image: string;
   date: string;
   id: string;
@@ -27,8 +28,11 @@ interface MegaPageData {
 }
 
 export default function MegaPage() {
-  const { loading, data, error } = useFetchDataJSON<MegaPageData>({
-    path: "pages/activities/events/MegaEvent/data.json",
+
+  const { id } = useParams()
+
+  const { loading, data, error } = useFetchDataAPI<MegaPageData>({
+    apiUrl: `main_website/get_mega_event_details/${id}`,
   });
 
   if (loading)
@@ -164,20 +168,20 @@ export default function MegaPage() {
                       className="group bg-white overflow-hidden flex flex-col items-center"
                     >
                       <a
-                        href={`/news/${index + 1}`}
+                        href={`/events/${i.id}`}
                         className="block overflow-hidden"
                       >
                         <img
                           src={i.image}
-                          alt={i.title}
+                          alt={i.name}
                           className="w-full object-cover h-[140px] group-hover:scale-[1.05] transition-transform duration-500"
                         />
                       </a>
                       <a
-                        href={`/news/${index + 1}`}
+                        href={`/events/${i.id}`}
                         className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
                       >
-                        {i.title}
+                        {i.name}
                       </a>
                       <p className="mt-2 text-sm text-gray-700 flex items-center gap-2">
                         <Clock className="w-4 h-4" />
@@ -198,10 +202,10 @@ export default function MegaPage() {
                 <hr className="mb-4 border-t border-gray-300" />
 
                 <div className="space-y-4">
-                  {megaEvents.map((b, index) => (
+                  {megaEvents.map((i, index) => (
                     <div key={index}>
                       <a
-                        href={`/blog/${index + 1}`}
+                        href={`/mega-event/${i.id}`}
                         className="flex items-start gap-2 text-sm text-gray-900 hover:text-[#00629B]"
                       >
                         <div>
@@ -216,7 +220,7 @@ export default function MegaPage() {
                             <path d="M9 18l6-6-6-6" />
                           </svg>
                         </div>
-                        <span>{b.title}</span>
+                        <span>{i.title}</span>
                       </a>
                       <hr className="mt-2 border-t border-gray-200" />
                     </div>
