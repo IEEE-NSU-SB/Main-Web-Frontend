@@ -501,7 +501,7 @@ const Navbar: React.FC = () => {
           ))}
 
           <Link
-            to="/portal"
+            to={import.meta.env.VITE_PORTAL_URL}
             className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
             onClick={toggleMobileMenu}
           >
