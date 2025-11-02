@@ -80,7 +80,7 @@ function Footer() {
           </div>
 
           {/* Link Sections */}
-          <div className="text-ieee-white-75 grid grid-cols-1 max-sm:hidden md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-[1040px]">
+          <div className="text-ieee-white-75 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-[1040px]">
             {footerLinks.map((section, index) => (
               <ul key={index}>
                 {section.links.map((link, idx) => (
