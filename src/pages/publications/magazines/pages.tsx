@@ -17,27 +17,27 @@ const magazineData: Magazine[] = [
     publishedBy: "A Publication of IEEE NSU Student Branch",
     publishDate: "Dec. 17, 2018",
     picture:
-      "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Chronics.png",
+      "https://api.ieeensusb.org/media_files/main_website_files/magazine_pictures/Chronics.png",
     description:
       "Chronicons is the first edition of IEEE NSU Student Branch’s magazine. Chronicons is not just a magazine, it is an assortment of research papers, technical articles and interviews that will spur the mind of everyone who has a reach to this spectacular piece of brochure",
-    file: "https://ieeensusb.org/media_files/main_website_files/Magazine/Chronicons.pdf",
+    file: "https://api.ieeensusb.org/media_files/main_website_files/Magazine/Chronicons.pdf",
   },
   {
     title: "Zenith",
     publishedBy: "A Publication of IEEE NSU Power and Energy Society Student Branch Chapter",
     publishDate: "Feb. 1, 2018",
     picture:
-      "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Zenith.png",
+      "https://api.ieeensusb.org/media_files/main_website_files/magazine_pictures/Zenith.png",
     description:
       "“Zenith” is the footmark of the first event organized by PES, “POWERBUZZ”. It is an event which connected the faculties and the students in the same bond. Zenith features works from the students and the faculties and let them express their contribution in the field of engineering.",
-    file: "https://ieeensusb.org/media_files/main_website_files/Magazine/Zenith.pdf",
+    file: "https://api.ieeensusb.org/media_files/main_website_files/Magazine/Zenith.pdf",
   },
   {
     title: "Prodigy",
     publishedBy: "A Publication of IEEE NSU Student Branch - Women in Engineering Affinity Group",
     publishDate: "Oct. 1, 2016",
     picture:
-      "https://ieeensusb.org/media_files/main_website_files/magazine_pictures/Prodigy.png",
+      "https://api.ieeensusb.org/media_files/main_website_files/magazine_pictures/Prodigy.png",
     description:
       "Prodigy’ is a testimony to what this student body (WIE) stands for. The sole purpose of this publication is to promote Women in Engineering. Even in 21st century whenever we hear the term ‘ENGINEER’, we automatically imagine a guy or a male, WIE is working towards breaking this taboo. Prodigy is the first step of reaching that goal.",
     file: "https://dl.bdebooks.com/Bangladeshi%20Author/Romena%20Afaz/Series%20Books/Dosshu%20Bonhur/101-102%20Dosshu%20Javed-%20Mohachakkro%20by%20Romena%20Afaz(BDebooks.Com).pdf",
@@ -75,8 +75,8 @@ export default function MagazinesPage() {
               key={i}
               className="relative bg-white rounded-lg hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all overflow-hidden"
             >
-              <div className="flex">
-                <div className="w-70 h-100 overflow-hidden">
+              <div className="flex max-md:flex-col">
+                <div className="w-70 h-100 max-md:w-full overflow-hidden">
                   <img
                     src={mag.picture}
                     alt={mag.title}
