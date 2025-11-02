@@ -286,7 +286,7 @@ const Navbar: React.FC = () => {
                   "IEEE Region 10": "ieee-region-10",
                   "IEEE Bangladesh Section": "ieee-bangladesh-section",
                   // "IEEE NSU Student Branch": "ieee-nsu-student-branch",
-                  FAQ: "FAQ",
+                  // FAQ: "FAQ",
                 }).map(([label, path]) => (
                   <Link
                     key={path}
@@ -474,7 +474,7 @@ const Navbar: React.FC = () => {
                 "IEEE Region 10",
                 "IEEE Bangladesh Section",
                 // "IEEE NSU Student Branch",
-                "FAQ",
+                // "FAQ",
               ],
             },
             {
