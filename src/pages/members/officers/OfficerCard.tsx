@@ -21,6 +21,9 @@ interface OfficerCardProps {
 
 const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
   if (!members.length) return null;
+  const DEFAULT_IMAGE = "/default_profile_picture.png";
+  const BACKEND_DEFAULT =
+    "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
   return (
     <div className="flex justify-center my-10">
@@ -38,7 +41,11 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
                          bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={member.image || "/images/default_profile_picture.png"}
+                src={
+                  member.image === BACKEND_DEFAULT
+                    ? DEFAULT_IMAGE
+                    : member.image
+                }
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
               />

@@ -57,7 +57,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
-import Examplary from "./pages/members/examplary members/Page";
+// import Examplary from "./pages/members/examplary members/Page";
 
 const MainLayout = () => {
   return (
@@ -107,7 +107,7 @@ const App = () => {
           <Route path="/officers/:id" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          <Route path="/exemplary-members" element={<Examplary/>}/>
+          {/* <Route path="/exemplary-members" element={<Examplary/>}/> */}
           <Route path="/member-profile/:id" element={<Profile />} />
           <Route path="/all-members" element={<AllMembers />} />
 

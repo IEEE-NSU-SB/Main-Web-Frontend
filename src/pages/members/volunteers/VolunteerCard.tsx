@@ -19,7 +19,14 @@ interface VolunteerCardProps {
   sectionTitle: string;
 }
 
-const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) => {
+const VolunteerCard: React.FC<VolunteerCardProps> = ({
+  members,
+  sectionTitle,
+}) => {
+  const DEFAULT_IMAGE = "/default_profile_picture.png";
+  const BACKEND_DEFAULT =
+    "https://api.ieeensusb.org/static/images/default_profile_picture.png";
+
   return (
     <div className="flex justify-center my-10">
       <div className="flex flex-col max-w-[1140px] w-full">
@@ -34,9 +41,13 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) 
                          bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={member.image || "/images/default_profile_picture.png"}
-                alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
+                src={
+                  !member.image || member.image === BACKEND_DEFAULT
+                    ? DEFAULT_IMAGE
+                    : member.image
+                }
+                alt={member.name}
               />
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
@@ -52,19 +63,31 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) 
 
                 <div className="flex justify-center items-center gap-4 mt-3 h-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {member.linkedin && (
-                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaLinkedin className="text-white/85 hover:text-white text-[22px]" />
                     </a>
                   )}
 
                   {member.facebook && (
-                    <a href={member.facebook} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={member.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaFacebookSquare className="text-white/85 hover:text-white text-[22px]" />
                     </a>
                   )}
 
                   {member.email && (
-                    <a href={`mailto:${member.email}`} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`mailto:${member.email}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaEnvelope className="text-white/85 hover:text-white text-[20px]" />
                     </a>
                   )}
@@ -73,7 +96,6 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({ members, sectionTitle }) 
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
