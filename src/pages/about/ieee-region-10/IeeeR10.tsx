@@ -61,8 +61,8 @@ const IEEERegion10: React.FC = () => {
     <div>
       {/* IEEE Region 10 */}
       <section className="bg-white flex justify-center">
-        <div className="max-w-[1040px] m-6 flex flex-wrap lg:flex-nowrap gap-5">
-          <div className="flex justify-center min-w-[255px] max-w-[500px]">
+        <div className="max-w-[1040px] m-6 max-md:m-0 flex flex-wrap lg:flex-nowrap gap-5">
+          <div className="flex justify-center min-w-[255px] max-w-[500px] max-md:px-5">
             <img
               src={data.region10image}
               alt="IEEE Region 10"
@@ -72,7 +72,7 @@ const IEEERegion10: React.FC = () => {
           <FadeIn xIndex={100} yIndex={0} delay={0.1}>
             <div>
               <SectionHeading title="IEEE Region 10"/>
-              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.region10Description }}/>
+              <p className="text-justify mb-6 pl-5 max-md:px-5" dangerouslySetInnerHTML={{ __html: data.region10Description }}/>
               <a
                 href={data.historyLink}
                 className="bg-[#002855] text-white font-bold py-2 px-4 rounded hover:bg-[#FFC72C] transition mx-5"
@@ -85,12 +85,11 @@ const IEEERegion10: React.FC = () => {
       </section>
 
       {/* Young Professionals */}
-      <section className="w-full bg-[#75787b17] flex justify-center">
-        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Young Professionals"/>
-              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.youngProfDescription }}/>
+              <p className="text-justify mb-6 pl-5 max-md:pl-0 max-md:mx-5" dangerouslySetInnerHTML={{ __html: data.youngProfDescription }}/>
               {data.youngProfLinks.map((link, i) => (
                 <>
                   <a
@@ -106,7 +105,7 @@ const IEEERegion10: React.FC = () => {
               ))}
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0 max-md:mx-5">
             <img
               src={data.youngProfImage}
               alt="Young Professionals"
@@ -114,7 +113,6 @@ const IEEERegion10: React.FC = () => {
             />
           </div>
         </div>
-      </section>
 
       {/* Women in Engineering */}
       <section className="w-full bg-[#002855] flex justify-center">
@@ -224,13 +222,12 @@ const IEEERegion10: React.FC = () => {
 
       {/* Membership Development */}
 
-      <section className="bg-white flex justify-center">
-        <div className="max-w-[1080px] m-6 flex flex-wrap lg:flex-nowrap gap-6">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <div className="flex justify-center min-w-[255px] max-w-[500px]">
             <img
               src={data.MembershipImage}
               alt="Membership Development"
-              className="object-contain"
+              className="object-contain max-md:w-50 max-md:mt-10"
             />
           </div>
           <FadeIn xIndex={100} yIndex={0}>
@@ -238,7 +235,7 @@ const IEEERegion10: React.FC = () => {
               <SectionHeading
                 title="Membership Development"
               />
-              <p className="text-justify mb-6 pl-5" dangerouslySetInnerHTML={{ __html: data.MembershipDescription }}/>
+              <p className="text-justify mb-6 pl-5 max-md:pl-0 max-md:mx-5" dangerouslySetInnerHTML={{ __html: data.MembershipDescription }}/>
               {data.MembershipLinks.map((l, i) => (
                 <>
                   <a
@@ -255,9 +252,7 @@ const IEEERegion10: React.FC = () => {
             </div>
           </FadeIn>
         </div>
-      </section>
 
-      <FadeIn>
         <div className="min-h-[350px] relative [clip-path:inset(0)]">
           <img
             className="object-cover fixed brightness-75 left-0 top-0 w-full h-full"
@@ -265,14 +260,13 @@ const IEEERegion10: React.FC = () => {
             alt="Chapter Parallax"
           />
         </div>
-      </FadeIn>
 
       {/* Events and Conferences */}
       <section className="w-full bg-[#75787b17] flex justify-center">
         <FadeIn xIndex={-100} yIndex={0}>
-          <div className="max-w-[1080px] m-6">
+          <div className="max-w-[1080px] m-6 max-md:m-0">
             <SectionHeading title="Events and Conferences"/>
-            <p className="pl-5 text-justify mb-4" dangerouslySetInnerHTML={{ __html: data.EventConferenceDetails }}/>
+            <p className="pl-5 max-md:pl-0 max-md:mx-5 text-justify mb-4" dangerouslySetInnerHTML={{ __html: data.EventConferenceDetails }}/>
             {data.EventConferenceLinks.map((l, i) => (
               <>
                 <a
