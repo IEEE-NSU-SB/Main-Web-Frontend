@@ -314,7 +314,7 @@ const Navbar: React.FC = () => {
                   "Blogs",
                   "Research Papers",
                   "Magazines",
-                  "Gallery",
+                  // "Gallery",
                   "Toolkit",
                 ].map((item) => (
                   <Link
@@ -483,7 +483,7 @@ const Navbar: React.FC = () => {
                 "Blogs",
                 "Research Papers",
                 "Magazines",
-                "Gallery",
+                // "Gallery",
                 "Toolkit",
               ],
             },
