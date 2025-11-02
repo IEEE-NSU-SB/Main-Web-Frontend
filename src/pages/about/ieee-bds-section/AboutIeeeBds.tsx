@@ -58,7 +58,7 @@ export default function AboutIEEE() {
         <img
           src={data.aboutImage}
           alt="About IEEE Bangladesh Section"
-          className="w-full md:w-1/2"
+          className="w-50 md:w-1/2"
         />
         <div>
           <SectionHeading title="About IEEE" />
@@ -76,7 +76,7 @@ export default function AboutIEEE() {
         </div>
       </div>
 
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Members and volunteers" />
@@ -96,7 +96,7 @@ export default function AboutIEEE() {
               ))}
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0">
+          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5 max-md:pr-0 max-md:min-w-auto max-md:w-50">
             <img
               src={data.memVolImage}
               alt="Largest Community"
@@ -215,7 +215,7 @@ export default function AboutIEEE() {
         <FadeIn xIndex={-100} yIndex={0}>
           <SectionHeading title="Achievements" />
           <p className="text-justify mb-6 md:p-5 max-md:mx-5">{data.achievementsDetails}</p>
-          <div className="flex flex-wrap gap-7 justify-baseline p-5">
+          <div className="flex flex-wrap gap-7 justify-baseline max-md:justify-center p-5">
             {data.achievementsLinks.map((a, i) => (
               <div
                 key={i}
