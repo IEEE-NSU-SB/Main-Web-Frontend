@@ -57,6 +57,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
+import BlogDetails from "./pages/publications/blogs/BlogDetails";
 // import Examplary from "./pages/members/examplary members/Page";
 
 const MainLayout = () => {
@@ -121,7 +122,7 @@ const App = () => {
           <Route path="/research-papers" element={<ResearchPapers />} />
           <Route path="/magazines" element={<Magazines />} />
           <Route path="/blogs" element={<Blogs />} />
-          {/* <Route path="/blogs/:id" element={<BlogPage />} /> */}
+          <Route path="/blogs/:id" element={<BlogDetails />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />
 

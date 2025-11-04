@@ -153,7 +153,7 @@ export default function NewsPage() {
                   {recentBlogs.map((b, index) => (
                     <div key={index}>
                       <a
-                        href={`/blog/${index + 1}`}
+                        href={`/blogs/${b.id}`}
                         className="flex items-start gap-2 text-sm text-gray-900 hover:text-[#00629B]"
                       >
                         <div>

@@ -1,7 +1,8 @@
 import Wave from "@/components/Wave";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { Clock } from "lucide-react";
 import { BiCategory } from "react-icons/bi";
+import { useParams } from "react-router-dom";
 
 interface BlogItem {
   title: string;
@@ -29,8 +30,11 @@ interface BlogsData {
 }
 
 export default function BlogPage() {
-  const { loading, data, error } = useFetchDataJSON<BlogsData>({
-    path: "pages/publications/blogs/details.json",
+
+  const { id } = useParams();
+
+  const { loading, data, error } = useFetchDataAPI<BlogsData>({
+    apiUrl: `main_website/get_blog_details/${id}`,
   });
 
   if (loading)
@@ -128,7 +132,7 @@ export default function BlogPage() {
                       className="group bg-white overflow-hidden flex flex-col items-center"
                     >
                       <a
-                        href={`/news/${index + 1}`}
+                        href={`/blogs/${i.id}`}
                         className="block overflow-hidden"
                       >
                         <img
@@ -162,10 +166,10 @@ export default function BlogPage() {
                 <hr className="mb-4 border-t border-gray-300" />
 
                 <div className="space-y-4">
-                  {recentNews.map((b, index) => (
+                  {recentNews.map((n, index) => (
                     <div key={index}>
                       <a
-                        href={`/blog/${index + 1}`}
+                        href={`/news/${n.id}`}
                         className="flex items-start gap-2 text-sm text-gray-900 hover:text-[#00629B]"
                       >
                         <div>
@@ -180,7 +184,7 @@ export default function BlogPage() {
                             <path d="M9 18l6-6-6-6" />
                           </svg>
                         </div>
-                        <span>{b.title}</span>
+                        <span>{n.title}</span>
                       </a>
                       <hr className="mt-2 border-t border-gray-200" />
                     </div>
