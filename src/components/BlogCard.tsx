@@ -145,7 +145,7 @@ const BlogCard: React.FC = () => {
               <FadeIn key={event.id}>
                 <div className="max-w-110 lg:max-w-[300px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all duration-300">
                   <div className="overflow-hidden">
-                    <Link to={`${event.id}`} className="w-110 h-48">
+                    <Link to={`/blogs/${event.id}`} className="w-110 h-48">
                       <img
                         src={event.image}
                         alt={event.title}
@@ -177,7 +177,7 @@ const BlogCard: React.FC = () => {
                       className="text-ieee-black-75 mb-4 line-clamp-2 text-[16px] h-12"
                       dangerouslySetInnerHTML={{ __html: event.description }}
                     />
-                    {/* <Link to={event.link}>
+                    {/* <Link to={`/blogs/${event.id}`}>
                       <button className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-white text-ieee-white hover:text-ieee-darkblue-90 text-sm font-semibold px-5 py-[.25rem] border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
                         Read More
                       </button>
