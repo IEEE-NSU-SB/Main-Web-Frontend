@@ -53,7 +53,7 @@ export default function TopPerformers() {
 
   return (
     <>
-      <SectionHeading title="Our Stars & Champions"/>
+      <SectionHeading title="Our Recognized Members"/>
       <div className="max-w-[1080px] mx-auto p-5">
         {/* Tabs */}
         <FadeIn>
