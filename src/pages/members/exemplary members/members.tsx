@@ -10,7 +10,7 @@ interface Member {
   facebook_account_link?: string;
   email?: string;
   achievements: string; // HTML allowed
-  rank:BigInteger;
+  rank:string;
 }
 
 interface MembersProps {

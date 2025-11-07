@@ -10,7 +10,7 @@ const ExemplaryMember = [
     facebook_account_link: "https://facebook.com",
     email: "john@example.com",
     achievements: "<ul><li>Award X</li><li>Project Lead</li></ul>",
-    rank:1,
+    rank:"1",
   },
   {
     member_name: "John Doe",
@@ -21,7 +21,7 @@ const ExemplaryMember = [
     facebook_account_link: "https://facebook.com",
     email: "john@example.com",
     achievements: "<ul><li>Award X</li><li>Project Lead</li></ul>",
-    rank:2,
+    rank:"2",
   },
   {
     member_name: "John Doe",
@@ -32,7 +32,7 @@ const ExemplaryMember = [
     facebook_account_link: "https://facebook.com",
     email: "john@example.com",
     achievements: "<ul><li>Award X</li><li>Project Lead</li></ul>",
-    rank:3,
+    rank:"3",
   },
   {
     member_name: "John Doe",
@@ -43,7 +43,7 @@ const ExemplaryMember = [
     facebook_account_link: "https://facebook.com",
     email: "john@example.com",
     achievements: "<ul><li>Award X</li><li>Project Lead</li></ul>",
-    rank:4,
+    rank:"4",
   },
   {
     member_name: "John Doe",
@@ -54,7 +54,7 @@ const ExemplaryMember = [
     facebook_account_link: "https://facebook.com",
     email: "john@example.com",
     achievements: "<ul><li>Award X</li><li>Project Lead</li></ul>",
-    rank:5,
+    rank:"5",
   },
 ];
 
