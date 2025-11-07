@@ -122,7 +122,7 @@ useEffect(() => {
                   <img
                     src={img.image}
                     alt={img.alt}
-                    className="w-full h-[100%] object-cover rounded-lg cursor-pointer"
+                    className="w-full h-70 object-cover rounded-lg cursor-pointer"
                   />
                 </Link>
               </div>
