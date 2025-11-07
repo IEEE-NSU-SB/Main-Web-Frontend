@@ -6,10 +6,11 @@ interface Member {
   former_position: string;
   activity_year: string;
   current_activity: string;
-  member_picture: string;
+  member_picture?: string;
   facebook_account_link?: string;
   email?: string;
   achievements: string; // HTML allowed
+  rank:BigInteger;
 }
 
 interface MembersProps {

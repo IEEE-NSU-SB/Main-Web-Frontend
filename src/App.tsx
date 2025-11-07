@@ -31,6 +31,7 @@ import Panel from "./pages/members/panel/Page";
 import Officers from "./pages/members/officers/Page";
 import Volunteers from "./pages/members/volunteers/Page";
 import TeamPage from "./pages/members/team/Page";
+import Exemplary from "./pages/members/exemplary members/Page";
 import AllMembers from "@/pages/members/all-members-statistics/Page";
 import Profile from "./pages/members/profile/Page";
 
@@ -42,7 +43,7 @@ import FAQPage from "./pages/about/faq";
 
 //Publications
 import Blogs from "./pages/publications/blogs/Page";
-// import BlogPage from "./pages/publications/blogs/BlogDetails";
+import BlogDetails from "./pages/publications/blogs/BlogDetails";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Magazines from "./pages/publications/magazines/pages";
 import Gallery from "./pages/publications/gallery/Page";
@@ -57,8 +58,6 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
-import BlogDetails from "./pages/publications/blogs/BlogDetails";
-// import Examplary from "./pages/members/examplary members/Page";
 
 const MainLayout = () => {
   return (
@@ -108,7 +107,7 @@ const App = () => {
           <Route path="/officers/:id" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          {/* <Route path="/exemplary-members" element={<Examplary/>}/> */}
+          <Route path="/exemplary-members" element={<Exemplary/>}/>
           <Route path="/member-profile/:id" element={<Profile />} />
           <Route path="/all-members" element={<AllMembers />} />
 

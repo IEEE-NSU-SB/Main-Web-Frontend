@@ -1,7 +1,6 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import React from "react";
 import { FaLinkedin, FaFacebookSquare, FaEnvelope } from "react-icons/fa";
-import { Link } from "react-router";
 
 interface Member {
   id: string;
@@ -35,19 +34,19 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
 
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
-            <Link to={`/member-profile/${member.id}`}>
-            <div
+            <a
+              href={member.id ? `/member-profile/${member.id}` : "#"}
               key={member.id}
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
               shadow-[0_14px_40px_rgba(0,0,0,0.18)]
               bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
-              >
+            >
               <img
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
                 src={
                   !member.image || member.image === BACKEND_DEFAULT
-                  ? DEFAULT_IMAGE
-                  : member.image
+                    ? DEFAULT_IMAGE
+                    : member.image
                 }
                 alt={member.name}
               />
@@ -66,37 +65,36 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
                 <div className="flex justify-center items-center gap-4 mt-3 h-[30px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {member.linkedin && (
                     <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <FaLinkedin className="text-white/85 hover:text-white text-[22px]" />
+                      <FaLinkedin className="text-white/85 hover:text-white text-[22px] z-10" />
                     </a>
                   )}
 
                   {member.facebook && (
                     <a
-                    href={member.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                      href={member.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <FaFacebookSquare className="text-white/85 hover:text-white text-[22px]" />
+                      <FaFacebookSquare className="text-white/85 hover:text-white text-[22px] z-10" />
                     </a>
                   )}
 
                   {member.email && (
                     <a
-                    href={`mailto:${member.email}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                      href={`mailto:${member.email}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <FaEnvelope className="text-white/85 hover:text-white text-[20px]" />
+                      <FaEnvelope className="text-white/85 hover:text-white text-[20px] z-10" />
                     </a>
                   )}
                 </div>
               </div>
-            </div>
-                  </Link>
+            </a>
           ))}
         </div>
       </div>

@@ -255,12 +255,12 @@ const Navbar: React.FC = () => {
                   </div>
                 </div>
 
-                {/* <Link
+                <Link
                   to="/exemplary-members"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
                   Exemplary Members
-                </Link> */}
+                </Link>
                 <Link
                   to="/all-members"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
@@ -463,7 +463,7 @@ const Navbar: React.FC = () => {
                     "Membership Development",
                   ],
                 },
-                // "Exemplary Members",
+                "Exemplary Members",
                 "All Members & Statistics",
               ],
             },

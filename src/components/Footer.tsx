@@ -49,7 +49,7 @@ const footerLinks = [
       { text: "Blogs", href: "/blogs/" },
       { text: "Achievements", href: "/achievements/" },
       { text: "Current Executive Body", href: "/panels/" },
-      // { text: "Exemplary Members", href: "/exemplary_members" },
+      { text: "Exemplary Members", href: "/exemplary_members" },
     ],
   },
 ];
