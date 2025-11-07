@@ -58,6 +58,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
+import AboutIeeeNsuSb from "./pages/about/ieee-nsu-sb/page";
 
 const MainLayout = () => {
   return (
@@ -115,6 +116,7 @@ const App = () => {
           <Route path="/ieee" element={<AboutIEEE />} />
           <Route path="/ieee-region-10" element={<AboutIEEER10 />} />
           <Route path="/ieee-bangladesh-section" element={<AboutIEEEBDS/>} />
+          <Route path="/ieee-nsu-student-branch" element={<AboutIeeeNsuSb/>} />
           <Route path="/FAQ" element={<FAQPage />} />
 
           {/* Publications */}
