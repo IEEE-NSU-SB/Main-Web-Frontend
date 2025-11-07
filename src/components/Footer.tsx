@@ -44,12 +44,12 @@ const footerLinks = [
   },
   {
     links: [
-      { text: "Join IEEE NSU SB", href: "/join_insb/" },
-      { text: "Write a Blog", href: "/write_blogs/" },
+      { text: "Join IEEE NSU SB", href: "/join/" },
+      { text: "Write a Blog", href: "/write-blog/" },
       { text: "Blogs", href: "/blogs/" },
       { text: "Achievements", href: "/achievements/" },
       { text: "Current Executive Body", href: "/panels/" },
-      { text: "Exemplary Members", href: "/exemplary_members" },
+      { text: "Exemplary Members", href: "/exemplary-members" },
     ],
   },
 ];

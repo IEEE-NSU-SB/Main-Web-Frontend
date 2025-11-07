@@ -348,15 +348,26 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                  (item) => (
-                    <Link
-                      key={item}
-                      to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                      className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                    >
-                      {item}
-                    </Link>
-                  )
+                  (item) => {
+                    const slug =
+                      item === "Join IEEE NSU SB"
+                        ? "join"
+                        : item === "Write a blog"
+                        ? "write-blog"
+                        : item === "Add Research Paper"
+                        ? "research"
+                        : item.toLowerCase().replace(/ /g, "-");
+
+                    return (
+                      <Link
+                        key={item}
+                        to={`/${slug}`}
+                        className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                      >
+                        {item}
+                      </Link>
+                    );
+                  }
                 )}
               </div>
             </div>

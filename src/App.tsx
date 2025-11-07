@@ -129,14 +129,9 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
 
           {/* Get Involved */}
-          <Route
-            path="/join-ieee-nsu-sb"
-            element={
-              <JoinINSB/>
-            }
-          />
-          <Route path="/write-a-blog" element={<WriteBlog />} />
-          <Route path="/add-research-paper" element={<AddResearchPaper />} />
+          <Route path="/join" element={<JoinINSB/>}/>
+          <Route path="/write-blog" element={<WriteBlog />} />
+          <Route path="/research" element={<AddResearchPaper />} />
         </Route>
       </Routes>
     </Router>
