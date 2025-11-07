@@ -55,7 +55,7 @@ const MegaEventsCard: React.FC<MegaEventsCardProps> = ({
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                   <div className="text-center">
-                    <h3 className="text-white text-lg font-semibold mb-2">
+                    <h3 className="text-white text-lg line-clamp-1 font-semibold mb-2">
                       {event.name}
                     </h3>
                     <p

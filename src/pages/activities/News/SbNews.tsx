@@ -88,7 +88,8 @@ const SbNews = () => {
                   <div className="flex justify-center mt-12">
                     <button
                       onClick={handleLoadMore}
-                      className="cursor-pointer bg-ieee-darkblue-90 hover:bg-ieee-blue text-ieee-white px-8 py-3 rounded-md transition-colors duration-300 shadow-md hover:shadow-lg"
+                      className="cursor-pointer text-sm font-semibold px-5 py-2 mt-4 mb-8 rounded transition-colors duration-300 hover:brightness-90 border
+            text-ieee-darkblue-90 border-ieee-darkblue-90 hover:bg-ieee-darkblue-90 hover:text-ieee-white"
                     >
                       Load More
                     </button>

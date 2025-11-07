@@ -45,7 +45,7 @@ import Blogs from "./pages/publications/blogs/Page";
 // import BlogPage from "./pages/publications/blogs/BlogDetails";
 import ResearchPapers from "./pages/publications/research-paper/Page";
 import Magazines from "./pages/publications/magazines/pages";
-// import Gallery from "./pages/publications/gallery/Page";
+import Gallery from "./pages/publications/gallery/Page";
 import Toolkit from "./pages/publications/toolkit/Page";
 
 //Contact
@@ -123,7 +123,7 @@ const App = () => {
           <Route path="/magazines" element={<Magazines />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
-          {/* <Route path="/gallery" element={<Gallery />} /> */}
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/toolkit" element={<Toolkit />} />
 
           {/* Contact  */}

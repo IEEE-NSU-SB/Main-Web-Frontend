@@ -97,7 +97,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               (e.currentTarget.style.color = `${color}`)
             )}
           >
-            <Calendar className="w-4 h-4" /> See All Events
+            <Calendar className="w-4 h-4" /> See Our Events
           </button>
         </Link>
       </div>
