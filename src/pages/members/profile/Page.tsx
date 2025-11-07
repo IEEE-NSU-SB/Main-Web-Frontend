@@ -9,8 +9,6 @@ const MemberProfile: React.FC = () => {
   const { id } = useParams();
 
   const DEFAULT_IMAGE = "/default_profile_picture.png";
-  const BACKEND_DEFAULT =
-    "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
   const { loading, data, error } = useFetchDataAPI<any>({
       apiUrl: `main_website/get_member_details/${id}/`,
@@ -30,7 +28,7 @@ const MemberProfile: React.FC = () => {
                 <img
                   className="w-full h-full hover:scale-105 object-cover transition-all duration-300 cursor-pointer"
                   src={
-                    data.image === BACKEND_DEFAULT ? DEFAULT_IMAGE : data.image
+                    data.image ==  null || '' ? DEFAULT_IMAGE : data.image
                   }
                   alt={data.name}
                 />
