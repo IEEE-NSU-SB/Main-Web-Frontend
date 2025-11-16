@@ -1,5 +1,5 @@
 import Wave from "@/components/Wave"
-import { useFetchDataJSON } from "@/hooks/fetchdata"
+// import { useFetchDataJSON } from "@/hooks/fetchdata"
 
 
 const AboutIeeeNsuSb = () => {
