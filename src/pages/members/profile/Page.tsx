@@ -118,9 +118,9 @@ const MemberProfile: React.FC = () => {
                   {role.tenure && (
                     <p>Tenure: {role.tenure}</p>
                   )}
-                  <p>{role.current ? "Current Position": "Position"} : {role.currentPosition}</p>
+                  <p>{role.current ? "Current Position": "Position"}: {role.currentPosition}</p>
                   {role.team && (
-                    <p>Team: {role.team}</p>
+                    <p>{role.current ? "Current Team": "Team"}: {role.team}</p>
                   )}               
                 </div>
               ))}
