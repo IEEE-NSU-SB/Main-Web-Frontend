@@ -263,8 +263,9 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
-                            target.onerror = null;
+                            target.onerror = null; // Prevent infinite loop
                             target.src = DEFAULT_IMAGE;
+                            console.error(`Failed to load image for ${vol.name}`);
                           }}
                         />
                       </div>
