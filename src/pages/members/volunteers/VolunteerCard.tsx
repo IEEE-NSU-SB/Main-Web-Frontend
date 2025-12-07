@@ -43,12 +43,14 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
             >
               <img
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
-                src={
-                  !member.image || member.image === BACKEND_DEFAULT
-                    ? DEFAULT_IMAGE
-                    : member.image
-                }
+                src={member.image && member.image !== BACKEND_DEFAULT ? member.image : DEFAULT_IMAGE}
                 alt={member.name}
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (target.src !== DEFAULT_IMAGE) {
+                    target.src = DEFAULT_IMAGE;
+                  }
+                }}
               />
 
               <div className="absolute bottom-0 w-full h-[55%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none"></div>
