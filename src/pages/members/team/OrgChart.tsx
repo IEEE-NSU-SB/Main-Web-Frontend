@@ -264,7 +264,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
                             target.onerror = null;
-                            target.src = `${DEFAULT_IMAGE}`;
+                            target.src = DEFAULT_IMAGE;
                           }}
                         />
                       </div>
