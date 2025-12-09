@@ -1,37 +1,124 @@
-[
-  {
-    "name": "Md Tasbeer Ahmed",
-    "role": "Chair, RAS",
-    "email": "https://mail.google.com/mail/u/0/?fs=1&to=tasbeer.ahmed@ieee.org&tf=cm",
-    "facebook": "https://www.facebook.com/tasbeer.242/?_rdc=1&_rdr#",
-    "linkedin": "https://www.linkedin.com/in/tasbeer-ahmed-b21b541b9/"
+{
+  "ieee-nsu-ras-sbc": {
+    "color": "#602569",
+    "members": [
+      {
+        "id": "99579190",
+        "name": "Md Tasbeer Ahmed",
+        "role": "Chair, RAS",
+        "email": "mailto:tasbeer.ahmed@ieee.org",
+        "facebook": "https://www.facebook.com/tasbeer.242",
+        "linkedin": "https://www.linkedin.com/in/tasbeer-ahmed-b21b541b9/",
+        "image": "https://example.com/tasbeer.jpg"
+      },
+      {
+        "id": "99579234",
+        "name": "Washio Ferdous",
+        "role": "Treasurer, RAS",
+        "email": "mailto:washio.ferdous@ieee.org",
+        "facebook": "https://www.facebook.com/wf.rubai.10",
+        "linkedin": "",
+        "image": "https://example.com/washio.jpg"
+      },
+      {
+        "id": "99579235",
+        "name": "Shamsia Munira",
+        "role": "Secretary, RAS",
+        "email": "",
+        "facebook": "https://www.facebook.com/shamsia.munira.2025/",
+        "linkedin": "https://www.linkedin.com/in/shamsia-munira-619989297/",
+        "image": "https://example.com/shamsia.jpg"
+      },
+      {
+        "id": "99579236",
+        "name": "Nishat Farhat Eva",
+        "role": "Vice-Chair (Activity), RAS",
+        "email": "mailto:nishatfarhat@ieee.org",
+        "facebook": "https://www.facebook.com/nishat.farhat.982",
+        "linkedin": "",
+        "image": "https://example.com/nishat.jpg"
+      },
+      {
+        "id": "99579237",
+        "name": "Saima Alam",
+        "role": "Vice-Chair (Technical), RAS",
+        "email": "mailto:saimaalam989@gmail.com",
+        "facebook": "https://www.facebook.com/kiyomi.saima.7",
+        "linkedin": "https://www.linkedin.com/in/saima-alam-905b3a2b3",
+        "image": "https://example.com/saima.jpg"
+      }
+    ]
   },
-  {
-    "name": "Washio Ferdous",
-    "role": "Treasurer, RAS",
-    "email": "https://mail.google.com/mail/u/0/?fs=1&to=washio.ferdous@ieee.org&tf=cm",
-    "facebook": "https://www.facebook.com/wf.rubai.10",
-    "linkedin": ""
+
+  "ieee-nsu-pes-sbc": {
+    "color": "#659941",
+    "members": [
+      {
+        "id": "99579300",
+        "name": "Md. Shakib Shahariar Junayed",
+        "role": "Chair, PES",
+        "email": "mailto:ahsanul.kabir@ieee.org",
+        "facebook": "https://www.facebook.com/ahsanulkabir",
+        "linkedin": "https://www.linkedin.com/in/ahsanulkabir",
+        "image": "https://example.com/ahsanul.jpg"
+      },
+      {
+        "id": "99579301",
+        "name": "Afia Rahman",
+        "role": "Secretary, PES",
+        "email": "",
+        "facebook": "https://www.facebook.com/afia.rahman.1",
+        "linkedin": "",
+        "image": "https://example.com/afia.jpg"
+      }
+    ]
   },
-  {
-    "name": "Shamsia Munira",
-    "role": "Secretary, RAS",
-    "email": "",
-    "facebook": "https://www.facebook.com/shamsia.munira.2025/",
-    "linkedin": "https://www.linkedin.com/in/shamsia-munira-619989297/"
+
+  "ieee-nsu-ias-sbc": {
+    "color": "#0f904b",
+    "members": [
+      {
+        "id": "99579400",
+        "name": "Tanvir Rahman",
+        "role": "Chair, IAS",
+        "email": "mailto:tanvir.rahman@ieee.org",
+        "facebook": "https://www.facebook.com/tanvir.rahman",
+        "linkedin": "https://www.linkedin.com/in/tanvirrahman",
+        "image": "https://example.com/tanvir.jpg"
+      },
+      {
+        "id": "99579401",
+        "name": "Sabrina Ahmed",
+        "role": "Secretary, IAS",
+        "email": "mailto:sabrina.ahmed@ieee.org",
+        "facebook": "",
+        "linkedin": "",
+        "image": "https://example.com/sabrina.jpg"
+      }
+    ]
   },
-  {
-    "name": "Nishat Farhat Eva",
-    "role": "Vice-Chair (Activity), RAS",
-    "email": "https://mail.google.com/mail/u/0/?fs=1&to=nishatfarhat@ieee.org&tf=cm",
-    "facebook": "https://www.facebook.com/nishat.farhat.982?mibextid=JRoKGi",
-    "linkedin": ""
-  },
-  {
-    "name": "Saima Alam",
-    "role": "Vice-Chair (Technical), RAS",
-    "email": "https://mail.google.com/mail/u/0/?fs=1&to=saimaalam989@gmail.com&tf=cm",
-    "facebook": "https://www.facebook.com/kiyomi.saima.7?mibextid=2JQ9oc",
-    "linkedin": "https://www.linkedin.com/in/saima-alam-905b3a2b3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+
+  "ieee-nsu-wie-ag": {
+    "color": "#006699",
+    "members": [
+      {
+        "id": "99579500",
+        "name": "Tashfia Anjum",
+        "role": "Chair, WIE",
+        "email": "mailto:tashfia.anjum@ieee.org",
+        "facebook": "https://www.facebook.com/tashfia.anjum",
+        "linkedin": "https://www.linkedin.com/in/tashfiaanjum",
+        "image": "https://example.com/tashfia.jpg"
+      },
+      {
+        "id": "99579501",
+        "name": "Nashita Rahman",
+        "role": "Secretary, WIE",
+        "email": "",
+        "facebook": "",
+        "linkedin": "",
+        "image": "https://example.com/nashita.jpg"
+      }
+    ]
   }
-]
+}

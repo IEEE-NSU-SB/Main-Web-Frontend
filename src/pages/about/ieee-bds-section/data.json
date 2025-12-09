@@ -1,0 +1,92 @@
+{
+    "aboutDetails": "Institute of Electrical and Electronics Engineers(IEEE) Bangladesh Section was formed in November 1993 with just 54 members. But now the Institute of Electrical and Electronics Engineers(IEEE) Bangladesh Section has gained a huge community with a lot of members from different countries. Recently IEEE Bangladesh Community is holding the position right after India, USA, China and Canada. Bangladesh Section is maintaining the 5th ranking among 342 sections all over 160 countries in the world",
+    "aboutImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/logo/IEEE_Bangladesh_Section.png",
+    "ieeebdlink": "https://ieee.bd.net",
+    "memVolDetails": "Members of the Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section are very involved, and they are perfecting their initiative work and forming connections with electrical engineering sides all over the world. Prof. Celia Shahnaz , Chair of the Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section, organizes year-round productive student events and congratulates all student participants.Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section is receiving overwhelming response from Institute of Electrical and Electronics Engineers (IEEE)  members and volunteers all over the world",
+    "memVolImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/member_volunteer_picture/IEMIS.jpeg",
+    "memVolLinks": [
+        {
+            "title": "Web Team",
+            "link": "https://www.ieee.org/membership/"
+        },
+        {
+            "title": "Vice Chair Techmical",
+            "link": "https://www.ieeer10.org/"
+        }
+    ],
+    "benefitsDetails": "Institute of Electrical and Electronics Engineers(IEEE) Bangladesh Section section is expanding at a rapid pace. It is assisting by keeping up with the fast-changing world of technology and science with the Institute of Electrical and Electronics Engineers(IEEE) worldwide technical societies. Institute of Electrical and Electronics Engineers(IEEE) books and eBooks, journals and papers, conferences and proceedings, and manifold other resources are available. IEEE BD Section is going ahead with a mission of ensuring benefits of the students properly",
+    "benefitsLinks": [],
+    "stuBranchDetails": "IEEE Bangladesh Student Branches are taking the unprecedented steps day by day and going ahead as a big ripple in the whole world. In Bangladesh there are 1500+ students including graduate and non-graduate students. Here is the student branch details and the list of student branches link bellow",
+    "stuBranchLinks": [
+        {
+            "title": "IEEE BDS",
+            "link": "https://collabratec.ieee.org/"
+        },
+        {
+            "title": "IEEE BDS List",
+            "link": "https://collabratec.ieee.org/"
+        }
+    ],
+    "affinityDetails": "Institute of Electrical and Electronics Engineers (IEEE)  Bangladesh  Section is involving in many kinds of industrial sectors and developing the skills of the members in BDS. Day by day the rates of seminars, tours and conferences are increasing and the focus of these events and seminars are getting close to professionalism and industrial approaches",
+    "affinityLinks": [
+        {
+            "title": "Visit Now",
+            "link": "https://ieeexplore.ieee.org/"
+        }
+    ],
+    "communitySocietyDetails": "Institute of Electrical and Electronics Engineers (IEEE)  has a huge Community with many Associations. Like- WIE(women in Engineering), IAS(Industry Application Society), PES(Power and Energy Society), YP(Young Professionals) etc.",
+    "communitySocietyLinks": [
+        {
+            "title": "Community and Society",
+            "link": "https://conferences.ieee.org/"
+        },
+        {
+            "title": "Other Sites",
+            "link": "https://www.ieee.org/conferences-events/"
+        }
+    ],
+    "achievementsDetails": "The imaginative and hardworking founders, student members, and volunteers of the Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section are achieving more and more.There are many achievements in Bangladesh Section. Here is some popular achievements list below",
+    "achievementsLinks": [
+        {
+            "title": "IEEE NSU Achievements",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE BUET Achievements",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE AIUB Achievements",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE DUET Achievements",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE Milestone Achievements",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        }
+    ],
+    "gallery": [
+        {
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+        },
+        {
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+        },
+        {
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+        }
+    ],
+    "chair": "Prof. Dr. Celia Shahnaz",
+    "chairEmail": "celia.shahnaz@ieee.org",
+    "secretary": "Raihan Razeen",
+    "secretaryEmail": "raihan.razeen@gmail.com",
+    "officeSecretary": "+88- 01992-30 06 79"
+}

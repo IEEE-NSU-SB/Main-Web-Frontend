@@ -15,10 +15,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '23.5.0'
 
     - name: Install dependencies
       run: npm install
+
+    - name: Create .env.production
+      run: |
+        echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env.production
+        echo "VITE_BASE_PATH=${{ secrets.VITE_BASE_PATH }}" >> .env.production
+        echo "VITE_ENV=${{ secrets.VITE_ENV }}" >> .env.production
+        echo "VITE_PORTAL_URL=${{ secrets.VITE_PORTAL_URL }}" >> .env.production
 
     - name: Build React App
       run: npm run build

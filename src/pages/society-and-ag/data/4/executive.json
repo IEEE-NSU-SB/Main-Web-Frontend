@@ -1,0 +1,58 @@
+{
+  "advisor": {
+    "id": 0,
+    "name": "Dr. Riasat Khan",
+    "position": "Faculty Advisor, IAS",
+    "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image17.jpeg",
+    "fb": "fb",
+    "linkedin": "linked",
+    "mail": "a"
+  },
+  "executives": [
+    {
+      "id": 1,
+      "name": "Joy Chandr Roy",
+      "position": "Chair, IAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/382235179_1319605072030075_4385762266973281616_n.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 2,
+      "name": "Joy Chandr Roy",
+      "position": "Vice Chair (Activity), IAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/98717486_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 3,
+      "name": "Badhon Datta",
+      "position": "Vice Chair (Technical), IAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/Badhon_Datta.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 4,
+      "name": "Md.Mridul Hasan",
+      "position": "Secretary, IAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99659398_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 5,
+      "name": "Tayeba Rahman",
+      "position": "Treasurer, IAS",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/98721512_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    }
+  ]
+}

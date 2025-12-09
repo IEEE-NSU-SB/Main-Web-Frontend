@@ -2,7 +2,93 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import insbLogo from "./../assets/logo/insb.gif";
-import FadeIn from "./ui/fade-in";
+import FadeIn from "./ui/FadeIn";
+
+interface AccordionLink {
+  title: string;
+  links?: string[]; // if present, this is a nested accordion
+}
+
+interface AccordionProps {
+  title: string;
+  links: (string | AccordionLink)[];
+  toggleMobileMenu: () => void;
+}
+const AccordionSection: React.FC<AccordionProps> = ({
+  title,
+  links,
+  toggleMobileMenu,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const teamLinks = [
+    "Content Writing and Publications",
+    "Website Development",
+    "Media",
+    "Events and Management",
+    "Graphics",
+    "Public Relation (PR)",
+    "Promotions",
+    "Finance and Corporate",
+    "Logistics and Operations",
+    "Membership Development",
+  ];
+  const generatePath = (link: string) => {
+    if (link === "All Members & Statistics") return "/all-members";
+    if (teamLinks.includes(link)) {
+      return `/team/${link.toLowerCase().replace(/ /g, "-")}`;
+    }
+    // generic conversion for other links
+    return `/${link.toLowerCase().replace(/ /g, "-")}`;
+  };
+
+  return (
+    <div className="border-b border-gray-700">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-2 font-medium text-left"
+      >
+        {title}
+        {links.length > 0 && (
+          <span
+            className={`transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          >
+            ▼
+          </span>
+        )}
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="ml-4 mt-2 space-y-1">
+          {links.map((link) =>
+            typeof link === "string" ? (
+              <Link
+                key={link}
+                to={generatePath(link)}
+                className="block py-1 hover:pl-2 transition-all"
+                onClick={toggleMobileMenu}
+              >
+                {link}
+              </Link>
+            ) : (
+              <AccordionSection
+                key={link.title}
+                title={link.title}
+                links={link.links || []}
+                toggleMobileMenu={toggleMobileMenu}
+              />
+            )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,21 +103,34 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const societyColors: Record<string, string> = {
+    "ieee-nsu-ras-sbc": "#52154E",
+    "ieee-nsu-pes-sbc": "#61A60E",
+    "ieee-nsu-ias-sbc": "#fbbf24",
+    "ieee-nsu-wie-ag": "#066697",
+  };
+
+  const currentSlug = location.pathname.split("/")[1] ?? "";
+  const societyColor = societyColors[currentSlug];
   // Check if current page is Home
   const isHome = location.pathname === "/";
 
-  const scrollClass = isHome
+  const scrollClass = societyColor
+    ? "" // we'll set color inline
+    : isHome
     ? isScrolled
-      ? "bg-ieee-darkblue shadow-md" // home + scrolled
-      : "bg-transparent" // home + top
-    : "bg-ieee-darkblue"; // every other page
-
+      ? "bg-ieee-darkblue shadow-md"
+      : "bg-transparent"
+    : "bg-ieee-darkblue";
   return (
     <nav
-      className={`text-ieee-white text-[10px] xl:text-xs sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
+      className={`text-ieee-white text-[10px] xl:text-[.70rem] sticky top-0 z-50 transition-all duration-500 ${scrollClass}`}
+      style={{
+        backgroundColor: societyColor,
+      }}
     >
       <FadeIn>
-        <div className="max-w-[1080px] mx-auto py-3  flex justify-between lg:justify-between md:justify-center items-center">
+        <div className="max-w-[1080px] mx-auto py-3  flex flex-wrap justify-between lg:justify-between md:justify-center items-center">
           {/* Logo */}
           <Link to="/">
             <img
@@ -55,7 +154,12 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Activities
               </span>
-              <div className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div
+                className="absolute text-center left-[-28px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {["Events", "News", "Achievements"].map((item) => (
                   <Link
                     key={item}
@@ -73,7 +177,12 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Societies & AG
               </span>
-              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div
+                className="absolute text-center left-[-14px] top-full mt-1 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {Object.entries({
                   "IEEE NSU RAS SBC": "ieee-nsu-ras-sbc",
                   "IEEE NSU PES SBC": "ieee-nsu-pes-sbc",
@@ -82,7 +191,7 @@ const Navbar: React.FC = () => {
                 }).map(([label, path]) => (
                   <Link
                     key={path}
-                    to={`/society-ag/${path}`}
+                    to={`/${path}`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {label}
@@ -96,7 +205,12 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Members
               </span>
-              <div className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+              <div
+                className="absolute text-center left-[-48px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {["Panels", "Officers", "Volunteers"].map((item) => (
                   <Link
                     key={item}
@@ -112,7 +226,12 @@ const Navbar: React.FC = () => {
                   <span className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer">
                     Teams
                   </span>
-                  <div className="absolute left-full top-0 hidden group-hover/team:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-55 z-50">
+                  <div
+                    className="absolute left-full top-0 hidden group-hover/team:block  text-ieee-white shadow-lg rounded w-55 z-50"
+                    style={{
+                      backgroundColor: societyColor || "#002855",
+                    }}
+                  >
                     {[
                       "Content Writing and Publications",
                       "Website Development",
@@ -127,7 +246,7 @@ const Navbar: React.FC = () => {
                     ].map((team) => (
                       <Link
                         key={team}
-                        to={`/${team.toLowerCase().replace(/ /g, "-")}`}
+                        to={`/team/${team.toLowerCase().replace(/ /g, "-")}`}
                         className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                       >
                         {team}
@@ -156,17 +275,22 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 About
               </span>
-              <div className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-45 z-50">
+              <div
+                className="absolute text-center left-[-55px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {Object.entries({
                   IEEE: "ieee",
                   "IEEE Region 10": "ieee-region-10",
                   "IEEE Bangladesh Section": "ieee-bangladesh-section",
-                  "IEEE NSU Student Branch": "ieee-nsu-student-branch",
-                  FAQ: "FAQ",
+                  // "IEEE NSU Student Branch": "ieee-nsu-student-branch",
+                  // FAQ: "FAQ",
                 }).map(([label, path]) => (
                   <Link
                     key={path}
-                    to={`/about/${path}`}
+                    to={`${path}`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {label}
@@ -180,12 +304,17 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Publications
               </span>
-              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div
+                className="absolute text-center left-[-22px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {[
                   "Blogs",
                   "Research Papers",
                   "Magazines",
-                  "Gallery",
+                  // "Gallery",
                   "Toolkit",
                 ].map((item) => (
                   <Link
@@ -212,17 +341,33 @@ const Navbar: React.FC = () => {
               <span className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase">
                 Get Involved
               </span>
-              <div className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50">
+              <div
+                className="absolute text-center left-[-16px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                style={{
+                  backgroundColor: societyColor || "#002855",
+                }}
+              >
                 {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                  (item) => (
-                    <Link
-                      key={item}
-                      to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                      className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                    >
-                      {item}
-                    </Link>
-                  )
+                  (item) => {
+                    const slug =
+                      item === "Join IEEE NSU SB"
+                        ? "join"
+                        : item === "Write a blog"
+                        ? "write-blog"
+                        : item === "Add Research Paper"
+                        ? "research"
+                        : item.toLowerCase().replace(/ /g, "-");
+
+                    return (
+                      <Link
+                        key={item}
+                        to={`/${slug}`}
+                        className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                      >
+                        {item}
+                      </Link>
+                    );
+                  }
                 )}
               </div>
             </div>
@@ -266,214 +411,126 @@ const Navbar: React.FC = () => {
         </div>
       </FadeIn>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-ieee-darkblue text-ieee-white px-6 pt-6 pb-10 space-y-4 transition-all duration-300 ease-in-out overflow-y-auto">
-          {/* Close Button */}
-          <div className="flex justify-end mb-4">
-            <button onClick={toggleMobileMenu}>
-              <X size={28} />
-            </button>
-          </div>
-
-          <Link
-            to="/"
-            className="block py-2 border-b border-ieee-blue-75"
-            onClick={toggleMobileMenu}
-          >
-            Home
-          </Link>
-
-          {/* Activities */}
-          <details>
-            <summary className="py-2 cursor-pointer">Activities</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Events", "News", "Achievements"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Societies & AG */}
-          <details>
-            <summary className="py-2 cursor-pointer">Societies & AG</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE NSU RAS SBC",
-                "IEEE NSU PES SBC",
-                "IEEE NSU IAS SBC",
-                "IEEE NSU WIE AG",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Members */}
-          <details>
-            <summary className="py-2 cursor-pointer">Members</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Panels", "Officers", "Volunteers"].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-
-              <details>
-                <summary className="cursor-pointer">Teams</summary>
-                <div className="ml-4 space-y-1">
-                  {[
-                    "Content Writing and Publications",
-                    "Website Development",
-                    "Media",
-                    "Events and Management",
-                    "Graphics",
-                    "Public Relation (PR)",
-                    "Promotions",
-                    "Finance and Corporate",
-                    "Logistics and Operations",
-                    "Membership Development",
-                  ].map((team) => (
-                    <Link
-                      key={team}
-                      to={`/${team.toLowerCase().replace(/ /g, "-")}`}
-                      className="block"
-                      onClick={toggleMobileMenu}
-                    >
-                      {team}
-                    </Link>
-                  ))}
-                </div>
-              </details>
-
-              <Link
-                to="/exemplary-members"
-                className="block"
-                onClick={toggleMobileMenu}
-              >
-                Exemplary Members
-              </Link>
-              <Link
-                to="/all-members"
-                className="block"
-                onClick={toggleMobileMenu}
-              >
-                All Members & Statistics
-              </Link>
-            </div>
-          </details>
-
-          {/* About */}
-          <details>
-            <summary className="py-2 cursor-pointer">About</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "IEEE",
-                "IEEE Region 10",
-                "IEEE Bangladesh Section",
-                "IEEE NSU Student Branch",
-                "FAQ",
-              ].map((about) => (
-                <Link
-                  key={about}
-                  to={`/${about.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {about}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Publications */}
-          <details>
-            <summary className="py-2 cursor-pointer">Publications</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {[
-                "Blogs",
-                "Research Papers",
-                "Magazines",
-                "Gallery",
-                "Toolkit",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                  className="block"
-                  onClick={toggleMobileMenu}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </details>
-
-          {/* Get Involved */}
-          <details>
-            <summary className="py-2 cursor-pointer">Get Involved</summary>
-            <div className="ml-4 space-y-1 text-sm">
-              {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                (item) => (
-                  <Link
-                    key={item}
-                    to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className="block"
-                    onClick={toggleMobileMenu}
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
-            </div>
-          </details>
-
-          <Link
-            to="/portal"
-            className="relative
-              inline-block
-              px-4 py-2
-              rounded
-              text-ieee-white
-              text-xs
-              font-semibold
-              overflow-hidden
-              cursor-pointer
-              border-0
-              shadow-lg
-              transform
-              transition-all
-              duration-300
-              ease-in-out
-              hover:scale-105
-              hover:shadow-[0_0_20px_rgba(0,98,155,0.7)]
-              bg-gradient-animate
-              w-full
-              text-center"
-            onClick={toggleMobileMenu}
-          >
-            IEEE NSU SB Portal
-          </Link>
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
+  transition-all duration-500 ease-in-out
+  ${
+    isMobileMenuOpen
+      ? "opacity-100 scale-100 pointer-events-auto"
+      : "opacity-0 scale-90 pointer-events-none"
+  }`}
+        style={{ backgroundColor: societyColor || "#002855" }}
+      >
+        {/* Close Button */}
+        <div className="flex justify-end mb-4">
+          <button onClick={toggleMobileMenu}>
+            <X size={28} />
+          </button>
         </div>
-      )}
+
+        <div className="space-y-4 text-sm">
+
+  {/* Home */}
+  <Link
+    to="/"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Home
+  </Link>
+
+  {/* Accordion Sections */}
+  {[
+    {
+      title: "Activities",
+      links: ["Events", "News", "Achievements"],
+    },
+    {
+      title: "Societies & AG",
+      links: [
+        "IEEE NSU RAS SBC",
+        "IEEE NSU PES SBC",
+        "IEEE NSU IAS SBC",
+        "IEEE NSU WIE AG",
+      ],
+    },
+    {
+      title: "Members",
+      links: [
+        "Panels",
+        "Officers",
+        "Volunteers",
+        {
+          title: "Teams",
+          links: [
+            "Content Writing and Publications",
+            "Website Development",
+            "Media",
+            "Events and Management",
+            "Graphics",
+            "Public Relation (PR)",
+            "Promotions",
+            "Finance and Corporate",
+            "Logistics and Operations",
+            "Membership Development",
+          ],
+        },
+        "Exemplary Members",
+        "All Members & Statistics",
+      ],
+    },
+    {
+      title: "About",
+      links: [
+        "IEEE",
+        "IEEE Region 10",
+        "IEEE Bangladesh Section",
+      ],
+    },
+    {
+      title: "Publications",
+      links: [
+        "Blogs",
+        "Research Papers",
+        "Magazines",
+        "Toolkit",
+      ],
+    },
+    {
+      title: "Get Involved",
+      links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
+    },
+  ].map((section) => (
+    <AccordionSection
+      key={section.title}
+      title={section.title}
+      links={section.links}
+      toggleMobileMenu={toggleMobileMenu}
+    />
+  ))}
+
+  {/* Contact (Moved OUTSIDE) */}
+  <Link
+    to="/contact"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Contact
+  </Link>
+
+  {/* Portal */}
+  <Link
+    to={import.meta.env.VITE_PORTAL_URL}
+    className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+    onClick={toggleMobileMenu}
+  >
+    IEEE NSU SB Portal
+  </Link>
+
+</div>
+
+      </div>
     </nav>
   );
 };

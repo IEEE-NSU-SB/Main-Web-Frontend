@@ -1,0 +1,76 @@
+{
+  "advisor": {
+    "id": 0,
+    "name": "Dr. Fariah Mahzabeen",
+    "position": "Faculty Advisor, WIE",
+    "image": "https://ieeensusb.org/media_files/panel_profile_pictures/image15.jpeg",
+    "fb": "fb",
+    "linkedin": "linked",
+    "mail": "a"
+  },
+  "executives": [
+    {
+      "id": 1,
+      "name": "Shaira Aurchi Imtiaz",
+      "position": "Chair, WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/IMG_2184.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 2,
+      "name": "Tanjim Jarif",
+      "position": "Vice Chair (Activity), WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/IMG_0700.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 3,
+      "name": "Mostakim Hossain",
+      "position": "Vice Chair (Technical), WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99131003_profile_picture.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 4,
+      "name": "Farhana Rahman",
+      "position": "Secretary (External), WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/Capture.PNG",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 5,
+      "name": "Fatima Binte Naz Joya",
+      "position": "Secretary (Internal), WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99574110_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 6,
+      "name": "Abdullah Al Galib",
+      "position": "Treasurer, WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99574116_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 7,
+      "name": "Md. Faiyaz Fardin",
+      "position": "Treasurer, WIE",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/99573845_profile_picture.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    }
+  ]
+}

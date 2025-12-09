@@ -1,0 +1,35 @@
+{
+  "counselors": [
+    {
+      "id": "1",
+      "name": "Saif Ahmed",
+      "position": "Faculty Advisor, IEEE NSU PES SBC",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
+      "linkedin": "https://linkedin.com/in/alicejohnson",
+      "email": "alice@example.com",
+      "profileLink": "/member/alice"
+    }
+  ],
+  "SCAG": [
+    {
+      "id": "1",
+      "name": "Jane Doe",
+      "position": "Faculty Advisor, IEEE NSU RAS SBC",
+      "image": "/images/default_profile_picture.png",
+      "linkedin": "https://linkedin.com/in/janedoe",
+      "profileLink": "/member/jane"
+    }
+  ],
+  "Excom": [
+    {
+      "id": "1",
+      "name": "Md Nafiur Rahman",
+      "position": "Chair",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/97454566_profile_picture.jpg",
+      "linkedin": "https://linkedin.com/in/alicejohnson",
+      "facebook": "https://facebook.com/alicejohnson",
+      "email": "alice@example.com",
+      "profileLink": "/member/alice"
+    }
+  ]
+}

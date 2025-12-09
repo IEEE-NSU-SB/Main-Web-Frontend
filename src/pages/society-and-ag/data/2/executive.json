@@ -1,0 +1,76 @@
+{
+  "advisor": {
+    "id": 0,
+    "name": "Saif Ahmed",
+    "position": "Faculty Advisor, PES",
+    "image": "https://ieeensusb.org/media_files/user_profile_pictures/93453117_profile_picture.jpg",
+    "fb": "fb",
+    "linkedin": "linked",
+    "mail": "a"
+  },
+  "executives": [
+    {
+      "id": 1,
+      "name": "Md. Hamimul Haque Rahat",
+      "position": "Chair, PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/97948856_profile_picture.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 2,
+      "name": "Md Nahin Mahmud Bhuiyan",
+      "position": "Vice Chair (Activity), PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/1000015469-01.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 3,
+      "name": "Nujhat Binte Saleh",
+      "position": "Vice Chair (Technical), PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/97954707_profile_picture.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 4,
+      "name": "Afrin Akter",
+      "position": "Secretary, PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/97962965_profile_picture.jpeg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 5,
+      "name": "Sajidur Rahman Sabbir",
+      "position": "Treasurer, PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/Sajidur_Rahaman_Sabbir.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 6,
+      "name": "Lutful Islam Nabid",
+      "position": "Program Coordinator, PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/Screenshot_1619.png",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    },
+    {
+      "id": 7,
+      "name": "Nabila Tabassum Oyshi",
+      "position": "Webmaster, PES",
+      "image": "https://ieeensusb.org/media_files/user_profile_pictures/WhatsApp_Image_2023-09-14_at_23.06.54.jpg",
+      "fb": "fb",
+      "linkedin": "linked",
+      "mail": "a"
+    }
+  ]
+}
