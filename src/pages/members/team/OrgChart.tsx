@@ -66,17 +66,14 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
           <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-lg bg-gradient-to-br from-ieee-blue to-ieee-darkblue p-1 group-hover:shadow-2xl group-hover:shadow-ieee-blue/30 transition-all duration-300">
             <div className="w-full h-full rounded-full overflow-hidden bg-white">
               <img
-                src={
-                  member.image === BACKEND_DEFAULT
-                    ? DEFAULT_IMAGE
-                    : member.image
-                }
+                src={member.image && member.image !== BACKEND_DEFAULT ? member.image : DEFAULT_IMAGE}
                 alt={member.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   const target = e.currentTarget as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = `${DEFAULT_IMAGE}`;
+                  if (target.src !== DEFAULT_IMAGE) {
+                    target.src = DEFAULT_IMAGE;
+                  }
                 }}
               />
             </div>
@@ -324,17 +321,14 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                     <div className="w-24 h-24 rounded-full overflow-hidden shadow-md bg-gradient-to-br from-ieee-blue to-ieee-darkblue p-[3px] group-hover:shadow-xl group-hover:shadow-ieee-blue/20 transition-all duration-300">
                       <div className="w-full h-full rounded-full overflow-hidden bg-white">
                         <img
-                          src={
-                            vol.image === BACKEND_DEFAULT
-                              ? DEFAULT_IMAGE
-                              : vol.image
-                          }
+                          src={vol.image && vol.image !== BACKEND_DEFAULT ? vol.image : DEFAULT_IMAGE}
                           alt={vol.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.currentTarget as HTMLImageElement;
-                            target.onerror = null;
-                            target.src = `${DEFAULT_IMAGE}`;
+                            if (target.src !== DEFAULT_IMAGE) {
+                              target.src = DEFAULT_IMAGE;
+                            }
                           }}
                         />
                       </div>
