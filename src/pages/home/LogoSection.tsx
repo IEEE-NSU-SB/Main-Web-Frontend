@@ -1,45 +1,32 @@
-import ias from "@/assets/logo/ias.png";
-import insb from "@/assets/logo/insb.png";
+import insb from "@/assets/logo/insbMain.png";
 import pes from "@/assets/logo/pes.png";
+import ias from "@/assets/logo/ias.png";
 import ras from "@/assets/logo/ras.png";
 import wie from "@/assets/logo/wie.png";
+
 import FadeIn from "@/components/ui/FadeIn";
+import { OrbitingCircles } from "@/registry/magicui/orbiting-circles";
 
 export default function LogoSection() {
   return (
     <FadeIn>
-      <div className="py-12 max-md:py-0 flex flex-col items-center">
-        <img
-          src={insb}
-          alt="IEEE NSU Student Branch"
-          className="w-82 max-md:w-52 max-sm:w-37"
-        />
+      <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
 
-        <div className="flex justify-center gap-100 max-md:gap-80 max-sm:gap-35 max-sm:m-5">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none">
           <img
-            src={pes}
-            alt="PES Logo"
-            className="h-45 max-md:h-25 max-sm:h-25"
-          />
-          <img
-            src={ias}
-            alt="IAS Logo"
-            className="h-50 max-md:h-30 max-sm:h-25"
+            src={insb}
+            alt="IEEE NSU SB"
+            className="w-25 max-md:w-20 max-sm:w-20"
           />
         </div>
+         {/* Adjust the rotating speed by increasing the speed value*/}
+        <OrbitingCircles iconSize={90} radius={200} speed={20}> 
+          <img src={pes} alt="PES" className="w-full h-full object-contain" />
+          <img src={ias} alt="IAS" className="w-full h-full object-contain" />
+          <img src={ras} alt="RAS" className="w-full h-full object-contain" />
+          <img src={wie} alt="WIE" className="w-full h-full object-contain" />
+        </OrbitingCircles>
 
-        <div className="flex justify-center gap-42 max-md:gap-22 max-sm:gap-12">
-          <img
-            src={ras}
-            alt="RAS Logo"
-            className="h-40 max-md:h-20 max-sm:h-20"
-          />
-          <img
-            src={wie}
-            alt="WIE Logo"
-            className="h-40 max-md:h-20 max-sm:h-20"
-          />
-        </div>
       </div>
     </FadeIn>
   );
