@@ -57,6 +57,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  
   // Member Card Component
   const MemberCard = ({ member }: { member: Member }) => (
     <Link to={`/member-profile/${member.id}`} className="group">
