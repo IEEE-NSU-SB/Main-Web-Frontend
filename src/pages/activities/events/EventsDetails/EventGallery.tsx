@@ -19,7 +19,7 @@ const EventGallery: React.FC<EventDetailsProps> = ({ eventData }) => {
                 <img
                   src={image}
                   alt={`Event gallery image ${index + 1}`}
-                  className="w-full h-auto object-cover hover:scale-105 duration-300 transition-all"
+                  className="w-full h-full object-cover hover:scale-105 duration-300 transition-all"
                 />
               </div>
             ))}

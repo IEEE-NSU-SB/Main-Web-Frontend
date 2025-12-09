@@ -3,7 +3,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import FadeInRight from "@/components/ui/FadeIn";
 import Skeleton from "@/components/Skeleton";
 import { Undo } from "lucide-react";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Link } from "react-router";
 
@@ -26,8 +26,8 @@ interface EventData {
 
 const UpcomingEvent = () => {
   // ✅ Fetches directly an EventData object (no nested "event" key)
-  const { loading, data, error, refetch } = useFetchDataJSON<EventData>({
-    path: "pages/activities/events/data/UpcomingEvent.json",
+  const { loading, data, error, refetch } = useFetchDataAPI<EventData>({
+    apiUrl: "main_website/get_upcoming_event/",
   });
 
   const event = data;
@@ -159,8 +159,8 @@ const UpcomingEvent = () => {
             </FadeIn>
 
             <div className="relative flex items-center max-md:flex-wrap flex-nowrap flex-row z-10 bg-white rounded-lg">
-              <FadeInRight xIndex={500} zIndex={-1} yIndex={0}>
-                <Link to={event.id}>
+              <FadeInRight xIndex={50} zIndex={-1} yIndex={0}>
+                <Link to={event.registration_link}>
                   <img
                     src={event.image}
                     alt={event.title}
@@ -177,9 +177,7 @@ const UpcomingEvent = () => {
                 </FadeInRight>
 
                 <FadeInRight yIndex={50}>
-                  <p className="line-clamp-4 text-ieee-white mb-3 mt-3">
-                    {event.description}
-                  </p>
+                  <p className="line-clamp-4 text-ieee-white mb-3 mt-3" dangerouslySetInnerHTML={{ __html: event.description, }}/>
                 </FadeInRight>
 
                 <FadeInRight xIndex={50} yIndex={0}>

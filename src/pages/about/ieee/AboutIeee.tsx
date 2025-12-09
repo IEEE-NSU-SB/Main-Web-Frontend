@@ -63,21 +63,22 @@ export default function AboutIEEE() {
   return (
     <div className="">
       {/* About Section */}
-      <div className="max-w-[1080px] m-auto p-5 flex flex-col md:flex-row gap-6 items-center mb-16">
+      <div className="max-w-[1080px] m-auto flex flex-col md:flex-row gap-6 items-center mb-16">
         <img
           src={data.aboutImage}
           alt="About IEEE"
-          className="w-full md:w-1/2"
+          className="w-full md:w-1/2 object-contain"
         />
+
         <div>
-          <SectionHeading title="About IEEE"/>
-          <p className="text-justify md:pl-5">{data.aboutDetails}</p>
-          <div className="mt-4 flex gap-4 md:pl-5">
+          <SectionHeading title="About IEEE" />
+          <p className="px-5">{data.aboutDetails}</p>
+          <div className="mt-4 flex max-md:flex-col gap-4 px-5">
             <a
               href={data.learnMoreLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-[#002855] text-white rounded"
+              className="px-4 py-2 bg-[#002855] text-white rounded text-center"
             >
               Learn More
             </a>
@@ -85,7 +86,7 @@ export default function AboutIEEE() {
               href={data.missionVisionLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border-2 border-[#FFC72C] text-[#002855] rounded hover:bg-[#FFC72C] hover:text-white transition"
+              className="px-4 py-2 border-2 border-[#FFC72C] text-[#002855] rounded hover:bg-[#FFC72C] hover:text-white transition text-center"
             >
               Mission & Vision
             </a>
@@ -93,36 +94,36 @@ export default function AboutIEEE() {
         </div>
       </div>
 
-      <section className="w-full flex justify-center">
-        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
-            <div>
-              <SectionHeading title="Largest Community"/>
-              <p className="text-justify mb-6 pl-5">{data.communityDetails}</p>
-              {data.communityLinks.map((link, i) => (
-                <>
-                  <a
-                    key={i}
-                    href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
-                  >
-                    <ExternalLink size={16} />
-                    {link.title}
-                  </a>
-                  <br />
-                </>
-              ))}
-            </div>
+              <SectionHeading title="Largest Community" />
+              <div className="max-md:mx-5">
+                <p className="mb-6">{data.communityDetails}</p>
+                {data.communityLinks.map((link, i) => (
+                  <>
+                    <a
+                      key={i}
+                      href={link.link}
+                      className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2"
+                    >
+                      <ExternalLink size={16} />
+                      {link.title}
+                    </a>
+                    <br />
+                  </>
+                ))}
+              </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
-            <img
-              src={data.communityImage}
-              alt="Largest Community"
-              className="object-contain"
-            />
+          <div className="flex justify-center min-w-[355px] max-w-[500px] px-5">
+            <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] px-5">
+              <img
+                src={data.communityImage}
+                alt="Largest Community"
+                className="w-full h-auto object-contain"
+              />
+            </div>
           </div>
         </div>
-      </section>
 
       {/* Start with IEEE */}
       <section className="w-full bg-[#002855] flex justify-center">
@@ -232,9 +233,9 @@ export default function AboutIEEE() {
 
       {/* Achievements */}
       <div className="max-w-[1080px] m-auto">
-        <FadeIn xIndex={-100} yIndex={0}>
-          <SectionHeading title="Achievements"/>
-          <p className="text-justify mb-6 md:p-5">{data.achievementsDetails}</p>
+        <FadeIn yIndex={100} delay={0}>
+          <SectionHeading title="Achievements" />
+          <p className="text-justify mb-6 p-5">{data.achievementsDetails}</p>
           <div className="flex flex-wrap gap-7 justify-center p-5">
             {data.achievementsLinks.map((a, i) => (
               <div
@@ -270,14 +271,11 @@ export default function AboutIEEE() {
       </div>
 
       {/* Innovation Section */}
-      <section className="w-full flex justify-center">
-        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
-          <FadeIn xIndex={-100} yIndex={0}>
-            <div>
-              <SectionHeading
-                title="Innovations and Developments"
-              />
-              <p className="text-justify mb-6 pl-5">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+        <FadeIn xIndex={-100} yIndex={0}>
+            <SectionHeading title="Innovations & Developments" />
+            <div className="max-md:mx-5">
+              <p className="mb-6">
                 {data.innovationsDevelopmentsDetails}
               </p>
               {data.innovationsDevelopmentsLinks.map((link, i) => (
@@ -285,7 +283,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:pl-0"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -293,41 +291,30 @@ export default function AboutIEEE() {
                   <br />
                 </>
               ))}
-            </div>
-          </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
-            <img
-              src={data.innovationsDevelopmentsImage}
-              alt="Largest Community"
-              className="object-contain"
-            />
           </div>
+        </FadeIn>
+        <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] pr-5">
+          <img
+            src={data.innovationsDevelopmentsImage}
+            alt="Innovations"
+            className="w-full h-auto object-contain"
+          />
         </div>
-      </section>
+      </div>
+
       {/* Student Activities */}
-      <section className="w-full flex justify-center">
-        <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
-            <img
-              src={data.studentsAndMemberActivitiesImage}
-              alt="Students and Member Activities"
-              className="object-contain"
-            />
-          </div>
-          <FadeIn xIndex={-100} yIndex={0}>
-            <div>
-              <SectionHeading
-                title="Students and Member Activities"
-              />
-              <p className="text-justify mb-6 pl-5">
-                {data.studentsAndMemberActivitiesDetails}
-              </p>
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12 md:flex-row-reverse">
+        <FadeIn xIndex={-100} yIndex={0}>
+          <div>
+            <SectionHeading title="Member Activities" />
+            <div className="px-5">
+              <p className="mb-6">{data.studentsAndMemberActivitiesDetails}</p>
               {data.studentsAndMemberActivitiesLinks.map((link, i) => (
                 <>
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
+                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2"
                   >
                     <ExternalLink size={16} />
                     {link.title}
@@ -336,36 +323,45 @@ export default function AboutIEEE() {
                 </>
               ))}
             </div>
-          </FadeIn>
+          </div>
+        </FadeIn>
+        <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] pr-5 max-md:pr-0">
+          <img
+            src={data.studentsAndMemberActivitiesImage}
+            alt="Innovations"
+            className="w-full h-auto object-contain max-md:w-50"
+          />
         </div>
-      </section>
+      </div>
       {/* Quality */}
       <section className="w-full flex justify-center">
         <div className="max-w-[1080px] mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
-              <SectionHeading title="Quality"/>
-              <p className="text-justify mb-6 pl-5">{data.qualityDetails}</p>
-              {data.qualityLinks.map((link, i) => (
-                <>
-                  <a
-                    key={i}
-                    href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5"
-                  >
-                    <ExternalLink size={16} />
-                    {link.title}
-                  </a>
-                  <br />
-                </>
-              ))}
+              <SectionHeading title="Quality" />
+              <div className="px-5">
+                <p className="mb-6">{data.qualityDetails}</p>
+                {data.qualityLinks.map((link, i) => (
+                  <>
+                    <a
+                      key={i}
+                      href={link.link}
+                      className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2"
+                    >
+                      <ExternalLink size={16} />
+                      {link.title}
+                    </a>
+                    <br />
+                  </>
+                ))}
+              </div>
             </div>
           </FadeIn>
-          <div className="flex justify-center min-w-[355px] max-w-[500px] pr-5">
+          <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] pr-5 max-md:pr-0">
             <img
               src={data.qualityImage}
-              alt="Quality"
-              className="object-contain"
+              alt="Innovations"
+              className="w-full h-auto object-contain"
             />
           </div>
         </div>
@@ -393,7 +389,7 @@ export default function AboutIEEE() {
 
       {/* Contact Section */}
       <div className="bg-white flex flex-col justify-baseline max-w-[1080px] m-auto mb-15">
-        <SectionHeading title="Contact IEEE R10"/>
+        <SectionHeading title="Contact IEEE R10" />
         <FadeIn>
           <div className="grid gap-3 pl-5">
             <div className="grid grid-cols-[1fr_2fr]">

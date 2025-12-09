@@ -153,7 +153,7 @@ const EventCard: React.FC = () => {
             <input
               type="text"
               placeholder="Search events..."
-              className="pl-10 pr-3 py-2 border rounded-md w-full text-sm focus:ring-2 focus:ring-ieee-blue focus:outline-none"
+              className="pl-5 pr-3 py-2 border rounded-md w-full md:w-100 text-sm focus:ring-2 focus:ring-ieee-blue focus:outline-none"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -161,7 +161,7 @@ const EventCard: React.FC = () => {
 
           <div className="flex flex-wrap gap-3 w-full md:w-[48%] justify-end max-md:justify-center">
             <select
-              className="border px-3 py-2 rounded-md text-sm max-md:w-[48%]"
+              className="border px-5 py-2 rounded-md text-sm max-md:w-[48%]"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
             >

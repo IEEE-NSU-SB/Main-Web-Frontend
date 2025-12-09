@@ -32,7 +32,7 @@ const EventDetailsPages = () => {
               <div>
                 <BannerDetails eventData={data} />
               </div>
-              <div className="bg-white md:block hidden">
+              <div className="bg-white">
                 <RegisterDetails eventData={data} />
               </div>
             </div>

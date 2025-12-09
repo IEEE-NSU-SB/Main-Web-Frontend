@@ -24,32 +24,32 @@ const footerLinks = [
   },
   {
     links: [
-      { text: "Ask a Question", href: "https://ieeensusb.org/faq" },
-      { text: "IEEE NSU SB", href: "https://ieeensusb.org/ieee_nsu_student_branch" },
-      { text: "IEEE NSU SB IAS", href: "https://ieeensusb.org/ieee_nsu_ias_sbc/" },
-      { text: "IEEE NSU SB PES", href: "https://ieeensusb.org/ieee_nsu_pes_sbc/" },
-      { text: "IEEE NSU SB RAS", href: "https://ieeensusb.org/ieee_nsu_ras_sbc/" },
-      { text: "IEEE NSU SB WIE", href: "https://ieeensusb.org/ieee_nsu_wie_sbc/" },
+      // { text: "Ask a Question", href: "/faq/" },
+      // { text: "IEEE NSU SB", href: "/ieee_nsu_student_branch/" },
+      { text: "IEEE NSU SB IAS", href: "/ieee-nsu-ias-sbc/" },
+      { text: "IEEE NSU SB PES", href: "/ieee-nsu-pes-sbc/" },
+      { text: "IEEE NSU SB RAS", href: "/ieee-nsu-ras-sbc/" },
+      { text: "IEEE NSU SB WIE", href: "/ieee-nsu-wie-ag/" },
     ],
   },
   {
     links: [
-      { text: "News", href: "https://ieeensusb.org/news/" },
-      { text: "Upcoming Events", href: "https://ieeensusb.org/events/" },
-      { text: "Toolkit", href: "https://ieeensusb.org/toolkit" },
-      { text: "Gallery", href: "https://ieeensusb.org/gallery/" },
-      { text: "Magazines", href: "https://ieeensusb.org/magazines" },
-      { text: "Research Papers", href: "https://ieeensusb.org/research" },
+      { text: "News", href: "/news/" },
+      { text: "Upcoming Events", href: "/events/" },
+      { text: "Toolkit", href: "/toolkit/" },
+      // { text: "Gallery", href: "/gallery/" },
+      { text: "Magazines", href: "/magazines/" },
+      { text: "Research Papers", href: "/research/" },
     ],
   },
   {
     links: [
-      { text: "Join IEEE NSU SB", href: "https://ieeensusb.org/join_insb" },
-      { text: "Write a Blog", href: "https://ieeensusb.org/write_blogs" },
-      { text: "Blogs", href: "https://ieeensusb.org/blogs" },
-      { text: "Achievements", href: "https://ieeensusb.org/achievements/" },
-      { text: "Current Executive Body", href: "https://ieeensusb.org/panels/" },
-      { text: "Exemplary Members", href: "https://ieeensusb.org/exemplary_members" },
+      { text: "Join IEEE NSU SB", href: "/join/" },
+      { text: "Write a Blog", href: "/write-blog/" },
+      { text: "Blogs", href: "/blogs/" },
+      { text: "Achievements", href: "/achievements/" },
+      { text: "Current Executive Body", href: "/panels/" },
+      { text: "Exemplary Members", href: "/exemplary-members" },
     ],
   },
 ];
@@ -65,7 +65,7 @@ const socialIcons = [
 const contactInfo = [
   "info@ieeensusb.org",
   "contact@ieeensusb.org",
-  "Last Updated: 01 June 2025",
+  "Last Updated: 01 November 2025",
 ];
 
 function Footer() {
@@ -80,7 +80,7 @@ function Footer() {
           </div>
 
           {/* Link Sections */}
-          <div className="text-ieee-white-75 grid grid-cols-1 max-sm:hidden md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-[1040px]">
+          <div className="text-ieee-white-75 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 mt-8 mx-auto w-full max-w-[1040px]">
             {footerLinks.map((section, index) => (
               <ul key={index}>
                 {section.links.map((link, idx) => (

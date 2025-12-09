@@ -90,13 +90,12 @@ const OnlineNews = () => {
                 <div
                   className="flex transition-transform duration-400 ease-in-out"
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
-                  {Array.from({
+                >                  {Array.from({
                     length: Math.ceil(data.length / itemsPerView),
                   }).map((_, slideIndex) => (
                     <div
                       key={slideIndex}
-                      className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-1"
+                      className="min-w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-1 py-3"
                     >
                       {data
                         .slice(
@@ -106,7 +105,7 @@ const OnlineNews = () => {
                         .map((item) => (
                           <div
                             key={item.id}
-                            className="bg-ieee-gray/5 border border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300  transform hover:-translate-y-1"
+                            className="bg-ieee-gray/5 border border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300"
                           >
                             {/* Image */}
                             <div className="w-full h-48 overflow-hidden bg-gray-100">
@@ -123,27 +122,28 @@ const OnlineNews = () => {
                             <div className="p-4">
                               {/* Date and By */}
                               <div className="flex items-center gap-2 text-ieee-gray text-sm mb-3 line-clamp-1">
-                                <span>{item.date}</span>
-                                <span>•</span>
                                 <span>
-                                  By {item.by}
+                                  {
+                                    new Date(item.date)
+                                      .toISOString()
+                                      .split("T")[0]
+                                  }
                                 </span>
+                                <span>•</span>
+                                <span>By {item.by}</span>
                               </div>
 
                               {/* Title */}
                               <Link to={item.article_link} target="_blank">
-                              <h3 className="text-lg line-clamp-2 h-15 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
-                                {item.title}
-                              </h3>
+                                <h3 className="text-lg line-clamp-2 h-12 font-bold mb-2 text-[17px] text-gray-800 hover:text-ieee-blue transition-colors">
+                                  {item.title}
+                                </h3>
                               </Link>
 
                               {/* Description */}
-                              <p className="line-clamp-4 h-25 text-gray-600 text-sm leading-relaxed">
+                              <p className="line-clamp-4 h-23 text-gray-600 text-sm leading-relaxed">
                                 {item.description}
                               </p>
-                              <button className="mt-4 text-ieee-blue font-semibold hover:underline hover:text-[#004d7a] transition-colors">
-                                <a href={item.article_link} target="_blank">Read More</a>
-                              </button>
                             </div>
                           </div>
                         ))}
@@ -157,7 +157,7 @@ const OnlineNews = () => {
                 <>
                   <button
                     onClick={prevSlide}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-14 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
                     aria-label="Previous slide"
                   >
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-800 group-hover:text-ieee-white transition-colors" />
@@ -165,7 +165,7 @@ const OnlineNews = () => {
 
                   <button
                     onClick={nextSlide}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-14 bg-ieee-white/95 backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg hover:bg-ieee-blue hover:text-ieee-white transition-all duration-300 cursor-pointer z-10 group"
                     aria-label="Next slide"
                   >
                     <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-800 group-hover:text-ieee-white transition-colors" />

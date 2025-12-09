@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import type { EventData } from "@/types/event";
-import { Calendar, DollarSign, Info } from "lucide-react";
+import { AlarmClock, Wallet, Info } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
@@ -8,10 +8,9 @@ type EventDetailsProps = {
   eventData: EventData;
 };
 
-
 const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
   const [currentUrl, setCurrentUrl] = useState("");
-  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentUrl(window.location.href);
@@ -24,38 +23,36 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
           <div className="bg-white rounded-md shadow-sm border border-gray-200 overflow-hidden">
             {/* Event Details Section */}
             <div className="p-3 space-y-4">
-              {/* Start Time */}
+              {/* Event Time */}
               <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
                 <div className="mt-2">
-                  <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
+                  <AlarmClock className="w-7 h-7 text-ieee-darkblue/90" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
-                    Start Time
+                    Time
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    {eventData.start_date}
+                  <p>
+                    {new Date(eventData.start_date).toLocaleTimeString(
+                      "en-US",
+                      {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      }
+                    )}{" "}
+                    -{" "}
+                    {new Date(eventData.end_date).toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })}
                   </p>
-                </div>
-              </div>
-
-              {/* End Time */}
-              <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
-                <div className="mt-2">
-                  <Calendar className="w-7 h-7 text-ieee-darkblue/90" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-1">
-                    End Time
-                  </h3>
-                  <p className="text-sm text-gray-600">{eventData.end_date}</p>
                 </div>
               </div>
 
               {/* Cost */}
               <div className="flex items-start gap-6 bg-ieee-darkblue/5 p-4 rounded-sm">
                 <div className="mt-2">
-                  <DollarSign className="w-7 h-7 text-ieee-darkblue/90" />
+                  <Wallet className="w-7 h-7 text-ieee-darkblue/90" />
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-gray-700 mb-1">
@@ -84,7 +81,7 @@ const RegisterDetails: React.FC<EventDetailsProps> = ({ eventData }) => {
                     target="_blank"
                     className="text-sm text-ieee-blue-75 hover:text-ieee-blue hover:underline"
                   >
-                    Read More
+                    Facebook Event Link
                   </a>
                 </div>
               </div>

@@ -2,11 +2,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import type { EventData } from "@/types/event";
 import React, { useState, useRef, useEffect } from "react";
 
-interface Feedback {
-  name: string;
-  feedback: string;
-  satisfaction: string;
-}
+// interface Feedback {
+//   name: string;
+//   feedback: string;
+//   satisfaction: string;
+// }
 
 type EventDetailsProps = {
   eventData: EventData;
@@ -37,28 +37,28 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   ];
 
   // Example feedbacks (can fetch from API)
-  const feedbacks: Feedback[] = [
-    {
-      name: "Aarif Rahman",
-      feedback: "Amazing event! Everything was perfectly organized.",
-      satisfaction: "Very Satisfied",
-    },
-    {
-      name: "Nusrat Jahan",
-      feedback: "Loved the speakers and the networking sessions!",
-      satisfaction: "Satisfied",
-    },
-    {
-      name: "Tanvir Ahmed",
-      feedback: "It was good, but I think the event could be longer.",
-      satisfaction: "Not Satisfied",
-    },
-    {
-      name: "Sadia Karim",
-      feedback: "Superb! The volunteers did a great job.",
-      satisfaction: "Very Satisfied",
-    },
-  ];
+  // const feedbacks: Feedback[] = [
+  //   {
+  //     name: "Aarif Rahman",
+  //     feedback: "Amazing event! Everything was perfectly organized.",
+  //     satisfaction: "Very Satisfied",
+  //   },
+  //   {
+  //     name: "Nusrat Jahan",
+  //     feedback: "Loved the speakers and the networking sessions!",
+  //     satisfaction: "Satisfied",
+  //   },
+  //   {
+  //     name: "Tanvir Ahmed",
+  //     feedback: "It was good, but I think the event could be longer.",
+  //     satisfaction: "Not Satisfied",
+  //   },
+  //   {
+  //     name: "Sadia Karim",
+  //     feedback: "Superb! The volunteers did a great job.",
+  //     satisfaction: "Very Satisfied",
+  //   },
+  // ];
 
   // --- Dropdown behavior ---
   useEffect(() => {
@@ -153,7 +153,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
 
   return (
     <div>
-      {/* ---- Feedback Carousel ---- */}
+      {/* ---- Feedback Carousel ----
       {feedbacks.length > 0 && (
         <>
           <SectionHeading title="Participants Feedback" />
@@ -184,7 +184,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
             </div>
           </div>
         </>
-      )}
+      )} */}
 
       {/* ---- Feedback Form ---- */}
       <SectionHeading title="Leave a Feedback" />

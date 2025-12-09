@@ -1,10 +1,10 @@
 {
     "aboutDetails": "Since 1963, IEEE(Institute of Electrical and Electronics Engineers) is a large professional association for engineers. Its corporate office is in New York City at United States and its headquarter is located at Piscataway, New Jersey, United States. This  association focuses to develop Electrical Electronic and Technical sites, Computer Science and Engineering sites and finally the Telecommunications sites. This is the world wide association for all engineers now a days.",
-    "aboutImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE/About_Image/e4c81f5dd1d43164425630c4ab971bd5.jpeg",
+    "aboutImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/About_Image/e4c81f5dd1d43164425630c4ab971bd5.jpeg",
     "learnMoreLink": "https://ieee.org/about/",
     "missionVisionLink": "https://ieee.org/about/vision-mission.html",
     "communityDetails": "Institute of Electrical and Electronics Engineers (IEEE) is the largest world wide professional association for engineering sites.  IEEE starts with 150,000 members(93% from US) group which is now extended with over 400,000 members from 160 countries, with the U.S. based membership no longer constituting a majority. It has the biggest community with a huge number of members and workers. There are huge numbers of Technical Societies , Technical councils and Technical Committees under IEEE. The IEEE community is like a family with so many heartiest peoples. To know more about this",
-    "communityImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE/Community_Image/branches-1024x638.jpeg",
+    "communityImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Community_Image/branches-1024x638.jpeg",
     "communityLinks": [
         {
             "title": "IEEE Global Community",
@@ -89,7 +89,7 @@
         }
     ],
     "innovationsDevelopmentsDetails": "Institute of Electrical and Electronics Engineers (IEEE) development is not a quick process and this focuses on consensus, due process, openness, right to appeal and balance. It takes time to develop from all sides. Now there is a mobile app(IEEE) of IEEE  which is great. Here is some important innovations and developments link",
-    "innovationsDevelopmentsImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE/Innovation_Development_Image/IEEE_Innovation.jpeg",
+    "innovationsDevelopmentsImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Innovation_Development_Image/IEEE_Innovation.jpeg",
     "innovationsDevelopmentsLinks": [
         {
             "title": "IEEE Innovation Initiatives",
@@ -97,7 +97,7 @@
         }
     ],
     "studentsAndMemberActivitiesDetails": "Student Activities Committee (SAC) is the Institute of Electrical and Electronics Engineers (IEEE) committee responsible for student programs and benefits, and making recommendations to the Member and Geographic Activities (MGA) board. There are over 100,000 IEEE Student and Graduate Student members worldwide. The volunteer members provide important viewpoints and information, and represent the voice of the world wide communication.",
-    "studentsAndMemberActivitiesImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE/Student_Member_Activity_Image/illustrated-character-4.png",
+    "studentsAndMemberActivitiesImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Student_Member_Activity_Image/illustrated-character-4.png",
     "studentsAndMemberActivitiesLinks": [
         {
             "title": "Student Activities",
@@ -105,7 +105,7 @@
         }
     ],
     "qualityDetails": "Institute of Electrical and Electronics Engineers (IEEE)  is a world wide professional association for engineers and this association is surrounded by the professional people of Electrical, Communications, Computer and Technology. Also the students or members from different countries are here to share their multiple talents and knowledge. So there is no doubt that it is a high profile organization created for increasing the development of Science and technology sites in the whole world.",
-    "qualityImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE/Quality_Image/image3.png",
+    "qualityImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Quality_Image/image3.png",
     "qualityLinks": [
         {
             "title": "IEEE Quality Standards",

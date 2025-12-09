@@ -1,9 +1,9 @@
 {
     "region10Description": "In the Institute of Electrical and Electronics Engineers (IEEE) there are 422,000 members from 160 countries. The Asia-Pacific region (also known as IEEE Region 10) is the largest, with over 130,000 members. This is the most cohesive community  with everyone tied together like a family. This is most certainly the base for all Asian-Pacific organizational units.",
-    "region10image": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Region_10_Image/IEEE_Region_10.png",
+    "region10image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Region_10_Image/IEEE_Region_10.png",
     "historyLink": "https://www.ieeer10.org/",
     "youngProfDescription": "Institute of Electrical and Electronics Engineers(IEEE) Region 10 Young Professionals(YP) is a community of imaginative and creative members and volunteers across Asia Pacific. The Institute of Electrical and Electronics Engineers (IEEE) was established to assist young professionals in achieving their career goals, cultivating a dazzling professional image, and establishing a high profile in a variety of fields.",
-    "youngProfImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Young_Professionals_Image/Young_Professionals.jpeg",
+    "youngProfImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Young_Professionals_Image/Young_Professionals.jpeg",
     "youngProfLinks": [
         {
             "title": "IEEE R10 YP",
@@ -53,7 +53,7 @@
             "link": "https://wie.ieeer10.org/"
         }
     ],
-    "MembershipImage":"https://ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Membership_Development_Image/illustrated-character-4.png",
+    "MembershipImage":"https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Membership_Development_Image/illustrated-character-4.png",
     "EventConferenceDetails":"TENCON is the flagship premier international technical conference of IEEE Region 10. IEEE sponsors more than 1,900 annual conferences and events worldwide, curating cutting-edge content for all of the technical fields of interest within IEEE.",
     "EventConferenceImage":"",
     "EventConferenceLinks": [
@@ -62,7 +62,7 @@
             "link": "https://wie.ieeer10.org/"
         }
     ],
-    "Parallax":"https://ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Parallax_Background_Image/R10.jpeg",
+    "Parallax":"https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Region_10/Parallax_Background_Image/R10.jpeg",
     "HomePageLink":"http://www.ieeer10.org/",
     "WebsiteLink":"https://www.ieeer10.org/",
     "MembershipInquiryLink":"mailto:contactcenter@ieee.org",

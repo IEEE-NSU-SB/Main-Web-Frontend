@@ -1,12 +1,18 @@
 {
     "title": "Happy New Year 2024!!",
+    "subtitle": "HELLO",
     "image":"https://ieeensusb.org/media_files/main_website_files/news/Happy_New_Year_2024.jpg",
+    "category":"Technical",
+    "writer":"Azima Islam Ruba",
+    "ieeeId":"98717543",
+    "publishedFrom":"IEEE NSU Student Branch",
     "date": "20/10/2025",
+    "shortDescription": "Embracing the fresh start of a new year! Let's welcome 2024 together with newfound hope and an empty canvas, ready to be painted with our dreams and achievements. IEEE NSU Student Branch sends warm wishes for a year filled with joy, success, and thrilling adventures. May everyone find the courage, hope, and faith to overcome challenges, making this year remarkable. Here's to a Happy New Year, brimming with peace, hope, and endless possibilities!",
     "description": "Embracing the fresh start of a new year! Let's welcome 2024 together with newfound hope and an empty canvas, ready to be painted with our dreams and achievements. IEEE NSU Student Branch sends warm wishes for a year filled with joy, success, and thrilling adventures. May everyone find the courage, hope, and faith to overcome challenges, making this year remarkable. Here's to a Happy New Year, brimming with peace, hope, and endless possibilities!",
-    "recentNews": [
+    "recentBlogs": [
         {
             "id":2,
-            "title": "YOOOO",
+            "title": "OMG",
             "image":"https://ieeensusb.org/media_files/main_website_files/news/Happy_New_Year_2024.jpg",
             "date": "20/10/2025"
         },
@@ -23,7 +29,7 @@
             "date": "20/10/2025"
         }
     ],
-    "recentBlogs": [
+    "recentNews": [
         {
             "title": "Feelings About IEEE NSU Student Branch",
             "id": 2

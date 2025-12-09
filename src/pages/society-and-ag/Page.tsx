@@ -1,9 +1,8 @@
 import { useLocation } from "react-router-dom";
-import { useFetchDataJSON, useFetchDataAPI } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 
-import ScAgWave from "./ScAgWave";
 import Intro from "./Intro";
 import Parallax from "./Parallax";
 import WhatWhyHowSection from "./WhatWhyHowSection";
@@ -13,8 +12,9 @@ import MegaEventsCard from "@/components/MegaEventCard";
 import FeaturedEventCard from "@/components/FeaturedEventCard";
 import Executive from "./Executive";
 import MissionVision from "./MissionVision";
-import Achievements from "./Achievements";
+import Achievements from "./AchievementCard";
 import React from "react";
+import Wave from "@/components/Wave";
 
 // ✅ Interfaces
 interface PageData {
@@ -34,12 +34,24 @@ interface EventData {
   featuredEvents: any[];
 }
 
+interface Member {
+  id: number;
+  name: string;
+  position: string;
+}
+
 interface ExecutiveData {
+  advisor: Member[];
   executives: any[];
 }
 
-interface AchievementData {
-  achievements: any[];
+interface Award {
+  year: string;
+  image: string;
+  title: string;
+  winner: string;
+  primaryColor: string;
+  description: string;
 }
 
 const SocietyOrAg: React.FC = () => {
@@ -54,75 +66,130 @@ const SocietyOrAg: React.FC = () => {
     return "";
   }, [location.pathname]);
 
-  // ✅ Only use hook paths if baseName is valid
-  // const pagePath = baseName ? `pages/society-and-ag/data/${baseName}/${baseName}.json` : "";
-  // const eventsPath = baseName ? `pages/society-and-ag/data/${baseName}/featured_mega.json` : "";
-  const execPath = baseName ? `pages/society-and-ag/data/${baseName}/executive.json` : "";
-  const achPath = baseName ? `pages/society-and-ag/data/${baseName}/achievements.json` : "";
-
-  // ✅ Hooks
-  const { loading: pageLoading, data: pageData, error: pageError, refetch: refetchPage } =
-    useFetchDataAPI<PageData>({ apiUrl: `main_website/get_sc_ag_details/${baseName}/` });
-
-  const { loading: eventsLoading, data: eventsData, error: eventsError, refetch: refetchEvents } =
-    useFetchDataAPI<EventData>({ apiUrl: `main_website/get_mega_featured_events/${baseName}/` });
-
-  const { loading: execLoading, data: execData, error: execError, refetch: refetchExec } =
-    useFetchDataJSON<ExecutiveData>({ path: execPath });
-
-  const { loading: achLoading, data: achData, error: achError, refetch: refetchAch } =
-    useFetchDataJSON<AchievementData>({ path: achPath });
-
-  // ✅ Handle unknown baseName
   if (!baseName) return <ErrorMessage message="Unknown Society or AG page." />;
 
-  // ✅ Combined loading
-  if (pageLoading || eventsLoading || execLoading || achLoading) {
-    return (
-      <div className="flex justify-center mt-10">
-        <Skeleton className="h-32 w-3/4" />
-      </div>
-    );
-  }
+  // ✅ Fetch page details
+  const {
+    loading: pageLoading,
+    data: pageData,
+    error: pageError,
+    refetch: refetchPage,
+  } = useFetchDataAPI<PageData>({
+    apiUrl: `main_website/get_sc_ag_details/${baseName}/`,
+  });
 
-  // ✅ Combined error
-  if (pageError || eventsError || execError || achError || !pageData) {
-    return (
-      <ErrorMessage
-        message="Failed to load one or more data sources."
-        onRetry={() => {
-          refetchPage();
-          refetchEvents();
-          refetchExec();
-          refetchAch();
-        }}
-      />
-    );
-  }
+  // ✅ Fetch events
+  const {
+    loading: eventsLoading,
+    data: eventsData,
+    error: eventsError,
+    refetch: refetchEvents,
+  } = useFetchDataAPI<EventData>({
+    apiUrl: `main_website/get_mega_featured_events/${baseName}/`,
+  });
+
+  // ✅ Fetch executives
+  const {
+    loading: execLoading,
+    data: execData,
+    error: execError,
+    refetch: refetchExec,
+  } = useFetchDataAPI<ExecutiveData>({
+    apiUrl: `main_website/get_sc_ag_panel_executives/${baseName}/`,
+  });
+
+  // ✅ Fetch achievements
+  const {
+    loading: achLoading,
+    data: achData,
+    error: achError,
+    refetch: refetchAch,
+  } = useFetchDataAPI<Award[]>({
+    apiUrl: `main_website/get_achievements/landing/${baseName}`,
+  });
 
   return (
     <div>
-      <ScAgWave pageData={pageData} />
-      <Intro pageData={pageData} />
-      <Parallax pageData={pageData} />
+      {/* Page Header */}
+      {pageLoading && (
+        <div className="min-h-screen">
+          <Wave title="Loading..."/>
+        </div>
+      )}
+      {pageError && (
+        <ErrorMessage
+          message="Failed to load page details."
+          onRetry={refetchPage}
+        />
+      )}
+      {pageData && (
+        <Wave
+          title={pageData.pageTitle || ""}
+          subtitle={pageData.pageSubtitle || ""}
+          color={pageData.primaryColor || "#000"}
+        />
+      )}
+      {pageData && <Intro pageData={pageData} />}
+      {pageData && <Parallax pageData={pageData} />}
 
-      {eventsData && (
+      {/* Events */}
+      {eventsLoading && <Skeleton className="h-48 w-full mt-6" />}
+      {eventsError && (
+        <ErrorMessage
+          message="Failed to load events."
+          onRetry={refetchEvents}
+        />
+      )}
+      {eventsData && pageData && (
         <>
-          <MegaEventsCard events={eventsData.megaEvents} color={`${pageData.primaryColor}b6`} />
-          <FeaturedEventCard events={eventsData.featuredEvents} color={pageData.primaryColor} />
+          <MegaEventsCard
+            events={eventsData.megaEvents}
+            color={`${pageData.primaryColor}b6`}
+          />
+          <FeaturedEventCard
+            events={eventsData.featuredEvents}
+            color={pageData.primaryColor}
+          />
         </>
       )}
 
-      {achData?.achievements && (
-        <Achievements achievements={achData.achievements} color={pageData.primaryColor} />
+      {/* Achievements */}
+      {achLoading && <Skeleton className="h-32 w-full mt-6" />}
+      {achError && (
+        <ErrorMessage
+          message="Failed to load achievements."
+          onRetry={refetchAch}
+        />
+      )}
+      {achData && pageData && (
+        <Achievements
+          achievements={achData}
+          primaryColor={pageData.primaryColor}
+        />
       )}
 
-      <MissionVision pageData={pageData} />
+      {/* Mission & Vision */}
+      {pageData && <MissionVision pageData={pageData} />}
 
-      {execData && <Executive members={execData.executives} color={`${pageData.primaryColor}b6`} />}
+      {/* Executives */}
+      {execLoading && <Skeleton className="h-32 w-full mt-6" />}
+      {execError && (
+        <ErrorMessage
+          message="Failed to load executives."
+          onRetry={refetchExec}
+        />
+      )}
+      {execData && pageData && (
+        <Executive
+          advisor={execData.advisor}
+          executives={execData.executives}
+          color={`${pageData.primaryColor}b6`}
+        />
+      )}
 
-      <WhatWhyHowSection pageData={pageData} />
-      <Contact pageData={pageData} />
+      {/* Other Sections */}
+      {pageData && <WhatWhyHowSection pageData={pageData} />}
+      {pageData && <Contact pageData={pageData} />}
     </div>
   );
 };

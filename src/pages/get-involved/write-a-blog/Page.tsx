@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+// import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
-import { useQuill } from "react-quilljs";
-import "quill/dist/quill.snow.css";
+// import { useQuill } from "react-quilljs";
+// import "quill/dist/quill.snow.css";
 
 const chapters = [
   { id: 1, label: "IEEE NSU Student Branch" },
@@ -50,24 +51,24 @@ const WriteBlog: React.FC = () => {
   const shortDescRef = useRef<HTMLTextAreaElement>(null);
   const bannerRef = useRef<HTMLInputElement>(null);
 
-  const { quill, quillRef } = useQuill({
-    theme: "snow",
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, false] }],
-        ["bold", "italic", "underline", "strike"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"],
-        ["clean"],
-      ],
-    },
-  });
+  // const { quill } = useQuill({
+  //   theme: "snow",
+  //   modules: {
+  //     toolbar: [
+  //       [{ header: [1, 2, false] }],
+  //       ["bold", "italic", "underline", "strike"],
+  //       [{ list: "ordered" }, { list: "bullet" }],
+  //       ["link", "image"],
+  //       ["clean"],
+  //     ],
+  //   },
+  // });
 
-  const [blogContent, setBlogContent] = useState("");
-  useEffect(() => {
-    if (!quill) return;
-    quill.on("text-change", () => setBlogContent(quill.root.innerHTML));
-  }, [quill]);
+  // const [blogContent, setBlogContent] = useState("");
+  // useEffect(() => {
+  //   if (!quill) return;
+  //   quill.on("text-change", () => setBlogContent(quill.root.innerHTML));
+  // }, [quill]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -87,7 +88,7 @@ const WriteBlog: React.FC = () => {
       !titleRef.current?.value ||
       !categoryRef.current?.value ||
       !shortDescRef.current?.value ||
-      !blogContent ||
+      // !blogContent ||
       !bannerRef.current?.files?.[0]
     ) {
       setModalMsg("Please fill in all required fields!");
@@ -102,7 +103,7 @@ const WriteBlog: React.FC = () => {
     fd.append("title", titleRef.current.value);
     fd.append("category", categoryRef.current.value);
     fd.append("short_description", shortDescRef.current.value);
-    fd.append("description", blogContent);
+    // fd.append("description", blogContent);
     fd.append("blog_banner_picture", bannerRef.current.files[0]);
     console.log("FormData contents:");
 
@@ -269,10 +270,16 @@ const WriteBlog: React.FC = () => {
                 <label className="block mb-1 font-medium">
                   Write your blog <span className="text-red-600">*</span>
                 </label>
-                <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" />
+                <textarea
+                  
+                  placeholder="Write a short description of your blog..."
+                  className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
+                  rows={6}
+                />
+                {/* <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" /> */}
               </div>
 
-              <div className="md:col-span-2 mt-20">
+              <div className="md:col-span-2 mt-0">
                 <label className="block mb-1 font-medium">
                   Blog Banner Picture <span className="text-red-600">*</span>
                 </label>

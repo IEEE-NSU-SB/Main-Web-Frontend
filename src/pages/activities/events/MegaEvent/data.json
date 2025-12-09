@@ -1,9 +1,11 @@
 {
     "title": "Happy New Year 2024!!",
     "image":"https://ieeensusb.org/media_files/main_website_files/news/Happy_New_Year_2024.jpg",
-    "date": "20/10/2025",
+    "publishedFrom":"IEEE NSU Student Branch",
+    "startDate": "2023-12-26T03:00:00Z",
+    "finalDate": "2023-12-26T03:00:00Z",
     "description": "Embracing the fresh start of a new year! Let's welcome 2024 together with newfound hope and an empty canvas, ready to be painted with our dreams and achievements. IEEE NSU Student Branch sends warm wishes for a year filled with joy, success, and thrilling adventures. May everyone find the courage, hope, and faith to overcome challenges, making this year remarkable. Here's to a Happy New Year, brimming with peace, hope, and endless possibilities!",
-    "recentNews": [
+    "organisedEvents": [
         {
             "id":2,
             "title": "YOOOO",
@@ -23,7 +25,14 @@
             "date": "20/10/2025"
         }
     ],
-    "recentBlogs": [
+    "images": [
+        "http://127.0.0.1:8000/media_files/Event_Selected_Images/IMG_3247.png",
+        "http://127.0.0.1:8000/media_files/Event_Selected_Images/15-01.jpeg",
+        "http://127.0.0.1:8000/media_files/Event_Selected_Images/IMG_3234.png",
+        "http://127.0.0.1:8000/media_files/Event_Selected_Images/27-01.jpeg",
+        "http://127.0.0.1:8000/media_files/Event_Selected_Images/20231226_224917.png"
+    ],
+    "megaEvents": [
         {
             "title": "Feelings About IEEE NSU Student Branch",
             "id": 2

@@ -19,7 +19,7 @@ const Table = <T extends Record<string, any>>({
 
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [bloodFilter, setBloodFilter] = useState<string>("All");
+  const [bloodFilter, setBloodFilter] = useState<string>("All Blood Groups");
   const rowsPerPage = 10;
 
   // Filter data by search + blood group
@@ -32,7 +32,7 @@ const Table = <T extends Record<string, any>>({
       );
 
       const matchesBlood =
-        bloodFilter === "All" || row.bloodGroup === bloodFilter;
+        bloodFilter === "All Blood Groups" || row.bloodGroup === bloodFilter;
 
       return matchesSearch && matchesBlood;
     });
@@ -122,7 +122,9 @@ const Table = <T extends Record<string, any>>({
                         const value = header.key === "sl" ? (currentPage - 1) * rowsPerPage + idx + 1 : row[header.key];
                         return (
                           <td key={String(header.key)} className="px-4 py-3">
+                            <a href={row.ieeeId ? `/member-profile/${row.ieeeId}` : "#"}>
                             {value !== null && value !== undefined ? String(value) : "-"}
+                      </a>
                           </td>
                         );
                       })}

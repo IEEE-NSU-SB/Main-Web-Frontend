@@ -4,50 +4,86 @@ import { Link, useLocation } from "react-router-dom";
 import insbLogo from "./../assets/logo/insb.gif";
 import FadeIn from "./ui/FadeIn";
 
-interface AccordionProps {
+interface AccordionLink {
   title: string;
-  links: string[];
-  toggleMobileMenu: () => void;
+  links?: string[]; // if present, this is a nested accordion
 }
 
+interface AccordionProps {
+  title: string;
+  links: (string | AccordionLink)[];
+  toggleMobileMenu: () => void;
+}
 const AccordionSection: React.FC<AccordionProps> = ({
   title,
   links,
   toggleMobileMenu,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const teamLinks = [
+    "Content Writing and Publications",
+    "Website Development",
+    "Media",
+    "Events and Management",
+    "Graphics",
+    "Public Relation (PR)",
+    "Promotions",
+    "Finance and Corporate",
+    "Logistics and Operations",
+    "Membership Development",
+  ];
+  const generatePath = (link: string) => {
+    if (link === "All Members & Statistics") return "/all-members";
+    if (teamLinks.includes(link)) {
+      return `/team/${link.toLowerCase().replace(/ /g, "-")}`;
+    }
+    // generic conversion for other links
+    return `/${link.toLowerCase().replace(/ /g, "-")}`;
+  };
 
   return (
-    <div className="border-b grayblue-75">
+    <div className="border-b border-gray-700">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center py-2 cursor-pointer font-medium"
+        className="w-full flex justify-between items-center py-2 font-medium text-left"
       >
         {title}
-        <span
-          className={`transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        >
-          ▼
-        </span>
+        {links.length > 0 && (
+          <span
+            className={`transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          >
+            ▼
+          </span>
+        )}
       </button>
+
       <div
-        className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="ml-4 space-y-1 mt-2">
-          {links.map((link) => (
-            <Link
-              key={link}
-              to={`/${link.toLowerCase().replace(/ /g, "-")}`}
-              className="block py-1 hover:pl-2 transition-all"
-              onClick={toggleMobileMenu}
-            >
-              {link}
-            </Link>
-          ))}
+        <div className="ml-4 mt-2 space-y-1">
+          {links.map((link) =>
+            typeof link === "string" ? (
+              <Link
+                key={link}
+                to={generatePath(link)}
+                className="block py-1 hover:pl-2 transition-all"
+                onClick={toggleMobileMenu}
+              >
+                {link}
+              </Link>
+            ) : (
+              <AccordionSection
+                key={link.title}
+                title={link.title}
+                links={link.links || []}
+                toggleMobileMenu={toggleMobileMenu}
+              />
+            )
+          )}
         </div>
       </div>
     </div>
@@ -68,10 +104,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const societyColors: Record<string, string> = {
-    "ieee-nsu-ras-sbc": "#602569",
-    "ieee-nsu-pes-sbc": "#659941",
-    "ieee-nsu-ias-sbc": "#0f904b",
-    "ieee-nsu-wie-ag": "#006699",
+    "ieee-nsu-ras-sbc": "#52154E",
+    "ieee-nsu-pes-sbc": "#61A60E",
+    "ieee-nsu-ias-sbc": "#fbbf24",
+    "ieee-nsu-wie-ag": "#066697",
   };
 
   const currentSlug = location.pathname.split("/")[1] ?? "";
@@ -119,7 +155,7 @@ const Navbar: React.FC = () => {
                 Activities
               </span>
               <div
-                className="absolute text-center left-[-28px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-28px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -142,7 +178,7 @@ const Navbar: React.FC = () => {
                 Societies & AG
               </span>
               <div
-                className="absolute text-center left-[-14px] top-full mt-2 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-14px] top-full mt-1 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -170,7 +206,7 @@ const Navbar: React.FC = () => {
                 Members
               </span>
               <div
-                className="absolute text-center left-[-48px] top-full mt-2 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-center left-[-48px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -240,7 +276,7 @@ const Navbar: React.FC = () => {
                 About
               </span>
               <div
-                className="absolute text-center left-[-55px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-center left-[-55px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -249,8 +285,8 @@ const Navbar: React.FC = () => {
                   IEEE: "ieee",
                   "IEEE Region 10": "ieee-region-10",
                   "IEEE Bangladesh Section": "ieee-bangladesh-section",
-                  "IEEE NSU Student Branch": "ieee-nsu-student-branch",
-                  FAQ: "FAQ",
+                  // "IEEE NSU Student Branch": "ieee-nsu-student-branch",
+                  // FAQ: "FAQ",
                 }).map(([label, path]) => (
                   <Link
                     key={path}
@@ -269,7 +305,7 @@ const Navbar: React.FC = () => {
                 Publications
               </span>
               <div
-                className="absolute text-center left-[-22px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-22px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -278,7 +314,7 @@ const Navbar: React.FC = () => {
                   "Blogs",
                   "Research Papers",
                   "Magazines",
-                  "Gallery",
+                  // "Gallery",
                   "Toolkit",
                 ].map((item) => (
                   <Link
@@ -306,21 +342,32 @@ const Navbar: React.FC = () => {
                 Get Involved
               </span>
               <div
-                className="absolute text-center left-[-16px] top-full mt-2 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-center left-[-16px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
               >
                 {["Join IEEE NSU SB", "Write a blog", "Add Research Paper"].map(
-                  (item) => (
-                    <Link
-                      key={item}
-                      to={`/${item.toLowerCase().replace(/ /g, "-")}`}
-                      className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
-                    >
-                      {item}
-                    </Link>
-                  )
+                  (item) => {
+                    const slug =
+                      item === "Join IEEE NSU SB"
+                        ? "join"
+                        : item === "Write a blog"
+                        ? "write-blog"
+                        : item === "Add Research Paper"
+                        ? "research"
+                        : item.toLowerCase().replace(/ /g, "-");
+
+                    return (
+                      <Link
+                        key={item}
+                        to={`/${slug}`}
+                        className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
+                      >
+                        {item}
+                      </Link>
+                    );
+                  }
                 )}
               </div>
             </div>
@@ -365,107 +412,125 @@ const Navbar: React.FC = () => {
       </FadeIn>
 
       {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
-    transition-all duration-500 ease-in-out
-    ${
-      isMobileMenuOpen
-        ? "opacity-100 scale-100"
-        : "opacity-0 scale-90 pointer-events-none"
-    }`}
-          style={{
-            backgroundColor: societyColor || "#002855",
-          }}
-        >
-          {/* Close Button */}
-          <div className="flex justify-end mb-4">
-            <button onClick={toggleMobileMenu}>
-              <X size={28} />
-            </button>
-          </div>
-
-          <div className="space-y-4 text-sm">
-            <Link
-              to="/"
-              className="block py-2 border-b border-ieee-gray transition-all hover:pl-2"
-              onClick={toggleMobileMenu}
-            >
-              Home
-            </Link>
-
-            {[
-              {
-                title: "Activities",
-                links: ["Events", "News", "Achievements"],
-              },
-              {
-                title: "Societies & AG",
-                links: [
-                  "IEEE NSU RAS SBC",
-                  "IEEE NSU PES SBC",
-                  "IEEE NSU IAS SBC",
-                  "IEEE NSU WIE AG",
-                ],
-              },
-              {
-                title: "Members",
-                links: [
-                  "Panels",
-                  "Officers",
-                  "Volunteers",
-                  "Teams",
-                  "Exemplary Members",
-                  "All Members & Statistics",
-                ],
-              },
-              {
-                title: "About",
-                links: [
-                  "IEEE",
-                  "IEEE Region 10",
-                  "IEEE Bangladesh Section",
-                  "IEEE NSU Student Branch",
-                  "FAQ",
-                ],
-              },
-              {
-                title: "Publications",
-                links: [
-                  "Blogs",
-                  "Research Papers",
-                  "Magazines",
-                  "Gallery",
-                  "Toolkit",
-                ],
-              },
-              {
-                title: "Get Involved",
-                links: [
-                  "Join IEEE NSU SB",
-                  "Write a blog",
-                  "Add Research Paper",
-                ],
-              },
-            ].map((section) => (
-              <AccordionSection
-                key={section.title}
-                title={section.title}
-                links={section.links}
-                toggleMobileMenu={toggleMobileMenu}
-              />
-            ))}
-
-            <Link
-              to="/portal"
-              className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
-              onClick={toggleMobileMenu}
-            >
-              IEEE NSU SB Portal
-            </Link>
-          </div>
+      <div
+        className={`fixed top-0 right-0 z-40 w-full h-full text-ieee-white px-6 pt-6 pb-10 overflow-y-auto
+  transition-all duration-500 ease-in-out
+  ${
+    isMobileMenuOpen
+      ? "opacity-100 scale-100 pointer-events-auto"
+      : "opacity-0 scale-90 pointer-events-none"
+  }`}
+        style={{ backgroundColor: societyColor || "#002855" }}
+      >
+        {/* Close Button */}
+        <div className="flex justify-end mb-4">
+          <button onClick={toggleMobileMenu}>
+            <X size={28} />
+          </button>
         </div>
-      )}
+
+        <div className="space-y-4 text-sm">
+
+  {/* Home */}
+  <Link
+    to="/"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Home
+  </Link>
+
+  {/* Accordion Sections */}
+  {[
+    {
+      title: "Activities",
+      links: ["Events", "News", "Achievements"],
+    },
+    {
+      title: "Societies & AG",
+      links: [
+        "IEEE NSU RAS SBC",
+        "IEEE NSU PES SBC",
+        "IEEE NSU IAS SBC",
+        "IEEE NSU WIE AG",
+      ],
+    },
+    {
+      title: "Members",
+      links: [
+        "Panels",
+        "Officers",
+        "Volunteers",
+        {
+          title: "Teams",
+          links: [
+            "Content Writing and Publications",
+            "Website Development",
+            "Media",
+            "Events and Management",
+            "Graphics",
+            "Public Relation (PR)",
+            "Promotions",
+            "Finance and Corporate",
+            "Logistics and Operations",
+            "Membership Development",
+          ],
+        },
+        "Exemplary Members",
+        "All Members & Statistics",
+      ],
+    },
+    {
+      title: "About",
+      links: [
+        "IEEE",
+        "IEEE Region 10",
+        "IEEE Bangladesh Section",
+      ],
+    },
+    {
+      title: "Publications",
+      links: [
+        "Blogs",
+        "Research Papers",
+        "Magazines",
+        "Toolkit",
+      ],
+    },
+    {
+      title: "Get Involved",
+      links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
+    },
+  ].map((section) => (
+    <AccordionSection
+      key={section.title}
+      title={section.title}
+      links={section.links}
+      toggleMobileMenu={toggleMobileMenu}
+    />
+  ))}
+
+  {/* Contact (Moved OUTSIDE) */}
+  <Link
+    to="/contact"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Contact
+  </Link>
+
+  {/* Portal */}
+  <Link
+    to={import.meta.env.VITE_PORTAL_URL}
+    className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+    onClick={toggleMobileMenu}
+  >
+    IEEE NSU SB Portal
+  </Link>
+
+</div>
+
+      </div>
     </nav>
   );
 };

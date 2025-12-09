@@ -1,9 +1,9 @@
 {
     "aboutDetails": "Institute of Electrical and Electronics Engineers(IEEE) Bangladesh Section was formed in November 1993 with just 54 members. But now the Institute of Electrical and Electronics Engineers(IEEE) Bangladesh Section has gained a huge community with a lot of members from different countries. Recently IEEE Bangladesh Community is holding the position right after India, USA, China and Canada. Bangladesh Section is maintaining the 5th ranking among 342 sections all over 160 countries in the world",
-    "aboutImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/logo/IEEE_Bangladesh_Section.png",
+    "aboutImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/logo/IEEE_Bangladesh_Section.png",
     "ieeebdlink": "https://ieee.bd.net",
     "memVolDetails": "Members of the Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section are very involved, and they are perfecting their initiative work and forming connections with electrical engineering sides all over the world. Prof. Celia Shahnaz , Chair of the Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section, organizes year-round productive student events and congratulates all student participants.Institute of Electrical and Electronics Engineers (IEEE) Bangladesh Section is receiving overwhelming response from Institute of Electrical and Electronics Engineers (IEEE)  members and volunteers all over the world",
-    "memVolImage": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/member_volunteer_picture/IEMIS.jpeg",
+    "memVolImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/member_volunteer_picture/IEMIS.jpeg",
     "memVolLinks": [
         {
             "title": "Web Team",
@@ -75,13 +75,13 @@
     ],
     "gallery": [
         {
-            "image": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
         },
         {
-            "image": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
         },
         {
-            "image": "https://ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
+            "image": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_Bangladesh_Section/Gallery/group-3.jpeg"
         }
     ],
     "chair": "Prof. Dr. Celia Shahnaz",

@@ -4,7 +4,8 @@ export interface EventData {
   id: number;
   image: string;
   organizer: string;
-  collaboration: string | null; // if sometimes no collab, keep optional or null
+  inter_branch_collaboration: string | null,
+  intra_branch_collaboration: string | null;
   start_date: string;
   end_date: string;
   registration_fee_amount: string;
@@ -12,6 +13,4 @@ export interface EventData {
   read_more_link: string;
   description: string;
   images: string[];
-  inter_branch: string,
-  intra_branch: string;
 }

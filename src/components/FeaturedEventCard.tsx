@@ -32,8 +32,8 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
         underlineColor={`${color}b6`}
       />
       <FadeIn threshold={0}>
-        <div className="md:max-w-[1080px] w-full mx-auto my-10 px-3 flex flex-wrap justify-center gap-11 mb-15">
-          {events.map((event) => (
+        <div className="md:max-w-[1080px] w-full mx-auto my-10 px-5 flex flex-wrap justify-baseline gap-11 mb-15">
+          {events.slice(0, 6).map((event) => (
             <article
               key={event.id}
               className="w-full md:w-[calc(31.333%-1rem)] h-[400px] border rounded-md overflow-hidden hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all"
@@ -97,7 +97,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
               (e.currentTarget.style.color = `${color}`)
             )}
           >
-            <Calendar className="w-4 h-4" /> See All Events
+            <Calendar className="w-4 h-4" /> See Our Events
           </button>
         </Link>
       </div>

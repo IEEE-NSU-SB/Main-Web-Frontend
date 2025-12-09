@@ -80,7 +80,7 @@ const AchievementCard = () => {
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-110 h-110 md:w-83 md:h-83 object-cover"
+                  className="w-113 h-80 md:w-83 md:h-83 object-cover"
                 />
 
                 {/* Year tag */}
@@ -106,7 +106,7 @@ const AchievementCard = () => {
       <AnimatePresence>
         {selectedAward && (
           <motion.div
-            className="fixed inset-0 bg-ieee-black-50 backdrop-blur-sm flex justify-center items-center z-50 px-2"
+            className="fixed inset-0 bg-ieee-black-50 backdrop-blur-sm flex justify-center items-center z-55 px-2"
             onClick={() => setSelectedAward(null)} // close on outside click
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -118,7 +118,7 @@ const AchievementCard = () => {
               initial={{ scaleY: 0, opacity: 0 }}
               animate={{ scaleY: 1, opacity: 1 }}
               exit={{ scaleY: 0, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="relative bg-ieee-white rounded-lg max-sm:rounded-sm shadow-lg max-w-2xl w-full max-h-[80vh] flex flex-col overflow-hidden"
             >
               {/* Close Button */}
@@ -130,7 +130,7 @@ const AchievementCard = () => {
               </button>
 
               {/* Scrollable Content */}
-              <div className="relative flex flex-col p-6 px-1 sm:p-6 space-y-4 overflow-y-auto ieee-scrollbar">
+              <div className="flex flex-col p-6 px-1 sm:p-6 space-y-4 overflow-y-auto ieee-scrollbar">
                 {/* Image at top */}
                 <div className="w-full flex justify-center">
                   <div className="relative w-64 h-64">
