@@ -23,26 +23,26 @@ const BACKEND_DEFAULT =
   "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
 // Downward Arrow Component
-const DownwardArrow = () => (
-  <div className="flex justify-center my-2">
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="text-[#002855]"
-    >
-      <path
-        d="M12 4V20M12 20L6 14M12 20L18 14"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-);
+// const DownwardArrow = () => (
+//   <div className="flex justify-center my-2">
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       className="text-[#002855]"
+//     >
+//       <path
+//         d="M12 4V20M12 20L6 14M12 20L18 14"
+//         stroke="currentColor"
+//         strokeWidth="2.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//       />
+//     </svg>
+//   </div>
+// );
 
 const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
