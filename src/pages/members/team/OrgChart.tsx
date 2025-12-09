@@ -57,7 +57,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
+
   // Member Card Component
   const MemberCard = ({ member }: { member: Member }) => (
     <Link to={`/member-profile/${member.id}`} className="group">
@@ -79,7 +79,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
               />
             </div>
           </div>
-          <div className="absolute inset-0 rounded-full border-2 border-ieee-yellow opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-125 transition-all duration-300"></div>
+          <div className="absolute  inset-0 rounded-full border-2 border-ieee-yellow opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-125 transition-all duration-300"></div>
         </div>
 
         {/* Name and Position */}
