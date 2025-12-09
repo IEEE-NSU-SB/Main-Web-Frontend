@@ -11,7 +11,6 @@ export default function LogoSection() {
   return (
     <FadeIn>
       <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
-
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none">
           <img
             src={insb}
@@ -19,14 +18,13 @@ export default function LogoSection() {
             className="w-25 max-md:w-20 max-sm:w-20"
           />
         </div>
-         {/* Adjust the rotating speed by increasing the speed value*/}
-        <OrbitingCircles iconSize={90} radius={200} speed={20}> 
+        {/* Adjust the rotating speed by increasing the speed value*/}
+        <OrbitingCircles iconSize={90} radius={200} speed={20}>
           <img src={pes} alt="PES" className="w-full h-full object-contain" />
           <img src={ias} alt="IAS" className="w-full h-full object-contain" />
           <img src={ras} alt="RAS" className="w-full h-full object-contain" />
           <img src={wie} alt="WIE" className="w-full h-full object-contain" />
         </OrbitingCircles>
-
       </div>
     </FadeIn>
   );
