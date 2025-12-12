@@ -143,7 +143,7 @@ export default function BlogPage() {
                       </a>
                       <a
                         href={`/news/${index + 1}`}
-                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
+                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3 text-center line-clamp-1"
                       >
                         {i.title}
                       </a>
