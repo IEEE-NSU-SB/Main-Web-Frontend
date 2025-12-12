@@ -1,7 +1,6 @@
 import { useState, useMemo } from "react";
 import Wave from "@/components/Wave";
 import FadeIn from "@/components/ui/FadeIn";
-import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 
@@ -10,7 +9,10 @@ interface ResearchPaper {
   title: string;
   authors: string[];
   link: string;
+  img?: string; // new optional image url
 }
+
+const DEFAULT_IMG = `${import.meta.env.VITE_API_URL}/static/images/default_paper_image.png`; // adjust if needed
 
 const ResearchPapers = () => {
   const { loading, data, error, refetch } = useFetchDataAPI<ResearchPaper[]>({
@@ -46,53 +48,75 @@ const ResearchPapers = () => {
 
           {/* Loading */}
           {loading ? (
-            <div className="space-y-3">
-              <Skeleton className="h-50 w-full" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-white/5 rounded-lg p-4 shadow-sm animate-pulse min-h-[12rem]"
+                >
+                  <div className="w-full h-40 rounded-md bg-ieee-gray-10 mb-4" />
+                  <div className="h-4 w-3/4 rounded bg-ieee-gray-10 mb-2" />
+                  <div className="h-3 w-1/2 rounded bg-ieee-gray-10" />
+                </div>
+              ))}
             </div>
           ) : error ? (
             <ErrorMessage message="Failed to load research papers" onRetry={refetch} />
           ) : filteredPapers.length > 0 ? (
-            <div className="overflow-x-auto transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)] rounded-lg">
-              <table className="min-w-full table-auto border border-ieee-black-25 rounded-lg overflow-hidden text-center">
-                <thead className="bg-ieee-darkblue/85 text-white">
-                  <tr>
-                    <th className="py-3 px-4 whitespace-nowrap">SL.</th>
-                    <th className="py-3 px-4 whitespace-nowrap">Title</th>
-                    <th className="py-3 px-4 whitespace-nowrap">Authors</th>
-                    <th className="py-3 px-4 whitespace-nowrap">Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredPapers.map((paper, idx) => (
-                    <tr
-                      key={paper.id}
-                      className="bg-ieee-gray/5 even:bg-ieee-gray-10 hover:bg-ieee-gray-15 transition-colors"
-                    >
-                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black-75">{idx + 1}</td>
-                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black font-medium">
-                        {paper.title}
-                      </td>
-                      <td className="py-3 px-4 max-md:whitespace-nowrap text-ieee-black-75 text-left">
-                        <ul className="list-disc list-inside space-y-1">
-                          {paper.authors.map((author, i) => (
-                            <li key={i}>{author}</li>
-                          ))}
-                        </ul>
-                      </td>
-                      <td className="py-3 px-4">
-                        <a
-                          href={paper.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-ieee-blue hover:underline"
-                        >
-                          View Paper
-                        </a>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPapers.map((paper, idx) => (
+                <article
+                  key={paper.id}
+                  className="bg-ieee-white-5 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col"
+                >
+                  {/* Image */}
+                  <div className="w-full h-44 sm:h-48 md:h-52 overflow-hidden bg-ieee-gray-10">
+                    <img
+                      src={paper.img || DEFAULT_IMG}
+                      alt={paper.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = DEFAULT_IMG;
+                      }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4 flex-1 flex flex-col">
+                    <h3 className="text-lg font-semibold text-ieee-black mb-2 line-clamp-2">
+                      {paper.title}
+                    </h3>
+
+                    <div className="text-sm text-ieee-black-75 mb-3 flex-1">
+                      <span className="font-medium">Authors:</span>
+                      <ul className="list-disc list-inside mt-1 space-y-0.5">
+                        {paper.authors.map((a, i) => (
+                          <li key={i} className="text-sm">
+                            {a}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between gap-3">
+                      <a
+                        href={paper.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-4 py-2 text-sm font-medium rounded-md border border-ieee-blue text-ieee-blue hover:bg-ieee-blue/10 transition"
+                      >
+                        View Paper
+                      </a>
+
+                      <div className="text-sm text-ieee-black-50">
+                        <span>SL. {idx + 1}</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
           ) : (
             <p className="text-center text-ieee-black-50 mt-6">
