@@ -58,7 +58,7 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
-import AboutIeeeNsuSb from "./pages/about/ieee-nsu-sb/page";
+import AboutIeeeNsuSb from "./pages/about/ieee-nsu-sb/Page";
 
 const MainLayout = () => {
   return (
