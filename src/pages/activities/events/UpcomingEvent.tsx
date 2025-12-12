@@ -39,9 +39,6 @@ const UpcomingEvent = () => {
     seconds: 0,
   });
 
-  const [decryptedText, setDecryptedText] = useState("");
-  const fullText = event?.title ?? "UPCOMING EVENT";
-
   // Countdown Timer
   useEffect(() => {
     if (!event?.countdown_target) return;
@@ -69,30 +66,6 @@ const UpcomingEvent = () => {
     const timer = setInterval(updateCountdown, 1000);
     return () => clearInterval(timer);
   }, [event]);
-
-  // Decrypt Animation
-  useEffect(() => {
-    if (!fullText) return;
-    let iterations = 0;
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const interval = setInterval(() => {
-      setDecryptedText(() =>
-        fullText
-          .split("")
-          .map((char, i) => {
-            if (i < iterations) return fullText[i];
-            if (char === " ") return " ";
-            return possible[Math.floor(Math.random() * possible.length)];
-          })
-          .join("")
-      );
-
-      if (iterations >= fullText.length) clearInterval(interval);
-      iterations += 0.5;
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [fullText]);
 
   // Flip Digit
   const FlipUnit = ({ value, label }: { value: number; label: string }) => {
@@ -153,7 +126,7 @@ const UpcomingEvent = () => {
               </h2>
               <Link to={event.id}>
                 <h2 className="text-3xl shine-text line-clamp-2 text-left mb-5">
-                  {decryptedText}
+                  {event.title}
                 </h2>
               </Link>
             </FadeIn>
