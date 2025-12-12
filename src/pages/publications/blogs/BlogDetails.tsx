@@ -30,7 +30,6 @@ interface BlogsData {
 }
 
 export default function BlogPage() {
-
   const { id } = useParams();
 
   const { loading, data, error } = useFetchDataAPI<BlogsData>({
@@ -51,18 +50,28 @@ export default function BlogPage() {
       </div>
     );
 
-  const { title, date, description, recentNews, recentBlogs, category, ieeeId, writer, publishedFrom } = data;
+  const {
+    title,
+    date,
+    description,
+    recentNews,
+    recentBlogs,
+    category,
+    ieeeId,
+    writer,
+    publishedFrom,
+  } = data;
 
   return (
     <>
       <Wave title={title} />
       <div className="min-h-screen bg-white text-gray-900">
-        {/* Header placeholder */}
-        <header className="w-full">{/* <Header /> */}</header>
+        <header className="w-full"></header>
 
         <main className="flex justify-center px-4 py-8">
           <div className="w-full max-w-[1080px]">
             <div className="grid lg:grid-cols-[3.1fr_5px_1fr] gap-6">
+              
               {/* LEFT CONTENT */}
               <article className="prose max-w-none">
                 <div className="overflow-hidden rounded-xs">
@@ -77,6 +86,7 @@ export default function BlogPage() {
                   {title}
                 </h1>
 
+                {/* DATE */}
                 <div className="flex items-center text-md font-medium text-gray-700">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -91,17 +101,31 @@ export default function BlogPage() {
                   </svg>
                   <span>{date}</span>
                 </div>
-                <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                  <BiCategory className="w-4 h-4"/>
-                  <p> Category : </p>
-                  <span> {category}</span>
-                </div>
-                <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                    <p>Writer : {writer} - {ieeeId}</p>
-                </div>
-                <div className="flex items-center text-md mt-2 font-medium text-gray-700">
-                    <p>Published From : {publishedFrom}</p>
-                </div>
+
+                {category && category.toLowerCase() !== "none" && (
+                  <div className="flex items-center text-md mt-2 font-medium text-gray-700">
+                    <BiCategory className="w-4 h-4" />
+                    <p> Category : </p>
+                    <span> {category}</span>
+                  </div>
+                )}
+
+                {(writer && writer.toLowerCase() !== "none") ? (
+                  <div className="flex items-center text-md mt-2 font-medium text-gray-700">
+                    <p>
+                      Writer :
+                      {writer && writer.toLowerCase() !== "none" && ` ${writer}`}
+                      {ieeeId && ieeeId.toLowerCase() !== "none" && ` - ${ieeeId}`}
+                    </p>
+                  </div>
+                ) : null}
+
+                {publishedFrom &&
+                  publishedFrom.toLowerCase() !== "none" && (
+                    <div className="flex items-center text-md mt-2 font-medium text-gray-700">
+                      <p>Published From : {publishedFrom}</p>
+                    </div>
+                  )}
 
                 <hr className="my-4 border-t border-gray-300" />
 
@@ -143,7 +167,7 @@ export default function BlogPage() {
                       </a>
                       <a
                         href={`/news/${index + 1}`}
-                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
+                        className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3 text-center line-clamp-1"
                       >
                         {i.title}
                       </a>
@@ -158,6 +182,7 @@ export default function BlogPage() {
 
               {/* VERTICAL LINE */}
               <div className="hidden lg:block border-l border-gray-300 relative left-1" />
+
               {/* RIGHT SIDEBAR */}
               <aside className="pt-2">
                 <div className="mb-2 text-lg font-normal text-gray-500">

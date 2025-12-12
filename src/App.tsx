@@ -39,7 +39,7 @@ import Profile from "./pages/members/profile/Page";
 import AboutIEEE from "./pages/about/ieee/Page";
 import AboutIEEER10 from "./pages/about/ieee-region-10/Page";
 import AboutIEEEBDS from "./pages/about/ieee-bds-section/Page";
-import FAQPage from "./pages/about/faq";
+import FAQPage from "./pages/about/faq/faq";
 
 //Publications
 import Blogs from "./pages/publications/blogs/Page";
@@ -108,16 +108,16 @@ const App = () => {
           <Route path="/officers/:id" element={<Officers />} />
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="/team/:id" element={<TeamPage />} />
-          <Route path="/exemplary-members" element={<Exemplary/>}/>
+          <Route path="/exemplary-members" element={<Exemplary />} />
           <Route path="/member-profile/:id" element={<Profile />} />
           <Route path="/all-members" element={<AllMembers />} />
 
           {/* About */}
           <Route path="/ieee" element={<AboutIEEE />} />
           <Route path="/ieee-region-10" element={<AboutIEEER10 />} />
-          <Route path="/ieee-bangladesh-section" element={<AboutIEEEBDS/>} />
+          <Route path="/ieee-bangladesh-section" element={<AboutIEEEBDS />} />
           {/* <Route path="/ieee-nsu-student-branch" element={<AboutIeeeNsuSb/>} /> */}
-          <Route path="/FAQ" element={<FAQPage />} />
+          <Route path="/faq" element={<FAQPage />} />
 
           {/* Publications */}
           <Route path="/research-papers" element={<ResearchPapers />} />
@@ -131,7 +131,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
 
           {/* Get Involved */}
-          <Route path="/join" element={<JoinINSB/>}/>
+          <Route path="/join" element={<JoinINSB />} />
           <Route path="/write-blog" element={<WriteBlog />} />
           <Route path="/research" element={<AddResearchPaper />} />
         </Route>

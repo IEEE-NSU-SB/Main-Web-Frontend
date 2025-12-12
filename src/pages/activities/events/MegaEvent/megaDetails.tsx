@@ -145,8 +145,10 @@ export default function MegaPage() {
                     </div>
                   </div>
                 </div> */}
+                {organisedEvents && organisedEvents.length > 0 &&
                 <hr className="my-6 border-t border-gray-300" />
-
+                }
+                {organisedEvents && organisedEvents.length > 0 &&
                 <div className="mb-4 text-sm font-semibold text-[#002855] flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -155,11 +157,12 @@ export default function MegaPage() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2}
-                  >
+                    >
                     <path d="M13 7l5 5-5 5M6 7l5 5-5 5" />
                   </svg>
                   <span>YOU MIGHT ALSO LIKE</span>
                 </div>
+                }
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {organisedEvents.map((i, index) => (
@@ -185,7 +188,7 @@ export default function MegaPage() {
                       </a>
                       <p className="mt-2 text-sm text-gray-700 flex items-center gap-2">
                         <Clock className="w-4 h-4" />
-                        <span>{i.date}</span>
+                        <span>{new Date(i.date).toISOString().split("T")[0]}</span>
                       </p>
                     </div>
                   ))}
