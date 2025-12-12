@@ -42,35 +42,57 @@ export default function Members({ members }: MembersProps) {
       {/* Modal */}
       {selectedMember && (
         <div
-          className="fixed inset-0 z-51 bg-black/60 flex items-center justify-center backdrop-blur-sm"
+          className="fixed inset-0 z-51 bg-black/60 flex items-center justify-center backdrop-blur-sm 
+                    animate-fadeIn"
           onClick={() => setSelectedMember(null)}
         >
           <div
-            className="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[80vh]"
+            className="bg-white w-full max-w-2xl py-6 px-10 rounded-lg shadow-lg overflow-y-auto max-h-[80vh] 
+                      animate-scaleIn relative"
             onClick={(e) => e.stopPropagation()}
-            >
+          >
             <style>
-                {`
+              {`
+                @keyframes fadeIn {
+                  from { opacity: 0; }
+                  to { opacity: 1; }
+                }
+                .animate-fadeIn {
+                  animation: fadeIn 0.3s ease;
+                }
+
+                @keyframes scaleIn {
+                  from { opacity: 0; transform: scale(0.95); }
+                  to { opacity: 1; transform: scale(1); }
+                }
+                .animate-scaleIn {
+                  animation: scaleIn 0.25s ease;
+                }
+
                 ul {
                   list-style: unset;
                 }
               `}
             </style>
+
+            <button
+              onClick={() => setSelectedMember(null)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 
+                        bg-gray-200 hover:bg-gray-300 rounded-full w-9 h-9 
+                        flex items-center justify-center shadow-sm transition
+                        hover:cursor-pointer"
+            >
+              <span className="text-xl font-bold">&times;</span>
+            </button>
+
             <h2 className="text-2xl font-bold text-[#002855] mb-4 text-center">
               {selectedMember.member_name}'s Achievements
             </h2>
+
             <div
               className="leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: selectedMember.achievements }}/>
-
-            <div className="text-center mt-6">
-              <button
-                className="px-5 py-2 bg-[#002855] text-white rounded-md hover:bg-[#001A3C] transition"
-                onClick={() => setSelectedMember(null)}
-              >
-                Close
-              </button>
-            </div>
+              dangerouslySetInnerHTML={{ __html: selectedMember.achievements }}
+            />
           </div>
         </div>
       )}
