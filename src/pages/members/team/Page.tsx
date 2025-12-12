@@ -76,11 +76,13 @@ const TeamPage = () => {
           <img
             src={data.team.img}
             alt={data.team.title}
-            className="h-auto object-cover rounded-full border-4 border-gray-200 shadow-md"
+            className="h-150 object-cover rounded-3xl md:my-10 shadow-md"
           />
         )}
+      </div>
+      <div className="bg-ieee-darkblue">
         {data.team.details && (
-          <p className="text-gray-700 text-lg text-left" dangerouslySetInnerHTML={{ __html: data.team.details }}></p>
+          <p className="max-w-[1050px] text-white text-lg p-10 m-auto" dangerouslySetInnerHTML={{ __html: data.team.details }}></p>
         )}
       </div>
 
