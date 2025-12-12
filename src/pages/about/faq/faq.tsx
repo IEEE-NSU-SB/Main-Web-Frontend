@@ -18,7 +18,7 @@ const faqData: Category[] = [
     title: "About IEEE",
     qas: [
       { question: "What is IEEE ?", answer: "IEEE stands for Institute of Electrical and Electronics Engineers. It is a professional association for electronic engineering and electrical engineering. IEEE is currently the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity.It was formed in 1963 from the combination of the American Institute of Electrical Engineers and the Institute of Radio Engineers.Due to its expansion of scope into so many related fields, it is simply referred to by the letters I-E-E-E (pronounced I-triple-E).Its objectives are the educational and technical advancement of electrical and electronic engineering, telecommunications, computer engineering and allied disciplines." },
-      { question: "Vision and mission of IEEE", answer: "IEEE from its inception has worked with a vision to leverage science, technology and engineering to benefit human welfare by promoting public awareness and understanding of the engineering profession, worked to promote a culture of respect for the employee and volunteer, valuing contributions at all levels of the organization, investing in training and development to enhance capabilities, empowering individuals to make a positive difference, and building a membership organization based on a strong volunteer-staff partnership to serve the profession.<br><br>IEEE has now become a trusted and unbiased source of technical information, and forums, for technical dialog and collaboration.<br><br>IEEE is now essential to the global technical community and to technical professionals everywhere, and is universally recognized for the contributions of technology and of technical professionals in improving global conditions"},
+      { question: "Vision and mission of IEEE", answer: "IEEE from its inception has worked with a vision to leverage science, technology and engineering to benefit human welfare by promoting public awareness and understanding of the engineering profession, worked to promote a culture of respect for the employee and volunteer, valuing contributions at all levels of the organization, investing in training and development to enhance capabilities, empowering individuals to make a positive difference, and building a membership organization based on a strong volunteer-staff partnership to serve the profession.<br><br>IEEE has now become a trusted and unbiased source of technical information, and forums, for technical dialog and collaboration.<br><br>IEEE is now essential to the global technical community and to technical professionals everywhere, and is universally recognized for the contributions of technology and of technical professionals in improving global conditions" },
       { question: "Globalization of IEEE", answer: "In this digital world as globalization emerged technologies and the industries that developed them increasingly transcended national boundaries, IEEE has kept pace. It is now a global institution that uses the innovations of the practitioners it represents to enhance IEEE’s excellence in delivering products and services to members, industries, and the public at large. Publications and educational programs are delivered online, as are member services such as renewal and elections.<br><br>By 2010, IEEE comprised over 395,000 members in 160 countries. Through its global network of geographical units, publications, web services, and conferences, IEEE remain the world's largest technical professional association." },
       { question: "Advantages and resources of IEEE", answer: "IEEE delivers access to the industry's most essential technical information, networking opportunities, career development tools, and many other exclusive benefits to its members.Members of IEEE have access to new resources, valuable opportunities, discounts and value added member exclusive benefits and services that will help you advance your career. IEEE delivers access to the industry's most essential technical information, networking opportunities and career development tools.Some of the benefits members receive include:<br><br><ul ><li>IEEE Spectrum Magazine subscription</li><li>IEEE Collabratec</li><li>IEEE Technical Navigator</li><li>IEEE Xplore Digital Library discounts</li><li>IEEE Mentoring Program</li><li>IEEE Jobsite</li><li>IEEE Learning Network</li></ul>" },
     ],
@@ -83,11 +83,10 @@ const FAQPage = () => {
               >
                 {faqData[activeCategory].title}
                 <span
-                  className={`transform transition-transform duration-300 ${
-                    isDropdownOpen ? "rotate-180" : "rotate-0"
-                  }`}
+                  className={`transform transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : "rotate-0"
+                    }`}
                 >
-                  
+
                 </span>
               </button>
 
@@ -101,11 +100,10 @@ const FAQPage = () => {
                         setIsDropdownOpen(false);
                         setOpenQuestion(null);
                       }}
-                      className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors ${
-                        activeCategory === index
+                      className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors ${activeCategory === index
                           ? "bg-[#002855] text-[#FFD100]"
                           : "hover:bg-[#E6F0FB] text-[#002855]"
-                      }`}
+                        }`}
                     >
                       {category.title}
                     </button>
@@ -122,11 +120,10 @@ const FAQPage = () => {
                       setActiveCategory(index);
                       setOpenQuestion(null);
                     }}
-                    className={`w-full text-left px-4 py-2 rounded-md border transition-all duration-300 cursor-pointer ${
-                      activeCategory === index
+                    className={`w-full text-left px-4 py-2 rounded-md border transition-all duration-300 cursor-pointer ${activeCategory === index
                         ? "bg-[#002855] text-[#FFD100]"
                         : "bg-white hover:bg-[#002855] hover:text-[#FFD100] text-black"
-                    }`}
+                      }`}
                   >
                     {category.title}
                   </button>
@@ -148,13 +145,12 @@ const FAQPage = () => {
                     </span>
                   </button>
                   <div
-                    className={`px-5 text-[#002855] transition-all duration-500 ease-in-out ieee-scrollbar ${
-                      openQuestion === i
+                    className={`px-5 text-[#002855] transition-all duration-500 ease-in-out ieee-scrollbar ${openQuestion === i
                         ? "max-h-43 py-3 overflow-y-scroll"
                         : "max-h-0 overflow-hidden"
-                    }`}
+                      }`}
                   >
-                    <p className="text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: qa.answer }}/>
+                    <p className="text-sm sm:text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: qa.answer }} />
                   </div>
                 </div>
               ))}
