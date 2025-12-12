@@ -1,0 +1,114 @@
+{
+    "aboutDetails": "IEEE NSU Student Branch is an esteemed subunit of IEEE, the largest technical professional association, that strives to build camaraderie and a sense of higher purpose amongst the students in all aspects of engineering and science fields. IEEE NSU SB serves its members with knowledge and skills besides making all resources, benefits and facilities available from IEEE, accessible. Established in 2007, IEEE NSU SB is North South University’s first internationally recognized student organization for engineers and enthusiasts. Paving the way for a successful career, promoting technological reformations and providing the correct exposure for the growth of one’s professional network, it has not only benefited its members academically but has also done so socially. Communication, management and leadership skills are enhanced through participation in the volunteering activities at this student branch. Earn skills like content writing, social media management, graphic design, user interface design and web development here, at IEEE NSU SB!",
+    "aboutImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE_NSU_Student_Branch/About_Image/INSB.png",
+    "chaptersDetails": "IEEE NSU Student Branch has three societies and one Affinity Group. They are- IEEE Power and Energy Society (PES), IEEE Industry Applications Society (IAS), IEEE Robotics and Automation Society (RAS), and Women in Engineering Affinity Group (WIE). These branches provide the members a range of options and a better understanding of their fields of interest.",
+    "chaptersImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Community_Image/branches-1024x638.jpeg",
+    "chaptersLinks": [
+        {
+            "title": "IEEE NSU RAS SBC",
+            "link": "/ieee-nsu-ras-sbc/",
+            "image": "https://api.ieeensusb.org//media_files/main_website_files/About/IEEE_NSU_Student_Branch/RAS_Image/Ras-1.png"
+        },
+        {
+            "title": "IEEE NSU PES SBC",
+            "link": "/ieee-nsu-pes-sbc/",
+            "image": "https://api.ieeensusb.org//media_files/main_website_files/About/IEEE_NSU_Student_Branch/PES_Image/PES-1.png"
+        },
+        {
+            "title": "IEEE NSU IAS SBC",
+            "link": "/ieee-nsu-ias-sbc/",
+            "image": "https://api.ieeensusb.org//media_files/main_website_files/About/IEEE_NSU_Student_Branch/IAS_Image/ias-1.png"
+        },
+        {
+            "title": "IEEE NSU WIE AG",
+            "link": "/ieee-nsu-wie-ag/",
+            "image": "https://api.ieeensusb.org//media_files/main_website_files/About/IEEE_NSU_Student_Branch/WIE_Image/WIE.png"
+        }
+    ],
+    "creativeDetails": "The governing body that leads this booming student branch with triumphant experts includes the Branch Counselor, Branch Mentor, Chair, Vice Chair, Secretary, Treasurer, the Chairs of the student chapters and the affinity group. They assist and conduct all the activities of IEEE NSU SB along with the in-charges and core volunteers. Immaculate hard work and proficiency is endowed by the leaders who direct and organize the events, carry out the administrative duties related to the Student Branch, communicate with IEEE, hold recruitment events and ensure that members reap the benefits. They ensure that the missions of IEEE NSU SB are accomplished as the members actively participate in national and global competitions, and proudly represent NSU. Not only do the seniors help the students in matters related to IEEE, but they also do so for other aspects of their university lives, which only adds to the benefits of joining IEEE NSU SB.",
+    "collaborationDetails": "In the Institute of Electrical and Electronics Engineers (IEEE), there are endless opportunities to grow but you must have to find your own field to stand high. Collaborating with many international technology professionals and verified IEEE members from different countries, anyone can establish their professional identity. IEEE is always in the first position for expanding professional network with current contact, finding easy communication or conversation with technical experts, shorting out any kind of queries about any technical, geographic locations, IEEE membership grades etc by creating a lot of international and internal communities, meetings and seminars",
+    "collaborationLinks": [
+        {
+            "title": "Collaborate with IEEE",
+            "link": "https://collabratec.ieee.org/"
+        }
+    ],
+    "publicationsDetails": "IEEE Publications are highly cited in US and European patents and IEEE journals continue to maintain rankings at the top of their fields. It provides a wide range  of quality publications that make the exchange of technical knowledge and information possible among technology professionals.",
+    "publicationsLinks": [
+        {
+            "title": "IEEE Xplore",
+            "link": "https://ieeexplore.ieee.org/"
+        },
+        {
+            "title": "IEEE Spectrum",
+            "link": "https://spectrum.ieee.org/"
+        }
+    ],
+    "eventsConferencesDetails": "Institute of Electrical and Electronics Engineers (IEEE) Meetings, events  and Conferences is a dedicated partner made up of event industry experts driven to shape innovative and high quality events. These are organized by the professionals and very well designed with full of information",
+    "eventsConferencesLinks": [
+        {
+            "title": "IEEE Conferences",
+            "link": "https://conferences.ieee.org/"
+        },
+        {
+            "title": "Upcoming Events",
+            "link": "https://www.ieee.org/conferences-events/"
+        }
+    ],
+    "achievementsDetails": "Out of the many incredible achievements of IEEE NSU SB, being awarded the “Best Exemplary Student Branch” in Region 10 for two consecutive years is laudable. In 2009, IEEE NSU SB was honored by its well deserved accolade of “The Best Student Branch” in the IEEE Bangladesh Section. First Positions in the IEEE R10 Web Contest in 2018, in the global IEEE Day Contests in 2017, in the Long Video Contest and the second position in the Photo Contest (Technical Category) are other praiseworthy accomplishments. IEEE NSU SB has earned international recognition, succeeded in providing its members with professional satisfaction and prestige in the form of awards, certificates and other prizes. These achievements serve as meritorious additions to one’s resume, further heightening the chances of turning work potential into employment in the future.",
+    "achievementsLinks": [
+        {
+            "title": "IEEE Awards and Recognitions",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE Awards and Recognitions",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE Awards and Recognitions",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE Awards and Recognitions",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "IEEE Awards and Recognitions",
+            "link": "https://www.ieee.org/about/awards/index.html",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        },
+        {
+            "title": "Innovative Engineering Projects",
+            "link": "#",
+            "image": "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"
+        }
+    ],
+    "innovationsDevelopmentsDetails": "Institute of Electrical and Electronics Engineers (IEEE) development is not a quick process and this focuses on consensus, due process, openness, right to appeal and balance. It takes time to develop from all sides. Now there is a mobile app(IEEE) of IEEE  which is great. Here is some important innovations and developments link",
+    "innovationsDevelopmentsImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Innovation_Development_Image/IEEE_Innovation.jpeg",
+    "innovationsDevelopmentsLinks": [
+        {
+            "title": "IEEE Innovation Initiatives",
+            "link": "https://innovation.ieee.org/"
+        }
+    ],
+    "studentsAndMemberActivitiesDetails": "Student Activities Committee (SAC) is the Institute of Electrical and Electronics Engineers (IEEE) committee responsible for student programs and benefits, and making recommendations to the Member and Geographic Activities (MGA) board. There are over 100,000 IEEE Student and Graduate Student members worldwide. The volunteer members provide important viewpoints and information, and represent the voice of the world wide communication.",
+    "studentsAndMemberActivitiesImage": "https://api.ieeensusb.org/media_files/main_website_files/About/IEEE/Student_Member_Activity_Image/illustrated-character-4.png",
+    "studentsAndMemberActivitiesLinks": [
+        {
+            "title": "Student Activities",
+            "link": "https://students.ieee.org/"
+        }
+    ],
+    "eventsDetails": "IEEE NSU Student Branch arranges different superlative events such as workshops, industrial tours, seminars and competitions that aid members to amplify their knowledge, acquire lots of skills and experiences. International and local events provide an insight into the technological and scientific advancements in the relative fields and the members gain extensive knowledge and profound experiences that benefit them in the long run. Out of the numerous events arranged by IEEE NSU SB, one example is the  Student Competition IEEE Xtreme which boosts expertise and allows the participants to earn accolades. IEEE NSU SB offers free webinars for its members.",
+    "eventsLinks": [
+        {
+            "link": "/events/"
+        }
+    ],
+    "joinUsLink": "https://www.ieee.org/join"
+}

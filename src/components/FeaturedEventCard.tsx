@@ -79,7 +79,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
           ))}
         </div>
       </FadeIn>
-      <div className="text-center flex justify-center my-16">
+      {/* <div className="text-center flex justify-center my-16">
         <Link to="/events">
           <button
             className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px] "
@@ -100,7 +100,7 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({
             <Calendar className="w-4 h-4" /> See Our Events
           </button>
         </Link>
-      </div>
+      </div> */}
     </>
   );
 };
