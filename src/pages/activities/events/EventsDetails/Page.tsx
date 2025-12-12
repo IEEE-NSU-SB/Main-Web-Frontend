@@ -22,7 +22,12 @@ const EventDetailsPages = () => {
       <Wave title={data?.title || "Loading..."} />
 
       {loading ? (
-        <Skeleton className="h-96 w-full" />
+          <><div className="flex justify-center items-center min-h-[500px]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-600 font-medium">Loading event...</p>
+        </div>
+      </div></>
       ) : error ? (
         <ErrorMessage message="Failed to load event" onRetry={refetch} />
       ) : (

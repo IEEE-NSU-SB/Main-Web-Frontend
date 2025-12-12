@@ -53,7 +53,15 @@ const Officer = () => {
   };
 
   if (panelError) return <p className="text-center mt-10 text-red-500">{panelError}</p>;
-  if (!panelData?.length) return <p className="text-center mt-10 text-gray-500">No data found.</p>;
+  if (!panelData?.length) return <>
+        <Wave title="Loading.." />
+        <div className="flex justify-center items-center min-h-[500px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-600 font-medium">Loading officers...</p>
+          </div>
+        </div>
+      </>;
 
   // Filter Officers vs Incharges
   const filteredOfficers = panelData.filter(officer =>
@@ -66,9 +74,15 @@ const Officer = () => {
   return (
     <>
         {panelLoading && (
-        <div className="min-h-screen">
-          <Wave title="Loading Officers..."/>
+                <>
+        <Wave title="Loading.." />
+        <div className="flex justify-center items-center min-h-[500px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-600 font-medium">Loading panel...</p>
+          </div>
         </div>
+      </>
       )}
       <Wave title="Officer Panel of IEEE NSU SB" />
 

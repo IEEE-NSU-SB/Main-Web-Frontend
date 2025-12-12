@@ -28,6 +28,8 @@ const Executive: React.FC<ExecutiveProps> = ({
   const defaultImage = "/src/assets/dummy/placeholder.png";
 
   const MemberCard = ({ member }: { member: Member }) => (
+    
+    
     <FadeIn>
       <div
         className="w-[235px] bg-white rounded-xl border text-center pt-4 pb-10 shadow-[4px_4px_10px_var(--color-ieee-black-25)] transition-all duration-300 relative"

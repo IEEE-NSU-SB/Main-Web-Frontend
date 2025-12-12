@@ -12,7 +12,18 @@ const MemberProfile: React.FC = () => {
   const { loading, data, error } = useFetchDataAPI<any>({
     apiUrl: `main_website/get_member_details/${id}/`,
   });
-
+  if (loading)
+    return (
+      <>
+        <Wave title="Loading..." />
+        <div className="flex justify-center items-center min-h-[500px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-600 font-medium">Loading profile...</p>
+          </div>
+        </div>
+      </>
+    );
   if (!loading && !error) {
     return (
       <>
@@ -26,7 +37,9 @@ const MemberProfile: React.FC = () => {
                 <img
                   className="w-full h-full hover:scale-105 object-cover transition-all duration-300 cursor-pointer"
                   src={
-                    !data.image || data.image === "" ? DEFAULT_IMAGE : data.image
+                    !data.image || data.image === ""
+                      ? DEFAULT_IMAGE
+                      : data.image
                   }
                   alt={data.name}
                 />
@@ -106,12 +119,11 @@ const MemberProfile: React.FC = () => {
                 NSU Mail: {data.nsuEmail}
               </p>
 
-              {data.bloodGroup &&
-                data.bloodGroup.toLowerCase() !== "none" && (
-                  <p className="text-[16px] text-gray-700">
-                    Blood Group: {data.bloodGroup}
-                  </p>
-                )}
+              {data.bloodGroup && data.bloodGroup.toLowerCase() !== "none" && (
+                <p className="text-[16px] text-gray-700">
+                  Blood Group: {data.bloodGroup}
+                </p>
+              )}
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">

@@ -46,7 +46,15 @@ const TeamPage = () => {
 
   if (loading)
     return (
-      <div className="text-center py-10 text-gray-500">Loading team...</div>
+      <>
+              <Wave title="Loading.." />
+              <div className="flex justify-center items-center min-h-[500px]">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                  <p className="text-gray-600 font-medium">Loading team...</p>
+                </div>
+              </div>
+            </>
     );
   if (error)
     return <div className="text-center text-red-500">Error: {error}</div>;
