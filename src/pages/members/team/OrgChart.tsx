@@ -22,6 +22,28 @@ const DEFAULT_IMAGE = "/default_profile_picture.png";
 const BACKEND_DEFAULT =
   "https://api.ieeensusb.org/static/images/default_profile_picture.png";
 
+// Downward Arrow Component
+// const DownwardArrow = () => (
+//   <div className="flex justify-center my-2">
+//     <svg
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       className="text-[#002855]"
+//     >
+//       <path
+//         d="M12 4V20M12 20L6 14M12 20L18 14"
+//         stroke="currentColor"
+//         strokeWidth="2.5"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//       />
+//     </svg>
+//   </div>
+// );
+
 const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -34,6 +56,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
 
   // Member Card Component
   const MemberCard = ({ member }: { member: Member }) => (
@@ -56,12 +79,12 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
               />
             </div>
           </div>
-          <div className="absolute inset-0 rounded-full border-2 border-ieee-yellow opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-125 transition-all duration-300"></div>
+          <div className="absolute  inset-0 rounded-full border-2 border-ieee-yellow opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-125 transition-all duration-300"></div>
         </div>
 
         {/* Name and Position */}
-        <div className="mt-2 md:mt-3 bg-gradient-to-b from-ieee-darkblue to-[#0a1929] px-3 py-1.5 md:px-4 md:py-2 rounded-xl shadow-md border border-ieee-blue/30 group-hover:border-ieee-yellow/50 transition-all duration-300 min-w-[160px] md:min-w-[180px] max-w-[180px] md:max-w-[200px]">
-          <p className="font-bold text-xs md:text-xs text-ieee-white text-center leading-tight mb-1">
+        <div className="mt-2 md:mt-3 bg-gradient-to-b from-ieee-blue to-ieee-darkblue px-3 py-1.5 md:px-4 md:py-2 rounded-xl shadow-md border border-ieee-blue/30 group-hover:border-ieee-yellow/50 transition-all duration-300 min-w-[160px] md:min-w-[180px] max-w-[180px] md:max-w-[200px]">
+          <p className="font-bold text-xs md:text-xs text-ieee-white text-center leading-tight mb-1 line-clamp-1">
             {member.name}
           </p>
           <p className="text-[10px] md:text-[10px] text-ieee-yellow text-center font-medium uppercase tracking-wide">
@@ -103,38 +126,66 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
         return;
       }
 
-      const memberDivs = Array.from(
-        containerRef.current.querySelectorAll(".member-container")
-      ) as HTMLElement[];
+      const updateLines = () => {
+        if (!containerRef.current) return;
 
-      if (memberDivs.length === 0) return;
+        const memberDivs = Array.from(
+          containerRef.current.querySelectorAll(".member-container")
+        ) as HTMLElement[];
 
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const firstMember = memberDivs[0].getBoundingClientRect();
-      const lastMember =
-        memberDivs[memberDivs.length - 1].getBoundingClientRect();
+        if (memberDivs.length === 0) return;
 
-      // Calculate center points of first and last members
-      const leftPoint =
-        firstMember.left + firstMember.width / 2 - containerRect.left;
-      const rightPoint =
-        lastMember.left + lastMember.width / 2 - containerRect.left;
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const firstMember = memberDivs[0].getBoundingClientRect();
+        const lastMember =
+          memberDivs[memberDivs.length - 1].getBoundingClientRect();
 
-      // Top horizontal line
-      if (showTopLine) {
-        setTopHorizontalLine({
-          left: leftPoint,
-          width: rightPoint - leftPoint,
-        });
+        // Calculate center points of first and last members relative to container
+        const leftPoint =
+          firstMember.left + firstMember.width / 2 - containerRect.left;
+        const rightPoint =
+          lastMember.left + lastMember.width / 2 - containerRect.left;
+
+        // Top horizontal line
+        if (showTopLine) {
+          setTopHorizontalLine({
+            left: leftPoint,
+            width: rightPoint - leftPoint,
+          });
+        }
+
+        // Bottom horizontal line
+        if (showBottomLine) {
+          setBottomHorizontalLine({
+            left: leftPoint,
+            width: rightPoint - leftPoint,
+          });
+        }
+      };
+
+      // Initial calculation
+      updateLines();
+
+      // Add resize observer for better responsiveness
+      const resizeObserver = new ResizeObserver(() => {
+        updateLines();
+      });
+
+      if (containerRef.current) {
+        resizeObserver.observe(containerRef.current);
       }
 
-      // Bottom horizontal line
-      if (showBottomLine) {
-        setBottomHorizontalLine({
-          left: leftPoint,
-          width: rightPoint - leftPoint,
-        });
-      }
+      // Also listen to window resize
+      window.addEventListener("resize", updateLines);
+
+      // Add scroll listener to recalculate on scroll (for zoom changes)
+      window.addEventListener("scroll", updateLines);
+
+      return () => {
+        resizeObserver.disconnect();
+        window.removeEventListener("resize", updateLines);
+        window.removeEventListener("scroll", updateLines);
+      };
     }, [members.length, showTopLine, showBottomLine, isMobile]);
 
     return (
@@ -165,13 +216,33 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
               className="member-container flex flex-col items-center"
             >
               {!isMobile && showTopLine && (
-                <div className="w-[2px] h-12 bg-[#002855] mb-0"></div>
+                <div className="flex flex-col items-center h-12 mb-0">
+                  <div className="w-[2px] flex-1 bg-[#002855]"></div>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-[#002855] -mt-1"
+                  >
+                    <path
+                      d="M12 4V20M12 20L6 14M12 20L18 14"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
               )}
 
               <MemberCard member={member} />
 
               {!isMobile && showBottomLine && (
-                <div className="w-[2px] h-12 bg-[#002855] mt-0"></div>
+                <div className="flex flex-col items-center h-12 mt-0">
+                  <div className="w-[2px] flex-1 bg-[#002855]"></div>
+                </div>
               )}
             </div>
           ))}
@@ -266,8 +337,8 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
                     <div className="absolute inset-0 rounded-full border-2 border-ieee-yellow opacity-0 group-hover:opacity-100 scale-110 group-hover:scale-125 transition-all duration-300"></div>
                   </div>
 
-                  <div className="bg-gradient-to-b from-ieee-darkblue to-[#0a1929] px-3 py-2 rounded-lg shadow-md border border-ieee-blue/30 group-hover:border-ieee-yellow/50 transition-all duration-300 w-full">
-                    <p className="font-semibold text-xs text-ieee-white text-center leading-tight mb-1">
+                  <div className="bg-gradient-to-b from-ieee-blue to-ieee-darkblue px-3 py-2 rounded-lg shadow-md border border-ieee-blue/30 group-hover:border-ieee-yellow/50 transition-all duration-300 w-full">
+                    <p className="font-semibold text-xs text-ieee-white text-center leading-tight mb-1 line-clamp-1">
                       {vol.name}
                     </p>
                     <p className="text-[10px] text-ieee-yellow text-center font-medium uppercase tracking-wide">
