@@ -105,7 +105,7 @@ const OnlineNews = () => {
                         .map((item) => (
                           <div
                             key={item.id}
-                            className="bg-ieee-gray/5 border border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300"
+                            className="bg-ieee-gray/5 border overflow-hidden border-ieee-white rounded-md hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300"
                           >
                             {/* Image */}
                             <div className="w-full h-48 overflow-hidden bg-gray-100">
