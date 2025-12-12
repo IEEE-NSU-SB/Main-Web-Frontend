@@ -3,6 +3,7 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 import FamilyTree from "./OrgChart";
 import Wave from "@/components/Wave";
 import React from "react";
+import bg from "../team/assets/img/service-bg.jpg"
 
 interface Member {
   id: string;
@@ -80,9 +81,11 @@ const TeamPage = () => {
           />
         )}
       </div>
-      <div className="bg-ieee-darkblue">
+      <div style={{
+        backgroundImage : `url("${bg}")`
+      }}>
         {data.team.details && (
-          <p className="max-w-[1050px] text-white text-lg p-10 m-auto" dangerouslySetInnerHTML={{ __html: data.team.details }}></p>
+          <p className="max-w-[1050px]  text-lg p-10 m-auto" dangerouslySetInnerHTML={{ __html: data.team.details }}></p>
         )}
       </div>
 
