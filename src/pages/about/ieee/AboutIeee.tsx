@@ -63,7 +63,7 @@ export default function AboutIEEE() {
   return (
     <div className="">
       {/* About Section */}
-      <div className="max-w-[1080px] m-auto flex flex-col md:flex-row gap-6 items-center mb-16">
+      <div className="max-w-[1045px] m-auto flex flex-col md:flex-row gap-6 items-center mb-16">
         <img
           src={data.aboutImage}
           alt="About IEEE"

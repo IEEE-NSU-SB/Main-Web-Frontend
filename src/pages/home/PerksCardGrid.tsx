@@ -27,79 +27,41 @@ export default function PerksCardGrid() {
         setLoading(true);
         setError(null);
 
-        // const perksData: Perk[] = [
-        //   {
-        //     title: "LEARNING",
-        //     description:
-        //       "We immerse ourselves in learning about appearing technologies traversing diverse fields such as electronics, programming, robotics and more. Concurrently, we confront various research endeavors to foster improvement and innovation.",
-        //     icon: iconLearning,
-        //   },
-        //   {
-        //     title: "NETWORKING",
-        //     description:
-        //       "Being an IEEE NSU SB member offers more than just networking possibilities and exposure for advancing your professional career. It also helps you to connect with various individuals and make friends.",
-        //     icon: iconNetworking,
-        //   },
-        //   {
-        //     title: "COMPETITIONS",
-        //     description:
-        //       "Engage in the numerous beneficial contests organized and accessible to students by IEEE NSU SB, extending your expertise and experience to boost your CV.",
-        //     icon: iconCompetitions,
-        //   },
-        //   {
-        //     title: "SKILL BUILDING",
-        //     description:
-        //       "Develop new skills and refine existing ones across a broad spectrum of options, including content writing, social media management, graphic design, user interface design, and web development.",
-        //     icon: iconSkillBuilding,
-        //   },
-        //   {
-        //     title: "EVENTS",
-        //     description:
-        //       "IEEE NSU SB organizes various workshops, industrial tours, seminars, and competitions, providing a prosperity of knowledge and practical experiences contributing to career development.",
-        //     icon: iconEvents,
-        //   },
-        //   {
-        //     title: "ACHIEVEMENTS",
-        //     description:
-        //       'From securing the "Best Exemplary Student Branch" award in Region 10 for two consecutive years to achieving first place in the IEEE R10 Web Contest, IEEE NSU SB has had numerous praiseworthy achievements, solidifying its position as one of the best IEEE student branches out there!',
-        //     icon: iconAchievements,
-        //   },
-        // ];
         const perksData: Perk[] = [
           {
             title: "LEARNING",
             description:
-              "We immerse ourselves in learning about appearing technologies traversing diverse fields such as electronics, programming, robotics and more. Concurrently, we confront various research endeavors to foster improvement and innovation. This empowers us to innovate, collaborate, and solve real-world challenges.",
+              "We immerse ourselves in emerging technologies across electronics, programming, robotics, and more. This empowers us to innovate, collaborate, and solve real-world challenges through continuous learning and research.",
             icon: iconLearning,
           },
           {
             title: "NETWORKING",
             description:
-              "Being an IEEE NSU member provides us with extensive opportunities to connect with like-minded individuals, industry professionals, and innovators across diverse domains, enabling collaboration, exchanging ideas, and expanding our professional network globally for future growth.",
+              "Connect with like-minded individuals, industry professionals, and innovators across diverse domains. Build meaningful relationships that expand your professional network and create opportunities for future growth.",
             icon: iconNetworking,
           },
           {
             title: "COMPETITIONS",
             description:
-              "Participating in various competitions challenges us to apply our knowledge creatively, think critically under pressure, and develop problem-solving skills, while also motivating innovation, fostering teamwork, and achieving excellence across technical and non-technical domains.",
+              "Challenge yourself to apply knowledge creatively and develop critical problem-solving skills under pressure. Compete in technical and non-technical domains while fostering teamwork and achieving excellence.",
             icon: iconCompetitions,
           },
           {
             title: "SKILL BUILDING",
             description:
-              "We continuously develop our skills in programming, electronics, robotics, and other emerging technologies, enhancing both theoretical understanding and practical application, while embracing lifelong learning and adapting to new challenges in an ever-evolving technological landscape.",
+              "Develop hands-on expertise in programming, electronics, robotics, and emerging technologies. Enhance both theoretical understanding and practical application through continuous learning and real-world projects.",
             icon: iconSkillBuilding,
           },
           {
             title: "EVENTS",
             description:
-              "Organizing and participating in events allows us to showcase knowledge, collaborate with peers, and engage the community, while fostering leadership, communication, and organizational skills, creating meaningful experiences that contribute to personal growth and collective success.",
+              "Organize and participate in events that showcase innovation and engage the community. Develop leadership, communication, and organizational skills while creating meaningful experiences for personal and collective growth.",
             icon: iconEvents,
           },
           {
             title: "ACHIEVEMENTS",
             description:
-              "Our achievements reflect dedication, perseverance, and innovation, highlighting successful projects, awards, and recognitions in various fields, while inspiring continuous improvement, fostering motivation, and setting high standards for future endeavors within and beyond the IEEE NSU community.",
+              "Our accomplishments reflect dedication and innovation across successful projects, awards, and recognitions. These achievements inspire continuous improvement and set high standards for future endeavors.",
             icon: iconAchievements,
           },
         ];
@@ -151,7 +113,7 @@ export default function PerksCardGrid() {
                   {item.title}
                 </h3>
               </div>
-              <p className="text-ieee-black/90 dark:text-gray-300 text-[16px] text-justify leading-relaxed">
+              <p className="text-ieee-black/90 dark:text-gray-300 text-[16px] text-center leading-relaxed">
                 {item.description}
               </p>
             </div>
