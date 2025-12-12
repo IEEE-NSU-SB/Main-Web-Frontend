@@ -34,5 +34,4 @@ const HomePage = () => {
     </>
   );
 };
-// for commit 
 export default HomePage;
