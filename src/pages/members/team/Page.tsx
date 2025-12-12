@@ -14,7 +14,7 @@ interface Member {
 interface TeamData {
   team: {
     title: string;
-    img: string;
+    img: string | null;
     details: string;
   };
   subExecutive: Member[];
@@ -27,13 +27,13 @@ const TeamPage = () => {
   const location = useLocation();
 
   // Detect team name from URL
-  const baseName =React.useMemo(() => {
+  const baseName = React.useMemo(() => {
     const path = location.pathname.toLowerCase();
     if (path.includes("content")) return "2";
     else if (path.includes("web")) return "8";
     else if (path.includes("event")) return "3";
     else if (path.includes("graphics")) return "10";
-    else if (path.includes("logistics")) return "4"; // add other teams similarly
+    else if (path.includes("logistics")) return "4";
     else if (path.includes("media")) return "9";
     else if (path.includes("public")) return "0";
     else if (path.includes("promotions")) return "5";
@@ -42,28 +42,49 @@ const TeamPage = () => {
     else return ""; // unknown
   }, [location.pathname]);
 
-  const { loading, data, error } = useFetchDataAPI<TeamData>({ apiUrl: `main_website/get_team_details/${baseName}/` });
+  const { loading, data, error } = useFetchDataAPI<TeamData>({
+    apiUrl: `main_website/get_team_details/${baseName}/`,
+  });
 
   if (loading)
     return (
       <>
-              <Wave title="Loading.." />
-              <div className="flex justify-center items-center min-h-[500px]">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-                  <p className="text-gray-600 font-medium">Loading team...</p>
-                </div>
-              </div>
-            </>
+        <Wave title="Loading..." />
+        <div className="flex justify-center items-center min-h-[500px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-600 font-medium">Loading team...</p>
+          </div>
+        </div>
+      </>
     );
+
   if (error)
     return <div className="text-center text-red-500">Error: {error}</div>;
+
   if (!data)
     return <div className="text-center text-gray-500">No data found</div>;
 
   return (
     <>
+      {/* Wave header */}
       <Wave title={data.team.title} subtitle="IEEE NSU Student Branch" />
+
+      {/* Team image & description */}
+      <div className="max-w-[1050px] mx-auto my-8 flex flex-col items-center gap-4 text-center px-4">
+        {data.team.img && (
+          <img
+            src={data.team.img}
+            alt={data.team.title}
+            className="h-auto object-cover rounded-full border-4 border-gray-200 shadow-md"
+          />
+        )}
+        {data.team.details && (
+          <p className="text-gray-700 text-lg text-left" dangerouslySetInnerHTML={{ __html: data.team.details }}></p>
+        )}
+      </div>
+
+      {/* Family tree / Org chart */}
       <div className="mb-8">
         <FamilyTree data={data} />
       </div>
