@@ -23,10 +23,26 @@ const Volunteer = () => {
     apiUrl: "main_website/get_volunteers/",
   });
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (loading) return <>
+          <Wave title="Loading.." />
+          <div className="flex justify-center items-center min-h-[500px]">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-gray-600 font-medium">Loading volunteers...</p>
+            </div>
+          </div>
+        </>;
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
   if (!data || data.length === 0)
-    return <p className="text-center mt-10 text-gray-500">No data found.</p>;
+    return <>
+            <Wave title="Loading.." />
+            <div className="flex justify-center items-center min-h-[500px]">
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-gray-600 font-medium">Loading volunteers...</p>
+              </div>
+            </div>
+          </>;
 
   // ✅ Split into Core vs Team volunteers
   const coreVolunteer = data.filter((v) => v.position === "Core-Volunteer");

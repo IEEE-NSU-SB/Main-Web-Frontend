@@ -1,5 +1,6 @@
 // EventTypeBarChart.tsx
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { useFetchDataAPI } from "@/hooks/fetchdata"; // adjust import path if needed
 
 type Category =
   | "Non Technical"
@@ -24,30 +25,95 @@ const colors: Record<Category, string> = {
   Administrative: "#00629B",
 };
 
-const eventCounts: Record<Category, number> = {
-  "Non Technical": 97,
-  Technical: 117,
-  Professional: 54,
-  Humanitarian: 7,
-  Administrative: 19,
+// API response shape
+type EventCountItem = { name: string; value: number };
+type YearlyEvents = { years: number[]; count: number[] };
+type EventsApiResponse = {
+  eventCounts: EventCountItem[];
+  yearlyEvents: YearlyEvents;
 };
 
-// Yearly totals (example data — edit as needed)
-const years = ["2021", "2022", "2023", "2024", "2025"];
-const yearlyCounts = [30, 29, 58, 53, 72];
-
 const EventTypeBarChart: React.FC = () => {
+  // If your hook expects a relative apiUrl (it concatenates with api_domain),
+  // pass "main_website/get_events_stats/". If you want to call full URL,
+  // change the hook or pass the appropriate path.
+  const { loading, data, error, refetch } = useFetchDataAPI<EventsApiResponse>({
+    apiUrl: "main_website/get_events_stats/",
+    method: "GET",
+    autoFetch: true,
+  });
+
   const [tooltip, setTooltip] = useState<{
     x: number;
     y: number;
     text: string;
   } | null>(null);
 
+  // Map API data to the shapes used by the charts (with safe fallbacks)
+  const eventCounts = useMemo(() => {
+    const map: Record<Category, number> = {
+      "Non Technical": 0,
+      Technical: 0,
+      Professional: 0,
+      Humanitarian: 0,
+      Administrative: 0,
+    };
+
+    if (!data?.eventCounts) return map;
+
+    for (const item of data.eventCounts) {
+      // match ignoring case and whitespace differences
+      const normalized = item.name.trim().toLowerCase();
+      const found = categories.find(
+        (c) => c.toLowerCase() === normalized
+      ) as Category | undefined;
+      if (found) map[found] = item.value;
+    }
+
+    return map;
+  }, [data]);
+
+  const years = useMemo(() => {
+    if (data?.yearlyEvents?.years && data.yearlyEvents.count) {
+      return data.yearlyEvents.years.map((y) => String(y));
+    }
+    // fallback sample years if API not ready
+    return ["2021", "2022", "2023", "2024", "2025"];
+  }, [data]);
+
+  const yearlyCounts = useMemo(() => {
+    if (data?.yearlyEvents?.years && data.yearlyEvents.count) {
+      return data.yearlyEvents.count.slice(0, data.yearlyEvents.years.length);
+    }
+    return [30, 29, 58, 53, 72];
+  }, [data]);
+
   const width = 600;
   const height = 300;
   const padding = 60;
-  const maxValue = Math.max(...Object.values(eventCounts));
-  const maxYearValue = Math.max(...yearlyCounts);
+  const maxValue = Math.max(...Object.values(eventCounts), 1);
+  const maxYearValue = Math.max(...yearlyCounts, 1);
+
+  // Loading / error UI
+  if (loading)
+    return (
+      <div className="p-6 bg-white w-full max-w-[1080px] mx-auto text-center">
+        <p className="text-gray-600">Loading event statistics...</p>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="p-6 bg-white w-full max-w-[1080px] mx-auto text-center">
+        <p className="text-red-600 mb-2">Failed to load stats: {error}</p>
+        <button
+          onClick={() => refetch()}
+          className="px-3 py-1 bg-blue-600 text-white rounded"
+        >
+          Retry
+        </button>
+      </div>
+    );
 
   return (
     <div className="flex flex-col md:flex-row gap-6 max-w-[1080px] mx-auto p-4">
@@ -65,7 +131,11 @@ const EventTypeBarChart: React.FC = () => {
           preserveAspectRatio="xMidYMid meet"
           className="w-full h-auto overflow-visible"
         >
-          {[0, 20, 40, 60, 80, 100, 120].map((tick) => {
+          {/* horizontal grid & ticks */}
+          {Array.from(
+            { length: Math.ceil(maxValue / 20) + 1 },
+            (_, idx) => idx * 20
+          ).map((tick) => {
             const y =
               height - padding - (tick / maxValue) * (height - 2 * padding);
             return (
@@ -109,7 +179,7 @@ const EventTypeBarChart: React.FC = () => {
                   fill={colors[cat]}
                   rx={6}
                   className="cursor-pointer hover:opacity-90 transition-all duration-200"
-                  onMouseMove={(e) =>
+                  onMouseMove={(e: React.MouseEvent<SVGRectElement>) =>
                     setTooltip({
                       x: e.clientX + 10,
                       y: e.clientY - 30,
@@ -146,7 +216,10 @@ const EventTypeBarChart: React.FC = () => {
           preserveAspectRatio="xMidYMid meet"
           className="w-full h-auto overflow-visible"
         >
-          {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90].map((tick) => {
+          {Array.from(
+            { length: Math.ceil(maxYearValue / 10) + 1 },
+            (_, idx) => idx * 10
+          ).map((tick) => {
             const y =
               height - padding - (tick / maxYearValue) * (height - 2 * padding);
             return (
@@ -203,7 +276,7 @@ const EventTypeBarChart: React.FC = () => {
                   cy={y}
                   r={5}
                   fill="#FFC72C"
-                  onMouseMove={(e) =>
+                  onMouseMove={(e: React.MouseEvent<SVGCircleElement>) =>
                     setTooltip({
                       x: e.clientX + 10,
                       y: e.clientY - 30,

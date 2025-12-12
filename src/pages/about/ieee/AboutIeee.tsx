@@ -4,6 +4,7 @@ import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { useFetchDataJSON } from "@/hooks/fetchdata";
 import { ExternalLink } from "lucide-react";
+import Wave from "@/components/Wave";
 
 interface LinkItem {
   title: string;
@@ -56,7 +57,14 @@ export default function AboutIEEE() {
     path: "pages/about/ieee/data.json",
   });
 
-  if (loading) return <Skeleton />;
+  if (loading) return <>
+          <div className="flex justify-center items-center min-h-[500px]">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-gray-600 font-medium">Loading about ieee...</p>
+            </div>
+          </div>
+        </>;
   if (error) return <ErrorMessage message="Error loading data." />;
   if (!data) return null;
 
@@ -96,7 +104,7 @@ export default function AboutIEEE() {
       <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
               <SectionHeading title="Largest Community" />
-              <div className="md:p-6">
+              <div className="md:p-6 max-md:mx-5">
                 <p>{data.communityDetails}</p>
                 {data.communityLinks.map((link, i) => (
                   <>
@@ -234,7 +242,7 @@ export default function AboutIEEE() {
       <div className="max-w-[1080px]  m-auto">
         <FadeIn yIndex={100} delay={0}>
           <SectionHeading title="Achievements" />
-          <p className="text-justify mb-6 p-6">{data.achievementsDetails}</p>
+          <p className="md:text-justify mb-6 p-6">{data.achievementsDetails}</p>
           <div className="flex flex-wrap gap-7 justify-center p-5">
             {data.achievementsLinks.map((a, i) => (
               <div
@@ -270,11 +278,11 @@ export default function AboutIEEE() {
       </div>
 
       {/* Innovation Section */}
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center p-8 md:p-5  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center mb-6 flex flex-wrap lg:flex-nowrap gap-12">
         <FadeIn xIndex={-100} yIndex={0}>
             <SectionHeading title="Innovations & Developments" />
-            <div className="max-md:mx-5">
-              <p className="mb-6">
+            <div>
+              <p className="mb-6 p-6">
                 {data.innovationsDevelopmentsDetails}
               </p>
               {data.innovationsDevelopmentsLinks.map((link, i) => (
@@ -282,7 +290,7 @@ export default function AboutIEEE() {
                   <a
                     key={i}
                     href={link.link}
-                    className=" inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:pl-0"
+                    className="max-md:mx-6 inline-flex items-center gap-2 text-[#002855] hover:text-[#FFC72C] mb-2 pl-5 max-md:pl-0"
                   >
                     <ExternalLink size={16} />
                     {link.title}

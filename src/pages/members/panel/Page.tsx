@@ -36,8 +36,19 @@ const Panel = () => {
     navigate(`/panels/${newYear}`);
   };
 
-  if (listLoading || panelLoading)
-    return <p className="text-center mt-10">Loading...</p>;
+  if (listLoading || panelLoading) {
+    return (
+      <>
+        <Wave title="Loading.." />
+        <div className="flex justify-center items-center min-h-[500px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="text-gray-600 font-medium">Loading panel...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
   if (listError || panelError)
     return (
       <p className="text-center mt-10 text-red-500">

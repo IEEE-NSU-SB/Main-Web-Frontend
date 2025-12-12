@@ -54,9 +54,22 @@ interface Award {
   description: string;
 }
 
+// ✅ Society colors
+const societyColors: Record<string, string> = {
+  "ieee-nsu-ras-sbc": "#52154E",
+  "ieee-nsu-pes-sbc": "#61A60E",
+  "ieee-nsu-ias-sbc": "#fbbf24",
+  "ieee-nsu-wie-ag": "#066697",
+};
+
 const SocietyOrAg: React.FC = () => {
   const location = useLocation();
 
+  // --- Detect society slug from URL
+  const currentSlug = location.pathname.split("/")[1] ?? "";
+  const societyColor = societyColors[currentSlug] || "#002855"; // fallback
+
+  // --- Map slug to baseName for API calls
   const baseName = React.useMemo(() => {
     const path = location.pathname.toLowerCase();
     if (path.includes("ras")) return "3";
@@ -113,7 +126,7 @@ const SocietyOrAg: React.FC = () => {
       {/* Page Header */}
       {pageLoading && (
         <div className="min-h-screen">
-          <Wave title="Loading..."/>
+          <Wave title="Loading..." color={societyColor} />
         </div>
       )}
       {pageError && (
@@ -126,7 +139,7 @@ const SocietyOrAg: React.FC = () => {
         <Wave
           title={pageData.pageTitle || ""}
           subtitle={pageData.pageSubtitle || ""}
-          color={pageData.primaryColor || "#000"}
+          color={pageData.primaryColor || societyColor}
         />
       )}
       {pageData && <Intro pageData={pageData} />}
@@ -144,11 +157,11 @@ const SocietyOrAg: React.FC = () => {
         <>
           <MegaEventsCard
             events={eventsData.megaEvents}
-            color={`${pageData.primaryColor}b6`}
+            color={`${pageData.primaryColor || societyColor}b6`}
           />
           <FeaturedEventCard
             events={eventsData.featuredEvents}
-            color={pageData.primaryColor}
+            color={pageData.primaryColor || societyColor}
           />
         </>
       )}
@@ -164,7 +177,7 @@ const SocietyOrAg: React.FC = () => {
       {achData && pageData && (
         <Achievements
           achievements={achData}
-          primaryColor={pageData.primaryColor}
+          primaryColor={pageData.primaryColor || societyColor}
         />
       )}
 
@@ -183,7 +196,7 @@ const SocietyOrAg: React.FC = () => {
         <Executive
           advisor={execData.advisor}
           executives={execData.executives}
-          color={`${pageData.primaryColor}b6`}
+          color={`${pageData.primaryColor || societyColor}b6`}
         />
       )}
 

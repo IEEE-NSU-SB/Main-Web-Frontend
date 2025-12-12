@@ -53,7 +53,14 @@ const IEEERegion10: React.FC = () => {
     apiUrl: "main_website/get_ieee_r10_details/",
   });
 
-  if (loading) return <Skeleton />;
+  if (loading) return <>
+          <div className="flex justify-center items-center min-h-[500px]">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              <p className="text-gray-600 font-medium">Loading region 10...</p>
+            </div>
+          </div>
+        </>;
   if (error) return <ErrorMessage message={error} />;
   if (!data) return null;
 

@@ -110,9 +110,6 @@ const ResearchPapers = () => {
                         View Paper
                       </a>
 
-                      <div className="text-sm text-ieee-black-50">
-                        <span>SL. {idx + 1}</span>
-                      </div>
                     </div>
                   </div>
                 </article>

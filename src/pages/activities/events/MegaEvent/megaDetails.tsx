@@ -37,9 +37,12 @@ export default function MegaPage() {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-600">Loading...</p>
-      </div>
+        <><Wave title="Loading..." /><div className="flex justify-center items-center min-h-[500px]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-600 font-medium">Loading Mega event...</p>
+        </div>
+      </div></>
     );
 
   if (error || !data)
