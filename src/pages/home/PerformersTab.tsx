@@ -21,6 +21,10 @@ interface Tab {
   people: Person[];
 }
 
+const DEFAULT_IMAGE = "/default_profile_picture.png";
+const BACKEND_DEFAULT =
+  "https://api.ieeensusb.org/static/images/default_profile_picture.png";
+
 export default function TopPerformers() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [personIndex, setPersonIndex] = useState(0);
@@ -195,15 +199,14 @@ export default function TopPerformers() {
                   {/* Picture */}
                   <div className="w-full sm:w-1/2 flex justify-center items-center p-4">
                     <img
-                      src={people[personIndex].img}
+                      src={people[personIndex].img && people[personIndex].img !== BACKEND_DEFAULT ? people[personIndex].img : DEFAULT_IMAGE}
                       alt={people[personIndex].name}
                       className="w-44 h-44 sm:w-60 sm:h-60 rounded-full object-cover shadow-md bg-glow"
                       onError={(e) => {
                         const target = e.currentTarget as HTMLImageElement;
-                        target.onerror = null; // prevent loop
-                        target.src = `${
-                          import.meta.env.VITE_API_URL
-                        }/static/images/default_profile_picture.png`;
+                        if (target.src !== DEFAULT_IMAGE) {
+                          target.src = DEFAULT_IMAGE;
+                        }
                       }}
                     />
                   </div>

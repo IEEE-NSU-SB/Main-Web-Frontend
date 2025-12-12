@@ -41,19 +41,14 @@ const PanelCard: React.FC<PanelCardProps> = ({ members, sectionTitle }) => {
                          bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={
-                  member.image === BACKEND_DEFAULT
-                    ? DEFAULT_IMAGE
-                    : member.image
-                }
+                src={member.image && member.image !== BACKEND_DEFAULT ? member.image : DEFAULT_IMAGE}
                 alt={member.name}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
                 onError={(e) => {
                   const target = e.currentTarget as HTMLImageElement;
-                  target.onerror = null; // prevent loop
-                  target.src = `${
-                    import.meta.env.VITE_API_URL
-                  }/static/images/default_profile_picture.png`;
+                  if (target.src !== DEFAULT_IMAGE) {
+                    target.src = DEFAULT_IMAGE;
+                  }
                 }}
               />
 

@@ -17,6 +17,10 @@ interface MembersProps {
   members: Member[];
 }
 
+const DEFAULT_IMAGE = "/default_profile_picture.png";
+const BACKEND_DEFAULT =
+  "https://api.ieeensusb.org/static/images/default_profile_picture.png";
+
 export default function Members({ members }: MembersProps) {
   const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
@@ -89,10 +93,13 @@ function MemberCard({
       >
         <div className="w-28 h-28 flex-shrink-0">
           <img
-            src={member.member_picture}
-            onError={(e) =>
-              (e.currentTarget.src = "/images/default_profile_picture.png")
-            }
+            src={member.member_picture && member.member_picture !== BACKEND_DEFAULT ? member.member_picture : DEFAULT_IMAGE}
+            onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (target.src !== DEFAULT_IMAGE) {
+                    target.src = DEFAULT_IMAGE;
+                  }
+                }}
             alt={member.member_name}
             className="w-full h-full object-cover rounded-full shadow"
           />
