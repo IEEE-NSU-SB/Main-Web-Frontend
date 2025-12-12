@@ -1,7 +1,6 @@
 import FeedBackForm from "./FeedBackForm";
 import Wave from "@/components/Wave";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
-import Skeleton from "@/components/Skeleton";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import BannerDetails from "./BannerDetails";
 import RegisterDetails from "./RegisterDetails";

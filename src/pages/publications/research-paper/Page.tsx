@@ -64,7 +64,7 @@ const ResearchPapers = () => {
             <ErrorMessage message="Failed to load research papers" onRetry={refetch} />
           ) : filteredPapers.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPapers.map((paper, idx) => (
+              {filteredPapers.map((paper) => (
                 <article
                   key={paper.id}
                   className="bg-ieee-white-5 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex flex-col"
