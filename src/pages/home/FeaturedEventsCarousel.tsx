@@ -64,7 +64,7 @@ useEffect(() => {
     if (!scrollRef.current || images.length === 0) return;
 
     const container = scrollRef.current;
-    const scrollSpeed = 0.8;
+    const scrollSpeed = 0.5;
 
     const scroll = () => {
       container.scrollLeft += scrollSpeed;
