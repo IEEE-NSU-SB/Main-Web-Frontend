@@ -96,7 +96,7 @@ export default function TopPerformers() {
                   <button
                     onClick={handlePrevTab}
                     aria-label="Previous tab"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
+                    className="absolute left-[-5px] top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
                   >
                     <ChevronLeft size={20} className="text-ieee-black-50" />
                   </button>
@@ -104,7 +104,7 @@ export default function TopPerformers() {
                   <button
                     onClick={handleNextTab}
                     aria-label="Next tab"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
+                    className="absolute right-[-5px] top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
                   >
                     <ChevronRight size={20} className="text-ieee-black-50" />
                   </button>
@@ -133,7 +133,7 @@ export default function TopPerformers() {
                         stiffness: 80,
                         damping: 18,
                       }}
-                      className={`absolute transition-colors ease-in-out 300 bottom-[-25px] rounded-[5px_5px] h-6 flex items-center justify-center px-3 sm:px-4 py-5 cursor-pointer
+                      className={`absolute transition-colors ease-in-out 300 bottom-[-25px] rounded-[5px_5px] h-6 flex items-center justify-center px-3 sm:px-4 py-5 cursor-pointer max-md:left-7
                     ${
                       isActive
                         ? "shadow-md border-b-3 border-r-3 border-l-1 border-t-1 bg-ieee-white border-ieee-blue-75 text-ieee-blue"
@@ -142,7 +142,6 @@ export default function TopPerformers() {
                       style={{
                         width: tabWidth,
                         zIndex: visibleCount - order,
-                        left: 0,
                       }}
                     >
                       <span className="font-bold text-[16px] sm:text-md">
