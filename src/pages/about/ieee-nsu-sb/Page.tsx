@@ -3,7 +3,7 @@ import Wave from "@/components/Wave"
 
 
 const AboutIeeeNsuSb = () => {
-path:"pages/about/ieee-nsu-sb/data.json"
+// path:"pages/about/ieee-nsu-sb/data.json"
   return (
     <>
     <Wave title="IEEE NSU Student Branch"/>

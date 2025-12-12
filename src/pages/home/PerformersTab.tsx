@@ -44,6 +44,20 @@ export default function TopPerformers() {
     setPersonIndex(0);
   };
 
+  // ---- New: tab navigation handlers for phone arrows ----
+  const handleNextTab = () => {
+    if (tabs.length === 0) return;
+    setActiveIndex((prev) => (prev + 1) % tabs.length);
+    setPersonIndex(0);
+  };
+
+  const handlePrevTab = () => {
+    if (tabs.length === 0) return;
+    setActiveIndex((prev) => (prev - 1 + tabs.length) % tabs.length);
+    setPersonIndex(0);
+  };
+  // -------------------------------------------------------
+
   const handleNextPerson = () => {
     setPersonIndex((prev) => (prev + 1) % people.length);
   };
@@ -57,7 +71,7 @@ export default function TopPerformers() {
 
   return (
     <>
-      <SectionHeading title="Our Recognized Members"/>
+      <SectionHeading title="Our Recognized Members" />
       <div className="max-w-[1080px] mx-auto p-5">
         {/* Tabs */}
         <FadeIn>
@@ -76,6 +90,28 @@ export default function TopPerformers() {
             </div>
           ) : (
             <div className="relative flex items-center justify-center overflow-hidden h-14">
+              {/* ---- Phone tab arrows (visible only on small screens) ---- */}
+              {tabs.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevTab}
+                    aria-label="Previous tab"
+                    className="absolute left-[-5px] top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
+                  >
+                    <ChevronLeft size={20} className="text-ieee-black-50" />
+                  </button>
+
+                  <button
+                    onClick={handleNextTab}
+                    aria-label="Next tab"
+                    className="absolute right-[-5px] top-1/2 -translate-y-1/2 z-30 p-2 sm:hidden"
+                  >
+                    <ChevronRight size={20} className="text-ieee-black-50" />
+                  </button>
+                </>
+              )}
+              {/* --------------------------------------------------------- */}
+
               <div className="relative flex-1">
                 {tabs.map((tab, index) => {
                   const isActive = index === activeIndex;
@@ -97,7 +133,7 @@ export default function TopPerformers() {
                         stiffness: 80,
                         damping: 18,
                       }}
-                      className={`absolute transition-colors ease-in-out 300 bottom-[-25px] rounded-[5px_5px] h-6 flex items-center justify-center px-3 sm:px-4 py-5 cursor-pointer
+                      className={`absolute transition-colors ease-in-out 300 bottom-[-25px] rounded-[5px_5px] h-6 flex items-center justify-center px-3 sm:px-4 py-5 cursor-pointer max-md:left-7
                     ${
                       isActive
                         ? "shadow-md border-b-3 border-r-3 border-l-1 border-t-1 bg-ieee-white border-ieee-blue-75 text-ieee-blue"
@@ -106,7 +142,6 @@ export default function TopPerformers() {
                       style={{
                         width: tabWidth,
                         zIndex: visibleCount - order,
-                        left: 0,
                       }}
                     >
                       <span className="font-bold text-[16px] sm:text-md">
@@ -128,7 +163,7 @@ export default function TopPerformers() {
             <div className="bg bg2"></div>
             <div className="bg bg3"></div>
 
-            {/* Left Arrow */}
+            {/* Left Arrow (person) */}
             {!loading && people.length > 1 && (
               <button
                 onClick={handlePrevPerson}
@@ -193,7 +228,7 @@ export default function TopPerformers() {
               </AnimatePresence>
             ) : null}
 
-            {/* Right Arrow */}
+            {/* Right Arrow (person) */}
             {!loading && people.length > 1 && (
               <button
                 onClick={handleNextPerson}

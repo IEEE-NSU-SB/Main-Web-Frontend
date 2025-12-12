@@ -34,7 +34,7 @@ const Executive: React.FC<ExecutiveProps> = ({
         style={{ borderColor: color }}
       >
         <Link
-          to={`/member-profile/${member.id}`}
+          to={member.id ? `/member-profile/${member.id}` : "#"}
           className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[65%] w-28 h-28 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-200 hover:scale-105 transition-transform"
         >
           <img
@@ -78,7 +78,7 @@ const Executive: React.FC<ExecutiveProps> = ({
         underlineColor={color}
       />
       {/* Faculty Advisor */}
-      <div className="flex flex-wrap justify-center items-center mt-26 px-5 gap-x-8">
+      <div className="flex flex-wrap justify-center items-center mt-26 gap-x-8 gap-y-27 px-5">
         {advisor.length > 0 && advisor.map((member) => (
           <MemberCard key={member.id} member={member} />
         ))}
