@@ -39,6 +39,7 @@ import Profile from "./pages/members/profile/Page";
 import AboutIEEE from "./pages/about/ieee/Page";
 import AboutIEEER10 from "./pages/about/ieee-region-10/Page";
 import AboutIEEEBDS from "./pages/about/ieee-bds-section/Page";
+import AboutNSUSB from "./pages/about/ieee-nsu-sb/Page";
 import FAQPage from "./pages/about/faq/faq";
 
 //Publications
@@ -116,7 +117,7 @@ const App = () => {
           <Route path="/ieee" element={<AboutIEEE />} />
           <Route path="/ieee-region-10" element={<AboutIEEER10 />} />
           <Route path="/ieee-bangladesh-section" element={<AboutIEEEBDS />} />
-          {/* <Route path="/ieee-nsu-student-branch" element={<AboutIeeeNsuSb/>} /> */}
+          <Route path="/ieee-nsu-student-branch" element={<AboutNSUSB/>} />
           <Route path="/faq" element={<FAQPage />} />
 
           {/* Publications */}
