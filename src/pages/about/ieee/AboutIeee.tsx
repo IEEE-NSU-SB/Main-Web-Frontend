@@ -99,10 +99,10 @@ export default function AboutIEEE() {
         </div>
       </div>
 
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12">
           <FadeIn xIndex={-100} yIndex={0}>
               <SectionHeading title="Largest Community" />
-              <div className="md:p-6 max-md:mx-5">
+              <div className="px-5">
                 <p>{data.communityDetails}</p>
                 {data.communityLinks.map((link, i) => (
                   <>
@@ -276,7 +276,7 @@ export default function AboutIEEE() {
       </div>
 
       {/* Innovation Section */}
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center mb-6 flex flex-wrap lg:flex-nowrap gap-12">
+      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center mb-6 flex flex-wrap gap-12">
         <FadeIn xIndex={-100} yIndex={0}>
             <SectionHeading title="Innovations & Developments" />
             <div>
@@ -309,7 +309,7 @@ export default function AboutIEEE() {
       
 
       {/* Student Activities */}
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center  mb-6 flex flex-wrap lg:flex-nowrap gap-12 md:flex-row-reverse">
+      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap gap-12 md:flex-row-reverse">
         <FadeIn xIndex={-100} yIndex={0}>
           <div>
             <SectionHeading title="Member Activities" />
