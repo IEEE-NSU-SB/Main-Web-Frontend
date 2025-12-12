@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
                 Activities
               </span>
               <div
-                className="absolute text-center left-[-28px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-27 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -178,7 +178,7 @@ const Navbar: React.FC = () => {
                 Societies & AG
               </span>
               <div
-                className="absolute text-center left-[-14px] top-full mt-1 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block bg-ieee-darkblue text-ieee-white shadow-lg rounded w-33 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -206,7 +206,7 @@ const Navbar: React.FC = () => {
                 Members
               </span>
               <div
-                className="absolute text-center left-[-48px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block text-ieee-white shadow-lg rounded w-40 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -276,7 +276,7 @@ const Navbar: React.FC = () => {
                 About
               </span>
               <div
-                className="absolute text-center left-[-55px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-45 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-41 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -305,7 +305,7 @@ const Navbar: React.FC = () => {
                 Publications
               </span>
               <div
-                className="absolute text-center left-[-22px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-30 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -342,7 +342,7 @@ const Navbar: React.FC = () => {
                 Get Involved
               </span>
               <div
-                className="absolute text-center left-[-16px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-35 z-50"
+                className="absolute text-left left-[-5px] top-full mt-1 hidden group-hover:block  text-ieee-white shadow-lg rounded w-34 z-50"
                 style={{
                   backgroundColor: societyColor || "#002855",
                 }}
@@ -522,7 +522,7 @@ const Navbar: React.FC = () => {
   {/* Portal */}
   <Link
     to={import.meta.env.VITE_PORTAL_URL}
-    className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+    className="block w-full text-left py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
     onClick={toggleMobileMenu}
   >
     IEEE NSU SB Portal
