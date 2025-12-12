@@ -171,7 +171,7 @@ export default function TopPerformers() {
                         if (target.src !== DEFAULT_IMAGE) {
                           target.src = DEFAULT_IMAGE;
                         }
-                      }}
+                      }}//df
                     />
                   </div>
 
