@@ -276,11 +276,11 @@ export default function AboutIEEE() {
       </div>
 
       {/* Innovation Section */}
-      <div className="m-auto max-w-[1080px] max-md:mx-5 justify-center mb-6 flex flex-wrap gap-12">
+      <div className="m-auto max-w-[1080px] justify-center mb-6 flex flex-wrap lg:flex-nowrap">
         <FadeIn xIndex={-100} yIndex={0}>
             <SectionHeading title="Innovations & Developments" />
             <div>
-              <p className="mb-6 p-6">
+              <p className="">
                 {data.innovationsDevelopmentsDetails}
               </p>
               {data.innovationsDevelopmentsLinks.map((link, i) => (
@@ -298,18 +298,18 @@ export default function AboutIEEE() {
               ))}
           </div>
         </FadeIn>
-        <div className="flex justify-center w-full md:min-w-[355px] md:max-w-[500px] pr-5">
+        <div className="flex justify-center w-full md:max-w-[500px] pr-5">
           <img
             src={data.innovationsDevelopmentsImage}
             alt="Innovations"
-            className="w-full h-[270px] md:h-auto object-contain"
+            className="w-full h-[200px] md:h-auto object-contain"
           />
         </div>
       </div>
       
 
-      {/* Student Activities */}
-      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap gap-12 md:flex-row-reverse">
+      {/* Member Activities */}
+      <div className="m-auto max-w-[1080px] justify-center  mb-6 flex flex-wrap gap-12 lg:flex-nowrap md:flex-row-reverse">
         <FadeIn xIndex={-100} yIndex={0}>
           <div>
             <SectionHeading title="Member Activities" />
