@@ -285,7 +285,7 @@ const Navbar: React.FC = () => {
                   IEEE: "ieee",
                   "IEEE Region 10": "ieee-region-10",
                   "IEEE Bangladesh Section": "ieee-bangladesh-section",
-                  "IEEE NSU Student Branch": "ieee-nsu-student-branch",
+                  // "IEEE NSU Student Branch": "ieee-nsu-student-branch",
                   // FAQ: "FAQ",
                 }).map(([label, path]) => (
                   <Link
@@ -430,95 +430,106 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="space-y-4 text-sm">
-          <Link
-            to="/"
-            className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
-            onClick={toggleMobileMenu}
-          >
-            Home
-          </Link>
 
-          {/* Accordion Sections */}
-          {[
-            {
-              title: "Activities",
-              links: ["Events", "News", "Achievements"],
-            },
-            {
-              title: "Societies & AG",
-              links: [
-                "IEEE NSU RAS SBC",
-                "IEEE NSU PES SBC",
-                "IEEE NSU IAS SBC",
-                "IEEE NSU WIE AG",
-              ],
-            },
-            {
-              title: "Members",
-              links: [
-                "Panels",
-                "Officers",
-                "Volunteers",
-                {
-                  title: "Teams",
-                  links: [
-                    "Content Writing and Publications",
-                    "Website Development",
-                    "Media",
-                    "Events and Management",
-                    "Graphics",
-                    "Public Relation (PR)",
-                    "Promotions",
-                    "Finance and Corporate",
-                    "Logistics and Operations",
-                    "Membership Development",
-                  ],
-                },
-                "Exemplary Members",
-                "All Members & Statistics",
-              ],
-            },
-            {
-              title: "About",
-              links: [
-                "IEEE",
-                "IEEE Region 10",
-                "IEEE Bangladesh Section",
-                // "IEEE NSU Student Branch",
-                // "FAQ",
-              ],
-            },
-            {
-              title: "Publications",
-              links: [
-                "Blogs",
-                "Research Papers",
-                "Magazines",
-                // "Gallery",
-                "Toolkit",
-              ],
-            },
-            {
-              title: "Get Involved",
-              links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
-            },
-          ].map((section) => (
-            <AccordionSection
-              key={section.title}
-              title={section.title}
-              links={section.links}
-              toggleMobileMenu={toggleMobileMenu}
-            />
-          ))}
+  {/* Home */}
+  <Link
+    to="/"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Home
+  </Link>
 
-          <Link
-            to={import.meta.env.VITE_PORTAL_URL}
-            className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
-            onClick={toggleMobileMenu}
-          >
-            IEEE NSU SB Portal
-          </Link>
-        </div>
+  {/* Accordion Sections */}
+  {[
+    {
+      title: "Activities",
+      links: ["Events", "News", "Achievements"],
+    },
+    {
+      title: "Societies & AG",
+      links: [
+        "IEEE NSU RAS SBC",
+        "IEEE NSU PES SBC",
+        "IEEE NSU IAS SBC",
+        "IEEE NSU WIE AG",
+      ],
+    },
+    {
+      title: "Members",
+      links: [
+        "Panels",
+        "Officers",
+        "Volunteers",
+        {
+          title: "Teams",
+          links: [
+            "Content Writing and Publications",
+            "Website Development",
+            "Media",
+            "Events and Management",
+            "Graphics",
+            "Public Relation (PR)",
+            "Promotions",
+            "Finance and Corporate",
+            "Logistics and Operations",
+            "Membership Development",
+          ],
+        },
+        "Exemplary Members",
+        "All Members & Statistics",
+      ],
+    },
+    {
+      title: "About",
+      links: [
+        "IEEE",
+        "IEEE Region 10",
+        "IEEE Bangladesh Section",
+      ],
+    },
+    {
+      title: "Publications",
+      links: [
+        "Blogs",
+        "Research Papers",
+        "Magazines",
+        "Toolkit",
+      ],
+    },
+    {
+      title: "Get Involved",
+      links: ["Join IEEE NSU SB", "Write a blog", "Add Research Paper"],
+    },
+  ].map((section) => (
+    <AccordionSection
+      key={section.title}
+      title={section.title}
+      links={section.links}
+      toggleMobileMenu={toggleMobileMenu}
+    />
+  ))}
+
+  {/* Contact (Moved OUTSIDE) */}
+  <Link
+    to="/contact"
+    className="block py-2 border-b border-gray-700 hover:pl-2 transition-all"
+    onClick={toggleMobileMenu}
+  >
+    Contact
+  </Link>
+
+  {/* Portal */}
+  <Link
+    to={import.meta.env.VITE_PORTAL_URL}
+    className="block w-full text-center py-2 px-4 rounded font-semibold bg-gradient-animate shadow-lg transition-transform duration-300 hover:scale-105"
+    onClick={toggleMobileMenu}
+  >
+    IEEE NSU SB Portal
+  </Link>
+
+</div>
+
       </div>
     </nav>
   );

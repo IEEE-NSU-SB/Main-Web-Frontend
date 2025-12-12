@@ -41,12 +41,14 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ members, sectionTitle }) => {
               bg-white cursor-pointer flex flex-col justify-end items-center text-center border-2 border-ieee-white"
             >
               <img
-                src={
-                  member.image === BACKEND_DEFAULT
-                    ? DEFAULT_IMAGE
-                    : member.image
-                }
+                src={member.image && member.image !== BACKEND_DEFAULT ? member.image : DEFAULT_IMAGE}
                 alt={member.name}
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  if (target.src !== DEFAULT_IMAGE) {
+                    target.src = DEFAULT_IMAGE;
+                  }
+                }}
                 className="absolute inset-0 w-full h-full object-cover hover:scale-105 duration-300"
               />
 

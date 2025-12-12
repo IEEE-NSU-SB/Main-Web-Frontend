@@ -44,14 +44,20 @@ export default function Members({ members }: MembersProps) {
           <div
             className="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[80vh]"
             onClick={(e) => e.stopPropagation()}
-          >
+            >
+            <style>
+                {`
+                ul {
+                  list-style: unset;
+                }
+              `}
+            </style>
             <h2 className="text-2xl font-bold text-[#002855] mb-4 text-center">
               {selectedMember.member_name}'s Achievements
             </h2>
             <div
-              className="text-gray-700 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: selectedMember.achievements }}
-            />
+              className="leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: selectedMember.achievements }}/>
 
             <div className="text-center mt-6">
               <button
