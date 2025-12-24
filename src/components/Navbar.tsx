@@ -33,12 +33,12 @@ const AccordionSection: React.FC<AccordionProps> = ({
     "Membership Development",
   ];
   const generatePath = (link: string) => {
-    if (link === "All Members & Statistics") return "/all-members";
+    if (link === "All Members & Statistics") return "/all-members/";
     if (teamLinks.includes(link)) {
-      return `/team/${link.toLowerCase().replace(/ /g, "-")}`;
+      return `/team/${link.toLowerCase().replace(/ /g, "-")}/`;
     }
     // generic conversion for other links
-    return `/${link.toLowerCase().replace(/ /g, "-")}`;
+    return `/${link.toLowerCase().replace(/ /g, "-")}/`;
   };
 
   return (
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
                 {["Events", "News", "Achievements"].map((item) => (
                   <Link
                     key={item}
-                    to={`/${item.toLowerCase()}`}
+                    to={`/${item.toLowerCase()}/`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {item}
@@ -191,7 +191,7 @@ const Navbar: React.FC = () => {
                 }).map(([label, path]) => (
                   <Link
                     key={path}
-                    to={`/${path}`}
+                    to={`/${path}/`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {label}
@@ -214,7 +214,7 @@ const Navbar: React.FC = () => {
                 {["Panels", "Officers", "Volunteers"].map((item) => (
                   <Link
                     key={item}
-                    to={`/${item.toLowerCase()}`}
+                    to={`/${item.toLowerCase()}/`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {item}
@@ -246,7 +246,7 @@ const Navbar: React.FC = () => {
                     ].map((team) => (
                       <Link
                         key={team}
-                        to={`/team/${team.toLowerCase().replace(/ /g, "-")}`}
+                        to={`/team/${team.toLowerCase().replace(/ /g, "-")}/`}
                         className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                       >
                         {team}
@@ -256,13 +256,13 @@ const Navbar: React.FC = () => {
                 </div>
 
                 <Link
-                  to="/exemplary-members"
+                  to="/exemplary-members/"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
                   Exemplary Members
                 </Link>
                 <Link
-                  to="/all-members"
+                  to="/all-members/"
                   className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                 >
                   All Members & Statistics
@@ -319,7 +319,7 @@ const Navbar: React.FC = () => {
                 ].map((item) => (
                   <Link
                     key={item}
-                    to={`/${item.toLowerCase().replace(/ /g, "-")}`}
+                    to={`/${item.toLowerCase().replace(/ /g, "-")}/`}
                     className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                   >
                     {item}
