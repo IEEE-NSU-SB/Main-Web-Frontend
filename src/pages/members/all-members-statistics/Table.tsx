@@ -122,7 +122,7 @@ const Table = <T extends Record<string, any>>({
                         const value = header.key === "sl" ? (currentPage - 1) * rowsPerPage + idx + 1 : row[header.key];
                         return (
                           <td key={String(header.key)} className="px-4 py-3">
-                            <a href={row.ieeeId ? `/member-profile/${row.ieeeId}` : "#"}>
+                            <a href={row.ieeeId ? `/member-profile/${row.ieeeId}/` : "#"}>
                             {value !== null && value !== undefined ? String(value) : "-"}
                       </a>
                           </td>
