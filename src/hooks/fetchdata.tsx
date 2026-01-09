@@ -83,7 +83,7 @@ export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", body = null, 
         method,
         body: requestBody,
         headers,
-        // credentials: "include",
+        credentials: "include",
       });
 
 
