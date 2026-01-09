@@ -145,7 +145,7 @@ const BlogCard: React.FC = () => {
               <FadeIn key={event.id}>
                 <div className="max-w-110 lg:max-w-[300px] xl:max-w-[320px] bg-ieee-gray/5 rounded-lg border overflow-hidden  hover:shadow-[4px_4px_10px_var(--color-ieee-gray-50)] shadow-[2px_2px_8px_var(--color-ieee-gray-50)] transition-all duration-300">
                   <div className="overflow-hidden">
-                    <Link to={`/blogs/${event.id}`} className="w-110 h-48">
+                    <Link to={`/blogs/${event.id}/`} className="w-110 h-48">
                       <img
                         src={event.image}
                         alt={event.title}
@@ -195,7 +195,7 @@ const BlogCard: React.FC = () => {
       {/* "See All Blogs" button only on landing page */}
       {isLandingPage && (
         <div className="flex justify-center mt-8">
-          <Link to="/blogs">
+          <Link to="/blogs/">
             <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300 mb-5">
               See All Blogs
             </button>

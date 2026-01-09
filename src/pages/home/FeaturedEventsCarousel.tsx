@@ -46,7 +46,7 @@ const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
       id: event.id,
       alt: event.name,
       image: event.image,
-      link: `/events/${event.id}`,
+      link: `/events/${event.id}/`,
     })) ?? [];
 
   const loopImages = [...images, ...images];

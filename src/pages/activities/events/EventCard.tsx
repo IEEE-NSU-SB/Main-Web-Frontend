@@ -195,7 +195,7 @@ const EventCard: React.FC = () => {
             className="w-full md:w-[calc(32.333%-1rem)]"
           >
             <article className="bg-ieee-gray/5 h-[420px] border rounded-md overflow-hidden transition-shadow hover:shadow-[4px_4px_10px_theme(colors.ieee-black-50)] shadow-[2px_2px_8px_theme(colors.ieee-black-50)]">
-              <Link to={`/events/${event.id}`}>
+              <Link to={`/events/${event.id}/`}>
                 <div className="relative h-[200px] overflow-hidden cursor-pointer">
                   <img
                     className="w-full h-full object-cover transform transition duration-500 ease-in-out hover:scale-105 hover:brightness-90"

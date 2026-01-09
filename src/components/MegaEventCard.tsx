@@ -45,7 +45,7 @@ const MegaEventsCard: React.FC<MegaEventsCardProps> = ({
             className="w-full md:w-[calc(50%-1rem)] border-ieee-white border hover:shadow-[4px_4px_10px_var(--color-ieee-black-50)] shadow-[2px_2px_8px_var(--color-ieee-black-50)] rounded-md overflow-hidden"
           >
             <Link
-              to={event.id ? `/mega-event/${event.id}` : "#"}
+              to={event.id ? `/mega-event/${event.id}/` : "#"}
             >
               <div className="relative w-full h-[250px] cursor-pointer overflow-hidden group">
                 <img

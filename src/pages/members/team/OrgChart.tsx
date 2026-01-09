@@ -60,7 +60,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
 
   // Member Card Component
   const MemberCard = ({ member }: { member: Member }) => (
-    <Link to={`/member-profile/${member.id}`} className="group">
+    <Link to={`/member-profile/${member.id}/`} className="group">
       <div className="relative flex flex-col items-center transition-transform duration-300 hover:scale-105">
         {/* Profile Image */}
         <div className="relative">
@@ -316,7 +316,7 @@ const OrgChart: React.FC<OrgChartProps> = ({ data }) => {
           <SectionHeading title="Team Volunteers" />
           <div className="flex flex-wrap gap-6 md:gap-10 justify-center mt-8 md:mt-12">
             {data.volunteers.map((vol, idx) => (
-              <Link key={idx} to={`/member-profile/${vol.id}`} className="group">
+              <Link key={idx} to={`/member-profile/${vol.id}/`} className="group">
                 <div className="flex flex-col items-center w-[160px] transition-transform duration-300 hover:scale-105">
                   <div className="relative mb-3">
                     <div className="w-24 h-24 rounded-full overflow-hidden shadow-md bg-gradient-to-br from-ieee-blue to-ieee-darkblue p-[3px] group-hover:shadow-xl group-hover:shadow-ieee-blue/20 transition-all duration-300">

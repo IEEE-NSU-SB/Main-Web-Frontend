@@ -176,7 +176,7 @@ const AchievementCard = () => {
       {/* "See All Blogs" button only on landing page */}
       {isLandingPage && (
         <div className="flex justify-center mt-8">
-          <Link to="/achievements">
+          <Link to="/achievements/">
             <button className="cursor-pointer hover:bg-ieee-darkblue-90 bg-ieee-white hover:text-ieee-white text-ieee-darkblue-90 text-sm font-semibold px-6 py-2 border border-ieee-darkblue-90 rounded-[.25rem] transition-colors duration-300">
               See All Achievements
             </button>

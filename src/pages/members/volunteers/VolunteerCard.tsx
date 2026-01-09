@@ -35,7 +35,7 @@ const VolunteerCard: React.FC<VolunteerCardProps> = ({
         <div className="flex flex-wrap justify-center gap-x-[40px] gap-y-[80px] mt-10">
           {members.map((member) => (
             <a
-              href={member.id ? `/member-profile/${member.id}` : "#"}
+              href={member.id ? `/member-profile/${member.id}/` : "#"}
               key={member.id}
               className="group relative w-[230px] h-[350px] rounded-[35px] overflow-hidden
               shadow-[0_14px_40px_rgba(0,0,0,0.18)]

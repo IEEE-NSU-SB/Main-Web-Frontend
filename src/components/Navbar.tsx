@@ -330,7 +330,7 @@ const Navbar: React.FC = () => {
 
             {/* Contact */}
             <Link
-              to="/contact"
+              to="/contact/"
               className="hover:text-ieee-yellow px-3 py-2 cursor-pointer font-medium uppercase"
             >
               Contact
@@ -361,7 +361,7 @@ const Navbar: React.FC = () => {
                     return (
                       <Link
                         key={item}
-                        to={`/${slug}`}
+                        to={`/${slug}/`}
                         className="block px-4 py-2 hover:bg-ieee-gray-15 cursor-pointer"
                       >
                         {item}
