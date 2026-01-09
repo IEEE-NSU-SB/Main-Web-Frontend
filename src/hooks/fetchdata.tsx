@@ -49,14 +49,14 @@ async function ensureCsrfCookie(): Promise<void> {
   });
 }
 
-export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", body = null, autoFetch = true, }: 
+export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", autoFetch = true, }: 
   { apiUrl:string; method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE"; body?: any; autoFetch?: boolean; }) {
 
   const [loading, setLoading] = useState<boolean>(autoFetch);
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (body:any = null) => {
     try {
       setLoading(true);
       setError(null);
@@ -83,7 +83,7 @@ export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", body = null, 
         method,
         body: requestBody,
         headers,
-        // credentials: "include",
+        credentials: "include",
       });
 
 
@@ -102,7 +102,7 @@ export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", body = null, 
     } finally {
       setLoading(false);
     }
-  }, [apiUrl, method, body]);
+  }, [apiUrl, method]);
 
   useEffect(() => {
     if (autoFetch) fetchData();
