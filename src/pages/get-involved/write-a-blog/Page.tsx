@@ -39,7 +39,7 @@ const categories = [
 ];
 
 const WriteBlog: React.FC = () => {
-  const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_exemplary_members/`, method: "POST", autoFetch: false });
+  const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_blogs/`, method: "POST", autoFetch: false });
 
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
