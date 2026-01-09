@@ -50,6 +50,7 @@ const WriteBlog: React.FC = () => {
   const categoryRef = useRef<HTMLSelectElement>(null);
   const shortDescRef = useRef<HTMLTextAreaElement>(null);
   const bannerRef = useRef<HTMLInputElement>(null);
+  const description = useRef<HTMLTextAreaElement>(null);
 
   // const { quill } = useQuill({
   //   theme: "snow",
@@ -88,7 +89,7 @@ const WriteBlog: React.FC = () => {
       !titleRef.current?.value ||
       !categoryRef.current?.value ||
       !shortDescRef.current?.value ||
-      // !blogContent ||
+      !description.current?.value ||
       !bannerRef.current?.files?.[0]
     ) {
       setModalMsg("Please fill in all required fields!");
@@ -103,7 +104,7 @@ const WriteBlog: React.FC = () => {
     fd.append("title", titleRef.current.value);
     fd.append("category", categoryRef.current.value);
     fd.append("short_description", shortDescRef.current.value);
-    // fd.append("description", blogContent);
+    fd.append("description", description.current.value);
     fd.append("blog_banner_picture", bannerRef.current.files[0]);
     console.log("FormData contents:");
 
@@ -270,8 +271,8 @@ const WriteBlog: React.FC = () => {
                 <label className="block mb-1 font-medium">
                   Write your blog <span className="text-red-600">*</span>
                 </label>
-                <textarea
-                  
+                <textarea                 
+                  ref={description}
                   placeholder="Write a short description of your blog..."
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
                   rows={6}
