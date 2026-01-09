@@ -2,8 +2,11 @@
 import React, { useState, useRef } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 // import { useQuill } from "react-quilljs";
 // import "quill/dist/quill.snow.css";
+
+const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_exemplary_members/`, method: "POST", autoFetch: false });
 
 const chapters = [
   { id: 1, label: "IEEE NSU Student Branch" },
@@ -116,17 +119,18 @@ const WriteBlog: React.FC = () => {
       }
     }
 
-    setLoading(true);
+    setLoading(blogSaveLoading);
     try {
       // Dummy backend URL
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/main_website/get_blogs/`,
-        {
-          method: "POST",
-          body: fd,
-        }
-      );
-      const data = await res.json();
+      await saveBlog(fd);
+      // const res = await fetch(
+      //   `${import.meta.env.VITE_API_URL}/main_website/get_blogs/`,
+      //   {
+      //     method: "POST",
+      //     body: fd,
+      //   }
+      // );
+      // const data = await res.json();
       setModalMsg(data?.message || "Blog submitted successfully!");
     } catch (err: any) {
       setModalMsg(err.message || "Something went wrong!");
