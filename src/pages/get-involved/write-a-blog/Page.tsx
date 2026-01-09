@@ -6,8 +6,6 @@ import { useFetchDataAPI } from "@/hooks/fetchdata";
 // import { useQuill } from "react-quilljs";
 // import "quill/dist/quill.snow.css";
 
-const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_exemplary_members/`, method: "POST", autoFetch: false });
-
 const chapters = [
   { id: 1, label: "IEEE NSU Student Branch" },
   { id: 2, label: "IEEE NSU Power and Energy Society Student Branch Chapter" },
@@ -41,6 +39,8 @@ const categories = [
 ];
 
 const WriteBlog: React.FC = () => {
+  const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_exemplary_members/`, method: "POST", autoFetch: false });
+
   const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [modalMsg, setModalMsg] = useState<string>("");
