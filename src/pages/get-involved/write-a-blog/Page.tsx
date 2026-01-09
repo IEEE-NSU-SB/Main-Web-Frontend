@@ -39,9 +39,8 @@ const categories = [
 ];
 
 const WriteBlog: React.FC = () => {
-  const { loading:blogSaveLoading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_blogs/`, method: "POST", autoFetch: false });
+  const { loading, data, refetch:saveBlog } = useFetchDataAPI<any>({ apiUrl: `main_website/get_blogs/`, method: "POST", autoFetch: false });
 
-  const [loading, setLoading] = useState(false);
   const [bannerPreview, setBannerPreview] = useState<string | null>(null);
   const [modalMsg, setModalMsg] = useState<string>("");
   const [showModal, setShowModal] = useState(false);
@@ -109,33 +108,14 @@ const WriteBlog: React.FC = () => {
     fd.append("short_description", shortDescRef.current.value);
     fd.append("description", description.current.value);
     fd.append("blog_banner_picture", bannerRef.current.files[0]);
-    console.log("FormData contents:");
 
-    for (let [key, value] of fd.entries()) {
-      if (value instanceof File) {
-        console.log(key, value.name, value.type, value.size + " bytes");
-      } else {
-        console.log(key, value);
-      }
-    }
-
-    setLoading(blogSaveLoading);
     try {
-      // Dummy backend URL
       await saveBlog(fd);
-      // const res = await fetch(
-      //   `${import.meta.env.VITE_API_URL}/main_website/get_blogs/`,
-      //   {
-      //     method: "POST",
-      //     body: fd,
-      //   }
-      // );
-      // const data = await res.json();
+
       setModalMsg(data?.message || "Blog submitted successfully!");
     } catch (err: any) {
       setModalMsg(err.message || "Something went wrong!");
     } finally {
-      setLoading(false);
       setShowModal(true);
     }
   };

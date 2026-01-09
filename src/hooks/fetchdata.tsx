@@ -43,14 +43,14 @@ function getCookie(name: string): string | null {
 }
 
 // Optionally call this once to make sure Django sets csrftoken
-async function ensureCsrfCookie(): Promise<void> {
-  await fetch(`${api_domain}/csrf/`, {
-    credentials: "include",
-  });
-}
+// async function ensureCsrfCookie(): Promise<void> {
+//   await fetch(`${api_domain}/csrf/`, {
+//     credentials: "include",
+//   });
+// }
 
 export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", autoFetch = true, }: 
-  { apiUrl:string; method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE"; body?: any; autoFetch?: boolean; }) {
+  { apiUrl:string; method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE"; autoFetch?: boolean; }) {
 
   const [loading, setLoading] = useState<boolean>(autoFetch);
   const [data, setData] = useState<T | null>(null);
@@ -62,7 +62,7 @@ export function useFetchDataAPI<T = any>({ apiUrl, method = "GET", autoFetch = t
       setError(null);
 
       const isWriteMethod = ["POST", "PUT", "PATCH", "DELETE"].includes(method.toUpperCase());
-      if (isWriteMethod) await ensureCsrfCookie();
+      // if (isWriteMethod) await ensureCsrfCookie();
 
       const headers: Record<string, string> = {};
       let requestBody: BodyInit | null = null;
