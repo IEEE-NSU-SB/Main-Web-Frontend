@@ -59,6 +59,8 @@ import WriteBlog from "./pages/get-involved/write-a-blog/Page";
 import AddResearchPaper from "./pages/get-involved/add-research-paper/Page";
 import WelcomePage from "./pages/welcome/Page";
 import TrailingSlashRedirect from "./hooks/TrailingSlashRedirect";
+import { useAuth } from "./context/AuthContext";
+import SinglePage from "./pages/SinglePage";
 // import AboutIeeeNsuSb from "./pages/about/ieee-nsu-sb/page";
 
 const MainLayout = () => {
@@ -73,6 +75,10 @@ const MainLayout = () => {
 };
 
 const App = () => {
+  const { user } = useAuth();
+
+  if (user?.config.main_website_under_maintenance) return <SinglePage />;
+
   return (
     <Router>
       <TrailingSlashRedirect />
