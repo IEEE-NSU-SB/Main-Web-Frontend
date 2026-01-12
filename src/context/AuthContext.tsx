@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react"; // ✅ type-only import
 
-const api_domain = import.meta.env.VITE_API_URL as string;
+const api_domain = import.meta.env.VITE_PORTAL_URL as string;
 
 export interface User {
   config: any;
