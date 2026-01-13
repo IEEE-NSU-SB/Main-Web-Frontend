@@ -174,7 +174,7 @@ export default function MegaPage() {
                       className="group bg-white overflow-hidden flex flex-col items-center"
                     >
                       <a
-                        href={`/events/${i.id}`}
+                        href={`/events/${i.id}/`}
                         className="block overflow-hidden"
                       >
                         <img
@@ -184,7 +184,7 @@ export default function MegaPage() {
                         />
                       </a>
                       <a
-                        href={`/events/${i.id}`}
+                        href={`/events/${i.id}/`}
                         className="text-sm font-semibold text-gray-900 hover:text-[#00629B] mt-3"
                       >
                         {i.name}
@@ -211,7 +211,7 @@ export default function MegaPage() {
                   {megaEvents.map((i, index) => (
                     <div key={index}>
                       <a
-                        href={`/mega-event/${i.id}`}
+                        href={`/mega-event/${i.id}/`}
                         className="flex items-start gap-2 text-sm text-gray-900 hover:text-[#00629B]"
                       >
                         <div>

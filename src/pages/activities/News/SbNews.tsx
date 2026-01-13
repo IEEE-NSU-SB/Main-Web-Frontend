@@ -56,7 +56,7 @@ const SbNews = () => {
                       className="bg-ieee-gray/5 border border-ieee-white rounded-sm hover:shadow-[2px_2px_10px_theme(colors.ieee-black-25)] shadow-[2px_2px_8px_theme(colors.ieee-black-25)] transition-all duration-300 overflow-hidden flex flex-col h-fit"
                     >
                       <div className="w-full h-64 overflow-hidden flex-shrink-0">
-                        <Link to={`${item.id.toString()}`}>
+                        <Link to={`${item.id.toString()}/`}>
                           <img
                             src={item.image}
                             alt="404"
@@ -67,7 +67,7 @@ const SbNews = () => {
                       </div>
                       <div className="p-4 flex flex-col">
                         {/* <Link to={`/news/${item.id.toString()}`}> */}
-                        <Link to={`${item.id.toString()}`}>
+                        <Link to={`${item.id.toString()}/`}>
                           <h2 className="cursor-pointer text-xl font-semibold my-2 mb-4 line-clamp-1">
                             {item.title}
                           </h2>

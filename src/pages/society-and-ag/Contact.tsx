@@ -4,10 +4,13 @@ import { useState } from "react";
 import { type ChapterPageData } from "@/types/chapter";
 
 interface ContactProps {
-  pageData: ChapterPageData;
+  pageData: ChapterPageData,
+  saveFeedbackLoading: boolean,
+  saveFeedbackResponse: any,
+  saveFeedback: (data:any) => any
 }
 
-const Contact: React.FC<ContactProps> = ({ pageData }) => {
+const Contact: React.FC<ContactProps> = ({ pageData, saveFeedbackLoading, saveFeedbackResponse, saveFeedback }) => {
   const primaryColor = `${pageData.primaryColor}b6` || "#000";
   const email = pageData.email || "";
   const fbLink = pageData.fb || "";
@@ -15,7 +18,6 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   // New States
-  const [loading, setLoading] = useState(false);
   const [modalMsg, setModalMsg] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -39,31 +41,23 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
   };
 
   // Handle Form Submit
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setModalMsg("Please fill in all fields.");
       setShowModal(true);
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/main_website/contact/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      await saveFeedback(form);
 
-      if (!response.ok) throw new Error("Failed to submit form");
-
-      setModalMsg("Message sent successfully!");
+      setModalMsg(saveFeedbackResponse?.message || "Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
-    } catch (error) {
-      setModalMsg("An error occurred. Please try again.");
+    } catch (error:any) {
+      setModalMsg(error.message || "An error occurred. Please try again.");
     } finally {
       setShowModal(true);
-      setLoading(false);
     }
   };
 
@@ -112,14 +106,14 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
           <div className="flex justify-center my-16">
             <button
               onClick={handleSubmit}
-              disabled={loading}
+              disabled={saveFeedbackLoading}
               className="cursor-pointer font-bold py-2 px-10 rounded-[4px] border duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
               style={{
                 borderColor: primaryColor,
                 color: primaryColor,
               }}
               onMouseEnter={(e) => {
-                if (!loading) {
+                if (!saveFeedbackLoading) {
                   e.currentTarget.style.backgroundColor = primaryColor;
                   e.currentTarget.style.color = "white";
                 }
@@ -129,7 +123,7 @@ const Contact: React.FC<ContactProps> = ({ pageData }) => {
                 e.currentTarget.style.color = primaryColor;
               }}
             >
-              {loading ? "Submitting..." : "Submit"}
+              {saveFeedbackLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </FadeIn>

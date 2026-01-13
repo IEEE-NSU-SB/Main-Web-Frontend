@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    console.log("AuthProvider: fetching user");
     fetch(`${api_domain}/main_website/api/switches/`, {
       credentials: "include",
     })

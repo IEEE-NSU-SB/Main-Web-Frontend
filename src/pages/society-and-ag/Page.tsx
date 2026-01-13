@@ -121,6 +121,16 @@ const SocietyOrAg: React.FC = () => {
     apiUrl: `main_website/get_achievements/landing/${baseName}`,
   });
 
+  const {
+    loading: saveFeedbackLoading,
+    data: saveFeedbackResponse,
+    refetch: saveFeedback,
+  } = useFetchDataAPI({
+    apiUrl: `main_website/sc_ag_feedback/${baseName}/`,
+    method: 'POST',
+    autoFetch: false
+  });
+
   return (
     <div>
       {/* Page Header */}
@@ -202,7 +212,7 @@ const SocietyOrAg: React.FC = () => {
 
       {/* Other Sections */}
       {pageData && <WhatWhyHowSection pageData={pageData} />}
-      {pageData && <Contact pageData={pageData} />}
+      {pageData && <Contact pageData={pageData} saveFeedbackLoading={saveFeedbackLoading} saveFeedbackResponse={saveFeedbackResponse} saveFeedback={saveFeedback} />}
     </div>
   );
 };
