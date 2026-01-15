@@ -2,7 +2,7 @@ name: Deploy React to cPanel
 
 on:
   push:
-    branches: [master]
+    branches: [production]
 
 jobs:
   build-and-deploy:
