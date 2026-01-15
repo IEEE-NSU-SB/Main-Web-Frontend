@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import Wave from "@/components/Wave";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 // import { useQuill } from "react-quilljs";
 // import "quill/dist/quill.snow.css";
 
@@ -44,6 +45,8 @@ const AddResearchPaper: React.FC = () => {
     publicationLink: "",
     bannerFile: null as File | null,
   });
+
+  const { loading:loadingSaveResearchPaper, data, refetch:saveResearchPaper } = useFetchDataAPI<any>({ apiUrl: `main_website/add_research_paper/`, method: "POST", autoFetch: false });
 
   // const { quill } = useQuill({
   //   theme: "snow",
@@ -113,22 +116,17 @@ const AddResearchPaper: React.FC = () => {
     fd.append("publicationLink", formData.publicationLink);
     fd.append("bannerFile", formData.bannerFile!);
 
-    console.log("FormData contents:");
-    for (let [key, value] of fd.entries()) {
-      if (value instanceof File) {
-        console.log(key, value.name, value.type, value.size + " bytes");
-      } else {
-        console.log(key, value);
-      }
-    }
-
-    setLoading(true);
+    // console.log("FormData contents:");
+    // for (let [key, value] of fd.entries()) {
+    //   if (value instanceof File) {
+    //     console.log(key, value.name, value.type, value.size + " bytes");
+    //   } else {
+    //     console.log(key, value);
+    //   }
+    // }
     try {
-      const res = await fetch("https://dummyapi.io/research-papers", {
-        method: "POST",
-        body: fd,
-      });
-      const data = await res.json();
+      setLoading(loadingSaveResearchPaper);
+      await saveResearchPaper(fd);
       setModalMsg(data?.message || "Research Paper submitted successfully!");
     } catch (err: any) {
       setModalMsg(err.message || "Something went wrong!");
@@ -260,9 +258,11 @@ const AddResearchPaper: React.FC = () => {
                   Abstract <span className="text-red-600">*</span>
                 </label>
                 <textarea
+                  name="abstract"
                   placeholder="Write a short description of your blog..."
                   className="w-full border border-ieee-black-15 bg-ieee-gray/5 rounded px-3 py-2 focus:outline-none focus:ring-1 focus:ring-ieee-gray-15"
                   rows={6}
+                  onChange={handleChange}
                 />
                 {/* <div ref={quillRef} className="bg-ieee-gray/5 rounded h-60" /> */}
               </div>
@@ -311,7 +311,7 @@ const AddResearchPaper: React.FC = () => {
                 className="mt-6 w-full md:w-auto border-1 border-ieee-blue hover:bg-ieee-blue hover:text-white font-semibold cursor-pointer px-6 py-2 rounded text-ieee-blue bg-transparent transition-all 300"
                 disabled={loading}
               >
-                {loading ? "Adding..." : "Place Add Request"}
+                {loadingSaveResearchPaper ? "Adding..." : "Place Add Request"}
               </button>
             </div>
           </form>
