@@ -1,4 +1,5 @@
 import SectionHeading from "@/components/ui/SectionHeading";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import type { EventData } from "@/types/event";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -17,6 +18,9 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   const [selectedOption, setSelectedOption] = useState(
     "How satisfied were you?"
   );
+
+  const { loading:loadingSaveFeedback, data, refetch:saveFeedback } = useFetchDataAPI<any>({ apiUrl: `main_website/event_feedback/${eventData.id}/`, method: "POST", autoFetch: false });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,9 +35,9 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   const selectRef = useRef<HTMLDivElement>(null);
 
   const satisfactionOptions = [
-    { value: "very-satisfied", label: "Very Satisfied" },
+    { value: "very_satisfied", label: "Very Satisfied" },
     { value: "satisfied", label: "Satisfied" },
-    { value: "not-satisfied", label: "Not Satisfied" },
+    { value: "not_satisfied", label: "Not Satisfied" },
   ];
 
   // Example feedbacks (can fetch from API)
@@ -102,23 +106,10 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
       return;
     }
 
-    setLoading(true);
+    setLoading(loadingSaveFeedback);
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/main_website/submit_feedback/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            event_id: eventData.id,
-            ...formData,
-          }),
-        }
-      );
+      await saveFeedback(formData);
 
-      const data = await res.json();
       setModalMsg(data?.message || "Feedback submitted successfully!");
       // Reset form
       setFormData({ name: "", email: "", satisfaction: "", comment: "" });
@@ -126,7 +117,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
     } catch (err: any) {
       setModalMsg(err.message || "Something went wrong!");
     } finally {
-      setLoading(false);
+      setLoading(loadingSaveFeedback);
       setShowModal(true);
     }
   };
