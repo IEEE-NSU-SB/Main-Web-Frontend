@@ -1,13 +1,15 @@
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 import type { EventData } from "@/types/event";
 import React, { useState, useRef, useEffect } from "react";
 
-// interface Feedback {
-//   name: string;
-//   feedback: string;
-//   satisfaction: string;
-// }
+interface Feedback {
+  name: string;
+  feedback: string;
+  satisfaction: string;
+}
 
 type EventDetailsProps = {
   eventData: EventData;
@@ -20,6 +22,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   );
 
   const { loading:loadingSaveFeedback, data, refetch:saveFeedback } = useFetchDataAPI<any>({ apiUrl: `main_website/event_feedback/${eventData.id}/`, method: "POST", autoFetch: false });
+  const { loading:loadingFeedbacks, error, data:feedbacks, refetch:refetchFeedbacks } = useFetchDataAPI<Feedback[]>({ apiUrl: `main_website/get_event_feedbacks/${eventData.id}/`, method: "GET" });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -140,12 +143,23 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
 
     const animation = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animation);
-  }, []);
+  }, [feedbacks]);
 
   return (
     <div>
-      {/* ---- Feedback Carousel ----
-      {feedbacks.length > 0 && (
+      {/* ---- Feedback Carousel ---- */}
+      {loadingFeedbacks ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Skeleton className="h-23 w-full" />
+          <Skeleton className="h-23 w-full md:block hidden" />
+          <Skeleton className="h-23 w-full md:block hidden" />
+        </div>
+      ) : error ? (
+        <ErrorMessage
+          message={"Failed to load feedbacks"}
+          onRetry={refetchFeedbacks}
+        />
+      ) : feedbacks && feedbacks.length > 0 ? (
         <>
           <SectionHeading title="Participants Feedback" />
           <div
@@ -175,7 +189,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
             </div>
           </div>
         </>
-      )} */}
+      ): (<></>)}
 
       {/* ---- Feedback Form ---- */}
       <SectionHeading title="Leave a Feedback" />
