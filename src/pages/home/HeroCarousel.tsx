@@ -37,12 +37,15 @@ const HeroCarousel = ({
     apiUrl: "main_website/get_hero_section_landing/",
   });
 
+  const [currentIndex, setCurrentIndex] = useState(1); // Start at 1 to show first real slide
+  const [isPlaying] = useState(true);
   const [media, setMedia] = useState<MediaItem[]>([]);
   const [mediaType, setMediaType] = useState<"image" | "video">("image");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying] = useState(true);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const autoPlayTimerRef = useRef<number | null>(null);
+
+  // Create infinite loop by duplicating slides
+  const extendedMedia = media.length > 0 ? [media[media.length - 1], ...media, media[0]] : [];
 
   // Process fetched data
   useEffect(() => {
@@ -61,13 +64,36 @@ const HeroCarousel = ({
     }
   }, [data]);
 
+  const goToPrev = () => {
+    if (!extendedMedia.length) return;
+
+    let newIndex = currentIndex - 1;
+    setCurrentIndex(newIndex);
+
+    // Handle infinite scroll reset after transition
+    setTimeout(() => {
+      if (newIndex === 0) {
+        setCurrentIndex(media.length);
+      }
+    }, 700); // Match transition duration
+  };
+
   const goToNext = () => {
-    if (!media.length) return;
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
+    if (!extendedMedia.length) return;
+
+    let newIndex = currentIndex + 1;
+    setCurrentIndex(newIndex);
+
+    // Handle infinite scroll reset after transition
+    setTimeout(() => {
+      if (newIndex === extendedMedia.length - 1) {
+        setCurrentIndex(1);
+      }
+    }, 700); // Match transition duration
   };
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    setCurrentIndex(index + 1); // +1 because of the duplicated first slide
   };
 
   // Autoplay (only for images)
@@ -86,15 +112,20 @@ const HeroCarousel = ({
   useEffect(() => {
     if (mediaType !== "video") return;
 
+    // Calculate real index for video refs
+    let realIndex = currentIndex - 1;
+    if (currentIndex === 0) realIndex = media.length - 1;
+    else if (currentIndex === extendedMedia.length - 1) realIndex = 0;
+
     videoRefs.current.forEach((video) => video?.pause());
-    const videoElement = videoRefs.current[currentIndex];
+    const videoElement = videoRefs.current[realIndex];
     if (videoElement && isPlaying) {
       videoElement.currentTime = 0;
       videoElement
         .play()
         .catch((err) => console.error("Video play error:", err));
     }
-  }, [currentIndex, isPlaying, mediaType]);
+  }, [currentIndex, isPlaying, mediaType, extendedMedia.length, media.length]);
 
   // Loading / Error / Empty
   if (loading)
@@ -142,76 +173,78 @@ const HeroCarousel = ({
       ) : (
         // Image Carousel Mode
         <>
-          {media.map((item, index) => (
+          <div className="relative w-full h-full overflow-hidden">
             <div
-              key={index}
-              className={cn(
-                "absolute inset-0 w-full h-full transition-opacity duration-1000",
-                currentIndex === index ? "opacity-100 z-10" : "opacity-0 z-0"
-              )}
+              className="flex h-full transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              <img
-                src={item.src}
-                alt={item.alt || "Hero image"}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/70"></div>
-
-              {/* Text Overlay */}
-              <div className="absolute inset-0 flex flex-col justify-center m-auto max-w-[1080px] px-5 text-left md:text-center">
-                {item.firstText && item.secondText && (
-                  <div className="flex gap-3">
-                    <SplitText
-                      text={item.firstText}
-                      className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-2"
-                      delay={0}
-                      duration={0.6}
-                      ease="power3.out"
-                      splitType="chars"
-                      from={{ opacity: 0, y: 40 }}
-                      to={{ opacity: 1, y: 0 }}
-                      threshold={0.2}
-                      rootMargin="-100px"
-                      textAlign="left"
-                    />
-                    <SplitText
-                      text={item.secondText}
-                      className="text-ieee-darkyellow text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
-                      delay={100}
-                      duration={0.6}
-                      ease="power3.out"
-                      splitType="chars"
-                      from={{ opacity: 0, y: 40 }}
-                      to={{ opacity: 1, y: 0 }}
-                      threshold={0.2}
-                      rootMargin="-100px"
-                      textAlign="left"
-                    />
-                  </div>
-                )}
-
-                {item.description && (
-                  <SplitText
-                    text={item.description}
-                    className="text-ieee-white-75 text-lg md:text-xl max-w-2xl mb-6"
-                    delay={200}
-                    duration={0.6}
-                    ease="elistic.out(1,0.3)"
-                    splitType="lines"
-                    from={{ opacity: 0, y: 20 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.3}
-                    rootMargin="-100px"
-                    textAlign="left"
+              {extendedMedia.map((item, index) => (
+                <div
+                  key={index}
+                  className="shrink-0 w-full h-full relative"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt || "Hero image"}
+                    className="w-full h-full object-cover"
                   />
-                )}
+                  <div className="absolute inset-0 bg-black/70"></div>
 
-                {item.buttonLink && item.buttonText && (
-                  <FadeIn xIndex={80} yIndex={0} delay={.6} duration={1.2}>
-                    <div className="flex items-start">
-                      <Button
-                        onClick={() => window.open(item.buttonLink, "_blank")}
-                        className="
+                  {/* Text Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-center m-auto max-w-[1080px] px-5 text-left md:text-center">
+                    {item.firstText && item.secondText && (
+                      <div className="flex gap-3">
+                        <SplitText
+                          text={item.firstText}
+                          className="text-ieee-white text-3xl md:text-4xl lg:text-5xl font-bold mb-2"
+                          delay={0}
+                          duration={0.6}
+                          ease="power3.out"
+                          splitType="chars"
+                          from={{ opacity: 0, y: 40 }}
+                          to={{ opacity: 1, y: 0 }}
+                          threshold={0.2}
+                          rootMargin="-100px"
+                          textAlign="left"
+                        />
+                        <SplitText
+                          text={item.secondText}
+                          className="text-ieee-darkyellow text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+                          delay={100}
+                          duration={0.6}
+                          ease="power3.out"
+                          splitType="chars"
+                          from={{ opacity: 0, y: 40 }}
+                          to={{ opacity: 1, y: 0 }}
+                          threshold={0.2}
+                          rootMargin="-100px"
+                          textAlign="left"
+                        />
+                      </div>
+                    )}
+
+                    {item.description && (
+                      <SplitText
+                        text={item.description}
+                        className="text-ieee-white-75 text-lg md:text-xl max-w-2xl mb-6"
+                        delay={200}
+                        duration={0.6}
+                        ease="elistic.out(1,0.3)"
+                        splitType="lines"
+                        from={{ opacity: 0, y: 20 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.3}
+                        rootMargin="-100px"
+                        textAlign="left"
+                      />
+                    )}
+
+                    {item.buttonLink && item.buttonText && (
+                      <FadeIn xIndex={80} yIndex={0} delay={.6} duration={1.2}>
+                        <div className="flex items-start">
+                          <Button
+                            onClick={() => window.open(item.buttonLink, "_blank")}
+                            className="
                     relative
                     overflow-hidden
                     bg-linear-to-r from-ieee-darkblue-75 via-ieee-blue to-ieee-darkblue
@@ -222,44 +255,78 @@ const HeroCarousel = ({
                     transform transition-all duration-300
                     group cursor-pointer border-2 border-ieee-darkblue hover:border-white
   "
-                      >
-                        {/* Animated overlay */}
-                        <span
-                          className="
+                          >
+                            {/* Animated overlay */}
+                            <span
+                              className="
                       absolute inset-0 bg-white/20
                       -translate-x-full rotate-45 group-hover:translate-x-[300px]
                       transition-transform duration-1500
                       "
-                        ></span>
+                            ></span>
 
-                        {/* Button text with subtle movement */}
-                        <span className="relative z-10 transition-all duration-300">
-                          {item.buttonText}
-                        </span>
-                      </Button>
-                    </div>
-                  </FadeIn>
-                )}
-              </div>
+                            {/* Button text with subtle movement */}
+                            <span className="relative z-10 transition-all duration-300">
+                              {item.buttonText}
+                            </span>
+                          </Button>
+                        </div>
+                      </FadeIn>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          {media.length > 1 && (
+            <>
+              <button
+                onClick={goToPrev}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/20"
+                aria-label="Previous slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={goToNext}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-black/20"
+                aria-label="Next slide"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </>
+          )}
 
           {/* Indicators */}
           {showIndicators && media.length > 1 && (
             <div className="absolute z-20 bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {media.map((_, index) => (
-                <button
-                  key={index}
-                  className={cn(
-                    "w-2 h-2 rounded-full transition-all",
-                    currentIndex === index
-                      ? "bg-ieee-white w-6"
-                      : "bg-ieee-white-50"
-                  )}
-                  onClick={() => goToSlide(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+              {media.map((_, index) => {
+                let realIndex = currentIndex - 1;
+                if (currentIndex === 0) realIndex = media.length - 1;
+                else if (currentIndex === extendedMedia.length - 1) realIndex = 0;
+                else if (currentIndex > media.length) realIndex = 0;
+                else if (currentIndex < 1) realIndex = media.length - 1;
+
+                return (
+                  <button
+                    key={index}
+                    className={cn(
+                      "w-2 h-2 rounded-full transition-all",
+                      realIndex === index
+                        ? "bg-ieee-white w-6"
+                        : "bg-ieee-white-50"
+                    )}
+                    onClick={() => goToSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                );
+              })}
             </div>
           )}
         </>
