@@ -39,6 +39,7 @@ const FeaturedEventsCarousel: React.FC<FeaturedEventsCarouselProps> = ({
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<number | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const location = useLocation();
 
   const images: EventImage[] =
@@ -67,9 +68,11 @@ useEffect(() => {
     const scrollSpeed = 0.5;
 
     const scroll = () => {
-      container.scrollLeft += scrollSpeed;
-      if (container.scrollLeft >= container.scrollWidth / 2)
-        container.scrollLeft = 0;
+      if (!isPaused) {
+        container.scrollLeft += scrollSpeed;
+        if (container.scrollLeft >= container.scrollWidth / 2)
+          container.scrollLeft = 0;
+      }
       animationRef.current = requestAnimationFrame(scroll);
     };
 
@@ -82,7 +85,7 @@ useEffect(() => {
         animationRef.current = null; // reset
       }
     };
-  }, [images, cardWidth]);
+  }, [images, cardWidth, isPaused]);
 
   return (
     <div className="w-full py-4 relative">
@@ -111,6 +114,8 @@ useEffect(() => {
           <div
             ref={scrollRef}
             className="flex overflow-x-hidden whitespace-nowrap py-6"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             {loopImages.map((img, index) => (
               <div
