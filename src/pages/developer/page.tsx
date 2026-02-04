@@ -134,9 +134,9 @@ export default function DeveloperPage() {
 	return (
 		<main className="bg-[#00629b0a]">
 			<section className="max-w-[1100px] mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-6 sm:pb-10">
-				<div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
+				<div className="flex max-sm:flex-col-reverse sm:flex-col md:flex-row gap-10 md:gap-12 items-start">
 					<div className="flex-1">
-						<h1 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 leading-20">
+						<h1 className="text-3xl sm:text-4xl md:text-5xl text-gray-900 sm:leading-20">
 							Meet the Minds
 							<br />
 							Behind IEEE NSU SB
@@ -150,7 +150,7 @@ export default function DeveloperPage() {
 						</p>
 					</div>
 
-					<div className="w-full md:w-[180px] flex md:justify-end">
+					<div className="w-full max-sm:w-[80px] md:w-[180px] flex md:justify-end">
 						<img src={ieeeLogo} alt="IEEE NSU SB Logo" className="scale-110 md:pt-5"/>
 					</div>
 				</div>
