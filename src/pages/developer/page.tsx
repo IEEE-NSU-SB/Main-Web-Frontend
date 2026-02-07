@@ -1,5 +1,4 @@
 import ieeeLogo from "@/assets/logo/insb.gif";
-import luffy from "@/assets/dummy/image.png";
 import { useState, useMemo } from "react";
 import { useFetchDataAPI } from "@/hooks/fetchdata";
 
