@@ -88,7 +88,7 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />
-        <Route path="/developer" element={<DeveloperPage />} />
+        <Route path="/developers" element={<DeveloperPage />} />
 
         <Route element={<MainLayout />}>
           {/* Home */}
