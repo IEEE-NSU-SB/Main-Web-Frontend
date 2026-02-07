@@ -40,7 +40,7 @@ const getRandomLightColor = () => {
 
 
 export default function DeveloperPage() {
-	const { loading, data:developers, error, refetch } = useFetchDataAPI<ProjectDevelopers>({
+	const { data:developers } = useFetchDataAPI<ProjectDevelopers>({
 		apiUrl: 'main_website/get_portal_developers/',
 	  });
 
