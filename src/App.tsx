@@ -14,6 +14,9 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 //Home
 import HomePage from "./pages/home/Page";
 
+//Developer
+import DeveloperPage from "./pages/developer/page";
+
 //Activities
 import Events from "./pages/activities/events/Page";
 import EventDetails from "./pages/activities/events/EventsDetails/Page";
@@ -85,10 +88,13 @@ const App = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/welcome-page" element={<WelcomePage />} />
+        <Route path="/developers" element={<DeveloperPage />} />
 
         <Route element={<MainLayout />}>
           {/* Home */}
           <Route path="/" element={<HomePage />} />
+          
+          {/* Developed By */}
 
           {/* Activities */}
           <Route path="/events" element={<Events />} />

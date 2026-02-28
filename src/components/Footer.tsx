@@ -138,7 +138,7 @@ function Footer() {
             <p>
               © 2025 IEEE NSU SB – All rights reserved. Developed by{" "}
               <a
-                href="#"
+                href="/developers/"
                 className="text-ieee-yellow-75 hover:text-ieee-blue-75 transition-colors"
               >
                 IEEE NSU SB Web Development Team

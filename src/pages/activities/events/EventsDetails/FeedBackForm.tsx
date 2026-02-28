@@ -1,12 +1,15 @@
+import Skeleton from "@/components/Skeleton";
+import ErrorMessage from "@/components/ui/ErrorMessage";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import type { EventData } from "@/types/event";
 import React, { useState, useRef, useEffect } from "react";
 
-// interface Feedback {
-//   name: string;
-//   feedback: string;
-//   satisfaction: string;
-// }
+interface Feedback {
+  name: string;
+  feedback: string;
+  satisfaction: string;
+}
 
 type EventDetailsProps = {
   eventData: EventData;
@@ -17,6 +20,10 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   const [selectedOption, setSelectedOption] = useState(
     "How satisfied were you?"
   );
+
+  const { loading:loadingSaveFeedback, data, refetch:saveFeedback } = useFetchDataAPI<any>({ apiUrl: `main_website/event_feedback/${eventData.id}/`, method: "POST", autoFetch: false });
+  const { loading:loadingFeedbacks, error, data:feedbacks, refetch:refetchFeedbacks } = useFetchDataAPI<Feedback[]>({ apiUrl: `main_website/get_event_feedbacks/${eventData.id}/`, method: "GET" });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,9 +38,9 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
   const selectRef = useRef<HTMLDivElement>(null);
 
   const satisfactionOptions = [
-    { value: "very-satisfied", label: "Very Satisfied" },
+    { value: "very_satisfied", label: "Very Satisfied" },
     { value: "satisfied", label: "Satisfied" },
-    { value: "not-satisfied", label: "Not Satisfied" },
+    { value: "not_satisfied", label: "Not Satisfied" },
   ];
 
   // Example feedbacks (can fetch from API)
@@ -102,23 +109,10 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
       return;
     }
 
-    setLoading(true);
+    setLoading(loadingSaveFeedback);
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/main_website/submit_feedback/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            event_id: eventData.id,
-            ...formData,
-          }),
-        }
-      );
+      await saveFeedback(formData);
 
-      const data = await res.json();
       setModalMsg(data?.message || "Feedback submitted successfully!");
       // Reset form
       setFormData({ name: "", email: "", satisfaction: "", comment: "" });
@@ -126,7 +120,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
     } catch (err: any) {
       setModalMsg(err.message || "Something went wrong!");
     } finally {
-      setLoading(false);
+      setLoading(loadingSaveFeedback);
       setShowModal(true);
     }
   };
@@ -149,12 +143,23 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
 
     const animation = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animation);
-  }, []);
+  }, [feedbacks]);
 
   return (
     <div>
-      {/* ---- Feedback Carousel ----
-      {feedbacks.length > 0 && (
+      {/* ---- Feedback Carousel ---- */}
+      {loadingFeedbacks ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Skeleton className="h-23 w-full" />
+          <Skeleton className="h-23 w-full md:block hidden" />
+          <Skeleton className="h-23 w-full md:block hidden" />
+        </div>
+      ) : error ? (
+        <ErrorMessage
+          message={"Failed to load feedbacks"}
+          onRetry={refetchFeedbacks}
+        />
+      ) : feedbacks && feedbacks.length > 0 ? (
         <>
           <SectionHeading title="Participants Feedback" />
           <div
@@ -184,7 +189,7 @@ const FeedBackForm: React.FC<EventDetailsProps> = ({ eventData }) => {
             </div>
           </div>
         </>
-      )} */}
+      ): (<></>)}
 
       {/* ---- Feedback Form ---- */}
       <SectionHeading title="Leave a Feedback" />
