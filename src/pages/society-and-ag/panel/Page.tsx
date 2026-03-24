@@ -18,6 +18,13 @@ const societyColors: Record<string, string> = {
   "ieee-nsu-wie-ag": "#066697",
 };
 
+const societyShortNames: Record<string, string> = {
+  "ieee-nsu-ras-sbc": "IEEE NSU RAS SBC",
+  "ieee-nsu-pes-sbc": "IEEE NSU PES SBC",
+  "ieee-nsu-ias-sbc": "IEEE NSU IAS SBC",
+  "ieee-nsu-wie-ag": "IEEE NSU WIE AG",
+};
+
 const SocietyOrAgPanel = () => {
   const location = useLocation();
 
@@ -93,7 +100,7 @@ const SocietyOrAgPanel = () => {
 
   return (
     <>
-      <Wave title="Executive Panel of IEEE NSU SB" color={societyColor}/>
+      <Wave title={`Executive Panel of ${societyShortNames[currentSlug]}`} color={societyColor}/>
 
       {/* Desktop buttons */}
       <div className="max-w-[1080px] m-auto hidden md:flex flex-wrap justify-center my-8 gap-4" style={{ "--societyColor": societyColor } as React.CSSProperties}>
