@@ -206,6 +206,7 @@ const SocietyOrAg: React.FC = () => {
         <Executive
           advisor={execData.advisor}
           executives={execData.executives}
+          sc_ag={currentSlug}
           color={`${pageData.primaryColor || societyColor}b6`}
         />
       )}

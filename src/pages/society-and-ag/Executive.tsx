@@ -1,6 +1,6 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
-// import { HiUserGroup } from "react-icons/hi2";
+import { HiUserGroup } from "react-icons/hi2";
 import { FaEnvelope, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -17,12 +17,14 @@ interface Member {
 interface ExecutiveProps {
   advisor: Member[];
   executives: Member[];
+  sc_ag: string;
   color?: string;
 }
 
 const Executive: React.FC<ExecutiveProps> = ({
   advisor,
   executives,
+  sc_ag,
   color = "#00629b",
 }) => {
   const defaultImage = "/src/assets/dummy/placeholder.png";
@@ -93,8 +95,8 @@ const Executive: React.FC<ExecutiveProps> = ({
         ))}
       </div>
 
-      {/* <div className="text-center flex justify-center my-16">
-        <Link to="/panels">
+      <div className="text-center flex justify-center my-16">
+        <Link to={`/${sc_ag}/panels`}>
           <button
             className="cursor-pointer flex items-center gap-2 border-1 font-bold py-2 px-4 duration-300 rounded-[4px]"
             style={{
@@ -114,7 +116,7 @@ const Executive: React.FC<ExecutiveProps> = ({
             <HiUserGroup className="w-4 h-4" /> See All Panels
           </button>
         </Link>
-      </div> */}
+      </div>
     </section>
   );
 };

@@ -27,6 +27,7 @@ import NewsDetails from "./pages/activities/News/NewsDetails";
 
 //Societies & AG
 import SocietyOrAg from "./pages/society-and-ag/Page";
+import SocietyOrAgPanel from "./pages/society-and-ag/panel/Page"
 import ScAgAchievements from "./pages/society-and-ag/ScAgAchievements";
 
 //Members
@@ -113,6 +114,16 @@ const App = () => {
           <Route path="/ieee-nsu-pes-sbc" element={<SocietyOrAg />} />
           <Route path="/ieee-nsu-ias-sbc" element={<SocietyOrAg />} />
           <Route path="/ieee-nsu-wie-ag" element={<SocietyOrAg />} />
+
+          <Route path="/ieee-nsu-ras-sbc/panels" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-pes-sbc/panels" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-ias-sbc/panels" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-wie-ag/panels" element={<SocietyOrAgPanel />} />
+
+          <Route path="/ieee-nsu-ras-sbc/panels/:year" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-pes-sbc/panels/:year" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-ias-sbc/panels/:year" element={<SocietyOrAgPanel />} />
+          <Route path="/ieee-nsu-wie-ag/panels/:year" element={<SocietyOrAgPanel />} />
 
           {/* Members */}
           <Route path="/panels" element={<Panel />} />
