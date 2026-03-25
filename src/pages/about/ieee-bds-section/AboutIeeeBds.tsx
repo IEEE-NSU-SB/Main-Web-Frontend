@@ -1,7 +1,7 @@
 import FadeIn from "@/components/ui/FadeIn";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import { useFetchDataJSON } from "@/hooks/fetchdata";
+import { useFetchDataAPI } from "@/hooks/fetchdata";
 import { ExternalLink } from "lucide-react";
 
 interface LinkItem {
@@ -32,18 +32,19 @@ interface AboutIEEEBDSData {
   communitySocietyLinks: LinkItem[];
   achievementsDetails: string;
   achievementsLinks: Achievement[];
-  gallery: { image: string }[];
-  joinUsLink: string;
+  gallery: { picture: string }[];
+  // joinUsLink: string;
   chair: string;
   chairEmail: string;
   secretary: string;
   secretaryEmail: string;
   officeSecretary: string;
+  officeSecretaryNumber: string;
 }
 
 export default function AboutIEEE() {
-  const { data, loading, error } = useFetchDataJSON<AboutIEEEBDSData>({
-    path: "pages/about/ieee-bds-section/data.json",
+  const { data, loading, error } = useFetchDataAPI<AboutIEEEBDSData>({
+    apiUrl: "main_website/get_ieee_bangladesh_section_details/",
   });
 
   if (loading) return <>
@@ -68,7 +69,7 @@ export default function AboutIEEE() {
         />
         <div>
           <SectionHeading title="About IEEE" />
-          <p className="text-justify md:pl-5 max-md:mx-5">{data.aboutDetails}</p>
+          <div className="text-justify md:pl-5 max-md:mx-5" dangerouslySetInnerHTML={{ __html: data.aboutDetails }}></div>
           <div className="mt-4 flex gap-4 md:pl-5 max-md:mx-5">
             <a
               href={data.ieeebdlink}
@@ -86,7 +87,7 @@ export default function AboutIEEE() {
           <FadeIn xIndex={-100} yIndex={0}>
             <div>
               <SectionHeading title="Members and volunteers" />
-              <p className="text-justify mb-6 pl-5 max-md:mx-5 max-md:pl-0">{data.memVolDetails}</p>
+              <div className="text-justify mb-6 pl-5 max-md:mx-5 max-md:pl-0" dangerouslySetInnerHTML={{ __html: data.memVolDetails }}></div>
               {data.memVolLinks.map((link, i) => (
                 <>
                   <a
@@ -118,7 +119,7 @@ export default function AboutIEEE() {
             <div>
               <h2 className="text-white font-bold text-xl mb-1">Benefits</h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.benefitsDetails}</p>
+              <div className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.benefitsDetails }}></div>
               {data.benefitsLinks.map((l, i) => (
                 <>
                   <a
@@ -143,7 +144,7 @@ export default function AboutIEEE() {
                 Student Branch Links
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.stuBranchDetails}</p>
+              <div className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.stuBranchDetails }}></div>
               {data.stuBranchLinks.map((l, i) => (
                 <>
                   <a
@@ -171,7 +172,7 @@ export default function AboutIEEE() {
                 Affinity Groups
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.affinityDetails}</p>
+              <div className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.affinityDetails }}></div>
               {data.affinityLinks.map((l, i) => (
                 <>
                   <a
@@ -197,7 +198,7 @@ export default function AboutIEEE() {
                 Community and society
               </h2>
               <div className="w-[90px] h-[3px] bg-white rounded mb-4"></div>
-              <p className="text-white mb-4">{data.communitySocietyDetails}</p>
+              <div className="text-white mb-4" dangerouslySetInnerHTML={{ __html: data.communitySocietyDetails }}></div>
               {data.communitySocietyLinks.map((l, i) => (
                 <>
                   <a
@@ -220,7 +221,7 @@ export default function AboutIEEE() {
       <div className="max-w-[1080px] m-auto">
         <FadeIn xIndex={-100} yIndex={0}>
           <SectionHeading title="Achievements" />
-          <p className="text-justify mb-6 md:p-5 max-md:mx-5">{data.achievementsDetails}</p>
+          <div className="text-justify mb-6 md:p-5 max-md:mx-5" dangerouslySetInnerHTML={{ __html: data.achievementsDetails }}></div>
           <div className="flex flex-wrap gap-7 justify-baseline max-md:justify-center p-5">
             {data.achievementsLinks.map((a, i) => (
               <div
@@ -228,7 +229,7 @@ export default function AboutIEEE() {
                 className="w-80 h-102 rounded-lg overflow-hidden shadow hover:shadow-lg transition cursor-pointer"
               >
                 <img
-                  src={a.image}
+                  src={a.image || "https://olc-wordpress-assets.s3.amazonaws.com/uploads/2021/04/OLC-Awards-Thumbnail-1200x800.jpg"}
                   alt={a.title}
                   className="w-full h-full object-cover hover:scale-110 duration-300 transition-all"
                 />
@@ -265,7 +266,7 @@ export default function AboutIEEE() {
               className="overflow-hidden rounded-lg shadow hover:shadow-lg transition"
             >
               <img
-                src={item.image}
+                src={item.picture}
                 alt={`Gallery Image ${index + 1}`}
                 className="w-full h-54 cursor-pointer object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
               />
@@ -306,8 +307,8 @@ export default function AboutIEEE() {
               </a>
             </div>
             <div className="grid grid-cols-[1fr_2fr]">
-              <p>Ms. Salma [Office Secretary]:</p>
-              <p>{data.officeSecretary}</p>
+              <p>{data.officeSecretary}:</p>
+              <p>{data.officeSecretaryNumber}</p>
             </div>
           </div>
         </FadeIn>
