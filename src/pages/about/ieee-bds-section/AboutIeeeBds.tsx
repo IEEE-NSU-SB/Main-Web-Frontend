@@ -303,7 +303,7 @@ export default function AboutIEEE() {
                 href={data.secretaryEmail}
                 className="link text-[#002855] hover:text-[#FFC72C]"
               >
-                {data.chairEmail}
+                {data.secretaryEmail}
               </a>
             </div>
             <div className="grid grid-cols-[1fr_2fr]">
