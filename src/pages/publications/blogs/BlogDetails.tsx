@@ -46,7 +46,7 @@ export default function BlogPage() {
   if (error || !data)
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-red-600">{error || "Failed to load news."}</p>
+        <p className="text-red-600">{error || "Failed to load blogs."}</p>
       </div>
     );
 

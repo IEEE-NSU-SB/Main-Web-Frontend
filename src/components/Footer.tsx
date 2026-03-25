@@ -65,7 +65,7 @@ const socialIcons = [
 const contactInfo = [
   "info@ieeensusb.org",
   "contact@ieeensusb.org",
-  "Last Updated: 01 December 2025",
+  "Last Updated: 23 March 2026",
 ];
 
 function Footer() {
@@ -136,7 +136,7 @@ function Footer() {
           {/* Copyright */}
           <div className="border-t border-ieee-white-25 pt-6 font-bold text-center text-sm text-ieee-white-75 mt-8">
             <p>
-              © 2025 IEEE NSU SB – All rights reserved. Developed by{" "}
+              © 2026 IEEE NSU SB – All rights reserved. Developed by{" "}
               <a
                 href="/developers/"
                 className="text-ieee-yellow-75 hover:text-ieee-blue-75 transition-colors"
