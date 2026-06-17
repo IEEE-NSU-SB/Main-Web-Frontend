@@ -21,14 +21,29 @@ const Officer = () => {
     else if (path.includes("graphics")) return "10";
     else if (path.includes("logistics")) return "4"; // add other teams similarly
     else if (path.includes("media")) return "9";
-    else if (path.includes("pr")) return "0";
     else if (path.includes("promotions")) return "5";
+    else if (path.includes("pr") || path.includes("public")) return "0";
     else if (path.includes("finance")) return "11";
     else if (path.includes("membership")) return "7";
     else return ""; // unknown
   }, [location.pathname]);
+
+  const pathTeamTitle = React.useMemo(() => {
+    const path = location.pathname.toLowerCase();
+    if (path.includes("content")) return "Content Writing and Publications";
+    else if (path.includes("web")) return "Website Development";
+    else if (path.includes("event")) return "Events and Management";
+    else if (path.includes("graphics")) return "Graphics";
+    else if (path.includes("logistics")) return "Logistics and Operations";
+    else if (path.includes("media")) return "Media";
+    else if (path.includes("promotions")) return "Promotions";
+    else if (path.includes("pr") || path.includes("public")) return "Public Relation (PR)";
+    else if (path.includes("finance")) return "Finance and Corporate";
+    else if (path.includes("membership")) return "Membership Development";
+    else return "All";
+  }, [location.pathname]);
   
-  const [selectedTeam, setSelectedTeam] = useState<string>("All");
+  const [selectedTeam, setSelectedTeam] = useState<string>(pathTeamTitle);
   const [teamList, setTeamList] = useState<Team[]>([]);
 
   // Fetch team list
@@ -38,10 +53,9 @@ const Officer = () => {
   }, [teamsData]);
 
   // Fetch officers data from API
-  const apiUrl =
-    selectedTeam && selectedTeam !== "All"
-      ? `main_website/get_officers/${pathTeam}`
-      : "main_website/get_officers/"; // All officers
+  const apiUrl = pathTeam
+      ? `main_website/get_officers/${pathTeam}/`
+      : "main_website/get_officers/";
 
   const { data: panelData, loading: panelLoading, error: panelError } = useFetchDataAPI<Member[]>({ apiUrl });
 
@@ -55,11 +69,15 @@ const Officer = () => {
   if (panelError) return <p className="text-center mt-10 text-red-500">{panelError}</p>;
   if (!panelData?.length) return <p className="text-center mt-10 text-gray-500">No data found.</p>;
 
+  const visiblePanelData = pathTeamTitle === "Public Relation (PR)"
+    ? panelData.filter((officer) => officer.team === "Public Relation (PR)")
+    : panelData;
+
   // Filter Officers vs Incharges
-  const filteredOfficers = panelData.filter(officer =>
+  const filteredOfficers = visiblePanelData.filter(officer =>
     officer.position.toLowerCase().includes("co-ordinator")
   );
-  const filteredIncharges = panelData.filter(officer =>
+  const filteredIncharges = visiblePanelData.filter(officer =>
     officer.position.toLowerCase().includes("incharge")
   );
 
